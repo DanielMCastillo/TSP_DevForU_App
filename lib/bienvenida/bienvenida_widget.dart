@@ -21,7 +21,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -82,8 +82,8 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                       children: [
                                         Expanded(
                                           child: Text(
-                                            'Soy Devi y te doy la bienvenida a mi casa.\n\nYo o alguno de mis amigos te vamos apoyar en tu proceso de auto monitoreo.',
-                                            textAlign: TextAlign.justify,
+                                            'Soy Devi y te doy la bienvenida a mi casa, yo o alguno de mis amigos te apoyaremos en tu proceso de automonitoreo.',
+                                            textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText2
                                                 .override(
@@ -119,23 +119,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          'Header Two',
-                                          style: FlutterFlowTheme.of(context)
-                                              .title2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
                                         Expanded(
                                           child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                                            'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText2,
                                           ),
@@ -165,23 +151,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Text(
-                                          'Header Three',
-                                          style: FlutterFlowTheme.of(context)
-                                              .title2,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
                                         Expanded(
                                           child: Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+                                            'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText2,
                                           ),
@@ -218,7 +190,8 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                               dotWidth: 16,
                               dotHeight: 4,
                               dotColor: FlutterFlowTheme.of(context).lineColor,
-                              activeDotColor: Color(0xFF759EB8),
+                              activeDotColor:
+                                  FlutterFlowTheme.of(context).primaryColor,
                               paintStyle: PaintingStyle.fill,
                             ),
                           ),
@@ -246,7 +219,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                   options: FFButtonOptions(
                     width: 300,
                     height: 50,
-                    color: Color(0xFF759EB8),
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Montserrat',
                           color:
@@ -263,9 +236,17 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('SeleccionMascota');
+                  context.pushNamed(
+                    'Home',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.bottomToTop,
+                      ),
+                    },
+                  );
                 },
-                text: 'PRUEBA',
+                text: 'HOME',
                 options: FFButtonOptions(
                   width: 130,
                   height: 40,

@@ -1,8 +1,11 @@
+import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PerfilWidget extends StatefulWidget {
@@ -19,6 +22,35 @@ class _PerfilWidgetState extends State<PerfilWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: FaIcon(
+            FontAwesomeIcons.arrowCircleLeft,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            context.pushNamed('Home');
+          },
+        ),
+        title: Text(
+          'Perfil',
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 1,
+      ),
       backgroundColor: Color(0xFFF1F4F8),
       drawer: Drawer(
         elevation: 16,
@@ -142,15 +174,6 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(0, 0),
-                                  child: Image.network(
-                                    '',
-                                    width: MediaQuery.of(context).size.width,
-                                    height: 150,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Align(
-                                  alignment: AlignmentDirectional(0, 0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 105, 0, 0),
@@ -207,7 +230,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: Color(0xFF090F13),
-                          fontSize: 14,
+                          fontSize: 17,
                           fontWeight: FontWeight.normal,
                         ),
                   ),
@@ -233,44 +256,57 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           width: 1,
                         ),
                       ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Icon(
-                              Icons.schedule_rounded,
-                              color: Color(0xFF96BEFF),
-                              size: 24,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Text(
-                              'Horarios de comida',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF090F13),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0.9, 0),
+                      child: InkWell(
+                        onTap: () async {
+                          context.pushNamed(
+                            'RegistroHorarioComida',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF95A1AC),
-                                size: 18,
+                                Icons.schedule_rounded,
+                                color: Color(0xFF96BEFF),
+                                size: 24,
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                              child: Text(
+                                'Horarios de comida',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Color(0xFF090F13),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Align(
+                                alignment: AlignmentDirectional(0.9, 0),
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Color(0xFF95A1AC),
+                                  size: 18,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -331,118 +367,6 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.rectangle,
-                        border: Border.all(
-                          color: Color(0xFFF1F4F8),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Icon(
-                              Icons.people_rounded,
-                              color: Color(0xFF96BEFF),
-                              size: 24,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Text(
-                              'Compartir información con otra persona',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF090F13),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0.9, 0),
-                              child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF95A1AC),
-                                size: 18,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.rectangle,
-                        border: Border.all(
-                          color: Color(0xFFF1F4F8),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Icon(
-                              Icons.food_bank,
-                              color: Color(0xFF96BEFF),
-                              size: 24,
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                            child: Text(
-                              'Preferencias de comida',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Color(0xFF090F13),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional(0.9, 0),
-                              child: Icon(
-                                Icons.arrow_forward_ios,
-                                color: Color(0xFF95A1AC),
-                                size: 18,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
             Padding(
@@ -454,12 +378,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        await signOut();
+
+                        context.goNamedAuth('Bienvenida', mounted);
                       },
-                      text: 'Salir',
+                      text: 'Desconectarse',
                       options: FFButtonOptions(
-                        width: 90,
                         height: 40,
                         color: Colors.white,
                         textStyle:

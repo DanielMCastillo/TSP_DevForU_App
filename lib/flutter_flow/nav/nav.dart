@@ -67,13 +67,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, _) =>
-          appStateNotifier.loggedIn ? HomeWidget() : BienvenidaWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : BienvenidaWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomeWidget() : BienvenidaWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : BienvenidaWidget(),
           routes: [
             FFRoute(
               name: 'Bienvenida',
@@ -86,19 +86,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistroWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascota',
-              path: 'seleccionMascota',
-              builder: (context, params) => SeleccionMascotaWidget(),
-            ),
-            FFRoute(
-              name: 'afkxd',
-              path: 'afkxd',
-              builder: (context, params) => AfkxdWidget(),
-            ),
-            FFRoute(
               name: 'Home',
               path: 'home',
-              builder: (context, params) => HomeWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Home')
+                  : HomeWidget(),
+            ),
+            FFRoute(
+              name: 'Perfil',
+              path: 'perfil',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Perfil')
+                  : PerfilWidget(),
+            ),
+            FFRoute(
+              name: 'Registros',
+              path: 'registros',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Registros')
+                  : RegistrosWidget(),
             ),
             FFRoute(
               name: 'Animoo',
@@ -106,19 +112,46 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
+              name: 'RegistroHorarioComida',
+              path: 'registroHorarioComida',
+              builder: (context, params) => RegistroHorarioComidaWidget(),
+            ),
+            FFRoute(
               name: 'SeleccionMascotaCopy',
               path: 'seleccionMascotaCopy',
-              builder: (context, params) => SeleccionMascotaCopyWidget(),
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'SeleccionMascotaCopy')
+                  : SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
-              name: 'Perfil',
-              path: 'perfil',
-              builder: (context, params) => PerfilWidget(),
+              name: 'Ayuda',
+              path: 'ayuda',
+              builder: (context, params) => AyudaWidget(),
             ),
             FFRoute(
-              name: 'Registros',
-              path: 'registros',
-              builder: (context, params) => RegistrosWidget(),
+              name: 'Informacion_Personal',
+              path: 'informacionPersonal',
+              builder: (context, params) => InformacionPersonalWidget(),
+            ),
+            FFRoute(
+              name: 'PantallaDeFelicitacion',
+              path: 'pantallaDeFelicitacion',
+              builder: (context, params) => PantallaDeFelicitacionWidget(),
+            ),
+            FFRoute(
+              name: 'SeleccionMascota',
+              path: 'seleccionMascota',
+              builder: (context, params) => SeleccionMascotaWidget(),
+            ),
+            FFRoute(
+              name: 'Home2',
+              path: 'home2',
+              builder: (context, params) => Home2Widget(),
+            ),
+            FFRoute(
+              name: 'afkxd',
+              path: 'afkxd',
+              builder: (context, params) => AfkxdWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

@@ -21,20 +21,6 @@ class _$UsuariosRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.correo;
-    if (value != null) {
-      result
-        ..add('correo')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.contrasena;
-    if (value != null) {
-      result
-        ..add('contrasena')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.email;
     if (value != null) {
       result
@@ -77,6 +63,13 @@ class _$UsuariosRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.contrasena;
+    if (value != null) {
+      result
+        ..add('contrasena')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -100,14 +93,6 @@ class _$UsuariosRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'correo':
-          result.correo = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'contrasena':
-          result.contrasena = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'email':
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -132,6 +117,10 @@ class _$UsuariosRecordSerializer
           result.phoneNumber = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'contrasena':
+          result.contrasena = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -147,10 +136,6 @@ class _$UsuariosRecordSerializer
 
 class _$UsuariosRecord extends UsuariosRecord {
   @override
-  final String? correo;
-  @override
-  final String? contrasena;
-  @override
   final String? email;
   @override
   final String? displayName;
@@ -163,20 +148,21 @@ class _$UsuariosRecord extends UsuariosRecord {
   @override
   final String? phoneNumber;
   @override
+  final String? contrasena;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsuariosRecord([void Function(UsuariosRecordBuilder)? updates]) =>
       (new UsuariosRecordBuilder()..update(updates))._build();
 
   _$UsuariosRecord._(
-      {this.correo,
-      this.contrasena,
-      this.email,
+      {this.email,
       this.displayName,
       this.photoUrl,
       this.uid,
       this.createdTime,
       this.phoneNumber,
+      this.contrasena,
       this.ffRef})
       : super._();
 
@@ -192,14 +178,13 @@ class _$UsuariosRecord extends UsuariosRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is UsuariosRecord &&
-        correo == other.correo &&
-        contrasena == other.contrasena &&
         email == other.email &&
         displayName == other.displayName &&
         photoUrl == other.photoUrl &&
         uid == other.uid &&
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
+        contrasena == other.contrasena &&
         ffRef == other.ffRef;
   }
 
@@ -210,30 +195,25 @@ class _$UsuariosRecord extends UsuariosRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc(
-                            $jc(
-                                $jc($jc(0, correo.hashCode),
-                                    contrasena.hashCode),
-                                email.hashCode),
-                            displayName.hashCode),
-                        photoUrl.hashCode),
-                    uid.hashCode),
-                createdTime.hashCode),
-            phoneNumber.hashCode),
+                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
+                            photoUrl.hashCode),
+                        uid.hashCode),
+                    createdTime.hashCode),
+                phoneNumber.hashCode),
+            contrasena.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'UsuariosRecord')
-          ..add('correo', correo)
-          ..add('contrasena', contrasena)
           ..add('email', email)
           ..add('displayName', displayName)
           ..add('photoUrl', photoUrl)
           ..add('uid', uid)
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
+          ..add('contrasena', contrasena)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -242,14 +222,6 @@ class _$UsuariosRecord extends UsuariosRecord {
 class UsuariosRecordBuilder
     implements Builder<UsuariosRecord, UsuariosRecordBuilder> {
   _$UsuariosRecord? _$v;
-
-  String? _correo;
-  String? get correo => _$this._correo;
-  set correo(String? correo) => _$this._correo = correo;
-
-  String? _contrasena;
-  String? get contrasena => _$this._contrasena;
-  set contrasena(String? contrasena) => _$this._contrasena = contrasena;
 
   String? _email;
   String? get email => _$this._email;
@@ -275,6 +247,10 @@ class UsuariosRecordBuilder
   String? get phoneNumber => _$this._phoneNumber;
   set phoneNumber(String? phoneNumber) => _$this._phoneNumber = phoneNumber;
 
+  String? _contrasena;
+  String? get contrasena => _$this._contrasena;
+  set contrasena(String? contrasena) => _$this._contrasena = contrasena;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -286,14 +262,13 @@ class UsuariosRecordBuilder
   UsuariosRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _correo = $v.correo;
-      _contrasena = $v.contrasena;
       _email = $v.email;
       _displayName = $v.displayName;
       _photoUrl = $v.photoUrl;
       _uid = $v.uid;
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
+      _contrasena = $v.contrasena;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -317,14 +292,13 @@ class UsuariosRecordBuilder
   _$UsuariosRecord _build() {
     final _$result = _$v ??
         new _$UsuariosRecord._(
-            correo: correo,
-            contrasena: contrasena,
             email: email,
             displayName: displayName,
             photoUrl: photoUrl,
             uid: uid,
             createdTime: createdTime,
             phoneNumber: phoneNumber,
+            contrasena: contrasena,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

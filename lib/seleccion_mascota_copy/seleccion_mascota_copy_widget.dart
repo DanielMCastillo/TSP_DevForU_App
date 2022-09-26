@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeleccionMascotaCopyWidget extends StatefulWidget {
@@ -80,47 +81,31 @@ class _SeleccionMascotaCopyWidgetState
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).lineColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
-        title: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Selecciona a tu acompañante',
-              style: FlutterFlowTheme.of(context).title3.override(
-                    fontFamily: 'Montserrat',
-                    fontSize: 16,
-                  ),
-            ),
-            Text(
-              'Te acompañará en tu progeso ',
-              style: FlutterFlowTheme.of(context).bodyText2.override(
-                    fontFamily: 'Montserrat',
-                    fontSize: 12,
-                  ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 12, 4),
-            child: FlutterFlowIconButton(
-              borderRadius: 30,
-              borderWidth: 1,
-              buttonSize: 44,
-              fillColor: Color(0xFF759EB8),
-              icon: Icon(
-                Icons.close_rounded,
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                size: 24,
-              ),
-              onPressed: () async {
-                context.pushNamed('Bienvenida');
-              },
-            ),
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: FaIcon(
+            FontAwesomeIcons.arrowCircleLeft,
+            color: Colors.white,
+            size: 30,
           ),
-        ],
+          onPressed: () {
+            print('IconButton pressed ...');
+          },
+        ),
+        title: Text(
+          'Selecciona tu acompañante',
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 18,
+              ),
+        ),
+        actions: [],
         centerTitle: false,
         elevation: 1,
       ),

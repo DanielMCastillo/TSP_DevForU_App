@@ -7,7 +7,13 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(EstadoAnimoRecord.serializer)
+      ..add(FrasesReforzamientoRecord.serializer)
+      ..add(HorariosRecord.serializer)
       ..add(MascotasRecord.serializer)
+      ..add(NotasRecord.serializer)
+      ..add(UsuarioMascotaRecord.serializer)
+      ..add(UsuarioNotasRecord.serializer)
       ..add(UsuariosRecord.serializer))
     .build();
 

@@ -1,7 +1,10 @@
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistrosWidget extends StatefulWidget {
@@ -12,6 +15,7 @@ class RegistrosWidget extends StatefulWidget {
 }
 
 class _RegistrosWidgetState extends State<RegistrosWidget> {
+  DateTime? datePicked;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,20 +23,33 @@ class _RegistrosWidgetState extends State<RegistrosWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xFF96BEFF),
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: FaIcon(
+            FontAwesomeIcons.arrowCircleLeft,
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () async {
+            context.pushNamed('Home');
+          },
+        ),
         title: Text(
-          'Registros',
-          style: FlutterFlowTheme.of(context).title2.override(
-                fontFamily: 'Outfit',
-                color: Colors.white,
+          'Mis registros',
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
                 fontSize: 22,
-                fontWeight: FontWeight.normal,
               ),
         ),
         actions: [],
         centerTitle: false,
-        elevation: 0,
+        elevation: 1,
       ),
       backgroundColor: Color(0xFF96BEFF),
       body: GestureDetector(
@@ -42,7 +59,7 @@ class _RegistrosWidgetState extends State<RegistrosWidget> {
           children: [
             Expanded(
               child: DefaultTabController(
-                length: 3,
+                length: 1,
                 initialIndex: 0,
                 child: Column(
                   children: [
@@ -60,15 +77,7 @@ class _RegistrosWidgetState extends State<RegistrosWidget> {
                       indicatorColor: Color(0xFFEBA1FF),
                       indicatorWeight: 3,
                       tabs: [
-                        Tab(
-                          text: 'Todas',
-                        ),
-                        Tab(
-                          text: '-',
-                        ),
-                        Tab(
-                          text: '-',
-                        ),
+                        Tab(),
                       ],
                     ),
                     Expanded(
@@ -80,309 +89,126 @@ class _RegistrosWidgetState extends State<RegistrosWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFFF1F4F8),
                             ),
-                            child: Padding(
-                              padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 150),
-                              child: ListView(
-                                padding: EdgeInsets.zero,
-                                scrollDirection: Axis.vertical,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 3,
-                                            color: Color(0x20000000),
-                                            offset: Offset(0, 1),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 12, 8),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Image.asset(
-                                                'assets/images/AJOLOTE.png',
-                                                width: 70,
-                                                height: 70,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 0, 0, 0),
-                                                    child: Text(
-                                                      'Fecha',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF14181B),
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 4, 0, 0),
-                                                    child: Text(
-                                                      'Nota',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 3,
-                                            color: Color(0x20000000),
-                                            offset: Offset(0, 1),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 12, 8),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Image.asset(
-                                                'assets/images/AJOLOTE.png',
-                                                width: 70,
-                                                height: 70,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 0, 0, 0),
-                                                    child: Text(
-                                                      'Fecha',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF14181B),
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 4, 0, 0),
-                                                    child: Text(
-                                                      'Nota',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16, 8, 16, 0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 3,
-                                            color: Color(0x20000000),
-                                            offset: Offset(0, 1),
-                                          )
-                                        ],
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 12, 8),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Image.asset(
-                                                'assets/images/AJOLOTE.png',
-                                                width: 70,
-                                                height: 70,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 0, 0, 0),
-                                                    child: Text(
-                                                      'Fecha',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle1
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF14181B),
-                                                                fontSize: 18,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16, 4, 0, 0),
-                                                    child: Text(
-                                                      'Hora',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyText2
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
-                                                                fontSize: 14,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF1F4F8),
-                            ),
                             child: ListView(
                               padding: EdgeInsets.zero,
                               scrollDirection: Axis.vertical,
                               children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: InkWell(
+                                                    onTap: () async {
+                                                      await DatePicker
+                                                          .showDatePicker(
+                                                        context,
+                                                        showTitleActions: true,
+                                                        onConfirm: (date) {
+                                                          setState(() =>
+                                                              datePicked =
+                                                                  date);
+                                                        },
+                                                        currentTime:
+                                                            getCurrentTimestamp,
+                                                        minTime:
+                                                            getCurrentTimestamp,
+                                                        locale: LocaleType
+                                                            .values
+                                                            .firstWhere(
+                                                          (l) =>
+                                                              l.name ==
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                          orElse: () =>
+                                                              LocaleType.en,
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Text(
+                                                      'Fecha',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Color(
+                                                                    0xFF14181B),
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Nota',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16, 8, 16, 0),
@@ -467,14 +293,763 @@ class _RegistrosWidgetState extends State<RegistrosWidget> {
                                     ),
                                   ),
                                 ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16, 8, 16, 0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                              'assets/images/AJOLOTE.png',
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 0, 0, 0),
+                                                  child: Text(
+                                                    'Fecha',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF14181B),
+                                                          fontSize: 18,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(16, 4, 0, 0),
+                                                  child: Text(
+                                                    'Hora',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Outfit',
+                                                          color:
+                                                              Color(0xFF57636C),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
-                            ),
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF1F4F8),
                             ),
                           ),
                         ],

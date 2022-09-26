@@ -54,7 +54,10 @@
 	<true/>
 
 
-
+	<key>PermissionGroupNotification</key>
+      <string>Permitir que Devii mande notificaciones</string>
+	<key>NSContactsUsageDescription</key>
+      <string>Permitir que Devii acceda a tus contactos</string>
 
 
 	<key>UILaunchStoryboardName</key>

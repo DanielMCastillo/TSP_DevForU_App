@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -49,7 +48,22 @@ class _RegistroWidgetState extends State<RegistroWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).lineColor,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          '¡Hola!',
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 22,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 1,
+      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Padding(
@@ -65,8 +79,8 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                   children: [
                     Image.asset(
                       'assets/images/AJOLOTE.png',
-                      width: 240,
-                      height: 200,
+                      width: 210,
+                      height: 180,
                       fit: BoxFit.fitWidth,
                     ),
                   ],
@@ -84,7 +98,8 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                         labelPadding:
                             EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                         labelStyle: FlutterFlowTheme.of(context).subtitle1,
-                        indicatorColor: Color(0xFF759EB8),
+                        indicatorColor:
+                            FlutterFlowTheme.of(context).primaryColor,
                         tabs: [
                           Tab(
                             text: 'Inicia sesión',
@@ -260,14 +275,15 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                                       options: FFButtonOptions(
                                         width: 230,
                                         height: 50,
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
                                               fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primaryBtnText,
                                             ),
                                         elevation: 3,
                                         borderSide: BorderSide(
@@ -290,12 +306,14 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                                         width: 200,
                                         height: 40,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
+                                            .lineColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
                                               fontFamily: 'Montserrat',
-                                              color: Colors.white,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .gray600,
                                               fontSize: 12,
                                             ),
                                         elevation: 0,
@@ -305,21 +323,6 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 30,
-                                    borderWidth: 1,
-                                    buttonSize: 60,
-                                    icon: Icon(
-                                      Icons.add,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 30,
-                                    ),
-                                    onPressed: () async {
-                                      context.pushNamed('Bienvenida');
-                                    },
                                   ),
                                 ],
                               ),

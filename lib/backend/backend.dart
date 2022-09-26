@@ -6,6 +6,12 @@ import '../flutter_flow/flutter_flow_util.dart';
 
 import 'schema/usuarios_record.dart';
 import 'schema/mascotas_record.dart';
+import 'schema/usuario_mascota_record.dart';
+import 'schema/notas_record.dart';
+import 'schema/estado_animo_record.dart';
+import 'schema/frases_reforzamiento_record.dart';
+import 'schema/horarios_record.dart';
+import 'schema/usuario_notas_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -15,6 +21,12 @@ export 'schema/serializers.dart';
 
 export 'schema/usuarios_record.dart';
 export 'schema/mascotas_record.dart';
+export 'schema/usuario_mascota_record.dart';
+export 'schema/notas_record.dart';
+export 'schema/estado_animo_record.dart';
+export 'schema/frases_reforzamiento_record.dart';
+export 'schema/horarios_record.dart';
+export 'schema/usuario_notas_record.dart';
 
 /// Functions to query UsuariosRecords (as a Stream and as a Future).
 Stream<List<UsuariosRecord>> queryUsuariosRecord({
@@ -94,6 +106,259 @@ Future<FFFirestorePage<MascotasRecord>> queryMascotasRecordPage({
     queryCollectionPage(
       MascotasRecord.collection,
       MascotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query UsuarioMascotaRecords (as a Stream and as a Future).
+Stream<List<UsuarioMascotaRecord>> queryUsuarioMascotaRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UsuarioMascotaRecord.collection,
+      UsuarioMascotaRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UsuarioMascotaRecord>> queryUsuarioMascotaRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UsuarioMascotaRecord.collection,
+      UsuarioMascotaRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<UsuarioMascotaRecord>> queryUsuarioMascotaRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      UsuarioMascotaRecord.collection,
+      UsuarioMascotaRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query NotasRecords (as a Stream and as a Future).
+Stream<List<NotasRecord>> queryNotasRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      NotasRecord.collection,
+      NotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<NotasRecord>> queryNotasRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      NotasRecord.collection,
+      NotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<NotasRecord>> queryNotasRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      NotasRecord.collection,
+      NotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query EstadoAnimoRecords (as a Stream and as a Future).
+Stream<List<EstadoAnimoRecord>> queryEstadoAnimoRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      EstadoAnimoRecord.collection,
+      EstadoAnimoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<EstadoAnimoRecord>> queryEstadoAnimoRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      EstadoAnimoRecord.collection,
+      EstadoAnimoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<EstadoAnimoRecord>> queryEstadoAnimoRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      EstadoAnimoRecord.collection,
+      EstadoAnimoRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query FrasesReforzamientoRecords (as a Stream and as a Future).
+Stream<List<FrasesReforzamientoRecord>> queryFrasesReforzamientoRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      FrasesReforzamientoRecord.collection,
+      FrasesReforzamientoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<FrasesReforzamientoRecord>> queryFrasesReforzamientoRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      FrasesReforzamientoRecord.collection,
+      FrasesReforzamientoRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<FrasesReforzamientoRecord>>
+    queryFrasesReforzamientoRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+        queryCollectionPage(
+          FrasesReforzamientoRecord.collection,
+          FrasesReforzamientoRecord.serializer,
+          queryBuilder: queryBuilder,
+          nextPageMarker: nextPageMarker,
+          pageSize: pageSize,
+          isStream: isStream,
+        );
+
+/// Functions to query HorariosRecords (as a Stream and as a Future).
+Stream<List<HorariosRecord>> queryHorariosRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      HorariosRecord.collection,
+      HorariosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<HorariosRecord>> queryHorariosRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      HorariosRecord.collection,
+      HorariosRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<HorariosRecord>> queryHorariosRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      HorariosRecord.collection,
+      HorariosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query UsuarioNotasRecords (as a Stream and as a Future).
+Stream<List<UsuarioNotasRecord>> queryUsuarioNotasRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      UsuarioNotasRecord.collection,
+      UsuarioNotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<UsuarioNotasRecord>> queryUsuarioNotasRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      UsuarioNotasRecord.collection,
+      UsuarioNotasRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<UsuarioNotasRecord>> queryUsuarioNotasRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      UsuarioNotasRecord.collection,
+      UsuarioNotasRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

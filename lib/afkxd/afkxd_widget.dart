@@ -22,10 +22,11 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Page Title',
+          'AFK',
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 22,
               ),
         ),
         actions: [],
