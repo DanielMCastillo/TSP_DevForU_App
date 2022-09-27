@@ -34,22 +34,29 @@ class _PantallaDeFelicitacionWidgetState
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [],
+                  children: [
+                    Image.asset(
+                      'assets/images/AJOLOTE.png',
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
                 ),
               ),
               Text(
-                '¡Felicidades!',
+                '¡Gracias por compartirmelo!',
                 style: FlutterFlowTheme.of(context).title2.override(
                       fontFamily: 'Outfit',
                       color: Colors.white,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w500,
+                      fontSize: 27,
+                      fontWeight: FontWeight.bold,
                     ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
-                  '¡Lo estás haciendo genial!',
+                  '¡Yo se que puedes!',
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,
@@ -63,7 +70,7 @@ class _PantallaDeFelicitacionWidgetState
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
-                      'Home2',
+                      'Home',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
@@ -79,7 +86,7 @@ class _PantallaDeFelicitacionWidgetState
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
-                          color: Color(0xFF39D2C0),
+                          color: FlutterFlowTheme.of(context).alternate,
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),

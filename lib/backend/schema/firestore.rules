@@ -49,12 +49,5 @@ service cloud.firestore {
       allow write: if false;
       allow delete: if false;
     }
-
-    match /usuario_notas/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
   }
 }

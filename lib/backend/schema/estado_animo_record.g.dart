@@ -34,13 +34,6 @@ class _$EstadoAnimoRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.descripcion;
-    if (value != null) {
-      result
-        ..add('descripcion')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -72,10 +65,6 @@ class _$EstadoAnimoRecordSerializer
           result.estado = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'descripcion':
-          result.descripcion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -95,16 +84,13 @@ class _$EstadoAnimoRecord extends EstadoAnimoRecord {
   @override
   final String? estado;
   @override
-  final String? descripcion;
-  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$EstadoAnimoRecord(
           [void Function(EstadoAnimoRecordBuilder)? updates]) =>
       (new EstadoAnimoRecordBuilder()..update(updates))._build();
 
-  _$EstadoAnimoRecord._(
-      {this.idEstadoanimo, this.estado, this.descripcion, this.ffRef})
+  _$EstadoAnimoRecord._({this.idEstadoanimo, this.estado, this.ffRef})
       : super._();
 
   @override
@@ -121,16 +107,13 @@ class _$EstadoAnimoRecord extends EstadoAnimoRecord {
     return other is EstadoAnimoRecord &&
         idEstadoanimo == other.idEstadoanimo &&
         estado == other.estado &&
-        descripcion == other.descripcion &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, idEstadoanimo.hashCode), estado.hashCode),
-            descripcion.hashCode),
-        ffRef.hashCode));
+        $jc($jc(0, idEstadoanimo.hashCode), estado.hashCode), ffRef.hashCode));
   }
 
   @override
@@ -138,7 +121,6 @@ class _$EstadoAnimoRecord extends EstadoAnimoRecord {
     return (newBuiltValueToStringHelper(r'EstadoAnimoRecord')
           ..add('idEstadoanimo', idEstadoanimo)
           ..add('estado', estado)
-          ..add('descripcion', descripcion)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -157,10 +139,6 @@ class EstadoAnimoRecordBuilder
   String? get estado => _$this._estado;
   set estado(String? estado) => _$this._estado = estado;
 
-  String? _descripcion;
-  String? get descripcion => _$this._descripcion;
-  set descripcion(String? descripcion) => _$this._descripcion = descripcion;
-
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -174,7 +152,6 @@ class EstadoAnimoRecordBuilder
     if ($v != null) {
       _idEstadoanimo = $v.idEstadoanimo;
       _estado = $v.estado;
-      _descripcion = $v.descripcion;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -198,10 +175,7 @@ class EstadoAnimoRecordBuilder
   _$EstadoAnimoRecord _build() {
     final _$result = _$v ??
         new _$EstadoAnimoRecord._(
-            idEstadoanimo: idEstadoanimo,
-            estado: estado,
-            descripcion: descripcion,
-            ffRef: ffRef);
+            idEstadoanimo: idEstadoanimo, estado: estado, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

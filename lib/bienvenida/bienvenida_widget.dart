@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,9 +14,169 @@ class BienvenidaWidget extends StatefulWidget {
   _BienvenidaWidgetState createState() => _BienvenidaWidgetState();
 }
 
-class _BienvenidaWidgetState extends State<BienvenidaWidget> {
+class _BienvenidaWidgetState extends State<BienvenidaWidget>
+    with TickerProviderStateMixin {
   PageController? pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'imageOnPageLoadAnimation1': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'rowOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'textOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'imageOnPageLoadAnimation2': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'textOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'imageOnPageLoadAnimation3': AnimationInfo(
+      curve: Curves.bounceOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'textOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'buttonOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'buttonOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +214,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     width: 300,
                                     height: 300,
                                     fit: BoxFit.cover,
-                                  ),
+                                  ).animated([
+                                    animationsMap['imageOnPageLoadAnimation1']!
+                                  ]),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16, 8, 16, 0),
@@ -72,7 +235,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                           ),
                                         ),
                                       ],
-                                    ),
+                                    ).animated([
+                                      animationsMap['rowOnPageLoadAnimation']!
+                                    ]),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -92,7 +257,10 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                                   letterSpacing: 0.12,
                                                   fontWeight: FontWeight.w500,
                                                 ),
-                                          ),
+                                          ).animated([
+                                            animationsMap[
+                                                'textOnPageLoadAnimation1']!
+                                          ]),
                                         ),
                                       ],
                                     ),
@@ -112,7 +280,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     width: 300,
                                     height: 300,
                                     fit: BoxFit.cover,
-                                  ),
+                                  ).animated([
+                                    animationsMap['imageOnPageLoadAnimation2']!
+                                  ]),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16, 8, 16, 0),
@@ -124,7 +294,10 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                             'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText2,
-                                          ),
+                                          ).animated([
+                                            animationsMap[
+                                                'textOnPageLoadAnimation2']!
+                                          ]),
                                         ),
                                       ],
                                     ),
@@ -144,7 +317,9 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     width: 300,
                                     height: 300,
                                     fit: BoxFit.cover,
-                                  ),
+                                  ).animated([
+                                    animationsMap['imageOnPageLoadAnimation3']!
+                                  ]),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         16, 8, 16, 0),
@@ -156,7 +331,10 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                             'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyText2,
-                                          ),
+                                          ).animated([
+                                            animationsMap[
+                                                'textOnPageLoadAnimation3']!
+                                          ]),
                                         ),
                                       ],
                                     ),
@@ -232,35 +410,38 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                       width: 1,
                     ),
                   ),
-                ),
+                ).animated([animationsMap['buttonOnPageLoadAnimation1']!]),
               ),
-              FFButtonWidget(
-                onPressed: () async {
-                  context.pushNamed(
-                    'Home',
-                    extra: <String, dynamic>{
-                      kTransitionInfoKey: TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.bottomToTop,
-                      ),
-                    },
-                  );
-                },
-                text: 'HOME',
-                options: FFButtonOptions(
-                  width: 130,
-                  height: 40,
-                  color: FlutterFlowTheme.of(context).primaryColor,
-                  textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Montserrat',
-                        color: Colors.white,
-                      ),
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
-                    width: 1,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed(
+                      'Home',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.bottomToTop,
+                        ),
+                      },
+                    );
+                  },
+                  text: 'HOME',
+                  options: FFButtonOptions(
+                    width: 130,
+                    height: 40,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  borderRadius: BorderRadius.circular(8),
-                ),
+                ).animated([animationsMap['buttonOnPageLoadAnimation2']!]),
               ),
             ],
           ),

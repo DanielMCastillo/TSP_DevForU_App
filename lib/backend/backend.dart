@@ -11,7 +11,6 @@ import 'schema/notas_record.dart';
 import 'schema/estado_animo_record.dart';
 import 'schema/frases_reforzamiento_record.dart';
 import 'schema/horarios_record.dart';
-import 'schema/usuario_notas_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -26,7 +25,6 @@ export 'schema/notas_record.dart';
 export 'schema/estado_animo_record.dart';
 export 'schema/frases_reforzamiento_record.dart';
 export 'schema/horarios_record.dart';
-export 'schema/usuario_notas_record.dart';
 
 /// Functions to query UsuariosRecords (as a Stream and as a Future).
 Stream<List<UsuariosRecord>> queryUsuariosRecord({
@@ -317,48 +315,6 @@ Future<FFFirestorePage<HorariosRecord>> queryHorariosRecordPage({
     queryCollectionPage(
       HorariosRecord.collection,
       HorariosRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query UsuarioNotasRecords (as a Stream and as a Future).
-Stream<List<UsuarioNotasRecord>> queryUsuarioNotasRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      UsuarioNotasRecord.collection,
-      UsuarioNotasRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<UsuarioNotasRecord>> queryUsuarioNotasRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      UsuarioNotasRecord.collection,
-      UsuarioNotasRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<UsuarioNotasRecord>> queryUsuarioNotasRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      UsuarioNotasRecord.collection,
-      UsuarioNotasRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

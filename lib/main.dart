@@ -116,9 +116,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Perfil': PerfilWidget(),
       'Home': HomeWidget(),
+      'Perfil': PerfilWidget(),
       'Registros': RegistrosWidget(),
+      'RegistrosCopy': RegistrosCopyWidget(),
       'SeleccionMascotaCopy': SeleccionMascotaCopyWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -139,14 +140,6 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.userAstronaut,
-              size: 24,
-            ),
-            label: 'Perfil',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
               FontAwesomeIcons.home,
               size: 24,
             ),
@@ -155,10 +148,26 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
+              FontAwesomeIcons.userAstronaut,
+              size: 24,
+            ),
+            label: 'Perfil',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
               FontAwesomeIcons.book,
               size: 24,
             ),
             label: 'Registros',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.userAstronaut,
+              size: 24,
+            ),
+            label: 'Perfil',
             tooltip: '',
           ),
           BottomNavigationBarItem(

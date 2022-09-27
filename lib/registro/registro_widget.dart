@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -13,7 +14,8 @@ class RegistroWidget extends StatefulWidget {
   _RegistroWidgetState createState() => _RegistroWidgetState();
 }
 
-class _RegistroWidgetState extends State<RegistroWidget> {
+class _RegistroWidgetState extends State<RegistroWidget>
+    with TickerProviderStateMixin {
   TextEditingController? contrasenaController;
 
   late bool contrasenaVisibility;
@@ -23,10 +25,50 @@ class _RegistroWidgetState extends State<RegistroWidget> {
 
   late bool passwordCreateVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final animationsMap = {
+    'imageOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+    'tabBarOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+
     contrasenaController = TextEditingController();
     contrasenaVisibility = false;
     correoController = TextEditingController();
@@ -52,7 +94,8 @@ class _RegistroWidgetState extends State<RegistroWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          '¡Hola!',
+          '¡Hola soy Devii!',
+          textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -82,7 +125,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                       width: 210,
                       height: 180,
                       fit: BoxFit.fitWidth,
-                    ),
+                    ).animated([animationsMap['imageOnPageLoadAnimation']!]),
                   ],
                 ),
               ),
@@ -516,7 +559,7 @@ class _RegistroWidgetState extends State<RegistroWidget> {
                       ),
                     ],
                   ),
-                ),
+                ).animated([animationsMap['tabBarOnPageLoadAnimation']!]),
               ),
             ],
           ),

@@ -1,3 +1,18 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "notas",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "uid_ref",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "fecha_redac",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }

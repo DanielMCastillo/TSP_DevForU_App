@@ -100,13 +100,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : PerfilWidget(),
             ),
             FFRoute(
-              name: 'Registros',
-              path: 'registros',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Registros')
-                  : RegistrosWidget(),
-            ),
-            FFRoute(
               name: 'Animoo',
               path: 'animoo',
               builder: (context, params) => AnimooWidget(),
@@ -117,16 +110,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistroHorarioComidaWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascotaCopy',
-              path: 'seleccionMascotaCopy',
+              name: 'Registros',
+              path: 'registros',
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'SeleccionMascotaCopy')
-                  : SeleccionMascotaCopyWidget(),
+                  ? NavBarPage(initialPage: 'Registros')
+                  : RegistrosWidget(),
             ),
             FFRoute(
-              name: 'Ayuda',
-              path: 'ayuda',
-              builder: (context, params) => AyudaWidget(),
+              name: 'RegistrosCopy',
+              path: 'registrosCopy',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'RegistrosCopy')
+                  : RegistrosCopyWidget(),
+            ),
+            FFRoute(
+              name: 'SeleccionMascota',
+              path: 'seleccionMascota',
+              builder: (context, params) => SeleccionMascotaWidget(),
             ),
             FFRoute(
               name: 'Informacion_Personal',
@@ -134,14 +134,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => InformacionPersonalWidget(),
             ),
             FFRoute(
+              name: 'Ayuda',
+              path: 'ayuda',
+              builder: (context, params) => AyudaWidget(),
+            ),
+            FFRoute(
               name: 'PantallaDeFelicitacion',
               path: 'pantallaDeFelicitacion',
               builder: (context, params) => PantallaDeFelicitacionWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascota',
-              path: 'seleccionMascota',
-              builder: (context, params) => SeleccionMascotaWidget(),
+              name: 'SeleccionMascotaCopy',
+              path: 'seleccionMascotaCopy',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'SeleccionMascotaCopy')
+                  : SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
               name: 'Home2',

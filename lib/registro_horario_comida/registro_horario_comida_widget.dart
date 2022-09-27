@@ -1,7 +1,11 @@
+import '../auth/auth_util.dart';
+import '../auth/firebase_user_provider.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -82,7 +86,6 @@ class _RegistroHorarioComidaWidgetState
                         dateTimeFormat('jm', datePicked1),
                         '00:00 AM',
                       ),
-                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Montserrat',
                             fontSize: 18,
@@ -137,7 +140,6 @@ class _RegistroHorarioComidaWidgetState
                         dateTimeFormat('jm', datePicked2),
                         '00:00 AM',
                       ),
-                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Montserrat',
                             fontSize: 18,
@@ -192,7 +194,6 @@ class _RegistroHorarioComidaWidgetState
                         dateTimeFormat('jm', datePicked3),
                         '00:00 AM',
                       ),
-                      textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Montserrat',
                             fontSize: 18,
@@ -255,8 +256,8 @@ class _RegistroHorarioComidaWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                context.pop();
                               },
                               text: 'Cancelar',
                               options: FFButtonOptions(
@@ -278,8 +279,24 @@ class _RegistroHorarioComidaWidgetState
                               ),
                             ),
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                if (!loggedIn) {
+                                  context.pushNamed('Registro');
+
+                                  return;
+                                }
+
+                                final horariosCreateData =
+                                    createHorariosRecordData(
+                                  desayuno: dateTimeFormat('Hm', datePicked1),
+                                  comida: dateTimeFormat('Hm', datePicked2),
+                                  cena: dateTimeFormat('Hm', datePicked3),
+                                  uidRef: currentUserReference,
+                                );
+                                await HorariosRecord.collection
+                                    .doc()
+                                    .set(horariosCreateData);
+                                context.pop();
                               },
                               text: 'Aceptar',
                               options: FFButtonOptions(

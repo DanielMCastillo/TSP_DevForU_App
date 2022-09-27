@@ -25,25 +25,40 @@ class _$NotasRecordSerializer implements StructuredSerializer<NotasRecord> {
         ..add('id_nota')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.idEstadoanimo;
-    if (value != null) {
-      result
-        ..add('id_estadoanimo')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
-    value = object.nota;
-    if (value != null) {
-      result
-        ..add('nota')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(DateTime)));
-    }
     value = object.fechaRedac;
     if (value != null) {
       result
         ..add('fecha_redac')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
+    }
+    value = object.nota;
+    if (value != null) {
+      result
+        ..add('nota')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.uidRef;
+    if (value != null) {
+      result
+        ..add('uid_ref')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
+    value = object.idEstadoAnimo;
+    if (value != null) {
+      result
+        ..add('id_estado_animo')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.sentimiento;
+    if (value != null) {
+      result
+        ..add('sentimiento')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -71,17 +86,27 @@ class _$NotasRecordSerializer implements StructuredSerializer<NotasRecord> {
           result.idNota = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'id_estadoanimo':
-          result.idEstadoanimo = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
-        case 'nota':
-          result.nota = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
-          break;
         case 'fecha_redac':
           result.fechaRedac = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
+          break;
+        case 'nota':
+          result.nota = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'uid_ref':
+          result.uidRef = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
+        case 'id_estado_animo':
+          result.idEstadoAnimo = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'sentimiento':
+          result.sentimiento = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -100,11 +125,15 @@ class _$NotasRecord extends NotasRecord {
   @override
   final int? idNota;
   @override
-  final int? idEstadoanimo;
-  @override
-  final DateTime? nota;
-  @override
   final DateTime? fechaRedac;
+  @override
+  final String? nota;
+  @override
+  final DocumentReference<Object?>? uidRef;
+  @override
+  final int? idEstadoAnimo;
+  @override
+  final String? sentimiento;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -112,7 +141,13 @@ class _$NotasRecord extends NotasRecord {
       (new NotasRecordBuilder()..update(updates))._build();
 
   _$NotasRecord._(
-      {this.idNota, this.idEstadoanimo, this.nota, this.fechaRedac, this.ffRef})
+      {this.idNota,
+      this.fechaRedac,
+      this.nota,
+      this.uidRef,
+      this.idEstadoAnimo,
+      this.sentimiento,
+      this.ffRef})
       : super._();
 
   @override
@@ -127,9 +162,11 @@ class _$NotasRecord extends NotasRecord {
     if (identical(other, this)) return true;
     return other is NotasRecord &&
         idNota == other.idNota &&
-        idEstadoanimo == other.idEstadoanimo &&
-        nota == other.nota &&
         fechaRedac == other.fechaRedac &&
+        nota == other.nota &&
+        uidRef == other.uidRef &&
+        idEstadoAnimo == other.idEstadoAnimo &&
+        sentimiento == other.sentimiento &&
         ffRef == other.ffRef;
   }
 
@@ -137,9 +174,13 @@ class _$NotasRecord extends NotasRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, idNota.hashCode), idEstadoanimo.hashCode),
-                nota.hashCode),
-            fechaRedac.hashCode),
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, idNota.hashCode), fechaRedac.hashCode),
+                        nota.hashCode),
+                    uidRef.hashCode),
+                idEstadoAnimo.hashCode),
+            sentimiento.hashCode),
         ffRef.hashCode));
   }
 
@@ -147,9 +188,11 @@ class _$NotasRecord extends NotasRecord {
   String toString() {
     return (newBuiltValueToStringHelper(r'NotasRecord')
           ..add('idNota', idNota)
-          ..add('idEstadoanimo', idEstadoanimo)
-          ..add('nota', nota)
           ..add('fechaRedac', fechaRedac)
+          ..add('nota', nota)
+          ..add('uidRef', uidRef)
+          ..add('idEstadoAnimo', idEstadoAnimo)
+          ..add('sentimiento', sentimiento)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -162,18 +205,26 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
   int? get idNota => _$this._idNota;
   set idNota(int? idNota) => _$this._idNota = idNota;
 
-  int? _idEstadoanimo;
-  int? get idEstadoanimo => _$this._idEstadoanimo;
-  set idEstadoanimo(int? idEstadoanimo) =>
-      _$this._idEstadoanimo = idEstadoanimo;
-
-  DateTime? _nota;
-  DateTime? get nota => _$this._nota;
-  set nota(DateTime? nota) => _$this._nota = nota;
-
   DateTime? _fechaRedac;
   DateTime? get fechaRedac => _$this._fechaRedac;
   set fechaRedac(DateTime? fechaRedac) => _$this._fechaRedac = fechaRedac;
+
+  String? _nota;
+  String? get nota => _$this._nota;
+  set nota(String? nota) => _$this._nota = nota;
+
+  DocumentReference<Object?>? _uidRef;
+  DocumentReference<Object?>? get uidRef => _$this._uidRef;
+  set uidRef(DocumentReference<Object?>? uidRef) => _$this._uidRef = uidRef;
+
+  int? _idEstadoAnimo;
+  int? get idEstadoAnimo => _$this._idEstadoAnimo;
+  set idEstadoAnimo(int? idEstadoAnimo) =>
+      _$this._idEstadoAnimo = idEstadoAnimo;
+
+  String? _sentimiento;
+  String? get sentimiento => _$this._sentimiento;
+  set sentimiento(String? sentimiento) => _$this._sentimiento = sentimiento;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -187,9 +238,11 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
     final $v = _$v;
     if ($v != null) {
       _idNota = $v.idNota;
-      _idEstadoanimo = $v.idEstadoanimo;
-      _nota = $v.nota;
       _fechaRedac = $v.fechaRedac;
+      _nota = $v.nota;
+      _uidRef = $v.uidRef;
+      _idEstadoAnimo = $v.idEstadoAnimo;
+      _sentimiento = $v.sentimiento;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -214,9 +267,11 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
     final _$result = _$v ??
         new _$NotasRecord._(
             idNota: idNota,
-            idEstadoanimo: idEstadoanimo,
-            nota: nota,
             fechaRedac: fechaRedac,
+            nota: nota,
+            uidRef: uidRef,
+            idEstadoAnimo: idEstadoAnimo,
+            sentimiento: sentimiento,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

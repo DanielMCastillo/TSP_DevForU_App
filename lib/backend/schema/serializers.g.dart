@@ -13,7 +13,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(MascotasRecord.serializer)
       ..add(NotasRecord.serializer)
       ..add(UsuarioMascotaRecord.serializer)
-      ..add(UsuarioNotasRecord.serializer)
       ..add(UsuariosRecord.serializer))
     .build();
 

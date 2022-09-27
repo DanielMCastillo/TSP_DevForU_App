@@ -11,18 +11,23 @@ abstract class HorariosRecord
   static Serializer<HorariosRecord> get serializer =>
       _$horariosRecordSerializer;
 
-  @BuiltValueField(wireName: 'id_horario')
-  int? get idHorario;
+  String? get desayuno;
 
-  String? get uid;
+  String? get comida;
+
+  String? get cena;
+
+  @BuiltValueField(wireName: 'uid_ref')
+  DocumentReference? get uidRef;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(HorariosRecordBuilder builder) => builder
-    ..idHorario = 0
-    ..uid = '';
+    ..desayuno = ''
+    ..comida = ''
+    ..cena = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('horarios');
@@ -46,15 +51,19 @@ abstract class HorariosRecord
 }
 
 Map<String, dynamic> createHorariosRecordData({
-  int? idHorario,
-  String? uid,
+  String? desayuno,
+  String? comida,
+  String? cena,
+  DocumentReference? uidRef,
 }) {
   final firestoreData = serializers.toFirestore(
     HorariosRecord.serializer,
     HorariosRecord(
       (h) => h
-        ..idHorario = idHorario
-        ..uid = uid,
+        ..desayuno = desayuno
+        ..comida = comida
+        ..cena = cena
+        ..uidRef = uidRef,
     ),
   );
 

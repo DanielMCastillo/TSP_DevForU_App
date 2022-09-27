@@ -7,7 +7,6 @@ import 'notas_record.dart';
 import 'estado_animo_record.dart';
 import 'frases_reforzamiento_record.dart';
 import 'horarios_record.dart';
-import 'usuario_notas_record.dart';
 
 import 'index.dart';
 
@@ -25,7 +24,6 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   EstadoAnimoRecord,
   FrasesReforzamientoRecord,
   HorariosRecord,
-  UsuarioNotasRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())
