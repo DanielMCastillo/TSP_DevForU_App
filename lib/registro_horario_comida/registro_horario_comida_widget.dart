@@ -82,10 +82,7 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      valueOrDefault<String>(
-                        dateTimeFormat('jm', datePicked1),
-                        '00:00 AM',
-                      ),
+                      dateTimeFormat('jm', datePicked1),
                       style: FlutterFlowTheme.of(context).bodyText1.override(
                             fontFamily: 'Montserrat',
                             fontSize: 18,
@@ -278,44 +275,99 @@ class _RegistroHorarioComidaWidgetState
                                 borderRadius: BorderRadius.circular(8),
                               ),
                             ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                if (!loggedIn) {
-                                  context.pushNamed('Registro');
-
-                                  return;
-                                }
-
-                                final horariosCreateData =
-                                    createHorariosRecordData(
-                                  desayuno: dateTimeFormat('Hm', datePicked1),
-                                  comida: dateTimeFormat('Hm', datePicked2),
-                                  cena: dateTimeFormat('Hm', datePicked3),
-                                  uidRef: currentUserReference,
-                                );
-                                await HorariosRecord.collection
-                                    .doc()
-                                    .set(horariosCreateData);
-                                context.pop();
-                              },
-                              text: 'Aceptar',
-                              options: FFButtonOptions(
-                                width: 130,
-                                height: 40,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Montserrat',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
+                            StreamBuilder<List<HorariosRecord>>(
+                              stream: queryHorariosRecord(
+                                queryBuilder: (horariosRecord) =>
+                                    horariosRecord.where('uid_ref',
+                                        isEqualTo: currentUserReference),
+                                singleRecord: true,
                               ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50,
+                                      height: 50,
+                                      child: SpinKitRing(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        size: 50,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<HorariosRecord> buttonHorariosRecordList =
+                                    snapshot.data!;
+                                final buttonHorariosRecord =
+                                    buttonHorariosRecordList.isNotEmpty
+                                        ? buttonHorariosRecordList.first
+                                        : null;
+                                return FFButtonWidget(
+                                  onPressed: () async {
+                                    if (loggedIn) {
+                                      if (buttonHorariosRecord!.uidRef ==
+                                          currentUserReference) {
+                                        final horariosUpdateData =
+                                            createHorariosRecordData(
+                                          desayuno:
+                                              dateTimeFormat('Hm', datePicked1),
+                                          comida:
+                                              dateTimeFormat('Hm', datePicked2),
+                                          cena:
+                                              dateTimeFormat('Hm', datePicked3),
+                                        );
+                                        await buttonHorariosRecord!.reference
+                                            .update(horariosUpdateData);
+
+                                        context.pushNamed('Home');
+
+                                        return;
+                                      } else {
+                                        final horariosCreateData =
+                                            createHorariosRecordData(
+                                          desayuno:
+                                              dateTimeFormat('Hm', datePicked1),
+                                          comida:
+                                              dateTimeFormat('Hm', datePicked2),
+                                          cena:
+                                              dateTimeFormat('Hm', datePicked3),
+                                          uidRef: currentUserReference,
+                                        );
+                                        await HorariosRecord.collection
+                                            .doc()
+                                            .set(horariosCreateData);
+
+                                        context.pushNamed('Home');
+
+                                        return;
+                                      }
+                                    } else {
+                                      context.pushNamed('Registro');
+
+                                      return;
+                                    }
+                                  },
+                                  text: 'Aceptar',
+                                  options: FFButtonOptions(
+                                    width: 130,
+                                    height: 40,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryColor,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .subtitle2
+                                        .override(
+                                          fontFamily: 'Montserrat',
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),

@@ -18,8 +18,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  FFAppState(); // Initialize FFAppState
-
   runApp(MyApp());
 }
 
@@ -116,11 +114,11 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': HomeWidget(),
       'Perfil': PerfilWidget(),
+      'Home': HomeWidget(),
       'Registros': RegistrosWidget(),
-      'RegistrosCopy': RegistrosCopyWidget(),
       'SeleccionMascotaCopy': SeleccionMascotaCopyWidget(),
+      'SeleccionMascota': SeleccionMascotaWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -140,18 +138,18 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.home,
-              size: 24,
-            ),
-            label: 'Casa',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
               FontAwesomeIcons.userAstronaut,
               size: 24,
             ),
             label: 'Perfil',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.home,
+              size: 24,
+            ),
+            label: 'Casa',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -164,18 +162,18 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.userAstronaut,
-              size: 24,
-            ),
-            label: 'Perfil',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
               FontAwesomeIcons.android,
               size: 24,
             ),
             label: 'Mascota',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.accessible_forward_outlined,
+              size: 24,
+            ),
+            label: 'Home',
             tooltip: '',
           )
         ],

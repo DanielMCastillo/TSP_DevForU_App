@@ -87,6 +87,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 100),
                     child: ListView(
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       children: [

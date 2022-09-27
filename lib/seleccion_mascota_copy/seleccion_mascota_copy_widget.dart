@@ -84,6 +84,7 @@ class _SeleccionMascotaCopyWidgetState
         child: Stack(
           children: [
             SingleChildScrollView(
+              primary: false,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +116,7 @@ class _SeleccionMascotaCopyWidgetState
                           queryMascotasRecordPage(
                             queryBuilder: (mascotasRecord) => mascotasRecord,
                             nextPageMarker: nextPageMarker,
-                            pageSize: 8,
+                            pageSize: 12,
                             isStream: true,
                           ).then((page) {
                             _pagingController!.appendPage(
@@ -145,6 +146,7 @@ class _SeleccionMascotaCopyWidgetState
                         return _pagingController!;
                       }(),
                       padding: EdgeInsets.zero,
+                      primary: false,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       builderDelegate:
@@ -160,7 +162,9 @@ class _SeleccionMascotaCopyWidgetState
                             ),
                           ),
                         ),
-
+                        noItemsFoundIndicatorBuilder: (_) => Image.asset(
+                          'assets/images/Triste.png',
+                        ),
                         itemBuilder: (context, _, listViewIndex) {
                           final listViewMascotasRecord =
                               _pagingController!.itemList![listViewIndex];
