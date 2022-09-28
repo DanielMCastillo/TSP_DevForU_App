@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +19,6 @@ class RegistrosWidget extends StatefulWidget {
 
 class _RegistrosWidgetState extends State<RegistrosWidget>
     with TickerProviderStateMixin {
-  DateTime? datePicked;
   PagingController<DocumentSnapshot?, NotasRecord>? _pagingController;
   Query? _pagingQuery;
   List<StreamSubscription?> _streamSubscriptions = [];
@@ -171,6 +169,7 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                           return _pagingController!;
                         }(),
                         padding: EdgeInsets.zero,
+                        primary: false,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         builderDelegate: PagedChildBuilderDelegate<NotasRecord>(
@@ -193,173 +192,153 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                             return Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 3,
-                                      color: Color(0x20000000),
-                                      offset: Offset(0, 1),
-                                    )
-                                  ],
-                                  borderRadius: BorderRadius.circular(12),
+                              child: StreamBuilder<List<EstadoAnimoRecord>>(
+                                stream: queryEstadoAnimoRecord(
+                                  queryBuilder: (estadoAnimoRecord) =>
+                                      estadoAnimoRecord.where('id_estadoanimo',
+                                          isEqualTo: listViewNotasRecord
+                                              .idEstadoAnimo),
+                                  singleRecord: true,
                                 ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8, 8, 12, 8),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
-                                          width: 70,
-                                          height: 70,
-                                          fit: BoxFit.cover,
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: SpinKitRing(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          size: 50,
                                         ),
                                       ),
-                                      Expanded(
-                                        child: SingleChildScrollView(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(16, 0, 0, 0),
-                                                child: StreamBuilder<
-                                                    List<EstadoAnimoRecord>>(
-                                                  stream:
-                                                      queryEstadoAnimoRecord(
-                                                    queryBuilder: (estadoAnimoRecord) =>
-                                                        estadoAnimoRecord.where(
-                                                            'id_estadoanimo',
-                                                            isEqualTo:
-                                                                listViewNotasRecord
-                                                                    .idEstadoAnimo),
-                                                    singleRecord: true,
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50,
-                                                          height: 50,
-                                                          child: SpinKitRing(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryColor,
-                                                            size: 50,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    List<EstadoAnimoRecord>
-                                                        textEstadoAnimoRecordList =
-                                                        snapshot.data!;
-                                                    // Return an empty Container when the document does not exist.
-                                                    if (snapshot
-                                                        .data!.isEmpty) {
-                                                      return Container();
-                                                    }
-                                                    final textEstadoAnimoRecord =
-                                                        textEstadoAnimoRecordList
-                                                                .isNotEmpty
-                                                            ? textEstadoAnimoRecordList
-                                                                .first
-                                                            : null;
-                                                    return Text(
-                                                      textEstadoAnimoRecord!
+                                    );
+                                  }
+                                  List<EstadoAnimoRecord>
+                                      containerEstadoAnimoRecordList =
+                                      snapshot.data!;
+                                  // Return an empty Container when the document does not exist.
+                                  if (snapshot.data!.isEmpty) {
+                                    return Container();
+                                  }
+                                  final containerEstadoAnimoRecord =
+                                      containerEstadoAnimoRecordList.isNotEmpty
+                                          ? containerEstadoAnimoRecordList.first
+                                          : null;
+                                  return Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 3,
+                                          color: Color(0x20000000),
+                                          offset: Offset(0, 1),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8, 8, 12, 8),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            child: Image.network(
+                                              containerEstadoAnimoRecord!
+                                                  .imagenEstado!,
+                                              width: 70,
+                                              height: 70,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: SingleChildScrollView(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                16, 0, 0, 0),
+                                                    child: Text(
+                                                      containerEstadoAnimoRecord!
                                                           .estado!,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .bodyText1,
-                                                    );
-                                                  },
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(16, 0, 0, 0),
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    await DatePicker
-                                                        .showDatePicker(
-                                                      context,
-                                                      showTitleActions: true,
-                                                      onConfirm: (date) {
-                                                        setState(() =>
-                                                            datePicked = date);
-                                                      },
-                                                      currentTime:
-                                                          getCurrentTimestamp,
-                                                      minTime:
-                                                          getCurrentTimestamp,
-                                                      locale: LocaleType.values
-                                                          .firstWhere(
-                                                        (l) =>
-                                                            l.name ==
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                        orElse: () =>
-                                                            LocaleType.en,
-                                                      ),
-                                                    );
-                                                  },
-                                                  child: Text(
-                                                    dateTimeFormat(
-                                                        'yMMMd',
-                                                        listViewNotasRecord
-                                                            .fechaRedac!),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .subtitle1
-                                                        .override(
-                                                          fontFamily: 'Outfit',
-                                                          color:
-                                                              Color(0xFF14181B),
-                                                          fontSize: 18,
-                                                          fontWeight:
-                                                              FontWeight.normal,
-                                                        ),
+                                                    ),
                                                   ),
-                                                ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                16, 0, 0, 0),
+                                                    child: Text(
+                                                      dateTimeFormat(
+                                                          'yMMMd',
+                                                          listViewNotasRecord
+                                                              .fechaRedac!),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Color(
+                                                                    0xFF14181B),
+                                                                fontSize: 18,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                16, 4, 0, 0),
+                                                    child: Text(
+                                                      listViewNotasRecord.nota!,
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Outfit',
+                                                                color: Color(
+                                                                    0xFF57636C),
+                                                                fontSize: 14,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(16, 4, 0, 0),
-                                                child: Text(
-                                                  listViewNotasRecord.nota!,
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily: 'Outfit',
-                                                        color:
-                                                            Color(0xFF57636C),
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
+                                    ),
+                                  );
+                                },
                               ),
                             );
                           },

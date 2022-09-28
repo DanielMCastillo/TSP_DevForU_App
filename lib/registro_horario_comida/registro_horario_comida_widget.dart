@@ -1,5 +1,4 @@
 import '../auth/auth_util.dart';
-import '../auth/firebase_user_provider.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -29,326 +28,267 @@ class _RegistroHorarioComidaWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
-          icon: FaIcon(
-            FontAwesomeIcons.arrowCircleLeft,
-            color: Colors.white,
-            size: 30,
-          ),
-          onPressed: () async {
-            context.pushNamed(
-              'Perfil',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
-                ),
-              },
-            );
-          },
-        ),
-        title: Text(
-          'Registra tu horario',
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 22,
-              ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 1,
+    return StreamBuilder<List<HorariosRecord>>(
+      stream: queryHorariosRecord(
+        queryBuilder: (horariosRecord) =>
+            horariosRecord.where('uid_ref', isEqualTo: currentUserReference),
+        singleRecord: true,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      dateTimeFormat('jm', datePicked1),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Montserrat',
-                            fontSize: 18,
-                          ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked1 = date);
-                          },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
-                          ),
-                        );
-                      },
-                      text: 'Desayuno',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 50,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50,
+              height: 50,
+              child: SpinKitRing(
+                color: FlutterFlowTheme.of(context).primaryColor,
+                size: 50,
               ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        dateTimeFormat('jm', datePicked2),
-                        '00:00 AM',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Montserrat',
-                            fontSize: 18,
-                          ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked2 = date);
-                          },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
-                          ),
-                        );
-                      },
-                      text: 'Comida',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 50,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+          );
+        }
+        List<HorariosRecord> registroHorarioComidaHorariosRecordList =
+            snapshot.data!;
+        final registroHorarioComidaHorariosRecord =
+            registroHorarioComidaHorariosRecordList.isNotEmpty
+                ? registroHorarioComidaHorariosRecordList.first
+                : null;
+        return Scaffold(
+          key: scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30,
+              borderWidth: 1,
+              buttonSize: 60,
+              icon: FaIcon(
+                FontAwesomeIcons.arrowCircleLeft,
+                color: Colors.white,
+                size: 30,
               ),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      valueOrDefault<String>(
-                        dateTimeFormat('jm', datePicked3),
-                        '00:00 AM',
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyText1.override(
-                            fontFamily: 'Montserrat',
-                            fontSize: 18,
-                          ),
+              onPressed: () async {
+                context.pushNamed(
+                  'Perfil',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
                     ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked3 = date);
-                          },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
+                  },
+                );
+              },
+            ),
+            title: Text(
+              'Registra tu horario',
+              style: FlutterFlowTheme.of(context).bodyText2.override(
+                    fontFamily: 'Montserrat',
+                    color: FlutterFlowTheme.of(context).primaryBtnText,
+                    fontSize: 22,
+                  ),
+            ),
+            actions: [],
+            centerTitle: false,
+            elevation: 1,
+          ),
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: SafeArea(
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          valueOrDefault<String>(
+                            dateTimeFormat('jm', datePicked1),
+                            '00:00 AM',
                           ),
-                        );
-                      },
-                      text: 'Cena',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 50,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 18,
+                                  ),
                         ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                context.pop();
+                        FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked1 = date);
                               },
-                              text: 'Cancelar',
-                              options: FFButtonOptions(
-                                width: 130,
-                                height: 40,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Montserrat',
+                              currentTime: getCurrentTimestamp,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
+                              ),
+                            );
+                          },
+                          text: 'Desayuno',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 50,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
                                       color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
                                     ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
                             ),
-                            StreamBuilder<List<HorariosRecord>>(
-                              stream: queryHorariosRecord(
-                                queryBuilder: (horariosRecord) =>
-                                    horariosRecord.where('uid_ref',
-                                        isEqualTo: currentUserReference),
-                                singleRecord: true,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          valueOrDefault<String>(
+                            dateTimeFormat('jm', datePicked2),
+                            '00:00 AM',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 18,
+                                  ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked2 = date);
+                              },
+                              currentTime: getCurrentTimestamp,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
                               ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: SpinKitRing(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        size: 50,
-                                      ),
+                            );
+                          },
+                          text: 'Comida',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 50,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
                                     ),
-                                  );
-                                }
-                                List<HorariosRecord> buttonHorariosRecordList =
-                                    snapshot.data!;
-                                final buttonHorariosRecord =
-                                    buttonHorariosRecordList.isNotEmpty
-                                        ? buttonHorariosRecordList.first
-                                        : null;
-                                return FFButtonWidget(
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          valueOrDefault<String>(
+                            dateTimeFormat('jm', datePicked3),
+                            '00:00 AM',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 18,
+                                  ),
+                        ),
+                        FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked3 = date);
+                              },
+                              currentTime: getCurrentTimestamp,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
+                              ),
+                            );
+                          },
+                          text: 'Cena',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 50,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle:
+                                FlutterFlowTheme.of(context).bodyText1.override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color:
+                                  FlutterFlowTheme.of(context).secondaryColor,
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                FFButtonWidget(
                                   onPressed: () async {
-                                    if (loggedIn) {
-                                      if (buttonHorariosRecord!.uidRef ==
-                                          currentUserReference) {
-                                        final horariosUpdateData =
-                                            createHorariosRecordData(
-                                          desayuno:
-                                              dateTimeFormat('Hm', datePicked1),
-                                          comida:
-                                              dateTimeFormat('Hm', datePicked2),
-                                          cena:
-                                              dateTimeFormat('Hm', datePicked3),
-                                        );
-                                        await buttonHorariosRecord!.reference
-                                            .update(horariosUpdateData);
-
-                                        context.pushNamed('Home');
-
-                                        return;
-                                      } else {
-                                        final horariosCreateData =
-                                            createHorariosRecordData(
-                                          desayuno:
-                                              dateTimeFormat('Hm', datePicked1),
-                                          comida:
-                                              dateTimeFormat('Hm', datePicked2),
-                                          cena:
-                                              dateTimeFormat('Hm', datePicked3),
-                                          uidRef: currentUserReference,
-                                        );
-                                        await HorariosRecord.collection
-                                            .doc()
-                                            .set(horariosCreateData);
-
-                                        context.pushNamed('Home');
-
-                                        return;
-                                      }
-                                    } else {
-                                      context.pushNamed('Registro');
-
-                                      return;
-                                    }
+                                    context.pop();
                                   },
-                                  text: 'Aceptar',
+                                  text: 'Cancelar',
                                   options: FFButtonOptions(
                                     width: 130,
                                     height: 40,
@@ -366,20 +306,107 @@ class _RegistroHorarioComidaWidgetState
                                     ),
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                );
-                              },
+                                ),
+                                StreamBuilder<List<HorariosRecord>>(
+                                  stream: queryHorariosRecord(
+                                    queryBuilder: (horariosRecord) =>
+                                        horariosRecord.where('uid_ref',
+                                            isEqualTo: currentUserReference),
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50,
+                                          height: 50,
+                                          child: SpinKitRing(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 50,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<HorariosRecord>
+                                        buttonHorariosRecordList =
+                                        snapshot.data!;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data!.isEmpty) {
+                                      return Container();
+                                    }
+                                    final buttonHorariosRecord =
+                                        buttonHorariosRecordList.isNotEmpty
+                                            ? buttonHorariosRecordList.first
+                                            : null;
+                                    return FFButtonWidget(
+                                      onPressed: () async {
+                                        if (currentUserReference ==
+                                            buttonHorariosRecord!.uidRef) {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                          );
+                                          await buttonHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        } else {
+                                          final horariosCreateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                            uidRef: currentUserReference,
+                                          );
+                                          await HorariosRecord.collection
+                                              .doc()
+                                              .set(horariosCreateData);
+                                        }
+
+                                        context.pushNamed('Home');
+                                      },
+                                      text: 'Aceptar',
+                                      options: FFButtonOptions(
+                                        width: 130,
+                                        height: 40,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .subtitle2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color: Colors.white,
+                                            ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

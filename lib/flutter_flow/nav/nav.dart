@@ -129,16 +129,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'SeleccionMascotaCopy',
               path: 'seleccionMascotaCopy',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'SeleccionMascotaCopy')
-                  : SeleccionMascotaCopyWidget(),
+              builder: (context, params) => SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
               name: 'SeleccionMascota',
               path: 'seleccionMascota',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'SeleccionMascota')
-                  : SeleccionMascotaWidget(),
+              builder: (context, params) => SeleccionMascotaWidget(),
             ),
             FFRoute(
               name: 'Home2',

@@ -314,17 +314,6 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           return;
                                         }
 
-                                        final horariosCreateData =
-                                            createHorariosRecordData(
-                                          desayuno: '00:00',
-                                          comida: '00:00',
-                                          cena: '00:00',
-                                          uidRef: currentUserReference,
-                                        );
-                                        await HorariosRecord.collection
-                                            .doc()
-                                            .set(horariosCreateData);
-
                                         context.goNamedAuth('Home', mounted);
                                       },
                                       text: 'Iniciar sesión ',
@@ -540,6 +529,17 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         if (user == null) {
                                           return;
                                         }
+
+                                        final horariosCreateData =
+                                            createHorariosRecordData(
+                                          desayuno: '00:00',
+                                          comida: '00:00',
+                                          cena: '00:00',
+                                          uidRef: currentUserReference,
+                                        );
+                                        await HorariosRecord.collection
+                                            .doc()
+                                            .set(horariosCreateData);
 
                                         context.goNamedAuth('Home', mounted);
                                       },

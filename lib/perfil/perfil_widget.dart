@@ -1,8 +1,10 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -202,15 +204,24 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                            child: Text(
-                              'Nombre de usuario',
-                              style:
-                                  FlutterFlowTheme.of(context).title1.override(
-                                        fontFamily: 'Lexend Deca',
-                                        color: Colors.white,
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                            child: InkWell(
+                              onTap: () async {
+                                final usuariosUpdateData =
+                                    createUsuariosRecordData();
+                                await currentUserReference!
+                                    .update(usuariosUpdateData);
+                              },
+                              child: Text(
+                                currentUserEmail,
+                                style: FlutterFlowTheme.of(context)
+                                    .title1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
                             ),
                           ),
                         ],

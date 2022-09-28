@@ -117,8 +117,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'Perfil': PerfilWidget(),
       'Home': HomeWidget(),
       'Registros': RegistrosWidget(),
-      'SeleccionMascotaCopy': SeleccionMascotaCopyWidget(),
-      'SeleccionMascota': SeleccionMascotaWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -158,22 +156,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24,
             ),
             label: 'Registros',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.android,
-              size: 24,
-            ),
-            label: 'Mascota',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.accessible_forward_outlined,
-              size: 24,
-            ),
-            label: 'Home',
             tooltip: '',
           )
         ],

@@ -11,6 +11,7 @@ import 'schema/notas_record.dart';
 import 'schema/estado_animo_record.dart';
 import 'schema/frases_reforzamiento_record.dart';
 import 'schema/horarios_record.dart';
+import 'schema/img_test_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -25,6 +26,7 @@ export 'schema/notas_record.dart';
 export 'schema/estado_animo_record.dart';
 export 'schema/frases_reforzamiento_record.dart';
 export 'schema/horarios_record.dart';
+export 'schema/img_test_record.dart';
 
 /// Functions to query UsuariosRecords (as a Stream and as a Future).
 Stream<List<UsuariosRecord>> queryUsuariosRecord({
@@ -315,6 +317,48 @@ Future<FFFirestorePage<HorariosRecord>> queryHorariosRecordPage({
     queryCollectionPage(
       HorariosRecord.collection,
       HorariosRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query ImgTestRecords (as a Stream and as a Future).
+Stream<List<ImgTestRecord>> queryImgTestRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ImgTestRecord.collection,
+      ImgTestRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ImgTestRecord>> queryImgTestRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ImgTestRecord.collection,
+      ImgTestRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<ImgTestRecord>> queryImgTestRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      ImgTestRecord.collection,
+      ImgTestRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

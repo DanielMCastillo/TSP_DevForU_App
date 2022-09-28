@@ -16,13 +16,17 @@ abstract class EstadoAnimoRecord
 
   String? get estado;
 
+  @BuiltValueField(wireName: 'imagen_estado')
+  String? get imagenEstado;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
   static void _initializeBuilder(EstadoAnimoRecordBuilder builder) => builder
     ..idEstadoanimo = 0
-    ..estado = '';
+    ..estado = ''
+    ..imagenEstado = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('estado_animo');
@@ -48,13 +52,15 @@ abstract class EstadoAnimoRecord
 Map<String, dynamic> createEstadoAnimoRecordData({
   int? idEstadoanimo,
   String? estado,
+  String? imagenEstado,
 }) {
   final firestoreData = serializers.toFirestore(
     EstadoAnimoRecord.serializer,
     EstadoAnimoRecord(
       (e) => e
         ..idEstadoanimo = idEstadoanimo
-        ..estado = estado,
+        ..estado = estado
+        ..imagenEstado = imagenEstado,
     ),
   );
 
