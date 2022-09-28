@@ -5,6 +5,7 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class BienvenidaWidget extends StatefulWidget {
@@ -166,6 +167,22 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        automaticallyImplyLeading: false,
+        title: Text(
+          'La bienvenida',
+          textAlign: TextAlign.start,
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 20,
+              ),
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 1,
+      ),
       backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: SafeArea(
         child: GestureDetector(
@@ -235,7 +252,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
-                                            child: Text(
+                                            child: GradientText(
                                               'Soy Devi y te doy la bienvenida a mi casa, yo o alguno de mis amigos te apoyaremos en tu proceso de automonitoreo.',
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
@@ -243,10 +260,19 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                                   .bodyText2
                                                   .override(
                                                     fontFamily: 'Montserrat',
-                                                    fontSize: 15,
+                                                    fontSize: 22,
                                                     letterSpacing: 0.12,
                                                     fontWeight: FontWeight.w500,
                                                   ),
+                                              colors: [
+                                                FlutterFlowTheme.of(context)
+                                                    .background,
+                                                FlutterFlowTheme.of(context)
+                                                    .customColor4
+                                              ],
+                                              gradientDirection:
+                                                  GradientDirection.ltr,
+                                              gradientType: GradientType.linear,
                                             ).animated([
                                               animationsMap[
                                                   'textOnPageLoadAnimation1']!
@@ -266,7 +292,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      'assets/images/AJOLOTE.png',
+                                      'assets/images/1F37D_color.png',
                                       width: 300,
                                       height: 300,
                                       fit: BoxFit.cover,
@@ -281,11 +307,25 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
-                                            child: Text(
+                                            child: GradientText(
                                               'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2,
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        fontSize: 22,
+                                                      ),
+                                              colors: [
+                                                FlutterFlowTheme.of(context)
+                                                    .background,
+                                                FlutterFlowTheme.of(context)
+                                                    .customColor4
+                                              ],
+                                              gradientDirection:
+                                                  GradientDirection.ltr,
+                                              gradientType: GradientType.linear,
                                             ).animated([
                                               animationsMap[
                                                   'textOnPageLoadAnimation2']!
@@ -305,7 +345,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Image.asset(
-                                      'assets/images/AJOLOTE.png',
+                                      'assets/images/1F4D4_color.png',
                                       width: 300,
                                       height: 300,
                                       fit: BoxFit.cover,
@@ -320,11 +360,25 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Expanded(
-                                            child: Text(
+                                            child: GradientText(
                                               'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyText2,
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily:
+                                                            'Montserrat',
+                                                        fontSize: 20,
+                                                      ),
+                                              colors: [
+                                                FlutterFlowTheme.of(context)
+                                                    .background,
+                                                FlutterFlowTheme.of(context)
+                                                    .customColor4
+                                              ],
+                                              gradientDirection:
+                                                  GradientDirection.ltr,
+                                              gradientType: GradientType.linear,
                                             ).animated([
                                               animationsMap[
                                                   'textOnPageLoadAnimation3']!
@@ -377,7 +431,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 3),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(

@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -250,9 +251,10 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(8),
-                                            child: Image.network(
-                                              containerEstadoAnimoRecord!
-                                                  .imagenEstado!,
+                                            child: CachedNetworkImage(
+                                              imageUrl:
+                                                  containerEstadoAnimoRecord!
+                                                      .imagenEstado!,
                                               width: 70,
                                               height: 70,
                                               fit: BoxFit.cover,

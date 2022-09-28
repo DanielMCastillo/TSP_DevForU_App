@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeleccionMascotaWidget extends StatefulWidget {
@@ -29,47 +30,30 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).lineColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
-        title: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Selecciona a tu acompañante',
-              style: FlutterFlowTheme.of(context).title3.override(
-                    fontFamily: 'Montserrat',
-                    fontSize: 16,
-                  ),
-            ),
-            Text(
-              'Te acompañará en tu progeso ',
-              style: FlutterFlowTheme.of(context).bodyText2.override(
-                    fontFamily: 'Montserrat',
-                    fontSize: 12,
-                  ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 8, 12, 4),
-            child: FlutterFlowIconButton(
-              borderRadius: 30,
-              borderWidth: 1,
-              buttonSize: 44,
-              fillColor: Color(0xFF759EB8),
-              icon: Icon(
-                Icons.close_rounded,
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                size: 24,
-              ),
-              onPressed: () async {
-                context.pushNamed('Bienvenida');
-              },
-            ),
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: FaIcon(
+            FontAwesomeIcons.arrowCircleLeft,
+            color: Colors.white,
+            size: 30,
           ),
-        ],
+          onPressed: () {
+            print('IconButton pressed ...');
+          },
+        ),
+        title: Text(
+          'Page Title',
+          style: FlutterFlowTheme.of(context).bodyText2.override(
+                fontFamily: 'Montserrat',
+                color: FlutterFlowTheme.of(context).primaryBtnText,
+              ),
+        ),
+        actions: [],
         centerTitle: false,
         elevation: 1,
       ),
@@ -223,7 +207,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Jali.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -246,7 +230,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue2 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Jali',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -255,7 +239,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Zorro',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -321,7 +305,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Sonam.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -344,7 +328,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue3 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Sonam',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -353,7 +337,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Gato',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -419,7 +403,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Raluca.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -442,7 +426,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue4 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Raluca',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -451,7 +435,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Perro',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -517,7 +501,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Nosek.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -540,7 +524,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue5 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Nosek',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -549,7 +533,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Dragón',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -615,7 +599,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Bobi.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -638,7 +622,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue6 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Bobi',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -647,7 +631,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Oso panda',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -713,7 +697,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Chork.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -736,7 +720,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue7 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Chork',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -745,7 +729,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Conejo',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(
@@ -811,7 +795,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                       child: ClipRRect(
                                         borderRadius: BorderRadius.circular(50),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Mae.png',
                                           width: 100,
                                           height: 100,
                                           fit: BoxFit.fitHeight,
@@ -834,7 +818,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                         onChanged: (newValue) => setState(() =>
                                             checkboxListTileValue8 = newValue!),
                                         title: Text(
-                                          'Devi',
+                                          'Mae',
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle1
                                               .override(
@@ -843,7 +827,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               ),
                                         ),
                                         subtitle: Text(
-                                          'Ajolote',
+                                          'Unicornio',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyText2
                                               .override(

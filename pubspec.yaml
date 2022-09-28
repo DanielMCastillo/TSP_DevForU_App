@@ -63,6 +63,7 @@ dependencies:
   sign_in_with_apple: 4.1.0
   sign_in_with_apple_platform_interface: 1.0.0
   sign_in_with_apple_web: 1.0.1
+  simple_gradient_text: 1.2.3
   smooth_page_indicator: 1.0.0+2
   timeago: 3.2.2
   url_launcher: 6.1.5

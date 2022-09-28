@@ -14,7 +14,6 @@ export 'seleccion_mascota_copy/seleccion_mascota_copy_widget.dart'
     show SeleccionMascotaCopyWidget;
 export 'seleccion_mascota/seleccion_mascota_widget.dart'
     show SeleccionMascotaWidget;
-export 'home2/home2_widget.dart' show Home2Widget;
-export 'afkxd/afkxd_widget.dart' show AfkxdWidget;
 export 'informacion_personal/informacion_personal_widget.dart'
     show InformacionPersonalWidget;
+export 'afkxd/afkxd_widget.dart' show AfkxdWidget;

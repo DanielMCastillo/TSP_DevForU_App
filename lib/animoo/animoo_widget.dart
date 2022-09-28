@@ -128,7 +128,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                       Expanded(
                         child: Padding(
                           padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 70, 0, 100),
+                              EdgeInsetsDirectional.fromSTEB(0, 50, 0, 100),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -137,7 +137,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
+                                      0, 20, 0, 0),
                                   child: Text(
                                     '¿Cómo te sientes ahora?',
                                     textAlign: TextAlign.center,
@@ -357,7 +357,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                                             lineHeight: 0,
                                           ),
                                       textAlign: TextAlign.center,
-                                      maxLines: 7,
+                                      maxLines: 5,
                                     ),
                                   ),
                                 ),
@@ -417,7 +417,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(110, 80, 110, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(110, 50, 110, 0),
                       child: Text(
                         valueOrDefault<String>(
                           dateTimeFormat('d/M/y', getCurrentTimestamp),

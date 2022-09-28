@@ -15,7 +15,20 @@ class AyudaWidget extends StatefulWidget {
 }
 
 class _AyudaWidgetState extends State<AyudaWidget> {
+  TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController(text: '800 - 911 - 2000');
+  }
+
+  @override
+  void dispose() {
+    textController?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +79,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                         child: Text(
-                          '¡No estás sol@!',
+                          '¡Estamos contigo!',
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
@@ -113,14 +126,64 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(-0.04, 0.5),
-                        child: Text(
-                          '800 - 911 - 2000',
-                          style: FlutterFlowTheme.of(context).title3.override(
+                        alignment: AlignmentDirectional(0, 0.76),
+                        child: TextFormField(
+                          controller: textController,
+                          autofocus: true,
+                          readOnly: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            errorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                            focusedErrorBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1,
+                              ),
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(4.0),
+                                topRight: Radius.circular(4.0),
+                              ),
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
                                 fontFamily: 'Montserrat',
-                                color: Color(0xFF759EB8),
+                                color: FlutterFlowTheme.of(context).alternate,
+                                fontSize: 22,
                                 fontWeight: FontWeight.bold,
                               ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ],
@@ -130,8 +193,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    await launchURL(
+                        'https://www.gob.mx/salud/conadic/acciones-y-programas/centro-de-atencion-ciudadana-contra-las-adicciones-134381');
                   },
                   text: 'Línea de la vida',
                   options: FFButtonOptions(

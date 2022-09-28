@@ -1,3 +1,4 @@
+import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -14,8 +15,37 @@ class PantallaDeFelicitacionWidget extends StatefulWidget {
 }
 
 class _PantallaDeFelicitacionWidgetState
-    extends State<PantallaDeFelicitacionWidget> {
+    extends State<PantallaDeFelicitacionWidget> with TickerProviderStateMixin {
+  final animationsMap = {
+    'imageOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 780,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(46, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(0, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    startPageLoadAnimations(
+      animationsMap.values
+          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+      this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +70,7 @@ class _PantallaDeFelicitacionWidgetState
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
-                    ),
+                    ).animated([animationsMap['imageOnPageLoadAnimation']!]),
                   ],
                 ),
               ),
@@ -56,7 +86,7 @@ class _PantallaDeFelicitacionWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
-                  '¡Yo se que puedes!',
+                  '¡Yo sé que puedes!',
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Outfit',
                         color: Colors.white,

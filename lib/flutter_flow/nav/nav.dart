@@ -137,19 +137,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SeleccionMascotaWidget(),
             ),
             FFRoute(
-              name: 'Home2',
-              path: 'home2',
-              builder: (context, params) => Home2Widget(),
+              name: 'Informacion_Personal',
+              path: 'informacionPersonal',
+              builder: (context, params) => InformacionPersonalWidget(),
             ),
             FFRoute(
               name: 'afkxd',
               path: 'afkxd',
               builder: (context, params) => AfkxdWidget(),
-            ),
-            FFRoute(
-              name: 'Informacion_Personal',
-              path: 'informacionPersonal',
-              builder: (context, params) => InformacionPersonalWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

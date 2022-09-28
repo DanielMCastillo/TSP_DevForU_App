@@ -52,6 +52,23 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         opacity: 1,
       ),
     ),
+    'imageOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
+      trigger: AnimationTrigger.onPageLoad,
+      duration: 600,
+      hideBeforeAnimating: true,
+      fadeIn: true,
+      initialState: AnimationState(
+        offset: Offset(57, 0),
+        scale: 1,
+        opacity: 0,
+      ),
+      finalState: AnimationState(
+        offset: Offset(-36, 0),
+        scale: 1,
+        opacity: 1,
+      ),
+    ),
     'botonesHSOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
@@ -177,7 +194,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             width: 200,
                             height: 200,
                             fit: BoxFit.contain,
-                          ),
+                          ).animated(
+                              [animationsMap['imageOnPageLoadAnimation']!]),
                         ),
                       ],
                     ).animated([animationsMap['stackOnPageLoadAnimation']!]),
