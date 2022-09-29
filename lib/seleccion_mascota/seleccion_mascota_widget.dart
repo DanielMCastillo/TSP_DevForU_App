@@ -47,10 +47,11 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
           },
         ),
         title: Text(
-          'Page Title',
+          'Selecciona a tu acompañante',
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
+                fontSize: 18,
               ),
         ),
         actions: [],

@@ -66,7 +66,7 @@ class _PantallaDeFelicitacionWidgetState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/AJOLOTE.png',
+                      'assets/images/DeviCompu.png',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -74,14 +74,18 @@ class _PantallaDeFelicitacionWidgetState
                   ],
                 ),
               ),
-              Text(
-                '¡Gracias por compartirmelo!',
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Outfit',
-                      color: Colors.white,
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold,
-                    ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
+                child: Text(
+                  '¡Gracias por compartirmelo!',
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).title2.override(
+                        fontFamily: 'Outfit',
+                        color: Colors.white,
+                        fontSize: 27,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),

@@ -178,10 +178,10 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 105, 0, 0),
+                                        0, 80, 0, 0),
                                     child: Container(
-                                      width: 80,
-                                      height: 80,
+                                      width: 100,
+                                      height: 100,
                                       clipBehavior: Clip.antiAlias,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,

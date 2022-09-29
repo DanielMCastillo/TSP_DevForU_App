@@ -59,17 +59,18 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       hideBeforeAnimating: true,
       fadeIn: true,
       initialState: AnimationState(
-        offset: Offset(57, 0),
+        offset: Offset(49, 0),
         scale: 1,
         opacity: 0,
       ),
       finalState: AnimationState(
-        offset: Offset(-36, 0),
+        offset: Offset(0, 0),
         scale: 1,
         opacity: 1,
       ),
     ),
     'botonesHSOnPageLoadAnimation': AnimationInfo(
+      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       hideBeforeAnimating: true,
@@ -122,11 +123,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: [
-              Column(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+            child: SingleChildScrollView(
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
@@ -173,8 +175,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         [animationsMap['containerOnPageLoadAnimation']!]),
                   ),
                   Container(
-                    width: 500,
-                    height: 300,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       image: DecorationImage(
@@ -185,26 +185,29 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       ),
                       shape: BoxShape.rectangle,
                     ),
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.05, 0),
-                          child: Image.asset(
-                            'assets/images/AJOLOTE.png',
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.contain,
-                          ).animated(
-                              [animationsMap['imageOnPageLoadAnimation']!]),
-                        ),
-                      ],
+                    child: Container(
+                      height: 300,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-0.01, 0.06),
+                            child: Image.asset(
+                              'assets/images/DeviiIdle.png',
+                              width: 200,
+                              height: 200,
+                              fit: BoxFit.fill,
+                            ).animated(
+                                [animationsMap['imageOnPageLoadAnimation']!]),
+                          ),
+                        ],
+                      ),
                     ).animated([animationsMap['stackOnPageLoadAnimation']!]),
                   ),
                   BotonesHSWidget().animated(
                       [animationsMap['botonesHSOnPageLoadAnimation']!]),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

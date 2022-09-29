@@ -17,3 +17,4 @@ export 'seleccion_mascota/seleccion_mascota_widget.dart'
 export 'informacion_personal/informacion_personal_widget.dart'
     show InformacionPersonalWidget;
 export 'afkxd/afkxd_widget.dart' show AfkxdWidget;
+export 'prueba/prueba_widget.dart' show PruebaWidget;

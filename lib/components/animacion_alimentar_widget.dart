@@ -1,4 +1,3 @@
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -14,37 +13,7 @@ class AnimacionAlimentarWidget extends StatefulWidget {
       _AnimacionAlimentarWidgetState();
 }
 
-class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
-
-  @override
-  void initState() {
-    super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-      this,
-    );
-  }
-
+class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -52,20 +21,11 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget>
         Align(
           alignment: AlignmentDirectional(0, 0),
           child: Image.asset(
-            'assets/images/AJOLOTE.png',
-            width: 100,
-            height: 100,
+            'assets/images/DeviiTaco.png',
+            width: 200,
+            height: 200,
             fit: BoxFit.cover,
           ),
-        ),
-        Align(
-          alignment: AlignmentDirectional(0, 0),
-          child: Image.asset(
-            'assets/images/hearts-pink-hearts.gif',
-            width: 500,
-            height: 500,
-            fit: BoxFit.cover,
-          ).animated([animationsMap['imageOnPageLoadAnimation']!]),
         ),
         Align(
           alignment: AlignmentDirectional(0.03, 0.67),
@@ -88,6 +48,15 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget>
               ),
               borderRadius: BorderRadius.circular(8),
             ),
+          ),
+        ),
+        Align(
+          alignment: AlignmentDirectional(0, -0.35),
+          child: Image.asset(
+            'assets/images/hearts.gif',
+            width: 200,
+            height: 200,
+            fit: BoxFit.cover,
           ),
         ),
       ],

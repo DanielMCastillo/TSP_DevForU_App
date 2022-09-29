@@ -116,325 +116,309 @@ class _AnimooWidgetState extends State<AnimooWidget>
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
-          child: Stack(
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0, -1.01),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 70, 0, 0),
-                  child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
+                        child: Text(
+                          valueOrDefault<String>(
+                            dateTimeFormat('d/M/y', getCurrentTimestamp),
+                            '20/Septiembre/2022',
+                          ),
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyText1.override(
+                                    fontFamily: 'Montserrat',
+                                    fontSize: 25,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ).animated([animationsMap['rowOnPageLoadAnimation']!]),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 20, 16, 0),
+                  child: Text(
+                    '¿Cómo te sientes ahora?',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).title1.override(
+                          fontFamily: 'Outfit',
+                          color: Color(0xFF0F1113),
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16, 25, 16, 20),
+                  child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Expanded(
-                        child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(0, 50, 0, 100),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 20, 0, 0),
-                                  child: Text(
-                                    '¿Cómo te sientes ahora?',
-                                    textAlign: TextAlign.center,
-                                    style: FlutterFlowTheme.of(context)
-                                        .title1
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF0F1113),
-                                          fontSize: 30,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16, 25, 16, 0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Image.asset(
-                                        'assets/images/MuyTriste.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/Triste.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/Regular.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/Feliz.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/MuyFeliz.png',
-                                        width: 50,
-                                        height: 50,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          45, 0, 0, 0),
-                                      child: Text(
-                                        '1',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          63, 0, 0, 0),
-                                      child: Text(
-                                        '2',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          60, 0, 0, 0),
-                                      child: Text(
-                                        '3',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          58, 0, 0, 0),
-                                      child: Text(
-                                        '4',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          59, 0, 0, 0),
-                                      child: Text(
-                                        '5',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 10, 0, 0),
-                                  child: Container(
-                                    width: 160,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(25),
-                                      shape: BoxShape.rectangle,
-                                      border: Border.all(
-                                        color: Color(0xFF9E9E9E),
-                                        width: 1,
-                                      ),
-                                    ),
-                                    child: FlutterFlowCountController(
-                                      decrementIconBuilder: (enabled) => FaIcon(
-                                        FontAwesomeIcons.minus,
-                                        color: enabled
-                                            ? Color(0xDD000000)
-                                            : Color(0xFFEEEEEE),
-                                        size: 20,
-                                      ),
-                                      incrementIconBuilder: (enabled) => FaIcon(
-                                        FontAwesomeIcons.plus,
-                                        color: enabled
-                                            ? Colors.blue
-                                            : Color(0xFFEEEEEE),
-                                        size: 20,
-                                      ),
-                                      countBuilder: (count) => Text(
-                                        count.toString(),
-                                        style: GoogleFonts.getFont(
-                                          'Roboto',
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                      count: countControllerValue ??= 1,
-                                      updateCount: (count) => setState(
-                                          () => countControllerValue = count),
-                                      stepSize: 1,
-                                      minimum: 1,
-                                      maximum: 5,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 20, 12, 0),
-                                  child: Container(
-                                    width: 400,
-                                    child: TextFormField(
-                                      controller: textController,
-                                      autofocus: true,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        hintText: 'Escribe una nota',
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .grayIcon,
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .grayIcon,
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
-                                          ),
-                                          borderRadius: const BorderRadius.only(
-                                            topLeft: Radius.circular(4.0),
-                                            topRight: Radius.circular(4.0),
-                                          ),
-                                        ),
-                                        filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Montserrat',
-                                            lineHeight: 0,
-                                          ),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 5,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 32, 0, 32),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      final notasCreateData =
-                                          createNotasRecordData(
-                                        uidRef: currentUserReference,
-                                        fechaRedac: getCurrentTimestamp,
-                                        nota: textController!.text,
-                                        idEstadoAnimo: countControllerValue,
-                                      );
-                                      await NotasRecord.collection
-                                          .doc()
-                                          .set(notasCreateData);
-
-                                      context
-                                          .pushNamed('PantallaDeFelicitacion');
-                                    },
-                                    text: 'Guardar',
-                                    options: FFButtonOptions(
-                                      width: 300,
-                                      height: 50,
-                                      color: Color(0xFF96BEFF),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .subtitle2
-                                          .override(
-                                            fontFamily: 'Outfit',
-                                            color: Colors.white,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                      elevation: 3,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/MuyTriste.png',
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
                             ),
-                          ).animated(
-                              [animationsMap['columnOnPageLoadAnimation']!]),
+                            Text(
+                              '1',
+                              textAlign: TextAlign.start,
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              child: Image.asset(
+                                'assets/images/Triste.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              '2',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              child: Image.asset(
+                                'assets/images/Regular.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              '3',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              child: Image.asset(
+                                'assets/images/Feliz.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              '4',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(2, 0, 0, 0),
+                              child: Image.asset(
+                                'assets/images/MuyFeliz.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              '5',
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(110, 50, 110, 0),
-                      child: Text(
-                        valueOrDefault<String>(
-                          dateTimeFormat('d/M/y', getCurrentTimestamp),
-                          '20/Septiembre/2022',
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                  child: Container(
+                    width: 160,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                      shape: BoxShape.rectangle,
+                      border: Border.all(
+                        color: Color(0xFF9E9E9E),
+                        width: 1,
+                      ),
+                    ),
+                    child: FlutterFlowCountController(
+                      decrementIconBuilder: (enabled) => FaIcon(
+                        FontAwesomeIcons.minus,
+                        color: enabled ? Color(0xDD000000) : Color(0xFFEEEEEE),
+                        size: 20,
+                      ),
+                      incrementIconBuilder: (enabled) => FaIcon(
+                        FontAwesomeIcons.plus,
+                        color: enabled ? Colors.blue : Color(0xFFEEEEEE),
+                        size: 20,
+                      ),
+                      countBuilder: (count) => Text(
+                        count.toString(),
+                        style: GoogleFonts.getFont(
+                          'Roboto',
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                         ),
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
-                              fontSize: 25,
-                            ),
+                      ),
+                      count: countControllerValue ??= 1,
+                      updateCount: (count) =>
+                          setState(() => countControllerValue = count),
+                      stepSize: 1,
+                      minimum: 1,
+                      maximum: 5,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(12, 20, 12, 0),
+                  child: Container(
+                    width: 400,
+                    child: TextFormField(
+                      controller: textController,
+                      autofocus: true,
+                      obscureText: false,
+                      decoration: InputDecoration(
+                        hintText: 'Escribe una nota',
+                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).grayIcon,
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).grayIcon,
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        errorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        focusedErrorBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0x00000000),
+                            width: 1,
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(4.0),
+                            topRight: Radius.circular(4.0),
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: FlutterFlowTheme.of(context).primaryBtnText,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Montserrat',
+                            lineHeight: 0,
+                          ),
+                      textAlign: TextAlign.center,
+                      maxLines: 14,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 32, 0, 32),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      final notasCreateData = createNotasRecordData(
+                        uidRef: currentUserReference,
+                        fechaRedac: getCurrentTimestamp,
+                        nota: textController!.text,
+                        idEstadoAnimo: countControllerValue,
+                      );
+                      await NotasRecord.collection.doc().set(notasCreateData);
+
+                      context.pushNamed('PantallaDeFelicitacion');
+                    },
+                    text: 'Guardar',
+                    options: FFButtonOptions(
+                      width: 300,
+                      height: 50,
+                      color: Color(0xFF96BEFF),
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Outfit',
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                              ),
+                      elevation: 3,
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
                       ),
                     ),
                   ),
-                ],
-              ).animated([animationsMap['rowOnPageLoadAnimation']!]),
-            ],
-          ),
+                ),
+              ],
+            ),
+          ).animated([animationsMap['columnOnPageLoadAnimation']!]),
         ),
       ),
     );

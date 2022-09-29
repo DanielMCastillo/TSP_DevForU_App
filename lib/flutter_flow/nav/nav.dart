@@ -145,6 +145,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'afkxd',
               path: 'afkxd',
               builder: (context, params) => AfkxdWidget(),
+            ),
+            FFRoute(
+              name: 'prueba',
+              path: 'prueba',
+              builder: (context, params) => PruebaWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -316,14 +321,11 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: SpinKitRing(
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      size: 50,
-                    ),
+              ? Container(
+                  color: FlutterFlowTheme.of(context).lineColor,
+                  child: Image.asset(
+                    'assets/images/D4.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;
