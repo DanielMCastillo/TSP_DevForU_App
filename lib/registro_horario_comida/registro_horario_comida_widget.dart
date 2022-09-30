@@ -457,34 +457,145 @@ class _RegistroHorarioComidaWidgetState
                                         : null;
                                 return FFButtonWidget(
                                   onPressed: () async {
-                                    if (currentUserReference ==
-                                        aceptarHorariosRecord!.uidRef) {
-                                      final horariosUpdateData =
-                                          createHorariosRecordData(
-                                        desayuno:
-                                            dateTimeFormat('Hm', datePicked1),
-                                        comida:
-                                            dateTimeFormat('Hm', datePicked2),
-                                        cena: dateTimeFormat('Hm', datePicked3),
-                                      );
-                                      await aceptarHorariosRecord!.reference
-                                          .update(horariosUpdateData);
-                                    } else {
-                                      final horariosCreateData =
-                                          createHorariosRecordData(
-                                        desayuno:
-                                            dateTimeFormat('Hm', datePicked1),
-                                        comida:
-                                            dateTimeFormat('Hm', datePicked2),
-                                        cena: dateTimeFormat('Hm', datePicked3),
-                                        uidRef: currentUserReference,
-                                      );
-                                      await HorariosRecord.collection
-                                          .doc()
-                                          .set(horariosCreateData);
-                                    }
+                                    if (dateTimeFormat('Hm', datePicked1) !=
+                                            null &&
+                                        dateTimeFormat('Hm', datePicked1) !=
+                                            '') {
+                                      if (dateTimeFormat('Hm', datePicked2) !=
+                                              null &&
+                                          dateTimeFormat('Hm', datePicked2) !=
+                                              '') {
+                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                                null &&
+                                            dateTimeFormat('Hm', datePicked3) !=
+                                                '') {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
 
-                                    context.pushNamed('Home');
+                                          context.pushNamed('Home');
+
+                                          return;
+                                        } else {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: aceptarHorariosRecord!.cena,
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+
+                                          context.pushNamed('Home');
+
+                                          return;
+                                        }
+                                      } else {
+                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                                null &&
+                                            dateTimeFormat('Hm', datePicked3) !=
+                                                '') {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida:
+                                                aceptarHorariosRecord!.comida,
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        } else {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno: dateTimeFormat(
+                                                'Hm', datePicked1),
+                                            comida:
+                                                aceptarHorariosRecord!.comida,
+                                            cena: aceptarHorariosRecord!.cena,
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        }
+
+                                        context.pushNamed('Home');
+
+                                        return;
+                                      }
+                                    } else {
+                                      if (dateTimeFormat('Hm', datePicked2) !=
+                                              null &&
+                                          dateTimeFormat('Hm', datePicked2) !=
+                                              '') {
+                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                                null &&
+                                            dateTimeFormat('Hm', datePicked3) !=
+                                                '') {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno:
+                                                aceptarHorariosRecord!.desayuno,
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        } else {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno:
+                                                aceptarHorariosRecord!.desayuno,
+                                            comida: dateTimeFormat(
+                                                'Hm', datePicked2),
+                                            cena: aceptarHorariosRecord!.cena,
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        }
+
+                                        context.pushNamed('Home');
+
+                                        return;
+                                      } else {
+                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                                null &&
+                                            dateTimeFormat('Hm', datePicked3) !=
+                                                '') {
+                                          final horariosUpdateData =
+                                              createHorariosRecordData(
+                                            desayuno:
+                                                aceptarHorariosRecord!.desayuno,
+                                            comida:
+                                                aceptarHorariosRecord!.comida,
+                                            cena: dateTimeFormat(
+                                                'Hm', datePicked3),
+                                          );
+                                          await aceptarHorariosRecord!.reference
+                                              .update(horariosUpdateData);
+                                        } else {
+                                          context.pushNamed('Home');
+
+                                          return;
+                                        }
+
+                                        context.pushNamed('Home');
+
+                                        return;
+                                      }
+                                    }
                                   },
                                   text: 'Aceptar',
                                   options: FFButtonOptions(

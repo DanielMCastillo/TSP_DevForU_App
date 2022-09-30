@@ -2,8 +2,8 @@
 export 'bienvenida/bienvenida_widget.dart' show BienvenidaWidget;
 export 'registro/registro_widget.dart' show RegistroWidget;
 export 'home/home_widget.dart' show HomeWidget;
-export 'perfil/perfil_widget.dart' show PerfilWidget;
 export 'animoo/animoo_widget.dart' show AnimooWidget;
+export 'perfil/perfil_widget.dart' show PerfilWidget;
 export 'registro_horario_comida/registro_horario_comida_widget.dart'
     show RegistroHorarioComidaWidget;
 export 'ayuda/ayuda_widget.dart' show AyudaWidget;
@@ -17,4 +17,3 @@ export 'seleccion_mascota/seleccion_mascota_widget.dart'
 export 'informacion_personal/informacion_personal_widget.dart'
     show InformacionPersonalWidget;
 export 'afkxd/afkxd_widget.dart' show AfkxdWidget;
-export 'prueba/prueba_widget.dart' show PruebaWidget;

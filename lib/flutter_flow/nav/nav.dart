@@ -93,16 +93,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
+              name: 'Animoo',
+              path: 'animoo',
+              builder: (context, params) => AnimooWidget(),
+            ),
+            FFRoute(
               name: 'Perfil',
               path: 'perfil',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Perfil')
                   : PerfilWidget(),
-            ),
-            FFRoute(
-              name: 'Animoo',
-              path: 'animoo',
-              builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
               name: 'RegistroHorarioComida',
@@ -145,11 +145,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'afkxd',
               path: 'afkxd',
               builder: (context, params) => AfkxdWidget(),
-            ),
-            FFRoute(
-              name: 'prueba',
-              path: 'prueba',
-              builder: (context, params) => PruebaWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

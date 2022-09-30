@@ -199,7 +199,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                     child: Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 120),
                           child: PageView(
                             controller: pageViewController ??=
                                 PageController(initialPage: 0),
@@ -207,187 +207,220 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    12, 12, 12, 12),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/AJOLOTE.png',
-                                      width: 300,
-                                      height: 300,
-                                      fit: BoxFit.cover,
-                                    ).animated([
-                                      animationsMap[
-                                          'imageOnPageLoadAnimation1']!
-                                    ]),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16, 8, 16, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0, 0),
-                                            child: Text(
-                                              '¡Hola!',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .title2,
+                                    12, 0, 12, 12),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6, 10, 6, 0),
+                                        child: Image.asset(
+                                          'assets/images/AJOLOTE.png',
+                                          width: 300,
+                                          height: 300,
+                                          fit: BoxFit.cover,
+                                        ).animated([
+                                          animationsMap[
+                                              'imageOnPageLoadAnimation1']!
+                                        ]),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 8, 16, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                              alignment:
+                                                  AlignmentDirectional(0, 0),
+                                              child: Text(
+                                                '¡Hola!',
+                                                textAlign: TextAlign.start,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .title2,
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ).animated([
-                                        animationsMap['rowOnPageLoadAnimation']!
-                                      ]),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16, 8, 16, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: GradientText(
-                                              'Soy Devi y te doy la bienvenida a mi casa, yo o alguno de mis amigos te apoyaremos en tu proceso de automonitoreo.',
-                                              textAlign: TextAlign.center,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText2
-                                                  .override(
-                                                    fontFamily: 'Montserrat',
-                                                    fontSize: 22,
-                                                    letterSpacing: 0.12,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .background,
-                                                FlutterFlowTheme.of(context)
-                                                    .customColor4
-                                              ],
-                                              gradientDirection:
-                                                  GradientDirection.ltr,
-                                              gradientType: GradientType.linear,
-                                            ).animated([
-                                              animationsMap[
-                                                  'textOnPageLoadAnimation1']!
-                                            ]),
-                                          ),
-                                        ],
+                                          ],
+                                        ).animated([
+                                          animationsMap[
+                                              'rowOnPageLoadAnimation']!
+                                        ]),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 8, 16, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: GradientText(
+                                                'Soy Devi y te doy la bienvenida a mi casa, yo o alguno de mis amigos te apoyaremos en tu proceso de automonitoreo.',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          fontSize: 22,
+                                                          letterSpacing: 0.12,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                colors: [
+                                                  FlutterFlowTheme.of(context)
+                                                      .background,
+                                                  FlutterFlowTheme.of(context)
+                                                      .customColor4
+                                                ],
+                                                gradientDirection:
+                                                    GradientDirection.ltr,
+                                                gradientType:
+                                                    GradientType.linear,
+                                              ).animated([
+                                                animationsMap[
+                                                    'textOnPageLoadAnimation1']!
+                                              ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    12, 12, 12, 12),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/1F37D_color.png',
-                                      width: 300,
-                                      height: 300,
-                                      fit: BoxFit.cover,
-                                    ).animated([
-                                      animationsMap[
-                                          'imageOnPageLoadAnimation2']!
-                                    ]),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16, 8, 16, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: GradientText(
-                                              'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        fontSize: 22,
-                                                      ),
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .background,
-                                                FlutterFlowTheme.of(context)
-                                                    .customColor4
-                                              ],
-                                              gradientDirection:
-                                                  GradientDirection.ltr,
-                                              gradientType: GradientType.linear,
-                                            ).animated([
-                                              animationsMap[
-                                                  'textOnPageLoadAnimation2']!
-                                            ]),
-                                          ),
-                                        ],
+                                    12, 0, 12, 12),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6, 10, 6, 0),
+                                        child: Image.asset(
+                                          'assets/images/1F37D_color.png',
+                                          width: 300,
+                                          height: 300,
+                                          fit: BoxFit.cover,
+                                        ).animated([
+                                          animationsMap[
+                                              'imageOnPageLoadAnimation2']!
+                                        ]),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 8, 16, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Expanded(
+                                              child: GradientText(
+                                                'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily:
+                                                              'Montserrat',
+                                                          fontSize: 22,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                colors: [
+                                                  FlutterFlowTheme.of(context)
+                                                      .background,
+                                                  FlutterFlowTheme.of(context)
+                                                      .customColor4
+                                                ],
+                                                gradientDirection:
+                                                    GradientDirection.ltr,
+                                                gradientType:
+                                                    GradientType.linear,
+                                              ).animated([
+                                                animationsMap[
+                                                    'textOnPageLoadAnimation2']!
+                                              ]),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    12, 12, 12, 12),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/1F4D4_color.png',
-                                      width: 300,
-                                      height: 300,
-                                      fit: BoxFit.cover,
-                                    ).animated([
-                                      animationsMap[
-                                          'imageOnPageLoadAnimation3']!
-                                    ]),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16, 8, 16, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: GradientText(
-                                              'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                    12, 0, 12, 12),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            6, 10, 6, 0),
+                                        child: Image.asset(
+                                          'assets/images/1F4D4_color.png',
+                                          width: 300,
+                                          height: 300,
+                                          fit: BoxFit.cover,
+                                        ).animated([
+                                          animationsMap[
+                                              'imageOnPageLoadAnimation3']!
+                                        ]),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16, 8, 16, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Expanded(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(6, 0, 6, 0),
+                                                child: GradientText(
+                                                  'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyText2
                                                       .override(
                                                         fontFamily:
                                                             'Montserrat',
-                                                        fontSize: 20,
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .background,
-                                                FlutterFlowTheme.of(context)
-                                                    .customColor4
-                                              ],
-                                              gradientDirection:
-                                                  GradientDirection.ltr,
-                                              gradientType: GradientType.linear,
-                                            ).animated([
-                                              animationsMap[
-                                                  'textOnPageLoadAnimation3']!
-                                            ]),
-                                          ),
-                                        ],
+                                                  colors: [
+                                                    FlutterFlowTheme.of(context)
+                                                        .background,
+                                                    FlutterFlowTheme.of(context)
+                                                        .customColor4
+                                                  ],
+                                                  gradientDirection:
+                                                      GradientDirection.ltr,
+                                                  gradientType:
+                                                      GradientType.linear,
+                                                ).animated([
+                                                  animationsMap[
+                                                      'textOnPageLoadAnimation3']!
+                                                ]),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -431,7 +464,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 35),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(

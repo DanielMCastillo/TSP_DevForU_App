@@ -334,10 +334,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await signOut();
-
-                        context.goNamedAuth('Bienvenida', mounted);
+                        context.pushNamed('Registro');
                       },
                       text: 'Desconectarse',
                       options: FFButtonOptions(
