@@ -1,9 +1,9 @@
 // Export pages
-export 'bienvenida/bienvenida_widget.dart' show BienvenidaWidget;
+export 'bienvenida_x/bienvenida_x_widget.dart' show BienvenidaXWidget;
 export 'registro/registro_widget.dart' show RegistroWidget;
 export 'home/home_widget.dart' show HomeWidget;
-export 'animoo/animoo_widget.dart' show AnimooWidget;
 export 'perfil/perfil_widget.dart' show PerfilWidget;
+export 'animoo/animoo_widget.dart' show AnimooWidget;
 export 'registro_horario_comida/registro_horario_comida_widget.dart'
     show RegistroHorarioComidaWidget;
 export 'ayuda/ayuda_widget.dart' show AyudaWidget;
@@ -17,3 +17,4 @@ export 'seleccion_mascota/seleccion_mascota_widget.dart'
 export 'informacion_personal/informacion_personal_widget.dart'
     show InformacionPersonalWidget;
 export 'afkxd/afkxd_widget.dart' show AfkxdWidget;
+export 'bienvenida/bienvenida_widget.dart' show BienvenidaWidget;

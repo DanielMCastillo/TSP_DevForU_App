@@ -24,6 +24,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -53,105 +54,6 @@ class _PerfilWidgetState extends State<PerfilWidget> {
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
-      drawer: Drawer(
-        elevation: 16,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: 304,
-                  height: 180,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4B39EF),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(-0.7, 0),
-                                child: Container(
-                                  width: 80,
-                                  height: 80,
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.asset(
-                                    'assets/images/UI_avatar@2x.png',
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.7, 0),
-                                  child: Icon(
-                                    Icons.edit_rounded,
-                                    color: Colors.white,
-                                    size: 24,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                '[User Name]',
-                                style: FlutterFlowTheme.of(context)
-                                    .title3
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Text(
-                                '[username@domain.com]',
-                                style: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: Color(0xFFEE8B60),
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.max,
@@ -163,7 +65,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   width: MediaQuery.of(context).size.width,
                   height: 270,
                   decoration: BoxDecoration(
-                    color: Color(0xFF96BEFF),
+                    color: FlutterFlowTheme.of(context).primaryColor,
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -240,7 +142,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     'Ajustes',
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
-                          color: Color(0xFF090F13),
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 17,
                           fontWeight: FontWeight.normal,
                         ),
@@ -260,10 +162,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         shape: BoxShape.rectangle,
                         border: Border.all(
-                          color: Color(0xFFF1F4F8),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
                           width: 1,
                         ),
                       ),
@@ -300,7 +203,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                     .bodyText1
                                     .override(
                                       fontFamily: 'Lexend Deca',
-                                      color: Color(0xFF090F13),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 14,
                                       fontWeight: FontWeight.normal,
                                     ),
@@ -334,19 +238,32 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('Registro');
+                        GoRouter.of(context).prepareAuthEvent();
+                        await signOut();
+
+                        context.pushNamedAuth(
+                          'Bienvenida',
+                          mounted,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.topToBottom,
+                            ),
+                          },
+                        );
                       },
                       text: 'Desconectarse',
                       options: FFButtonOptions(
                         height: 40,
-                        color: Colors.white,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText2.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF96BEFF),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                        color: FlutterFlowTheme.of(context).white,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyText2
+                            .override(
+                              fontFamily: 'Lexend Deca',
+                              color: FlutterFlowTheme.of(context).primaryColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
                         elevation: 3,
                         borderSide: BorderSide(
                           color: Colors.transparent,

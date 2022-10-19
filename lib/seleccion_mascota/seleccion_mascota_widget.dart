@@ -29,6 +29,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -58,7 +59,6 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
@@ -120,52 +120,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue1 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue1 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Devi',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue1 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue1 = newValue!),
-                                        title: Text(
-                                          'Devi',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Ajolote',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Ajolote',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -218,52 +219,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue2 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue2 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Jali',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue2 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue2 = newValue!),
-                                        title: Text(
-                                          'Jali',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Zorro',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Zorro',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -316,52 +318,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue3 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue3 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Sonam',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue3 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue3 = newValue!),
-                                        title: Text(
-                                          'Sonam',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Gato',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Gato',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -414,52 +417,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue4 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue4 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Raluca',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue4 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue4 = newValue!),
-                                        title: Text(
-                                          'Raluca',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Perro',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Perro',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -512,52 +516,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue5 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue5 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Nosek',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue5 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue5 = newValue!),
-                                        title: Text(
-                                          'Nosek',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Dragón',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Dragón',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -610,52 +615,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue6 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue6 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Bobi',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue6 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue6 = newValue!),
-                                        title: Text(
-                                          'Bobi',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Oso panda',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Oso panda',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -708,52 +714,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue7 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue7 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Chork',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue7 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue7 = newValue!),
-                                        title: Text(
-                                          'Chork',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Conejo',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Conejo',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),
@@ -806,52 +813,53 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                   ),
                                 ),
                                 Expanded(
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Theme(
-                                      data: ThemeData(
-                                        unselectedWidgetColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                  child: Theme(
+                                    data: ThemeData(
+                                      unselectedWidgetColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                    ),
+                                    child: CheckboxListTile(
+                                      value: checkboxListTileValue8 ??= false,
+                                      onChanged: (newValue) async {
+                                        setState(() =>
+                                            checkboxListTileValue8 = newValue!);
+                                      },
+                                      title: Text(
+                                        'Mae',
+                                        style: FlutterFlowTheme.of(context)
+                                            .subtitle1
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              fontSize: 22,
+                                            ),
                                       ),
-                                      child: CheckboxListTile(
-                                        value: checkboxListTileValue8 ??= false,
-                                        onChanged: (newValue) => setState(() =>
-                                            checkboxListTileValue8 = newValue!),
-                                        title: Text(
-                                          'Mae',
-                                          style: FlutterFlowTheme.of(context)
-                                              .subtitle1
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                fontSize: 22,
-                                              ),
-                                        ),
-                                        subtitle: Text(
-                                          'Unicornio',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2
-                                              .override(
-                                                fontFamily: 'Montserrat',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryColor,
-                                                fontSize: 18,
-                                              ),
-                                        ),
-                                        tileColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primaryColor,
-                                        checkColor: FlutterFlowTheme.of(context)
-                                            .primaryBtnText,
-                                        dense: false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.trailing,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                8, 0, 8, 0),
+                                      subtitle: Text(
+                                        'Unicornio',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryColor,
+                                              fontSize: 18,
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      activeColor: FlutterFlowTheme.of(context)
+                                          .primaryColor,
+                                      checkColor: FlutterFlowTheme.of(context)
+                                          .primaryBtnText,
+                                      dense: false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.trailing,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              8, 0, 8, 0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
                                       ),
                                     ),
                                   ),

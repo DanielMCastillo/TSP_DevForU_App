@@ -6,6 +6,8 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,37 +22,41 @@ class RegistrosWidget extends StatefulWidget {
 
 class _RegistrosWidgetState extends State<RegistrosWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'listViewOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 31),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   PagingController<DocumentSnapshot?, NotasRecord>? _pagingController;
   Query? _pagingQuery;
   List<StreamSubscription?> _streamSubscriptions = [];
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'listViewOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.linear,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 31),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -65,6 +71,7 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -94,7 +101,6 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -177,12 +183,12 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                           // Customize what your widget looks like when it's loading the first page.
                           firstPageProgressIndicatorBuilder: (_) => Center(
                             child: SizedBox(
-                              width: 50,
-                              height: 50,
-                              child: SpinKitRing(
+                              width: 30,
+                              height: 30,
+                              child: SpinKitDualRing(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
-                                size: 50,
+                                size: 30,
                               ),
                             ),
                           ),
@@ -206,12 +212,12 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                   if (!snapshot.hasData) {
                                     return Center(
                                       child: SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: SpinKitRing(
+                                        width: 30,
+                                        height: 30,
+                                        child: SpinKitDualRing(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
-                                          size: 50,
+                                          size: 30,
                                         ),
                                       ),
                                     );
@@ -230,7 +236,8 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                   return Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       boxShadow: [
                                         BoxShadow(
                                           blurRadius: 3,
@@ -278,7 +285,14 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyText1,
+                                                              .bodyText1
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Montserrat',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                              ),
                                                     ),
                                                   ),
                                                   Padding(
@@ -288,9 +302,14 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                                                 16, 0, 0, 0),
                                                     child: Text(
                                                       dateTimeFormat(
-                                                          'yMMMd',
-                                                          listViewNotasRecord
-                                                              .fechaRedac!),
+                                                        'yMMMd',
+                                                        listViewNotasRecord
+                                                            .fechaRedac!,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -298,12 +317,13 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
-                                                                    0xFF14181B),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontSize: 18,
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .normal,
+                                                                        .w600,
                                                               ),
                                                     ),
                                                   ),
@@ -323,8 +343,9 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Outfit',
-                                                                color: Color(
-                                                                    0xFF57636C),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                                 fontSize: 14,
                                                                 fontWeight:
                                                                     FontWeight
@@ -345,8 +366,8 @@ class _RegistrosWidgetState extends State<RegistrosWidget>
                             );
                           },
                         ),
-                      ).animated(
-                          [animationsMap['listViewOnPageLoadAnimation']!]),
+                      ).animateOnPageLoad(
+                          animationsMap['listViewOnPageLoadAnimation']!),
                     ),
                   ],
                 ),

@@ -49,6 +49,7 @@ class _SeleccionMascotaCopyWidgetState
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -78,7 +79,6 @@ class _SeleccionMascotaCopyWidgetState
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Stack(
@@ -154,11 +154,11 @@ class _SeleccionMascotaCopyWidgetState
                         // Customize what your widget looks like when it's loading the first page.
                         firstPageProgressIndicatorBuilder: (_) => Center(
                           child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: SpinKitRing(
+                            width: 30,
+                            height: 30,
+                            child: SpinKitDualRing(
                               color: FlutterFlowTheme.of(context).primaryColor,
-                              size: 50,
+                              size: 30,
                             ),
                           ),
                         ),
@@ -216,59 +216,58 @@ class _SeleccionMascotaCopyWidgetState
                                     ),
                                   ),
                                   Expanded(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8),
-                                      child: Theme(
-                                        data: ThemeData(
-                                          unselectedWidgetColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryText,
-                                        ),
-                                        child: CheckboxListTile(
-                                          value: checkboxListTileValueMap1[
-                                              listViewMascotasRecord] ??= false,
-                                          onChanged: (newValue) => setState(
-                                              () => checkboxListTileValueMap1[
+                                    child: Theme(
+                                      data: ThemeData(
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                      ),
+                                      child: CheckboxListTile(
+                                        value: checkboxListTileValueMap1[
+                                            listViewMascotasRecord] ??= false,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              checkboxListTileValueMap1[
                                                       listViewMascotasRecord] =
-                                                  newValue!),
-                                          title: Text(
-                                            listViewMascotasRecord
-                                                .nombreMascota!,
-                                            style: FlutterFlowTheme.of(context)
-                                                .subtitle1
-                                                .override(
-                                                  fontFamily: 'Montserrat',
-                                                  fontSize: 22,
-                                                ),
-                                          ),
-                                          subtitle: Text(
-                                            listViewMascotasRecord
-                                                .animalMascota!,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily: 'Montserrat',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryColor,
-                                                  fontSize: 18,
-                                                ),
-                                          ),
-                                          tileColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          activeColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryColor,
-                                          checkColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryBtnText,
-                                          dense: false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.trailing,
-                                          contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 0, 8, 0),
+                                                  newValue!);
+                                        },
+                                        title: Text(
+                                          listViewMascotasRecord.nombreMascota!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .subtitle1
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                fontSize: 22,
+                                              ),
+                                        ),
+                                        subtitle: Text(
+                                          listViewMascotasRecord.animalMascota!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText2
+                                              .override(
+                                                fontFamily: 'Montserrat',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryColor,
+                                                fontSize: 18,
+                                              ),
+                                        ),
+                                        tileColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                        checkColor: FlutterFlowTheme.of(context)
+                                            .primaryBtnText,
+                                        dense: false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.trailing,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                8, 0, 8, 0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                                         ),
                                       ),
                                     ),

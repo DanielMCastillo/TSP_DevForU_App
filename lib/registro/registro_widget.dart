@@ -6,6 +6,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,6 +20,34 @@ class RegistroWidget extends StatefulWidget {
 
 class _RegistroWidgetState extends State<RegistroWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'imageOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+    'tabBarOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   TextEditingController? contrasenaController;
 
   late bool contrasenaVisibility;
@@ -27,47 +57,14 @@ class _RegistroWidgetState extends State<RegistroWidget>
 
   late bool passwordCreateVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'tabBarOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -92,6 +89,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -108,7 +106,6 @@ class _RegistroWidgetState extends State<RegistroWidget>
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Column(
@@ -126,7 +123,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                     width: 100,
                     height: 100,
                     fit: BoxFit.fitWidth,
-                  ).animated([animationsMap['imageOnPageLoadAnimation']!]),
+                  ).animateOnPageLoad(
+                      animationsMap['imageOnPageLoadAnimation']!),
                 ],
               ),
             ),
@@ -138,7 +136,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                   children: [
                     TabBar(
                       isScrollable: true,
-                      labelColor: FlutterFlowTheme.of(context).secondaryText,
+                      labelColor: FlutterFlowTheme.of(context).primaryText,
                       labelPadding:
                           EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
                       labelStyle: FlutterFlowTheme.of(context).subtitle1,
@@ -171,38 +169,49 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Correo electrónico ',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
                                         hintText:
                                             'Ingresa tu correo electrónico ',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        enabledBorder: OutlineInputBorder(
+                                        enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
+                                            color: FlutterFlowTheme.of(context)
+                                                .white,
                                             width: 1,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
+                                            color: FlutterFlowTheme.of(context)
+                                                .white,
                                             width: 1,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        errorBorder: OutlineInputBorder(
+                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x00000000),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor4,
                                             width: 1,
                                           ),
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedErrorBorder: OutlineInputBorder(
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x00000000),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor4,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -218,7 +227,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Montserrat',
-                                            color: Color(0xFF0F1113),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor4,
                                           ),
                                     ),
                                   ),
@@ -231,11 +241,17 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Contraseña ',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
                                         hintText: 'Ingresa tu contraseña ',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        enabledBorder: OutlineInputBorder(
+                                        enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -243,7 +259,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -251,7 +267,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        errorBorder: OutlineInputBorder(
+                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -259,7 +275,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedErrorBorder: OutlineInputBorder(
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -293,7 +310,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           .bodyText1
                                           .override(
                                             fontFamily: 'Montserrat',
-                                            color: Color(0xFF0F1113),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor4,
                                           ),
                                     ),
                                   ),
@@ -350,19 +368,19 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         width: 200,
                                         height: 40,
                                         color: FlutterFlowTheme.of(context)
-                                            .lineColor,
+                                            .tertiaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
                                               fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .gray600,
+                                                      .white,
                                               fontSize: 12,
                                             ),
                                         elevation: 0,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
+                                          color: Color(0x0096BEFF),
                                           width: 1,
                                         ),
                                       ),
@@ -388,12 +406,18 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Correo electrónico ',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
                                         hintText:
                                             'Ingresa tu correo electrónico ',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        enabledBorder: OutlineInputBorder(
+                                        enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -401,7 +425,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -409,7 +433,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        errorBorder: OutlineInputBorder(
+                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -417,7 +441,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedErrorBorder: OutlineInputBorder(
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -448,11 +473,17 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Contraseña',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Montserrat',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryColor,
+                                            ),
                                         hintText: 'Ingresa tu contraseña',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
-                                        enabledBorder: OutlineInputBorder(
+                                        enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -460,7 +491,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedBorder: OutlineInputBorder(
+                                        focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x8D1A1F24),
                                             width: 1,
@@ -468,7 +499,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        errorBorder: OutlineInputBorder(
+                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -476,7 +507,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        focusedErrorBorder: OutlineInputBorder(
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
@@ -548,14 +580,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       options: FFButtonOptions(
                                         width: 230,
                                         height: 50,
-                                        color: Colors.white,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
                                               fontFamily: 'Montserrat',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .primaryText,
                                             ),
                                         elevation: 3,
                                         borderSide: BorderSide(
@@ -574,7 +607,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                     ),
                   ],
                 ),
-              ).animated([animationsMap['tabBarOnPageLoadAnimation']!]),
+              ).animateOnPageLoad(animationsMap['tabBarOnPageLoadAnimation']!),
             ),
           ],
         ),

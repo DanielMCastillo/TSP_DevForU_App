@@ -8,6 +8,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,52 +23,59 @@ class AnimooWidget extends StatefulWidget {
 
 class _AnimooWidgetState extends State<AnimooWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 66),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'rowOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.linear,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 58),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
   TextEditingController? textController;
   int? countControllerValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.linear,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 66),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-    'rowOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.linear,
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 58),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
 
@@ -83,6 +92,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -112,7 +122,6 @@ class _AnimooWidgetState extends State<AnimooWidget>
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -131,30 +140,36 @@ class _AnimooWidgetState extends State<AnimooWidget>
                         padding: EdgeInsetsDirectional.fromSTEB(16, 50, 16, 0),
                         child: Text(
                           valueOrDefault<String>(
-                            dateTimeFormat('d/M/y', getCurrentTimestamp),
+                            dateTimeFormat(
+                              'd/M/y',
+                              getCurrentTimestamp,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ),
                             '20/Septiembre/2022',
                           ),
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 25,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 25,
+                              ),
                         ),
                       ),
                     ),
                   ],
-                ).animated([animationsMap['rowOnPageLoadAnimation']!]),
+                ).animateOnPageLoad(animationsMap['rowOnPageLoadAnimation']!),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16, 20, 16, 0),
                   child: Text(
                     '¿Cómo te sientes ahora?',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).title1.override(
-                          fontFamily: 'Outfit',
-                          color: Color(0xFF0F1113),
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).primaryText,
                           fontSize: 30,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                         ),
                   ),
                 ),
@@ -361,8 +376,15 @@ class _AnimooWidgetState extends State<AnimooWidget>
                               ),
                               borderRadius: BorderRadius.circular(16),
                             ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context).primaryText,
                           ),
-                          style: FlutterFlowTheme.of(context).bodyText1,
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: 'Montserrat',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                              ),
                           textAlign: TextAlign.center,
                           maxLines: 4,
                         ),
@@ -391,10 +413,10 @@ class _AnimooWidgetState extends State<AnimooWidget>
                       color: Color(0xFF96BEFF),
                       textStyle:
                           FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Poppins',
                                 color: Colors.white,
                                 fontSize: 16,
-                                fontWeight: FontWeight.normal,
+                                fontWeight: FontWeight.w600,
                               ),
                       elevation: 3,
                       borderSide: BorderSide(
@@ -406,7 +428,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                 ),
               ],
             ),
-          ).animated([animationsMap['columnOnPageLoadAnimation']!]),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

@@ -3,6 +3,8 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,21 +20,24 @@ class _PantallaDeFelicitacionWidgetState
     extends State<PantallaDeFelicitacionWidget> with TickerProviderStateMixin {
   final animationsMap = {
     'imageOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 780,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(46, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 780.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 780.ms,
+          begin: Offset(46, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -40,9 +45,10 @@ class _PantallaDeFelicitacionWidgetState
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -51,7 +57,7 @@ class _PantallaDeFelicitacionWidgetState
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFF96BEFF),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -70,7 +76,8 @@ class _PantallaDeFelicitacionWidgetState
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
-                    ).animated([animationsMap['imageOnPageLoadAnimation']!]),
+                    ).animateOnPageLoad(
+                        animationsMap['imageOnPageLoadAnimation']!),
                   ],
                 ),
               ),
@@ -120,9 +127,9 @@ class _PantallaDeFelicitacionWidgetState
                     color: Colors.white,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).alternate,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w600,
                         ),
                     elevation: 3,
                     borderSide: BorderSide(

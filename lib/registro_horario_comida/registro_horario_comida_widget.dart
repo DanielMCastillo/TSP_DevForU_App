@@ -7,6 +7,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,35 +24,33 @@ class RegistroHorarioComidaWidget extends StatefulWidget {
 
 class _RegistroHorarioComidaWidgetState
     extends State<RegistroHorarioComidaWidget> with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
+    ),
+  };
   DateTime? datePicked1;
   DateTime? datePicked2;
   DateTime? datePicked3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
-    ),
-  };
 
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -59,6 +59,7 @@ class _RegistroHorarioComidaWidgetState
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -96,7 +97,6 @@ class _RegistroHorarioComidaWidgetState
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -109,8 +109,18 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat('Hm', datePicked1) == null ||
-                        dateTimeFormat('Hm', datePicked1) == '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked1,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            null ||
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked1,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            '')
                       StreamBuilder<List<HorariosRecord>>(
                         stream: queryHorariosRecord(
                           queryBuilder: (horariosRecord) =>
@@ -123,12 +133,12 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: SpinKitRing(
+                                width: 30,
+                                height: 30,
+                                child: SpinKitDualRing(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 50,
+                                  size: 30,
                                 ),
                               ),
                             );
@@ -143,16 +153,30 @@ class _RegistroHorarioComidaWidgetState
                             desayunoBDHorariosRecord!.desayuno!,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Poppins',
                                       fontSize: 18,
                                     ),
                           );
                         },
                       ),
-                    if (dateTimeFormat('Hm', datePicked1) != null &&
-                        dateTimeFormat('Hm', datePicked1) != '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked1,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            null &&
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked1,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            '')
                       Text(
-                        dateTimeFormat('Hm', datePicked1),
+                        dateTimeFormat(
+                          'Hm',
+                          datePicked1,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Montserrat',
                               fontSize: 18,
@@ -182,10 +206,10 @@ class _RegistroHorarioComidaWidgetState
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.w600,
                                 ),
                         elevation: 2,
                         borderSide: BorderSide(
@@ -202,8 +226,18 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat('Hm', datePicked2) == null ||
-                        dateTimeFormat('Hm', datePicked2) == '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked2,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            null ||
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked2,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            '')
                       StreamBuilder<List<HorariosRecord>>(
                         stream: queryHorariosRecord(
                           queryBuilder: (horariosRecord) =>
@@ -216,12 +250,12 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: SpinKitRing(
+                                width: 30,
+                                height: 30,
+                                child: SpinKitDualRing(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 50,
+                                  size: 30,
                                 ),
                               ),
                             );
@@ -236,16 +270,30 @@ class _RegistroHorarioComidaWidgetState
                             comidaBDHorariosRecord!.comida!,
                             style:
                                 FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Poppins',
                                       fontSize: 18,
                                     ),
                           );
                         },
                       ),
-                    if (dateTimeFormat('Hm', datePicked2) != null &&
-                        dateTimeFormat('Hm', datePicked2) != '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked2,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            null &&
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked2,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            '')
                       Text(
-                        dateTimeFormat('Hm', datePicked2),
+                        dateTimeFormat(
+                          'Hm',
+                          datePicked2,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Montserrat',
                               fontSize: 18,
@@ -275,10 +323,10 @@ class _RegistroHorarioComidaWidgetState
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.w600,
                                 ),
                         elevation: 2,
                         borderSide: BorderSide(
@@ -295,8 +343,18 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat('Hm', datePicked3) == null ||
-                        dateTimeFormat('Hm', datePicked3) == '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked3,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            null ||
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked3,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) ==
+                            '')
                       StreamBuilder<List<HorariosRecord>>(
                         stream: queryHorariosRecord(
                           queryBuilder: (horariosRecord) =>
@@ -309,12 +367,12 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 50,
-                                height: 50,
-                                child: SpinKitRing(
+                                width: 30,
+                                height: 30,
+                                child: SpinKitDualRing(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 50,
+                                  size: 30,
                                 ),
                               ),
                             );
@@ -335,10 +393,24 @@ class _RegistroHorarioComidaWidgetState
                           );
                         },
                       ),
-                    if (dateTimeFormat('Hm', datePicked3) != null &&
-                        dateTimeFormat('Hm', datePicked3) != '')
+                    if (dateTimeFormat(
+                              'Hm',
+                              datePicked3,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            null &&
+                        dateTimeFormat(
+                              'Hm',
+                              datePicked3,
+                              locale: FFLocalizations.of(context).languageCode,
+                            ) !=
+                            '')
                       Text(
-                        dateTimeFormat('Hm', datePicked3),
+                        dateTimeFormat(
+                          'Hm',
+                          datePicked3,
+                          locale: FFLocalizations.of(context).languageCode,
+                        ),
                         style: FlutterFlowTheme.of(context).bodyText1.override(
                               fontFamily: 'Montserrat',
                               fontSize: 18,
@@ -368,10 +440,10 @@ class _RegistroHorarioComidaWidgetState
                         color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle:
                             FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Lexend Deca',
+                                  fontFamily: 'Poppins',
                                   color: Colors.white,
                                   fontSize: 14,
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.w600,
                                 ),
                         elevation: 2,
                         borderSide: BorderSide(
@@ -394,7 +466,15 @@ class _RegistroHorarioComidaWidgetState
                         width: 100,
                         height: 100,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).secondaryColor,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                          ),
+                          shape: BoxShape.rectangle,
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -413,7 +493,7 @@ class _RegistroHorarioComidaWidgetState
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
-                                      fontFamily: 'Montserrat',
+                                      fontFamily: 'Poppins',
                                       color: Colors.white,
                                     ),
                                 borderSide: BorderSide(
@@ -435,12 +515,12 @@ class _RegistroHorarioComidaWidgetState
                                 if (!snapshot.hasData) {
                                   return Center(
                                     child: SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: SpinKitRing(
+                                      width: 30,
+                                      height: 30,
+                                      child: SpinKitDualRing(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        size: 50,
+                                        size: 30,
                                       ),
                                     ),
                                   );
@@ -457,26 +537,77 @@ class _RegistroHorarioComidaWidgetState
                                         : null;
                                 return FFButtonWidget(
                                   onPressed: () async {
-                                    if (dateTimeFormat('Hm', datePicked1) !=
+                                    if (dateTimeFormat(
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ) !=
                                             null &&
-                                        dateTimeFormat('Hm', datePicked1) !=
+                                        dateTimeFormat(
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ) !=
                                             '') {
-                                      if (dateTimeFormat('Hm', datePicked2) !=
+                                      if (dateTimeFormat(
+                                                'Hm',
+                                                datePicked2,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ) !=
                                               null &&
-                                          dateTimeFormat('Hm', datePicked2) !=
+                                          dateTimeFormat(
+                                                'Hm',
+                                                datePicked2,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ) !=
                                               '') {
-                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                        if (dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 null &&
-                                            dateTimeFormat('Hm', datePicked3) !=
+                                            dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 '') {
                                           final horariosUpdateData =
                                               createHorariosRecordData(
                                             desayuno: dateTimeFormat(
-                                                'Hm', datePicked1),
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             comida: dateTimeFormat(
-                                                'Hm', datePicked2),
+                                              'Hm',
+                                              datePicked2,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             cena: dateTimeFormat(
-                                                'Hm', datePicked3),
+                                              'Hm',
+                                              datePicked3,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                           );
                                           await aceptarHorariosRecord!.reference
                                               .update(horariosUpdateData);
@@ -488,9 +619,19 @@ class _RegistroHorarioComidaWidgetState
                                           final horariosUpdateData =
                                               createHorariosRecordData(
                                             desayuno: dateTimeFormat(
-                                                'Hm', datePicked1),
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             comida: dateTimeFormat(
-                                                'Hm', datePicked2),
+                                              'Hm',
+                                              datePicked2,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             cena: aceptarHorariosRecord!.cena,
                                           );
                                           await aceptarHorariosRecord!.reference
@@ -501,18 +642,40 @@ class _RegistroHorarioComidaWidgetState
                                           return;
                                         }
                                       } else {
-                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                        if (dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 null &&
-                                            dateTimeFormat('Hm', datePicked3) !=
+                                            dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 '') {
                                           final horariosUpdateData =
                                               createHorariosRecordData(
                                             desayuno: dateTimeFormat(
-                                                'Hm', datePicked1),
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             comida:
                                                 aceptarHorariosRecord!.comida,
                                             cena: dateTimeFormat(
-                                                'Hm', datePicked3),
+                                              'Hm',
+                                              datePicked3,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                           );
                                           await aceptarHorariosRecord!.reference
                                               .update(horariosUpdateData);
@@ -520,7 +683,12 @@ class _RegistroHorarioComidaWidgetState
                                           final horariosUpdateData =
                                               createHorariosRecordData(
                                             desayuno: dateTimeFormat(
-                                                'Hm', datePicked1),
+                                              'Hm',
+                                              datePicked1,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             comida:
                                                 aceptarHorariosRecord!.comida,
                                             cena: aceptarHorariosRecord!.cena,
@@ -534,22 +702,56 @@ class _RegistroHorarioComidaWidgetState
                                         return;
                                       }
                                     } else {
-                                      if (dateTimeFormat('Hm', datePicked2) !=
+                                      if (dateTimeFormat(
+                                                'Hm',
+                                                datePicked2,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ) !=
                                               null &&
-                                          dateTimeFormat('Hm', datePicked2) !=
+                                          dateTimeFormat(
+                                                'Hm',
+                                                datePicked2,
+                                                locale:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              ) !=
                                               '') {
-                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                        if (dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 null &&
-                                            dateTimeFormat('Hm', datePicked3) !=
+                                            dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 '') {
                                           final horariosUpdateData =
                                               createHorariosRecordData(
                                             desayuno:
                                                 aceptarHorariosRecord!.desayuno,
                                             comida: dateTimeFormat(
-                                                'Hm', datePicked2),
+                                              'Hm',
+                                              datePicked2,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             cena: dateTimeFormat(
-                                                'Hm', datePicked3),
+                                              'Hm',
+                                              datePicked3,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                           );
                                           await aceptarHorariosRecord!.reference
                                               .update(horariosUpdateData);
@@ -559,7 +761,12 @@ class _RegistroHorarioComidaWidgetState
                                             desayuno:
                                                 aceptarHorariosRecord!.desayuno,
                                             comida: dateTimeFormat(
-                                                'Hm', datePicked2),
+                                              'Hm',
+                                              datePicked2,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                             cena: aceptarHorariosRecord!.cena,
                                           );
                                           await aceptarHorariosRecord!.reference
@@ -570,9 +777,21 @@ class _RegistroHorarioComidaWidgetState
 
                                         return;
                                       } else {
-                                        if (dateTimeFormat('Hm', datePicked3) !=
+                                        if (dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 null &&
-                                            dateTimeFormat('Hm', datePicked3) !=
+                                            dateTimeFormat(
+                                                  'Hm',
+                                                  datePicked3,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                ) !=
                                                 '') {
                                           final horariosUpdateData =
                                               createHorariosRecordData(
@@ -581,7 +800,12 @@ class _RegistroHorarioComidaWidgetState
                                             comida:
                                                 aceptarHorariosRecord!.comida,
                                             cena: dateTimeFormat(
-                                                'Hm', datePicked3),
+                                              'Hm',
+                                              datePicked3,
+                                              locale:
+                                                  FFLocalizations.of(context)
+                                                      .languageCode,
+                                            ),
                                           );
                                           await aceptarHorariosRecord!.reference
                                               .update(horariosUpdateData);
@@ -606,7 +830,7 @@ class _RegistroHorarioComidaWidgetState
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily: 'Poppins',
                                           color: Colors.white,
                                         ),
                                     borderSide: BorderSide(
@@ -626,7 +850,7 @@ class _RegistroHorarioComidaWidgetState
                 ),
               ),
             ],
-          ).animated([animationsMap['columnOnPageLoadAnimation']!]),
+          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
         ),
       ),
     );

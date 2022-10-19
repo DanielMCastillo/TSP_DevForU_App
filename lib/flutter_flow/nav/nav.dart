@@ -10,6 +10,8 @@ import '../../auth/firebase_user_provider.dart';
 
 import '../../index.dart';
 import '../../main.dart';
+import '../lat_lng.dart';
+import '../place.dart';
 import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -76,9 +78,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : BienvenidaWidget(),
           routes: [
             FFRoute(
-              name: 'Bienvenida',
-              path: 'bienvenida',
-              builder: (context, params) => BienvenidaWidget(),
+              name: 'BienvenidaX',
+              path: 'bienvenidaX',
+              builder: (context, params) => BienvenidaXWidget(),
             ),
             FFRoute(
               name: 'Registro',
@@ -93,16 +95,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomeWidget(),
             ),
             FFRoute(
-              name: 'Animoo',
-              path: 'animoo',
-              builder: (context, params) => AnimooWidget(),
-            ),
-            FFRoute(
               name: 'Perfil',
               path: 'perfil',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Perfil')
                   : PerfilWidget(),
+            ),
+            FFRoute(
+              name: 'Animoo',
+              path: 'animoo',
+              builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
               name: 'RegistroHorarioComida',
@@ -145,6 +147,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'afkxd',
               path: 'afkxd',
               builder: (context, params) => AfkxdWidget(),
+            ),
+            FFRoute(
+              name: 'Bienvenida',
+              path: 'bienvenida',
+              builder: (context, params) => BienvenidaWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -253,9 +260,10 @@ class FFParameters {
         ),
       ).onError((_, __) => [false]).then((v) => v.every((e) => e));
 
-  dynamic getParam(
+  dynamic getParam<T>(
     String paramName,
     ParamType type, [
+    bool isList = false,
     String? collectionName,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
@@ -270,7 +278,7 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam(param, type, collectionName);
+    return deserializeParam<T>(param, type, isList, collectionName);
   }
 }
 

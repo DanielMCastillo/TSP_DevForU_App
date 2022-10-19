@@ -34,6 +34,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -63,7 +64,6 @@ class _AyudaWidgetState extends State<AyudaWidget> {
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: Color(0xFFF1F4F8),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -110,7 +110,12 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                           child: Text(
                             'Ayuda Profesional',
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context).subtitle1,
+                            style: FlutterFlowTheme.of(context)
+                                .subtitle1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                ),
                           ),
                         ),
                       ),
@@ -120,8 +125,13 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                           child: Text(
                             'Las personas que se sientan estresadas, tristes o con alguna alteración emocional, no deben esperar a que el problema avance, pueden recibir apoyo emocional u orientación en el portal o redes de la línea de la vida, o marcando al: ',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context).bodyText2,
+                            textAlign: TextAlign.justify,
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Montserrat',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
                           ),
                         ),
                       ),
@@ -178,7 +188,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: 'Poppins',
                                 color: FlutterFlowTheme.of(context).alternate,
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
@@ -202,7 +212,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                     height: 50,
                     color: FlutterFlowTheme.of(context).primaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Montserrat',
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                         ),
                     borderSide: BorderSide(

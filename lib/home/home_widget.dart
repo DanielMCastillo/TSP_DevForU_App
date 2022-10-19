@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,72 +21,76 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: false,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 30),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 30),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'stackOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.easeOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.easeOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+      ],
     ),
     'imageOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(49, 0),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        VisibilityEffect(duration: 1.ms),
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: 0,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(49, 0),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
     'botonesHSOnPageLoadAnimation': AnimationInfo(
-      curve: Curves.elasticOut,
       trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      hideBeforeAnimating: true,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 49),
-        scale: 1,
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        scale: 1,
-        opacity: 1,
-      ),
+      effects: [
+        VisibilityEffect(duration: 190.ms),
+        FadeEffect(
+          curve: Curves.elasticOut,
+          delay: 190.ms,
+          duration: 600.ms,
+          begin: 0.195,
+          end: 1,
+        ),
+        MoveEffect(
+          curve: Curves.elasticOut,
+          delay: 190.ms,
+          duration: 600.ms,
+          begin: Offset(0, 49),
+          end: Offset(0, 0),
+        ),
+      ],
     ),
   };
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -92,9 +98,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    startPageLoadAnimations(
-      animationsMap.values
-          .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
       this,
     );
   }
@@ -103,6 +110,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -119,7 +127,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -137,10 +144,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       width: double.infinity,
                       height: 70,
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
-                          color: Color(0xFFE0E3E7),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           width: 2,
                         ),
                       ),
@@ -171,8 +178,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                    ).animated(
-                        [animationsMap['containerOnPageLoadAnimation']!]),
+                    ).animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!),
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -196,15 +203,16 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                               width: 200,
                               height: 200,
                               fit: BoxFit.fill,
-                            ).animated(
-                                [animationsMap['imageOnPageLoadAnimation']!]),
+                            ).animateOnPageLoad(
+                                animationsMap['imageOnPageLoadAnimation']!),
                           ),
                         ],
                       ),
-                    ).animated([animationsMap['stackOnPageLoadAnimation']!]),
+                    ).animateOnPageLoad(
+                        animationsMap['stackOnPageLoadAnimation']!),
                   ),
-                  BotonesHSWidget().animated(
-                      [animationsMap['botonesHSOnPageLoadAnimation']!]),
+                  BotonesHSWidget().animateOnPageLoad(
+                      animationsMap['botonesHSOnPageLoadAnimation']!),
                 ],
               ),
             ),

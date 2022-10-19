@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 
 class AfkxdWidget extends StatefulWidget {
   const AfkxdWidget({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
@@ -33,7 +35,18 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
         centerTitle: false,
         elevation: 1,
       ),
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Lottie.network(
+            'https://assets2.lottiefiles.com/packages/lf20_aZTdD5.json',
+            width: 150,
+            height: 130,
+            fit: BoxFit.cover,
+            animate: true,
+          ),
+        ),
+      ),
     );
   }
 }
