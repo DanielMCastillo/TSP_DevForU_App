@@ -43,7 +43,9 @@ class _PerfilWidgetState extends State<PerfilWidget> {
           },
         ),
         title: Text(
-          'Perfil',
+          FFLocalizations.of(context).getText(
+            'x3urneen' /* Perfil */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -139,7 +141,9 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(24, 12, 0, 12),
                   child: Text(
-                    'Ajustes',
+                    FFLocalizations.of(context).getText(
+                      'mmkoo5zj' /* Ajustes */,
+                    ),
                     style: FlutterFlowTheme.of(context).bodyText1.override(
                           fontFamily: 'Lexend Deca',
                           color: FlutterFlowTheme.of(context).primaryText,
@@ -198,7 +202,9 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
-                                'Horarios de comida',
+                                FFLocalizations.of(context).getText(
+                                  '1w1903ax' /* Horarios de comida */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText1
                                     .override(
@@ -228,6 +234,74 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 ),
               ],
             ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      width: 1,
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          context.pushNamed(
+                            'EliminarCuenta',
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.leftToRight,
+                              ),
+                            },
+                          );
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                              child: Icon(
+                                Icons.delete,
+                                color: Color(0xFF96BEFF),
+                                size: 24,
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  '3atj63xs' /* Eliminar Cuenta */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 20),
               child: Row(
@@ -241,18 +315,11 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         GoRouter.of(context).prepareAuthEvent();
                         await signOut();
 
-                        context.pushNamedAuth(
-                          'Bienvenida',
-                          mounted,
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.topToBottom,
-                            ),
-                          },
-                        );
+                        context.goNamedAuth('Bienvenida', mounted);
                       },
-                      text: 'Desconectarse',
+                      text: FFLocalizations.of(context).getText(
+                        'w1yj5ezk' /* Desconectarse */,
+                      ),
                       options: FFButtonOptions(
                         height: 40,
                         color: FlutterFlowTheme.of(context).white,

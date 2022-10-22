@@ -115,7 +115,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'Casa de Devii',
+          FFLocalizations.of(context).getText(
+            'e0apsgr6' /* Casa de Devii */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,

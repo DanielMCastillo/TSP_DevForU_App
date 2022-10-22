@@ -148,7 +148,9 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'La bienvenida',
+          FFLocalizations.of(context).getText(
+            't3ksgpz6' /* La bienvenida */,
+          ),
           textAlign: TextAlign.start,
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
@@ -213,7 +215,10 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
                                               alignment:
                                                   AlignmentDirectional(0, 0),
                                               child: Text(
-                                                '¡Hola!',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'ess6fefq' /* ¡Hola! */,
+                                                ),
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -232,7 +237,10 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
                                           children: [
                                             Expanded(
                                               child: Text(
-                                                'Soy Devi y te doy la bienvenida a mi casa, yo o alguno de mis amigos te apoyaremos en tu proceso de automonitoreo.',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'kpi1hr3c' /* Soy Devi y te doy la bienvenid... */,
+                                                ),
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -285,7 +293,10 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
                                           children: [
                                             Expanded(
                                               child: Text(
-                                                'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte tus horas de comida, pero debes decírmelas antes.',
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'eomtzs1r' /* Me vas a alimentar en las hora... */,
+                                                ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyText2
@@ -339,7 +350,10 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(6, 0, 6, 0),
                                                 child: Text(
-                                                  'En mi libreta vas a anotar como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '7v4q2ivn' /* En mi libreta vas a anotar com... */,
+                                                  ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -420,7 +434,9 @@ class _BienvenidaXWidgetState extends State<BienvenidaXWidget>
                       },
                     );
                   },
-                  text: 'Entendido',
+                  text: FFLocalizations.of(context).getText(
+                    'azd0ezfq' /* Entendido */,
+                  ),
                   options: FFButtonOptions(
                     width: 300,
                     height: 50,

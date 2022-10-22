@@ -94,7 +94,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          '¡Hola soy Devii!',
+          FFLocalizations.of(context).getText(
+            '47766fk1' /* ¡Hola soy Devii! */,
+          ),
           textAlign: TextAlign.center,
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
@@ -119,9 +121,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/DeviCompu.png',
-                    width: 100,
-                    height: 100,
+                    'assets/images/Diseo_sin_ttulo_(5).png',
+                    width: 150,
+                    height: 150,
                     fit: BoxFit.fitWidth,
                   ).animateOnPageLoad(
                       animationsMap['imageOnPageLoadAnimation']!),
@@ -143,10 +145,14 @@ class _RegistroWidgetState extends State<RegistroWidget>
                       indicatorColor: FlutterFlowTheme.of(context).primaryColor,
                       tabs: [
                         Tab(
-                          text: 'Inicia sesión',
+                          text: FFLocalizations.of(context).getText(
+                            'v8mwum0i' /* Inicia sesión */,
+                          ),
                         ),
                         Tab(
-                          text: 'Crear cuenta',
+                          text: FFLocalizations.of(context).getText(
+                            's5ww4kq4' /* Crear cuenta */,
+                          ),
                         ),
                       ],
                     ),
@@ -167,7 +173,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: correoController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Correo electrónico ',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          '44pmpsf9' /* Correo electrónico  */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -177,7 +186,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                       .primaryColor,
                                             ),
                                         hintText:
-                                            'Ingresa tu correo electrónico ',
+                                            FFLocalizations.of(context).getText(
+                                          '436qxv14' /* Ingresa tu correo electrónico  */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
@@ -239,7 +250,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: contrasenaController,
                                       obscureText: !contrasenaVisibility,
                                       decoration: InputDecoration(
-                                        labelText: 'Contraseña ',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          '8up2shoh' /* Contraseña  */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -248,7 +262,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
                                             ),
-                                        hintText: 'Ingresa tu contraseña ',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'us6u7nkh' /* Ingresa tu contraseña  */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
@@ -333,7 +350,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
 
                                         context.goNamedAuth('Home', mounted);
                                       },
-                                      text: 'Iniciar sesión ',
+                                      text: FFLocalizations.of(context).getText(
+                                        'ecjldo3a' /* Iniciar sesión  */,
+                                      ),
                                       options: FFButtonOptions(
                                         width: 230,
                                         height: 50,
@@ -363,7 +382,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         print(
                                             'Button-ForgotPassword pressed ...');
                                       },
-                                      text: '¿Olvidaste tu contraseña?',
+                                      text: FFLocalizations.of(context).getText(
+                                        'ryx22ldn' /* ¿Olvidaste tu contraseña? */,
+                                      ),
                                       options: FFButtonOptions(
                                         width: 200,
                                         height: 40,
@@ -404,7 +425,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: emailAddressCreateController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText: 'Correo electrónico ',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'l3pwopgg' /* Correo electrónico  */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -414,7 +438,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                       .primaryColor,
                                             ),
                                         hintText:
-                                            'Ingresa tu correo electrónico ',
+                                            FFLocalizations.of(context).getText(
+                                          'y4bxtvw1' /* Ingresa tu correo electrónico  */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
@@ -471,7 +497,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: passwordCreateController,
                                       obscureText: !passwordCreateVisibility,
                                       decoration: InputDecoration(
-                                        labelText: 'Contraseña',
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'yw5xth1j' /* Contraseña */,
+                                        ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -480,7 +509,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
                                             ),
-                                        hintText: 'Ingresa tu contraseña',
+                                        hintText:
+                                            FFLocalizations.of(context).getText(
+                                          'tpa63jkc' /* Ingresa tu contraseña */,
+                                        ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
@@ -576,7 +608,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
 
                                         context.goNamedAuth('Home', mounted);
                                       },
-                                      text: 'Registrate',
+                                      text: FFLocalizations.of(context).getText(
+                                        'u0ydz3w7' /* Registrate */,
+                                      ),
                                       options: FFButtonOptions(
                                         width: 230,
                                         height: 50,

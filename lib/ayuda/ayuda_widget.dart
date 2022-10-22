@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,7 +22,12 @@ class _AyudaWidgetState extends State<AyudaWidget> {
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController(text: '800 - 911 - 2000');
+    textController = TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          textController?.text = FFLocalizations.of(context).getText(
+            'fstz9v20' /* 800 - 911 - 2000 */,
+          );
+        }));
   }
 
   @override
@@ -53,7 +59,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
           },
         ),
         title: Text(
-          'Botón de ayuda',
+          FFLocalizations.of(context).getText(
+            'bxf3i4y6' /* Botón de ayuda */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -79,7 +87,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                         child: Text(
-                          '¡Estamos contigo!',
+                          FFLocalizations.of(context).getText(
+                            'uglm36nk' /* ¡Estamos contigo! */,
+                          ),
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).bodyText1.override(
@@ -108,7 +118,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Text(
-                            'Ayuda Profesional',
+                            FFLocalizations.of(context).getText(
+                              '7t8gpd0z' /* Ayuda Profesional */,
+                            ),
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .subtitle1
@@ -120,17 +132,21 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0, -0.13),
+                        alignment: AlignmentDirectional(0.17, 0.01),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
                           child: Text(
-                            'Las personas que se sientan estresadas, tristes o con alguna alteración emocional, no deben esperar a que el problema avance, pueden recibir apoyo emocional u orientación en el portal o redes de la línea de la vida, o marcando al: ',
+                            FFLocalizations.of(context).getText(
+                              'hi4pcmyw' /* Las personas que se sientan es... */,
+                            ),
                             textAlign: TextAlign.justify,
                             style:
                                 FlutterFlowTheme.of(context).bodyText2.override(
                                       fontFamily: 'Montserrat',
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
+                                      fontSize: 13,
+                                      fontStyle: FontStyle.italic,
                                     ),
                           ),
                         ),
@@ -204,11 +220,42 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    await launchURL(
-                        'https://www.gob.mx/salud/conadic/acciones-y-programas/centro-de-atencion-ciudadana-contra-las-adicciones-134381');
+                    await actions.phoneCall(
+                      '8009112000',
+                    );
                   },
-                  text: 'Línea de la vida',
+                  text: FFLocalizations.of(context).getText(
+                    'x1p3ljcq' /* Línea de la vida */,
+                  ),
                   options: FFButtonOptions(
+                    width: 180,
+                    height: 50,
+                    color: FlutterFlowTheme.of(context).alternate,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await actions.phoneCall(
+                      '8009112000',
+                    );
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'wfy0fj94' /* Contacto personal */,
+                  ),
+                  options: FFButtonOptions(
+                    width: 180,
                     height: 50,
                     color: FlutterFlowTheme.of(context).primaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(

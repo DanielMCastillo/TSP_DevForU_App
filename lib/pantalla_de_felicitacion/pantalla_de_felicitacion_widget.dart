@@ -84,11 +84,13 @@ class _PantallaDeFelicitacionWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(5, 0, 5, 0),
                 child: Text(
-                  '¡Gracias por compartirmelo!',
+                  FFLocalizations.of(context).getText(
+                    'twrpnewu' /* ¡Gracias por compartirmelo! */,
+                  ),
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).title2.override(
                         fontFamily: 'Outfit',
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).alternate,
                         fontSize: 27,
                         fontWeight: FontWeight.bold,
                       ),
@@ -97,10 +99,12 @@ class _PantallaDeFelicitacionWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: Text(
-                  '¡Yo sé que puedes!',
+                  FFLocalizations.of(context).getText(
+                    '0frmbzg0' /* ¡Yo sé que puedes! */,
+                  ),
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Outfit',
-                        color: Colors.white,
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         fontSize: 20,
                         fontWeight: FontWeight.w300,
                       ),
@@ -120,7 +124,9 @@ class _PantallaDeFelicitacionWidgetState
                       },
                     );
                   },
-                  text: 'Seguir',
+                  text: FFLocalizations.of(context).getText(
+                    '4hn73qwv' /* Seguir */,
+                  ),
                   options: FFButtonOptions(
                     width: 130,
                     height: 50,

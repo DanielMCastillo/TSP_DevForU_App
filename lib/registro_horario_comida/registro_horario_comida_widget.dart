@@ -86,7 +86,9 @@ class _RegistroHorarioComidaWidgetState
           },
         ),
         title: Text(
-          'Registra tu horario',
+          FFLocalizations.of(context).getText(
+            'prw1np1k' /* Registra tu horario */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -135,7 +137,7 @@ class _RegistroHorarioComidaWidgetState
                               child: SizedBox(
                                 width: 30,
                                 height: 30,
-                                child: SpinKitDualRing(
+                                child: SpinKitPulse(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 30,
@@ -199,7 +201,9 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: 'Desayuno',
+                      text: FFLocalizations.of(context).getText(
+                        '5v1cjf7y' /* Desayuno */,
+                      ),
                       options: FFButtonOptions(
                         width: 150,
                         height: 50,
@@ -252,7 +256,7 @@ class _RegistroHorarioComidaWidgetState
                               child: SizedBox(
                                 width: 30,
                                 height: 30,
-                                child: SpinKitDualRing(
+                                child: SpinKitPulse(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 30,
@@ -316,7 +320,9 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: 'Comida',
+                      text: FFLocalizations.of(context).getText(
+                        'sra7xvee' /* Comida */,
+                      ),
                       options: FFButtonOptions(
                         width: 150,
                         height: 50,
@@ -369,7 +375,7 @@ class _RegistroHorarioComidaWidgetState
                               child: SizedBox(
                                 width: 30,
                                 height: 30,
-                                child: SpinKitDualRing(
+                                child: SpinKitPulse(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 30,
@@ -433,7 +439,9 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: 'Cena',
+                      text: FFLocalizations.of(context).getText(
+                        'w82mj21t' /* Cena */,
+                      ),
                       options: FFButtonOptions(
                         width: 150,
                         height: 50,
@@ -484,7 +492,9 @@ class _RegistroHorarioComidaWidgetState
                               onPressed: () async {
                                 context.pop();
                               },
-                              text: 'Cancelar',
+                              text: FFLocalizations.of(context).getText(
+                                'h3ohzwme' /* Cancelar */,
+                              ),
                               options: FFButtonOptions(
                                 width: 130,
                                 height: 40,
@@ -517,7 +527,7 @@ class _RegistroHorarioComidaWidgetState
                                     child: SizedBox(
                                       width: 30,
                                       height: 30,
-                                      child: SpinKitDualRing(
+                                      child: SpinKitPulse(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         size: 30,
@@ -821,7 +831,9 @@ class _RegistroHorarioComidaWidgetState
                                       }
                                     }
                                   },
-                                  text: 'Aceptar',
+                                  text: FFLocalizations.of(context).getText(
+                                    'oji6ki5o' /* Aceptar */,
+                                  ),
                                   options: FFButtonOptions(
                                     width: 130,
                                     height: 40,

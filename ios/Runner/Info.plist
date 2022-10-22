@@ -16,6 +16,11 @@
 	<string>Devii</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>es</string>
+		<string>en</string>
+	</array>
 
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
@@ -53,7 +58,10 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
+	<key>NSCameraUsageDescription</key>
+      <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+      <string>In order to upload media, this app requires permission to access the photo library.</string>
 	<key>PermissionGroupNotification</key>
       <string>Permitir que Devii mande notificaciones</string>
 	<key>NSContactsUsageDescription</key>

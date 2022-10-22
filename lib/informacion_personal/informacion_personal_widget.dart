@@ -40,7 +40,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
           },
         ),
         title: Text(
-          'Información personal',
+          FFLocalizations.of(context).getText(
+            'fvkuj6a0' /* Información personal */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -93,7 +95,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
-                                'Nombre',
+                                FFLocalizations.of(context).getText(
+                                  '1ycarbqd' /* Nombre */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -108,7 +112,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 4, 0, 0),
                               child: Text(
-                                '(123) 456-7890',
+                                FFLocalizations.of(context).getText(
+                                  '6k0waiaa' /* (123) 456-7890 */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
@@ -172,7 +178,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
-                                'Phone Number',
+                                FFLocalizations.of(context).getText(
+                                  'u6c6x16r' /* Phone Number */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -187,7 +195,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 4, 0, 0),
                               child: Text(
-                                '(123) 456-7890',
+                                FFLocalizations.of(context).getText(
+                                  'pmlxlvfr' /* (123) 456-7890 */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
@@ -251,7 +261,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
-                                'Phone Number',
+                                FFLocalizations.of(context).getText(
+                                  '4ii9bfx3' /* Phone Number */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -266,7 +278,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 4, 0, 0),
                               child: Text(
-                                '(123) 456-7890',
+                                FFLocalizations.of(context).getText(
+                                  'k1ra2ybr' /* (123) 456-7890 */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
@@ -330,7 +344,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                               child: Text(
-                                'Phone Number',
+                                FFLocalizations.of(context).getText(
+                                  'gqcumy1p' /* Phone Number */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyText2
                                     .override(
@@ -345,7 +361,9 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(12, 4, 0, 0),
                               child: Text(
-                                '(123) 456-7890',
+                                FFLocalizations.of(context).getText(
+                                  'roc5p4cz' /* (123) 456-7890 */,
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(

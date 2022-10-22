@@ -60,6 +60,20 @@ class _$NotasRecordSerializer implements StructuredSerializer<NotasRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.idEstadoanimo;
+    if (value != null) {
+      result
+        ..add('id_estadoanimo')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.fotoNota;
+    if (value != null) {
+      result
+        ..add('foto_nota')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -108,6 +122,14 @@ class _$NotasRecordSerializer implements StructuredSerializer<NotasRecord> {
           result.sentimiento = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'id_estadoanimo':
+          result.idEstadoanimo = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'foto_nota':
+          result.fotoNota = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -135,6 +157,10 @@ class _$NotasRecord extends NotasRecord {
   @override
   final String? sentimiento;
   @override
+  final String? idEstadoanimo;
+  @override
+  final String? fotoNota;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$NotasRecord([void Function(NotasRecordBuilder)? updates]) =>
@@ -147,6 +173,8 @@ class _$NotasRecord extends NotasRecord {
       this.uidRef,
       this.idEstadoAnimo,
       this.sentimiento,
+      this.idEstadoanimo,
+      this.fotoNota,
       this.ffRef})
       : super._();
 
@@ -167,6 +195,8 @@ class _$NotasRecord extends NotasRecord {
         uidRef == other.uidRef &&
         idEstadoAnimo == other.idEstadoAnimo &&
         sentimiento == other.sentimiento &&
+        idEstadoanimo == other.idEstadoanimo &&
+        fotoNota == other.fotoNota &&
         ffRef == other.ffRef;
   }
 
@@ -176,11 +206,17 @@ class _$NotasRecord extends NotasRecord {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, idNota.hashCode), fechaRedac.hashCode),
-                        nota.hashCode),
-                    uidRef.hashCode),
-                idEstadoAnimo.hashCode),
-            sentimiento.hashCode),
+                    $jc(
+                        $jc(
+                            $jc(
+                                $jc($jc(0, idNota.hashCode),
+                                    fechaRedac.hashCode),
+                                nota.hashCode),
+                            uidRef.hashCode),
+                        idEstadoAnimo.hashCode),
+                    sentimiento.hashCode),
+                idEstadoanimo.hashCode),
+            fotoNota.hashCode),
         ffRef.hashCode));
   }
 
@@ -193,6 +229,8 @@ class _$NotasRecord extends NotasRecord {
           ..add('uidRef', uidRef)
           ..add('idEstadoAnimo', idEstadoAnimo)
           ..add('sentimiento', sentimiento)
+          ..add('idEstadoanimo', idEstadoanimo)
+          ..add('fotoNota', fotoNota)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -226,6 +264,15 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
   String? get sentimiento => _$this._sentimiento;
   set sentimiento(String? sentimiento) => _$this._sentimiento = sentimiento;
 
+  String? _idEstadoanimo;
+  String? get idEstadoanimo => _$this._idEstadoanimo;
+  set idEstadoanimo(String? idEstadoanimo) =>
+      _$this._idEstadoanimo = idEstadoanimo;
+
+  String? _fotoNota;
+  String? get fotoNota => _$this._fotoNota;
+  set fotoNota(String? fotoNota) => _$this._fotoNota = fotoNota;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -243,6 +290,8 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
       _uidRef = $v.uidRef;
       _idEstadoAnimo = $v.idEstadoAnimo;
       _sentimiento = $v.sentimiento;
+      _idEstadoanimo = $v.idEstadoanimo;
+      _fotoNota = $v.fotoNota;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -272,6 +321,8 @@ class NotasRecordBuilder implements Builder<NotasRecord, NotasRecordBuilder> {
             uidRef: uidRef,
             idEstadoAnimo: idEstadoAnimo,
             sentimiento: sentimiento,
+            idEstadoanimo: idEstadoanimo,
+            fotoNota: fotoNota,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

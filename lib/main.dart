@@ -49,6 +49,7 @@ class _MyAppState extends State<MyApp> {
     _router = createRouter(_appStateNotifier);
     userStream = deviiFirebaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
+    jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
       () => _appStateNotifier.stopShowingSplashImage(),
@@ -82,6 +83,7 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('es'),
+        Locale('en'),
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -117,9 +119,10 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Perfil': PerfilWidget(),
       'Home': HomeWidget(),
       'Registros': RegistrosWidget(),
+      'Perfil': PerfilWidget(),
+      'Perfil2': Perfil2Widget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -132,25 +135,19 @@ class _NavBarPageState extends State<NavBarPage> {
         }),
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         selectedItemColor: FlutterFlowTheme.of(context).primaryBtnText,
-        unselectedItemColor: Color(0x8A000000),
+        unselectedItemColor: FlutterFlowTheme.of(context).background,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.userAstronaut,
-              size: 24,
-            ),
-            label: 'Perfil',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
               FontAwesomeIcons.home,
               size: 24,
             ),
-            label: 'Casa',
+            label: FFLocalizations.of(context).getText(
+              '72u32ube' /* Casa */,
+            ),
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -158,7 +155,29 @@ class _NavBarPageState extends State<NavBarPage> {
               FontAwesomeIcons.book,
               size: 24,
             ),
-            label: 'Registros',
+            label: FFLocalizations.of(context).getText(
+              's53zxzuw' /* Registros */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: FaIcon(
+              FontAwesomeIcons.userAstronaut,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'huwzv4yp' /* Perfil */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.account_circle_outlined,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'rnkj7p33' /* Prueba */,
+            ),
             tooltip: '',
           )
         ],

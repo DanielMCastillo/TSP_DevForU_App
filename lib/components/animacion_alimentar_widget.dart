@@ -33,7 +33,9 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
             onPressed: () async {
               Navigator.pop(context);
             },
-            text: 'Gracias <3',
+            text: FFLocalizations.of(context).getText(
+              'b1chwfkg' /* Gracias <3 */,
+            ),
             options: FFButtonOptions(
               width: 130,
               height: 40,

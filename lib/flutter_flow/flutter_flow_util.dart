@@ -23,6 +23,7 @@ export 'package:cloud_firestore/cloud_firestore.dart' show DocumentReference;
 export 'package:page_transition/page_transition.dart';
 export 'custom_icons.dart' show FFIcons;
 export 'internationalization.dart' show FFLocalizations;
+export '../backend/firebase_analytics/analytics.dart';
 export 'nav/nav.dart';
 
 T valueOrDefault<T>(T? value, T defaultValue) =>
@@ -30,6 +31,7 @@ T valueOrDefault<T>(T? value, T defaultValue) =>
 
 void _setTimeagoLocales() {
   timeago.setLocaleMessages('es', timeago.EsMessages());
+  timeago.setLocaleMessages('en', timeago.EnMessages());
 }
 
 String dateTimeFormat(String format, DateTime? dateTime, {String? locale}) {

@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'auth_util.dart';
-
 class DeviiFirebaseUser {
   DeviiFirebaseUser(this.user);
   User? user;
@@ -19,7 +17,6 @@ Stream<DeviiFirebaseUser> deviiFirebaseUserStream() => FirebaseAuth.instance
         .map<DeviiFirebaseUser>(
       (user) {
         currentUser = DeviiFirebaseUser(user);
-        updateUserJwtTimer(user);
         return currentUser!;
       },
     );

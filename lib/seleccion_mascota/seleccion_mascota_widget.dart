@@ -48,7 +48,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
           },
         ),
         title: Text(
-          'Selecciona a tu acompañante',
+          FFLocalizations.of(context).getText(
+            '6gae40i0' /* Selecciona a tu acompañante */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -133,7 +135,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue1 = newValue!);
                                       },
                                       title: Text(
-                                        'Devi',
+                                        FFLocalizations.of(context).getText(
+                                          'ilim6c0w' /* Devi */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -142,7 +146,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Ajolote',
+                                        FFLocalizations.of(context).getText(
+                                          'gv8ys18g' /* Ajolote */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -232,7 +238,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue2 = newValue!);
                                       },
                                       title: Text(
-                                        'Jali',
+                                        FFLocalizations.of(context).getText(
+                                          'n3rddbk6' /* Jali */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -241,7 +249,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Zorro',
+                                        FFLocalizations.of(context).getText(
+                                          '8v7xtjmw' /* Zorro */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -331,7 +341,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue3 = newValue!);
                                       },
                                       title: Text(
-                                        'Sonam',
+                                        FFLocalizations.of(context).getText(
+                                          'emdv86hf' /* Sonam */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -340,7 +352,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Gato',
+                                        FFLocalizations.of(context).getText(
+                                          'hcvxrub5' /* Gato */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -430,7 +444,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue4 = newValue!);
                                       },
                                       title: Text(
-                                        'Raluca',
+                                        FFLocalizations.of(context).getText(
+                                          'y9yqh3mh' /* Raluca */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -439,7 +455,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Perro',
+                                        FFLocalizations.of(context).getText(
+                                          'wjpaxqe6' /* Perro */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -529,7 +547,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue5 = newValue!);
                                       },
                                       title: Text(
-                                        'Nosek',
+                                        FFLocalizations.of(context).getText(
+                                          'q8tybuce' /* Nosek */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -538,7 +558,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Dragón',
+                                        FFLocalizations.of(context).getText(
+                                          'h2ihv6z8' /* Dragón */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -628,7 +650,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue6 = newValue!);
                                       },
                                       title: Text(
-                                        'Bobi',
+                                        FFLocalizations.of(context).getText(
+                                          'fef9d70y' /* Bobi */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -637,7 +661,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Oso panda',
+                                        FFLocalizations.of(context).getText(
+                                          '89edhj47' /* Oso panda */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -727,7 +753,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue7 = newValue!);
                                       },
                                       title: Text(
-                                        'Chork',
+                                        FFLocalizations.of(context).getText(
+                                          '7fwxd295' /* Chork */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -736,7 +764,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Conejo',
+                                        FFLocalizations.of(context).getText(
+                                          '4lrkv46i' /* Conejo */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -826,7 +856,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             checkboxListTileValue8 = newValue!);
                                       },
                                       title: Text(
-                                        'Mae',
+                                        FFLocalizations.of(context).getText(
+                                          'xtqjwgat' /* Mae */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .subtitle1
                                             .override(
@@ -835,7 +867,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                             ),
                                       ),
                                       subtitle: Text(
-                                        'Unicornio',
+                                        FFLocalizations.of(context).getText(
+                                          't2wy2k9b' /* Unicornio */,
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
@@ -893,7 +927,9 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                   onPressed: () {
                     print('Button pressed ...');
                   },
-                  text: 'Listo',
+                  text: FFLocalizations.of(context).getText(
+                    '5d7xszk1' /* Listo */,
+                  ),
                   options: FFButtonOptions(
                     width: 270,
                     height: 50,

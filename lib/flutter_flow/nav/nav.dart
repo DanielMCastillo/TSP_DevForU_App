@@ -78,9 +78,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : BienvenidaWidget(),
           routes: [
             FFRoute(
-              name: 'BienvenidaX',
-              path: 'bienvenidaX',
-              builder: (context, params) => BienvenidaXWidget(),
+              name: 'Bienvenida',
+              path: 'bienvenida',
+              builder: (context, params) => BienvenidaWidget(),
             ),
             FFRoute(
               name: 'Registro',
@@ -90,6 +90,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Home',
               path: 'home',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Home')
                   : HomeWidget(),
@@ -97,61 +98,121 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Perfil',
               path: 'perfil',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Perfil')
                   : PerfilWidget(),
             ),
             FFRoute(
+              name: 'Perfil2',
+              path: 'perfil2',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'Perfil2')
+                  : Perfil2Widget(),
+            ),
+            FFRoute(
+              name: 'Editar_Perfil',
+              path: 'editarPerfil',
+              requireAuth: true,
+              builder: (context, params) => EditarPerfilWidget(),
+            ),
+            FFRoute(
+              name: 'Calendarioxd',
+              path: 'calendarioxd',
+              requireAuth: true,
+              builder: (context, params) => CalendarioxdWidget(),
+            ),
+            FFRoute(
               name: 'Animoo',
               path: 'animoo',
+              requireAuth: true,
               builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
-              name: 'RegistroHorarioComida',
-              path: 'registroHorarioComida',
-              builder: (context, params) => RegistroHorarioComidaWidget(),
+              name: 'Nota_EstadoAnimo',
+              path: 'notaEstadoAnimo',
+              requireAuth: true,
+              builder: (context, params) => NotaEstadoAnimoWidget(),
             ),
             FFRoute(
-              name: 'Ayuda',
-              path: 'ayuda',
-              builder: (context, params) => AyudaWidget(),
+              name: 'Felicitacion_Journaling',
+              path: 'felicitacionJournaling',
+              requireAuth: true,
+              builder: (context, params) => FelicitacionJournalingWidget(),
             ),
             FFRoute(
               name: 'Registros',
               path: 'registros',
+              requireAuth: true,
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'Registros')
                   : RegistrosWidget(),
             ),
             FFRoute(
-              name: 'PantallaDeFelicitacion',
-              path: 'pantallaDeFelicitacion',
-              builder: (context, params) => PantallaDeFelicitacionWidget(),
+              name: 'RegistroHorarioComida',
+              path: 'registroHorarioComida',
+              requireAuth: true,
+              builder: (context, params) => RegistroHorarioComidaWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascotaCopy',
-              path: 'seleccionMascotaCopy',
-              builder: (context, params) => SeleccionMascotaCopyWidget(),
+              name: 'Ayuda',
+              path: 'ayuda',
+              requireAuth: true,
+              builder: (context, params) => AyudaWidget(),
+            ),
+            FFRoute(
+              name: 'Contacto_Emergencia',
+              path: 'contactoEmergencia',
+              requireAuth: true,
+              builder: (context, params) => ContactoEmergenciaWidget(),
+            ),
+            FFRoute(
+              name: 'Contacto_EmergenciaCopy',
+              path: 'contactoEmergenciaCopy',
+              requireAuth: true,
+              builder: (context, params) => ContactoEmergenciaCopyWidget(),
+            ),
+            FFRoute(
+              name: 'PantallaDeFelicitacion',
+              path: 'pantallaDeFelicitacion',
+              requireAuth: true,
+              builder: (context, params) => PantallaDeFelicitacionWidget(),
             ),
             FFRoute(
               name: 'SeleccionMascota',
               path: 'seleccionMascota',
+              requireAuth: true,
               builder: (context, params) => SeleccionMascotaWidget(),
+            ),
+            FFRoute(
+              name: 'SeleccionMascotaCopy',
+              path: 'seleccionMascotaCopy',
+              requireAuth: true,
+              builder: (context, params) => SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
               name: 'Informacion_Personal',
               path: 'informacionPersonal',
+              requireAuth: true,
               builder: (context, params) => InformacionPersonalWidget(),
             ),
             FFRoute(
               name: 'afkxd',
               path: 'afkxd',
+              requireAuth: true,
               builder: (context, params) => AfkxdWidget(),
             ),
             FFRoute(
-              name: 'Bienvenida',
-              path: 'bienvenida',
-              builder: (context, params) => BienvenidaWidget(),
+              name: 'BienvenidaX',
+              path: 'bienvenidaX',
+              requireAuth: true,
+              builder: (context, params) => BienvenidaXWidget(),
+            ),
+            FFRoute(
+              name: 'EliminarCuenta',
+              path: 'eliminarCuenta',
+              builder: (context, params) => EliminarCuentaWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -325,10 +386,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).lineColor,
+                  color: FlutterFlowTheme.of(context).background,
                   child: Image.asset(
                     'assets/images/D4.png',
-                    fit: BoxFit.contain,
+                    fit: BoxFit.scaleDown,
                   ),
                 )
               : page;

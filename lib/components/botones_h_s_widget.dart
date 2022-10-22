@@ -64,7 +64,9 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                         'assets/audios/y2mate.com_-_Love_alarm_20_tono.mp3')
                     .then((_) => soundPlayer!.play());
               },
-              text: 'Alimentar acompañante',
+              text: FFLocalizations.of(context).getText(
+                'tai7qdmt' /* Alimentar acompañante */,
+              ),
               icon: FaIcon(
                 FontAwesomeIcons.utensilSpoon,
               ),
@@ -88,7 +90,9 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 onPressed: () async {
                   context.pushNamed('Animoo');
                 },
-                text: 'Escribe lo que sientes',
+                text: FFLocalizations.of(context).getText(
+                  'yhm8jylj' /* Escribe lo que sientes */,
+                ),
                 icon: FaIcon(
                   FontAwesomeIcons.penAlt,
                 ),
@@ -113,7 +117,9 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 onPressed: () async {
                   context.pushNamed('Ayuda');
                 },
-                text: 'Pedir Ayuda',
+                text: FFLocalizations.of(context).getText(
+                  'wllrm61s' /* Pedir Ayuda */,
+                ),
                 icon: FaIcon(
                   FontAwesomeIcons.phone,
                 ),

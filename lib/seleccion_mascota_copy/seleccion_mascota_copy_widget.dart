@@ -68,7 +68,9 @@ class _SeleccionMascotaCopyWidgetState
           },
         ),
         title: Text(
-          'Selecciona tu acompañante',
+          FFLocalizations.of(context).getText(
+            'kzi2ljlk' /* Selecciona tu acompañante */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -156,7 +158,7 @@ class _SeleccionMascotaCopyWidgetState
                           child: SizedBox(
                             width: 30,
                             height: 30,
-                            child: SpinKitDualRing(
+                            child: SpinKitPulse(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 30,
                             ),
@@ -302,7 +304,9 @@ class _SeleccionMascotaCopyWidgetState
                   onPressed: () {
                     print('Button pressed ...');
                   },
-                  text: 'Listo',
+                  text: FFLocalizations.of(context).getText(
+                    't6gct5u6' /* Listo */,
+                  ),
                   options: FFButtonOptions(
                     width: 270,
                     height: 50,

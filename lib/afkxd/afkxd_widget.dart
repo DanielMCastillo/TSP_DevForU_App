@@ -24,7 +24,9 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          'AFK',
+          FFLocalizations.of(context).getText(
+            'tfweh2pr' /* AFK */,
+          ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: 'Montserrat',
                 color: FlutterFlowTheme.of(context).primaryBtnText,
