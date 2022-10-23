@@ -24,15 +24,8 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
       width: double.infinity,
       height: 270,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 5,
-            color: Color(0x3B1D2429),
-            offset: Offset(0, -3),
-          )
-        ],
-        borderRadius: BorderRadius.circular(16),
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        borderRadius: BorderRadius.circular(14),
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20, 20, 20, 20),
@@ -69,19 +62,24 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
               ),
               icon: FaIcon(
                 FontAwesomeIcons.utensilSpoon,
+                size: 24,
               ),
               options: FFButtonOptions(
                 width: double.infinity,
                 height: 60,
                 color: FlutterFlowTheme.of(context).primaryColor,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Montserrat',
+                      fontFamily: 'Rubik',
                       color: FlutterFlowTheme.of(context).white,
+                      fontWeight: FontWeight.w500,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).subtitle2Family),
                     ),
                 borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1,
                 ),
+                borderRadius: BorderRadius.circular(14),
               ),
             ),
             Padding(
@@ -95,19 +93,25 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 ),
                 icon: FaIcon(
                   FontAwesomeIcons.penAlt,
+                  size: 24,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 60,
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Montserrat',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).subtitle2Family,
                         color: FlutterFlowTheme.of(context).white,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).subtitle2Family),
                       ),
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1,
                   ),
+                  borderRadius: BorderRadius.circular(14),
                 ),
               ),
             ),
@@ -122,19 +126,25 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 ),
                 icon: FaIcon(
                   FontAwesomeIcons.phone,
+                  size: 24,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 60,
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Montserrat',
+                        fontFamily:
+                            FlutterFlowTheme.of(context).subtitle2Family,
                         color: FlutterFlowTheme.of(context).primaryBtnText,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).subtitle2Family),
                       ),
                   borderSide: BorderSide(
                     color: Colors.transparent,
                     width: 1,
                   ),
+                  borderRadius: BorderRadius.circular(14),
                 ),
               ),
             ),

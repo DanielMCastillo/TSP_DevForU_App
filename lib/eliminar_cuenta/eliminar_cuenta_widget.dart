@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EliminarCuentaWidget extends StatefulWidget {
@@ -77,16 +76,16 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
           borderRadius: 30,
           borderWidth: 1,
           buttonSize: 60,
-          icon: FaIcon(
-            FontAwesomeIcons.arrowCircleLeft,
-            color: Colors.white,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
           onPressed: () {
@@ -95,17 +94,13 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
         ),
         title: Text(
           FFLocalizations.of(context).getText(
-            'lo0pa2cc' /* Eliminar cuenta */,
+            '285ei6gn' /* Eliminar cuenta */,
           ),
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 18,
-              ),
+          style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
         centerTitle: false,
-        elevation: 1,
+        elevation: 0,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -123,7 +118,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                       '98xub8rl' /* No te vayas :( */,
                     ),
                     textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    style: FlutterFlowTheme.of(context).subtitle1,
                   ),
                 ],
               ),
@@ -156,11 +151,17 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                             'dcxqp5g6' /* Tu cuenta y toda la informació... */,
                           ),
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 18,
-                                  ),
+                          style: FlutterFlowTheme.of(context)
+                              .bodyText1
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
+                              ),
                         ),
                       ),
                       Padding(
@@ -175,9 +176,13 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyText2
                                 .override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyText2Family,
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText2Family),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
                               'ww9ckl6t' /* Ingresa tu correo electrónico  */,
@@ -185,14 +190,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).white,
+                                color: Color(0x00000000),
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).white,
+                                color: Color(0x00000000),
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -214,16 +219,25 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                               borderRadius: BorderRadius.circular(8),
                             ),
                             filled: true,
-                            fillColor: Colors.white,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                            prefixIcon: Icon(
+                              Icons.mail_outlined,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
                           ),
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).customColor4,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                         ),
                       ),
@@ -239,9 +253,13 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyText2
                                 .override(
-                                  fontFamily: 'Montserrat',
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyText2Family,
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText2Family),
                                 ),
                             hintText: FFLocalizations.of(context).getText(
                               'vyflqjwu' /* Ingresa tu contraseña  */,
@@ -249,14 +267,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0x8D1A1F24),
+                                color: Color(0x00000000),
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
-                                color: Color(0x8D1A1F24),
+                                color: Color(0x00000000),
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(8),
@@ -276,9 +294,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                               borderRadius: BorderRadius.circular(8),
                             ),
                             filled: true,
-                            fillColor: Colors.white,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
                             contentPadding:
                                 EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                            prefixIcon: Icon(
+                              Icons.lock_outlined,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
                             suffixIcon: InkWell(
                               onTap: () => setState(
                                 () => contrasenaVisibility =
@@ -298,9 +321,13 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).customColor4,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                         ),
                       ),
@@ -311,6 +338,36 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
+                            FFButtonWidget(
+                              onPressed: () async {
+                                context.pop();
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '7r7xegaf' /* Cancelar */,
+                              ),
+                              options: FFButtonOptions(
+                                width: 140,
+                                height: 56,
+                                color:
+                                    FlutterFlowTheme.of(context).customColor3,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .subtitle2
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family),
+                                    ),
+                                elevation: 1,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                            ),
                             StreamBuilder<List<UsuariosRecord>>(
                               stream: queryUsuariosRecord(
                                 queryBuilder: (usuariosRecord) =>
@@ -385,50 +442,32 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                   ),
                                   options: FFButtonOptions(
                                     width: 140,
-                                    height: 40,
+                                    height: 56,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .subtitle2
                                         .override(
-                                          fontFamily: 'Montserrat',
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle2Family,
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBtnText,
                                           fontWeight: FontWeight.w600,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2Family),
                                         ),
-                                    elevation: 3,
+                                    elevation: 1,
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1,
                                     ),
+                                    borderRadius: BorderRadius.circular(16),
                                   ),
                                 );
                               },
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                context.pop();
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                '7r7xegaf' /* Cancelar */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 140,
-                                height: 40,
-                                color:
-                                    FlutterFlowTheme.of(context).primaryColor,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
                             ),
                           ],
                         ),

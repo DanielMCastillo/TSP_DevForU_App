@@ -1,3 +1,5 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../components/botones_h_s_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -8,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -108,119 +109,201 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        automaticallyImplyLeading: false,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            'e0apsgr6' /* Casa de Devii */,
-          ),
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-              ),
-        ),
-        actions: [],
-        centerTitle: false,
-        elevation: 1,
+    return StreamBuilder<List<UsuarioMascotaRecord>>(
+      stream: queryUsuarioMascotaRecord(
+        queryBuilder: (usuarioMascotaRecord) => usuarioMascotaRecord
+            .where('uid_ref', isEqualTo: currentUserReference),
+        singleRecord: true,
       ),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
-                    child: Container(
-                      width: double.infinity,
-                      height: 70,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: FlutterFlowTheme.of(context).primaryBackground,
-                          width: 2,
-                        ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              functions.getRandomMessage(List.generate(
-                                  random_data.randomInteger(0, 0),
-                                  (index) => random_data.randomString(
-                                        0,
-                                        0,
-                                        false,
-                                        false,
-                                        false,
-                                      )).toList()),
-                              maxLines: 2,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['containerOnPageLoadAnimation']!),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: Image.asset(
-                          'assets/images/istockphoto-973075370-640x640.jpg',
-                        ).image,
-                      ),
-                      shape: BoxShape.rectangle,
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 30,
+              height: 30,
+              child: SpinKitPulse(
+                color: FlutterFlowTheme.of(context).primaryColor,
+                size: 30,
+              ),
+            ),
+          );
+        }
+        List<UsuarioMascotaRecord> homeUsuarioMascotaRecordList =
+            snapshot.data!;
+        final homeUsuarioMascotaRecord = homeUsuarioMascotaRecordList.isNotEmpty
+            ? homeUsuarioMascotaRecordList.first
+            : null;
+        return Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            automaticallyImplyLeading: false,
+            leading: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      'wcdiun8a' /* Casa de  */,
                     ),
-                    child: Container(
-                      height: 300,
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-0.01, 0.06),
-                            child: Image.asset(
-                              'assets/images/DeviiIdle.png',
-                              width: 200,
-                              height: 200,
-                              fit: BoxFit.fill,
-                            ).animateOnPageLoad(
-                                animationsMap['imageOnPageLoadAnimation']!),
-                          ),
-                        ],
-                      ),
-                    ).animateOnPageLoad(
-                        animationsMap['stackOnPageLoadAnimation']!),
+                    style: FlutterFlowTheme.of(context).title2,
                   ),
-                  BotonesHSWidget().animateOnPageLoad(
-                      animationsMap['botonesHSOnPageLoadAnimation']!),
-                ],
+                ),
+                Text(
+                  homeUsuarioMascotaRecord!.nombreMascota!,
+                  style: FlutterFlowTheme.of(context).title2,
+                ),
+              ],
+            ),
+            actions: [],
+            centerTitle: true,
+            elevation: 0,
+          ),
+          body: SafeArea(
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).unfocus(),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
+                        child: Container(
+                          width: double.infinity,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(14),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              width: 2,
+                            ),
+                          ),
+                          child: Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  functions.getRandomMessage(List.generate(
+                                      random_data.randomInteger(0, 0),
+                                      (index) => random_data.randomString(
+                                            0,
+                                            0,
+                                            false,
+                                            false,
+                                            false,
+                                          )).toList()),
+                                  maxLines: 2,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyText1
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyText1Family,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family),
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['containerOnPageLoadAnimation']!),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: Image.asset(
+                              'assets/images/istockphoto-973075370-640x640.jpg',
+                            ).image,
+                          ),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Container(
+                          height: 300,
+                          child: Stack(
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(-0.01, 0.06),
+                                child: StreamBuilder<List<MascotasRecord>>(
+                                  stream: queryMascotasRecord(
+                                    queryBuilder: (mascotasRecord) =>
+                                        mascotasRecord.where('nombre_mascota',
+                                            isEqualTo: homeUsuarioMascotaRecord!
+                                                .nombreMascota),
+                                    singleRecord: true,
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 30,
+                                          height: 30,
+                                          child: SpinKitPulse(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryColor,
+                                            size: 30,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<MascotasRecord>
+                                        imageMascotasRecordList =
+                                        snapshot.data!;
+                                    // Return an empty Container when the document does not exist.
+                                    if (snapshot.data!.isEmpty) {
+                                      return Container();
+                                    }
+                                    final imageMascotasRecord =
+                                        imageMascotasRecordList.isNotEmpty
+                                            ? imageMascotasRecordList.first
+                                            : null;
+                                    return Image.network(
+                                      imageMascotasRecord!.imagenMascota!,
+                                      width: 200,
+                                      height: 200,
+                                      fit: BoxFit.fill,
+                                    ).animateOnPageLoad(animationsMap[
+                                        'imageOnPageLoadAnimation']!);
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['stackOnPageLoadAnimation']!),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                        child: BotonesHSWidget().animateOnPageLoad(
+                            animationsMap['botonesHSOnPageLoadAnimation']!),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

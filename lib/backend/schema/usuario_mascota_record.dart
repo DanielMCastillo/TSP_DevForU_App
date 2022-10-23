@@ -11,18 +11,17 @@ abstract class UsuarioMascotaRecord
   static Serializer<UsuarioMascotaRecord> get serializer =>
       _$usuarioMascotaRecordSerializer;
 
-  String? get uid;
+  @BuiltValueField(wireName: 'uid_ref')
+  DocumentReference? get uidRef;
 
-  @BuiltValueField(wireName: 'id_mascota')
-  int? get idMascota;
+  String? get nombreMascota;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
 
-  static void _initializeBuilder(UsuarioMascotaRecordBuilder builder) => builder
-    ..uid = ''
-    ..idMascota = 0;
+  static void _initializeBuilder(UsuarioMascotaRecordBuilder builder) =>
+      builder..nombreMascota = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('usuario_mascota');
@@ -47,15 +46,15 @@ abstract class UsuarioMascotaRecord
 }
 
 Map<String, dynamic> createUsuarioMascotaRecordData({
-  String? uid,
-  int? idMascota,
+  DocumentReference? uidRef,
+  String? nombreMascota,
 }) {
   final firestoreData = serializers.toFirestore(
     UsuarioMascotaRecord.serializer,
     UsuarioMascotaRecord(
       (u) => u
-        ..uid = uid
-        ..idMascota = idMascota,
+        ..uidRef = uidRef
+        ..nombreMascota = nombreMascota,
     ),
   );
 

@@ -11,7 +11,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistroHorarioComidaWidget extends StatefulWidget {
@@ -61,16 +60,16 @@ class _RegistroHorarioComidaWidgetState
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
           borderRadius: 30,
           borderWidth: 1,
           buttonSize: 60,
-          icon: FaIcon(
-            FontAwesomeIcons.arrowCircleLeft,
-            color: Colors.white,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
           onPressed: () async {
@@ -79,7 +78,7 @@ class _RegistroHorarioComidaWidgetState
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
-                  transitionType: PageTransitionType.rightToLeft,
+                  transitionType: PageTransitionType.leftToRight,
                 ),
               },
             );
@@ -87,17 +86,13 @@ class _RegistroHorarioComidaWidgetState
         ),
         title: Text(
           FFLocalizations.of(context).getText(
-            'prw1np1k' /* Registra tu horario */,
+            'okwoyr1s' /* Mis horarios */,
           ),
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 22,
-              ),
+          style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
         centerTitle: false,
-        elevation: 1,
+        elevation: 0,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -153,11 +148,7 @@ class _RegistroHorarioComidaWidgetState
                                   : null;
                           return Text(
                             desayunoBDHorariosRecord!.desayuno!,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                    ),
+                            style: FlutterFlowTheme.of(context).subtitle1,
                           );
                         },
                       ),
@@ -179,10 +170,7 @@ class _RegistroHorarioComidaWidgetState
                           datePicked1,
                           locale: FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
-                              fontSize: 18,
-                            ),
+                        style: FlutterFlowTheme.of(context).subtitle2,
                       ),
                     FFButtonWidget(
                       onPressed: () async {
@@ -206,16 +194,19 @@ class _RegistroHorarioComidaWidgetState
                       ),
                       options: FFButtonOptions(
                         width: 150,
-                        height: 50,
+                        height: 56,
                         color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                        elevation: 2,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyText1
+                            .override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyText1Family),
+                            ),
+                        elevation: 1,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1,
@@ -272,11 +263,7 @@ class _RegistroHorarioComidaWidgetState
                                   : null;
                           return Text(
                             comidaBDHorariosRecord!.comida!,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 18,
-                                    ),
+                            style: FlutterFlowTheme.of(context).subtitle1,
                           );
                         },
                       ),
@@ -298,10 +285,7 @@ class _RegistroHorarioComidaWidgetState
                           datePicked2,
                           locale: FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
-                              fontSize: 18,
-                            ),
+                        style: FlutterFlowTheme.of(context).subtitle2,
                       ),
                     FFButtonWidget(
                       onPressed: () async {
@@ -325,15 +309,18 @@ class _RegistroHorarioComidaWidgetState
                       ),
                       options: FFButtonOptions(
                         width: 150,
-                        height: 50,
+                        height: 56,
                         color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyText1
+                            .override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyText1Family),
+                            ),
                         elevation: 2,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -391,11 +378,7 @@ class _RegistroHorarioComidaWidgetState
                                   : null;
                           return Text(
                             cenaBDHorariosRecord!.cena!,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText1.override(
-                                      fontFamily: 'Montserrat',
-                                      fontSize: 18,
-                                    ),
+                            style: FlutterFlowTheme.of(context).subtitle1,
                           );
                         },
                       ),
@@ -417,10 +400,7 @@ class _RegistroHorarioComidaWidgetState
                           datePicked3,
                           locale: FFLocalizations.of(context).languageCode,
                         ),
-                        style: FlutterFlowTheme.of(context).bodyText1.override(
-                              fontFamily: 'Montserrat',
-                              fontSize: 18,
-                            ),
+                        style: FlutterFlowTheme.of(context).subtitle2,
                       ),
                     FFButtonWidget(
                       onPressed: () async {
@@ -444,15 +424,18 @@ class _RegistroHorarioComidaWidgetState
                       ),
                       options: FFButtonOptions(
                         width: 150,
-                        height: 50,
+                        height: 56,
                         color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyText1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .bodyText1
+                            .override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyText1Family),
+                            ),
                         elevation: 2,
                         borderSide: BorderSide(
                           color: Colors.transparent,
@@ -479,14 +462,15 @@ class _RegistroHorarioComidaWidgetState
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(0),
                             bottomRight: Radius.circular(0),
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15),
+                            topLeft: Radius.circular(16),
+                            topRight: Radius.circular(16),
                           ),
                           shape: BoxShape.rectangle,
                         ),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
@@ -497,20 +481,26 @@ class _RegistroHorarioComidaWidgetState
                               ),
                               options: FFButtonOptions(
                                 width: 130,
-                                height: 40,
+                                height: 56,
                                 color:
-                                    FlutterFlowTheme.of(context).primaryColor,
+                                    FlutterFlowTheme.of(context).customColor3,
                                 textStyle: FlutterFlowTheme.of(context)
-                                    .subtitle2
+                                    .subtitle1
                                     .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .subtitle1Family,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle1Family),
                                     ),
                                 borderSide: BorderSide(
                                   color: Colors.transparent,
-                                  width: 1,
+                                  width: 0,
                                 ),
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(14),
                               ),
                             ),
                             StreamBuilder<List<HorariosRecord>>(
@@ -836,7 +826,7 @@ class _RegistroHorarioComidaWidgetState
                                   ),
                                   options: FFButtonOptions(
                                     width: 130,
-                                    height: 40,
+                                    height: 56,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     textStyle: FlutterFlowTheme.of(context)
@@ -844,12 +834,16 @@ class _RegistroHorarioComidaWidgetState
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: Colors.white,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2Family),
                                         ),
                                     borderSide: BorderSide(
                                       color: Colors.transparent,
-                                      width: 1,
+                                      width: 0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(14),
                                   ),
                                 );
                               },

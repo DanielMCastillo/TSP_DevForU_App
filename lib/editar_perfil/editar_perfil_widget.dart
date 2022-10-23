@@ -1,11 +1,11 @@
 import '../backend/firebase_storage/storage.dart';
+import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../flutter_flow/upload_media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditarPerfilWidget extends StatefulWidget {
@@ -41,24 +41,33 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(40),
-        child: AppBar(
-          backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-          automaticallyImplyLeading: true,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
-            child: FaIcon(
-              FontAwesomeIcons.arrowCircleLeft,
-              color: Colors.white,
-              size: 30,
-            ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
+            size: 30,
           ),
-          actions: [],
-          centerTitle: true,
-          elevation: 2,
+          onPressed: () {
+            print('IconButton pressed ...');
+          },
         ),
+        title: Text(
+          FFLocalizations.of(context).getText(
+            '4v9sda22' /* Editar perfil */,
+          ),
+          style: FlutterFlowTheme.of(context).title1,
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 0,
       ),
       body: SafeArea(
         child: Column(
@@ -140,13 +149,16 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                       width: 130,
                       height: 40,
                       color: Color(0xFFF1F4F8),
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyText1.override(
-                                fontFamily: 'Lexend Deca',
-                                color: Color(0xFF96BEFF),
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                              ),
+                      textStyle: FlutterFlowTheme.of(context)
+                          .bodyText1
+                          .override(
+                            fontFamily: 'Lexend Deca',
+                            color: Color(0xFF96BEFF),
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyText1Family),
+                          ),
                       elevation: 1,
                       borderSide: BorderSide(
                         color: Colors.transparent,
@@ -171,51 +183,51 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                         color: Color(0xFF95A1AC),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                   hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF95A1AC),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xFFF1F4F8),
-                      width: 2,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xFFF1F4F8),
-                      width: 2,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
-                      width: 2,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
-                      width: 2,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  contentPadding:
+                      EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF090F13),
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                style: FlutterFlowTheme.of(context).bodyText1,
               ),
             ),
             Padding(
@@ -232,51 +244,50 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                         color: Color(0xFF95A1AC),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                   hintStyle: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF95A1AC),
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xFFF1F4F8),
-                      width: 2,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: Color(0xFFF1F4F8),
-                      width: 2,
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
-                      width: 2,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Color(0x00000000),
-                      width: 2,
+                      width: 0,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   contentPadding: EdgeInsetsDirectional.fromSTEB(20, 24, 0, 24),
                 ),
-                style: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: 'Lexend Deca',
-                      color: Color(0xFF090F13),
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                style: FlutterFlowTheme.of(context).bodyText1,
               ),
             ),
             Align(
@@ -298,13 +309,16 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                           fontFamily: 'Lexend Deca',
                           color: Colors.white,
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w600,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     elevation: 2,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1,
                     ),
+                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),

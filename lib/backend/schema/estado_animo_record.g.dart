@@ -21,12 +21,6 @@ class _$EstadoAnimoRecordSerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.idEstadoanimo;
-    if (value != null) {
-      result
-        ..add('id_estadoanimo')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.estado;
     if (value != null) {
       result
@@ -38,6 +32,13 @@ class _$EstadoAnimoRecordSerializer
     if (value != null) {
       result
         ..add('imagen_estado')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.idEstadoanimo;
+    if (value != null) {
+      result
+        ..add('id_estadoanimo')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -64,16 +65,16 @@ class _$EstadoAnimoRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'id_estadoanimo':
-          result.idEstadoanimo = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'estado':
           result.estado = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'imagen_estado':
           result.imagenEstado = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'id_estadoanimo':
+          result.idEstadoanimo = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -91,11 +92,11 @@ class _$EstadoAnimoRecordSerializer
 
 class _$EstadoAnimoRecord extends EstadoAnimoRecord {
   @override
-  final int? idEstadoanimo;
-  @override
   final String? estado;
   @override
   final String? imagenEstado;
+  @override
+  final String? idEstadoanimo;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -104,7 +105,7 @@ class _$EstadoAnimoRecord extends EstadoAnimoRecord {
       (new EstadoAnimoRecordBuilder()..update(updates))._build();
 
   _$EstadoAnimoRecord._(
-      {this.idEstadoanimo, this.estado, this.imagenEstado, this.ffRef})
+      {this.estado, this.imagenEstado, this.idEstadoanimo, this.ffRef})
       : super._();
 
   @override
@@ -119,26 +120,26 @@ class _$EstadoAnimoRecord extends EstadoAnimoRecord {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is EstadoAnimoRecord &&
-        idEstadoanimo == other.idEstadoanimo &&
         estado == other.estado &&
         imagenEstado == other.imagenEstado &&
+        idEstadoanimo == other.idEstadoanimo &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, idEstadoanimo.hashCode), estado.hashCode),
-            imagenEstado.hashCode),
+        $jc($jc($jc(0, estado.hashCode), imagenEstado.hashCode),
+            idEstadoanimo.hashCode),
         ffRef.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'EstadoAnimoRecord')
-          ..add('idEstadoanimo', idEstadoanimo)
           ..add('estado', estado)
           ..add('imagenEstado', imagenEstado)
+          ..add('idEstadoanimo', idEstadoanimo)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -148,11 +149,6 @@ class EstadoAnimoRecordBuilder
     implements Builder<EstadoAnimoRecord, EstadoAnimoRecordBuilder> {
   _$EstadoAnimoRecord? _$v;
 
-  int? _idEstadoanimo;
-  int? get idEstadoanimo => _$this._idEstadoanimo;
-  set idEstadoanimo(int? idEstadoanimo) =>
-      _$this._idEstadoanimo = idEstadoanimo;
-
   String? _estado;
   String? get estado => _$this._estado;
   set estado(String? estado) => _$this._estado = estado;
@@ -160,6 +156,11 @@ class EstadoAnimoRecordBuilder
   String? _imagenEstado;
   String? get imagenEstado => _$this._imagenEstado;
   set imagenEstado(String? imagenEstado) => _$this._imagenEstado = imagenEstado;
+
+  String? _idEstadoanimo;
+  String? get idEstadoanimo => _$this._idEstadoanimo;
+  set idEstadoanimo(String? idEstadoanimo) =>
+      _$this._idEstadoanimo = idEstadoanimo;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -172,9 +173,9 @@ class EstadoAnimoRecordBuilder
   EstadoAnimoRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _idEstadoanimo = $v.idEstadoanimo;
       _estado = $v.estado;
       _imagenEstado = $v.imagenEstado;
+      _idEstadoanimo = $v.idEstadoanimo;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -198,9 +199,9 @@ class EstadoAnimoRecordBuilder
   _$EstadoAnimoRecord _build() {
     final _$result = _$v ??
         new _$EstadoAnimoRecord._(
-            idEstadoanimo: idEstadoanimo,
             estado: estado,
             imagenEstado: imagenEstado,
+            idEstadoanimo: idEstadoanimo,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

@@ -14,13 +14,29 @@ class FFAppState {
 
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
+    _mascotaimg = prefs.getString('ff_mascotaimg') ?? _mascotaimg;
+    _nombreMascota = prefs.getString('ff_nombreMascota') ?? _nombreMascota;
   }
 
   late SharedPreferences prefs;
 
-  String frases = 'Te quiero mucho, gracias por estar aquí';
+  String _mascotaimg = '';
+  String get mascotaimg => _mascotaimg;
+  set mascotaimg(String _value) {
+    _mascotaimg = _value;
+    prefs.setString('ff_mascotaimg', _value);
+  }
 
-  String frases2 = 'Lo estás haciendo muy bien';
+  String _nombreMascota = '';
+  String get nombreMascota => _nombreMascota;
+  set nombreMascota(String _value) {
+    _nombreMascota = _value;
+    prefs.setString('ff_nombreMascota', _value);
+  }
+
+  String idAnimo = '';
+
+  String estadoanimo = '';
 }
 
 LatLng? _latLngFromString(String? val) {

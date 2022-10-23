@@ -1,10 +1,12 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ContactoEmergenciaWidget extends StatefulWidget {
@@ -38,49 +40,33 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: Color(0xFFF1F4F8),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
-        child: AppBar(
-          backgroundColor: Color(0xFFF1F4F8),
-          automaticallyImplyLeading: false,
-          title: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                      child: FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 40,
-                        borderWidth: 1,
-                        buttonSize: 60,
-                        icon: FaIcon(
-                          FontAwesomeIcons.arrowCircleLeft,
-                          color: Color(0xFF96BEFF),
-                          size: 40,
-                        ),
-                        onPressed: () async {
-                          context.pop();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30,
+          borderWidth: 1,
+          buttonSize: 60,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
+            size: 30,
           ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0,
+          onPressed: () async {
+            context.pushNamed('Perfil');
+          },
         ),
+        title: Text(
+          FFLocalizations.of(context).getText(
+            's1a6qx2o' /* Contacto */,
+          ),
+          style: FlutterFlowTheme.of(context).title1,
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 0,
       ),
       body: Column(
         mainAxisSize: MainAxisSize.max,
@@ -98,7 +84,13 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
                         'h9cqz7iq' /* Nos las arreglamos con un poco... */,
                       ),
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).title3,
+                      style: FlutterFlowTheme.of(context).title3.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).title3Family,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).title3Family),
+                          ),
                     ),
                   ),
                 ),
@@ -131,7 +123,13 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
                     'pgsly3in' /* Ingrese el número de teléfono ... */,
                   ),
                   textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).subtitle2,
+                  style: FlutterFlowTheme.of(context).subtitle2.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).subtitle2Family,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).subtitle2Family),
+                      ),
                 ),
               ),
             ],
@@ -145,55 +143,57 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
                   width: 250,
                   child: TextFormField(
                     controller: textController1,
-                    autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         'jbirguda' /* Nombre de contacto */,
                       ),
                       hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2,
+                          color: Color(0x00F1F4F8),
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2,
+                          color: Color(0x00F1F4F8),
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      errorBorder: UnderlineInputBorder(
+                      errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0xFF96BEFF),
-                          width: 2,
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      focusedErrorBorder: UnderlineInputBorder(
+                      focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0xFF96BEFF),
-                          width: 2,
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      contentPadding:
+                          EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                      prefixIcon: Icon(
+                        Icons.person_outlined,
+                        color: FlutterFlowTheme.of(context).primaryText,
                       ),
                     ),
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                    style: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyText1Family,
+                          color: Color(0xFF96BEFF),
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyText1Family),
+                        ),
                   ),
                 ),
               ),
@@ -203,52 +203,48 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
                   width: 250,
                   child: TextFormField(
                     controller: textController2,
-                    autofocus: true,
                     obscureText: false,
                     decoration: InputDecoration(
                       hintText: FFLocalizations.of(context).getText(
                         '9bc7v0bh' /* Número de contacto */,
                       ),
                       hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                      enabledBorder: UnderlineInputBorder(
+                      enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 2,
+                          color: Color(0x00F1F4F8),
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 2,
+                          color: Color(0x00F1F4F8),
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      errorBorder: UnderlineInputBorder(
+                      errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 2,
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      focusedErrorBorder: UnderlineInputBorder(
+                      focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Color(0x00000000),
-                          width: 2,
+                          width: 0,
                         ),
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(4.0),
-                          topRight: Radius.circular(4.0),
-                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      contentPadding:
+                          EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                      prefixIcon: Icon(
+                        Icons.local_phone_outlined,
+                        color: FlutterFlowTheme.of(context).primaryText,
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyText1,
@@ -260,23 +256,32 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
             child: FFButtonWidget(
-              onPressed: () {
-                print('Button-Login pressed ...');
+              onPressed: () async {
+                final usuariosConfianzaCreateData =
+                    createUsuariosConfianzaRecordData(
+                  nombreContacto: textController1!.text,
+                  numeroContacto: textController2!.text,
+                );
+                await UsuariosConfianzaRecord.collection
+                    .doc()
+                    .set(usuariosConfianzaCreateData);
+
+                context.pushNamed('Contacto_Emergencia2');
               },
               text: FFLocalizations.of(context).getText(
                 '7vq7bokq' /* Guardar */,
               ),
               options: FFButtonOptions(
                 width: 270,
-                height: 40,
-                color: Color(0xFF96BEFF),
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Outfit',
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
+                height: 56,
+                color: FlutterFlowTheme.of(context).primaryColor,
+                textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                      fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).bodyText1Family),
                     ),
-                elevation: 10,
+                elevation: 1,
                 borderSide: BorderSide(
                   color: Colors.transparent,
                   width: 1,

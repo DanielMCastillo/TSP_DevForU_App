@@ -79,10 +79,14 @@ class _ListWidgetState extends State<ListWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                         ),
                       ),
@@ -152,10 +156,14 @@ class _ListWidgetState extends State<ListWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).secondaryColor,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                         ),
                       ),
@@ -225,10 +233,14 @@ class _ListWidgetState extends State<ListWidget> {
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
-                                fontFamily: 'Montserrat',
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyText1Family,
                                 color:
                                     FlutterFlowTheme.of(context).tertiaryColor,
                                 fontWeight: FontWeight.w500,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                         ),
                       ),

@@ -91,22 +91,11 @@ class _RegistroWidgetState extends State<RegistroWidget>
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
-        title: Text(
-          FFLocalizations.of(context).getText(
-            '47766fk1' /* ¡Hola soy Devii! */,
-          ),
-          textAlign: TextAlign.center,
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 22,
-              ),
-        ),
         actions: [],
         centerTitle: false,
-        elevation: 1,
+        elevation: 0,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -121,7 +110,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/Diseo_sin_ttulo_(5).png',
+                    'assets/images/DeviiIdle.png',
                     width: 150,
                     height: 150,
                     fit: BoxFit.fitWidth,
@@ -168,79 +157,106 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 20, 20, 0),
-                                    child: TextFormField(
-                                      controller: correoController,
-                                      obscureText: false,
-                                      decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '44pmpsf9' /* Correo electrónico  */,
-                                        ),
-                                        labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
-                                            .override(
-                                              fontFamily: 'Montserrat',
+                                        20, 12, 20, 0),
+                                    child: Container(
+                                      width: 330,
+                                      child: TextFormField(
+                                        controller: correoController,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'ywads21d' /* Correo electronico */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyText1
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family,
+                                                color: Color(0xFF96BEFF),
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyText1Family),
+                                              ),
+                                          hintText: FFLocalizations.of(context)
+                                              .getText(
+                                            'uheppdyi' /* Ingresa tu correo electrónico */,
+                                          ),
+                                          hintStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2,
+                                          enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          focusedBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color: Color(0x00000000),
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
+                                          ),
+                                          errorBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .customColor3,
+                                              width: 1,
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          '436qxv14' /* Ingresa tu correo electrónico  */,
-                                        ),
-                                        hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .white,
-                                            width: 1,
+                                            borderRadius:
+                                                BorderRadius.circular(14),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .white,
-                                            width: 1,
+                                          focusedErrorBorder:
+                                              UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .customColor3,
+                                              width: 1,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
+                                          filled: true,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20, 24, 20, 24),
+                                          prefixIcon: Icon(
+                                            Icons.mail_outlined,
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor4,
-                                            width: 1,
+                                                .primaryText,
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
                                         ),
-                                        focusedErrorBorder:
-                                            UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .customColor4,
-                                            width: 1,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        filled: true,
-                                        fillColor: Colors.white,
-                                        contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                20, 24, 20, 24),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color: Color(0xFF96BEFF),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
                                       ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1
-                                          .override(
-                                            fontFamily: 'Montserrat',
-                                            color: FlutterFlowTheme.of(context)
-                                                .customColor4,
-                                          ),
                                     ),
                                   ),
                                   Padding(
@@ -257,10 +273,18 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2Family),
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -270,42 +294,50 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
+                                            color: Color(0x00000000),
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
-                                            width: 1,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                        errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor3,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x00000000),
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor3,
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         filled: true,
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.lock_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
                                             () => contrasenaVisibility =
@@ -326,9 +358,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
                                             color: FlutterFlowTheme.of(context)
                                                 .customColor4,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
                                           ),
                                     ),
                                   ),
@@ -353,24 +391,37 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       text: FFLocalizations.of(context).getText(
                                         'ecjldo3a' /* Iniciar sesión  */,
                                       ),
+                                      icon: Icon(
+                                        Icons.login_outlined,
+                                        size: 24,
+                                      ),
                                       options: FFButtonOptions(
-                                        width: 230,
-                                        height: 50,
+                                        width: 200,
+                                        height: 56,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
+                                                      .primaryBackground,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle2Family),
                                             ),
                                         elevation: 3,
                                         borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1,
                                         ),
+                                        borderRadius: BorderRadius.circular(16),
                                       ),
                                     ),
                                   ),
@@ -387,23 +438,31 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       ),
                                       options: FFButtonOptions(
                                         width: 200,
-                                        height: 40,
+                                        height: 56,
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryColor,
+                                            .ashGray,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .white,
+                                                      .primaryText,
                                               fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle2Family),
                                             ),
-                                        elevation: 0,
+                                        elevation: 1,
                                         borderSide: BorderSide(
                                           color: Color(0x0096BEFF),
                                           width: 1,
                                         ),
+                                        borderRadius: BorderRadius.circular(16),
                                       ),
                                     ),
                                   ),
@@ -420,7 +479,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        20, 20, 20, 0),
+                                        20, 12, 20, 0),
                                     child: TextFormField(
                                       controller: emailAddressCreateController,
                                       obscureText: false,
@@ -432,10 +491,18 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2Family),
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
@@ -445,48 +512,63 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
-                                            width: 1,
+                                            color: Color(0x00000000),
+                                            width: 5,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
-                                            width: 1,
+                                            color: Color(0x00000000),
+                                            width: 5,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor3,
+                                            width: 5,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x00000000),
-                                            width: 1,
+                                            color: FlutterFlowTheme.of(context)
+                                                .customColor3,
+                                            width: 5,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         filled: true,
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.mail_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
-                                            color: Color(0xFF0F1113),
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
                                           ),
                                     ),
                                   ),
@@ -502,34 +584,56 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           'yw5xth1j' /* Contraseña */,
                                         ),
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2
+                                            .bodyText1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryColor,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
                                             ),
                                         hintText:
                                             FFLocalizations.of(context).getText(
                                           'tpa63jkc' /* Ingresa tu contraseña */,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
+                                            color: Color(0x00000000),
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Color(0x8D1A1F24),
+                                            color: Color(0x00000000),
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
@@ -537,7 +641,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         focusedErrorBorder:
                                             UnderlineInputBorder(
@@ -546,13 +650,19 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             width: 1,
                                           ),
                                           borderRadius:
-                                              BorderRadius.circular(8),
+                                              BorderRadius.circular(14),
                                         ),
                                         filled: true,
-                                        fillColor: Colors.white,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.lock_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
                                             () => passwordCreateVisibility =
@@ -573,8 +683,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyText1
                                           .override(
-                                            fontFamily: 'Montserrat',
-                                            color: Color(0xFF0F1113),
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
                                           ),
                                     ),
                                   ),
@@ -606,29 +723,43 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             .doc()
                                             .set(horariosCreateData);
 
-                                        context.goNamedAuth('Home', mounted);
+                                        context.goNamedAuth(
+                                            'SeleccionMascotaCopy', mounted);
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'u0ydz3w7' /* Registrate */,
                                       ),
+                                      icon: Icon(
+                                        Icons.how_to_reg_outlined,
+                                        size: 24,
+                                      ),
                                       options: FFButtonOptions(
-                                        width: 230,
-                                        height: 50,
+                                        width: 200,
+                                        height: 56,
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .subtitle2
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .subtitle2Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
+                                                      .primaryBtnText,
+                                              fontSize: 14,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle2Family),
                                             ),
                                         elevation: 3,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1,
+                                          width: 0,
                                         ),
+                                        borderRadius: BorderRadius.circular(16),
                                       ),
                                     ),
                                   ),

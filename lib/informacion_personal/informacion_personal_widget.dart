@@ -44,9 +44,11 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
             'fvkuj6a0' /* Información personal */,
           ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
+                fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
                 color: FlutterFlowTheme.of(context).primaryBtnText,
                 fontSize: 22,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).bodyText2Family),
               ),
         ),
         actions: [],
@@ -105,6 +107,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF57636C),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2Family),
                                     ),
                               ),
                             ),
@@ -122,6 +128,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF101213),
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle1Family),
                                     ),
                               ),
                             ),
@@ -188,6 +198,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF57636C),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2Family),
                                     ),
                               ),
                             ),
@@ -205,6 +219,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF101213),
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle1Family),
                                     ),
                               ),
                             ),
@@ -271,6 +289,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF57636C),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2Family),
                                     ),
                               ),
                             ),
@@ -288,6 +310,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF101213),
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle1Family),
                                     ),
                               ),
                             ),
@@ -354,6 +380,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF57636C),
                                       fontSize: 14,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyText2Family),
                                     ),
                               ),
                             ),
@@ -371,6 +401,10 @@ class _InformacionPersonalWidgetState extends State<InformacionPersonalWidget> {
                                       color: Color(0xFF101213),
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .subtitle1Family),
                                     ),
                               ),
                             ),

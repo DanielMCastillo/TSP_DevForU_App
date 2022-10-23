@@ -8,7 +8,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 const kThemeModeKey = '__theme_mode__';
 SharedPreferences? _prefs;
 
+enum DeviceSize {
+  mobile,
+  tablet,
+  desktop,
+}
+
 abstract class FlutterFlowTheme {
+  static DeviceSize deviceSize = DeviceSize.mobile;
+
   static Future initialize() async =>
       _prefs = await SharedPreferences.getInstance();
   static ThemeMode get themeMode {
@@ -57,6 +65,11 @@ abstract class FlutterFlowTheme {
   late Color platinum;
   late Color ashGray;
   late Color darkSeaGreen;
+  late Color russianViolet;
+  late Color purpleNavy;
+  late Color purpleMountainMajesty;
+  late Color lilac;
+  late Color pinkLavender;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -73,17 +86,32 @@ abstract class FlutterFlowTheme {
   String get bodyText2Family => typography.bodyText2Family;
   TextStyle get bodyText2 => typography.bodyText2;
 
-  Typography get typography => ThemeTypography(this);
+  Typography get typography => {
+        DeviceSize.mobile: MobileTypography(this),
+        DeviceSize.tablet: TabletTypography(this),
+        DeviceSize.desktop: DesktopTypography(this),
+      }[deviceSize]!;
+}
+
+DeviceSize getDeviceSize(BuildContext context) {
+  final width = MediaQuery.of(context).size.width;
+  if (width < 479) {
+    return DeviceSize.mobile;
+  } else if (width < 991) {
+    return DeviceSize.tablet;
+  } else {
+    return DeviceSize.desktop;
+  }
 }
 
 class LightModeTheme extends FlutterFlowTheme {
   late Color primaryColor = const Color(0xFF96BEFF);
-  late Color secondaryColor = const Color(0xFFD0DAEA);
-  late Color tertiaryColor = const Color(0xFF87ABE6);
-  late Color alternate = const Color(0xFF6985B3);
-  late Color primaryBackground = const Color(0xFFF1F4F8);
-  late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color primaryText = const Color(0xFF101213);
+  late Color secondaryColor = const Color(0xFF87ABE6);
+  late Color tertiaryColor = const Color(0xFF6985B3);
+  late Color alternate = const Color(0xFF001B3C);
+  late Color primaryBackground = const Color(0xFFFFFBFE);
+  late Color secondaryBackground = const Color(0xFFEDEDE9);
+  late Color primaryText = const Color(0xFF1C1B1F);
   late Color secondaryText = const Color(0xFF57636C);
 
   late Color primaryBtnText = Color(0xFFFFFFFF);
@@ -105,6 +133,11 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color platinum = Color(0xFFEBEBEB);
   late Color ashGray = Color(0xFFCAD2C5);
   late Color darkSeaGreen = Color(0xFF84A98C);
+  late Color russianViolet = Color(0xFF231942);
+  late Color purpleNavy = Color(0xFF5E548E);
+  late Color purpleMountainMajesty = Color(0xFF9F86C0);
+  late Color lilac = Color(0xFFBE95C4);
+  late Color pinkLavender = Color(0xFFE0B1CB);
 }
 
 abstract class Typography {
@@ -124,56 +157,168 @@ abstract class Typography {
   TextStyle get bodyText2;
 }
 
-class ThemeTypography extends Typography {
-  ThemeTypography(this.theme);
+class MobileTypography extends Typography {
+  MobileTypography(this.theme);
 
   final FlutterFlowTheme theme;
 
-  String get title1Family => 'Montserrat';
+  String get title1Family => 'Rubik';
   TextStyle get title1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Rubik',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 24,
+        fontSize: 28,
       );
-  String get title2Family => 'Montserrat';
+  String get title2Family => 'Rubik';
   TextStyle get title2 => GoogleFonts.getFont(
-        'Montserrat',
-        color: theme.secondaryText,
+        'Rubik',
+        color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 22,
       );
-  String get title3Family => 'Montserrat';
+  String get title3Family => 'Rubik';
   TextStyle get title3 => GoogleFonts.getFont(
-        'Montserrat',
+        'Rubik',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       );
-  String get subtitle1Family => 'Montserrat';
+  String get subtitle1Family => 'Rubik';
   TextStyle get subtitle1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Rubik',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 18,
       );
-  String get subtitle2Family => 'Montserrat';
+  String get subtitle2Family => 'Rubik';
   TextStyle get subtitle2 => GoogleFonts.getFont(
-        'Montserrat',
+        'Rubik',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 16,
       );
-  String get bodyText1Family => 'Montserrat';
+  String get bodyText1Family => 'Rubik';
   TextStyle get bodyText1 => GoogleFonts.getFont(
-        'Montserrat',
+        'Rubik',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14,
       );
-  String get bodyText2Family => 'Montserrat';
+  String get bodyText2Family => 'Poppins';
   TextStyle get bodyText2 => GoogleFonts.getFont(
-        'Montserrat',
+        'Poppins',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 14,
+      );
+}
+
+class TabletTypography extends Typography {
+  TabletTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Rubik';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 24,
+      );
+  String get title2Family => 'Rubik';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 22,
+      );
+  String get title3Family => 'Rubik';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Rubik';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+      );
+  String get subtitle2Family => 'Rubik';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'Rubik';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'Poppins';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'Poppins',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 14,
+      );
+}
+
+class DesktopTypography extends Typography {
+  DesktopTypography(this.theme);
+
+  final FlutterFlowTheme theme;
+
+  String get title1Family => 'Rubik';
+  TextStyle get title1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 24,
+      );
+  String get title2Family => 'Rubik';
+  TextStyle get title2 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 22,
+      );
+  String get title3Family => 'Rubik';
+  TextStyle get title3 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 20,
+      );
+  String get subtitle1Family => 'Rubik';
+  TextStyle get subtitle1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 18,
+      );
+  String get subtitle2Family => 'Rubik';
+  TextStyle get subtitle2 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
+      );
+  String get bodyText1Family => 'Rubik';
+  TextStyle get bodyText1 => GoogleFonts.getFont(
+        'Rubik',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 14,
+      );
+  String get bodyText2Family => 'Poppins';
+  TextStyle get bodyText2 => GoogleFonts.getFont(
+        'Poppins',
         color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 14,
@@ -185,8 +330,8 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color secondaryColor = const Color(0xFFC5D5EA);
   late Color tertiaryColor = const Color(0xFFB3C5D7);
   late Color alternate = const Color(0xFF7392B7);
-  late Color primaryBackground = const Color(0xFF1A1F24);
-  late Color secondaryBackground = const Color(0xFF24282C);
+  late Color primaryBackground = const Color(0xFF1C1B1F);
+  late Color secondaryBackground = const Color(0xFF26282B);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF979797);
 
@@ -209,6 +354,11 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color platinum = Color(0xFFEBEBEB);
   late Color ashGray = Color(0xFFCAD2C5);
   late Color darkSeaGreen = Color(0xFF84A98C);
+  late Color russianViolet = Color(0xFF231942);
+  late Color purpleNavy = Color(0xFF5E548E);
+  late Color purpleMountainMajesty = Color(0xFF9F86C0);
+  late Color lilac = Color(0xFFBE95C4);
+  late Color pinkLavender = Color(0xFFE0B1CB);
 }
 
 extension TextStyleHelper on TextStyle {

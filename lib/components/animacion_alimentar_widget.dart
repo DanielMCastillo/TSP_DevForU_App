@@ -34,21 +34,23 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
               Navigator.pop(context);
             },
             text: FFLocalizations.of(context).getText(
-              'b1chwfkg' /* Gracias <3 */,
+              'b1chwfkg' /* Gracias */,
+            ),
+            icon: Icon(
+              Icons.favorite,
+              size: 15,
             ),
             options: FFButtonOptions(
-              width: 130,
-              height: 40,
+              width: 150,
+              height: 56,
               color: FlutterFlowTheme.of(context).primaryColor,
-              textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                    fontFamily: 'Montserrat',
-                    color: Colors.white,
-                  ),
+              textStyle: FlutterFlowTheme.of(context).bodyText1,
+              elevation: 1,
               borderSide: BorderSide(
                 color: Colors.transparent,
                 width: 1,
               ),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(14),
             ),
           ),
         ),

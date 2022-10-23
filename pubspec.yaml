@@ -33,8 +33,7 @@ dependencies:
   cloud_firestore: 3.2.1
   cloud_firestore_platform_interface: 5.5.10
   cloud_firestore_web: 2.6.19
-  confetti: 0.6.0
-  file_picker: 4.5.1
+  file_picker: ^4.6.1
   firebase_analytics: 9.1.12
   firebase_analytics_platform_interface: 3.1.10
   firebase_analytics_web: 0.4.0+17
@@ -61,7 +60,6 @@ dependencies:
   google_sign_in_platform_interface: 2.2.0
   google_sign_in_web: 0.10.2
   image_picker: 0.8.5+3
-  infinite_scroll_pagination: 3.2.0
   intl: 0.17.0
   json_path: 0.4.1
   json_serializable: 6.3.1
@@ -71,14 +69,15 @@ dependencies:
   lottie: 1.2.1
   mime_type: 1.0.0
   page_transition: 2.0.4
+  pdf: ^3.8.1
   plugin_platform_interface: 2.1.2
+  printing: ^5.9.1
   rxdart: 0.27.4
   shared_preferences: 2.0.15
   sign_in_with_apple: 4.1.0
   sign_in_with_apple_platform_interface: 1.0.0
   sign_in_with_apple_web: 1.0.1
   smooth_page_indicator: 1.0.0+2
-  table_calendar: 3.0.6
   timeago: 3.2.2
   url_launcher: 6.1.5
 

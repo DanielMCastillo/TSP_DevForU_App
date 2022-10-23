@@ -88,6 +88,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistroWidget(),
             ),
             FFRoute(
+              name: 'SeleccionMascota',
+              path: 'seleccionMascota',
+              requireAuth: true,
+              builder: (context, params) => SeleccionMascotaWidget(),
+            ),
+            FFRoute(
               name: 'Home',
               path: 'home',
               requireAuth: true,
@@ -104,24 +110,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : PerfilWidget(),
             ),
             FFRoute(
-              name: 'Perfil2',
-              path: 'perfil2',
+              name: 'Registros_Animo',
+              path: 'registrosAnimo',
               requireAuth: true,
               builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Perfil2')
-                  : Perfil2Widget(),
-            ),
-            FFRoute(
-              name: 'Editar_Perfil',
-              path: 'editarPerfil',
-              requireAuth: true,
-              builder: (context, params) => EditarPerfilWidget(),
-            ),
-            FFRoute(
-              name: 'Calendarioxd',
-              path: 'calendarioxd',
-              requireAuth: true,
-              builder: (context, params) => CalendarioxdWidget(),
+                  ? NavBarPage(initialPage: 'Registros_Animo')
+                  : RegistrosAnimoWidget(),
             ),
             FFRoute(
               name: 'Animoo',
@@ -130,36 +124,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
-              name: 'Nota_EstadoAnimo',
-              path: 'notaEstadoAnimo',
-              requireAuth: true,
-              builder: (context, params) => NotaEstadoAnimoWidget(),
-            ),
-            FFRoute(
-              name: 'Felicitacion_Journaling',
-              path: 'felicitacionJournaling',
-              requireAuth: true,
-              builder: (context, params) => FelicitacionJournalingWidget(),
-            ),
-            FFRoute(
-              name: 'Registros',
-              path: 'registros',
-              requireAuth: true,
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'Registros')
-                  : RegistrosWidget(),
-            ),
-            FFRoute(
-              name: 'RegistroHorarioComida',
-              path: 'registroHorarioComida',
-              requireAuth: true,
-              builder: (context, params) => RegistroHorarioComidaWidget(),
-            ),
-            FFRoute(
               name: 'Ayuda',
               path: 'ayuda',
               requireAuth: true,
               builder: (context, params) => AyudaWidget(),
+            ),
+            FFRoute(
+              name: 'Editar_Perfil',
+              path: 'editarPerfil',
+              requireAuth: true,
+              builder: (context, params) => EditarPerfilWidget(),
             ),
             FFRoute(
               name: 'Contacto_Emergencia',
@@ -168,28 +142,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ContactoEmergenciaWidget(),
             ),
             FFRoute(
-              name: 'Contacto_EmergenciaCopy',
-              path: 'contactoEmergenciaCopy',
+              name: 'Contacto_Emergencia2',
+              path: 'contactoEmergencia2',
               requireAuth: true,
-              builder: (context, params) => ContactoEmergenciaCopyWidget(),
+              builder: (context, params) => ContactoEmergencia2Widget(),
             ),
             FFRoute(
-              name: 'PantallaDeFelicitacion',
-              path: 'pantallaDeFelicitacion',
+              name: 'RegistroHorarioComida',
+              path: 'registroHorarioComida',
               requireAuth: true,
-              builder: (context, params) => PantallaDeFelicitacionWidget(),
+              builder: (context, params) => RegistroHorarioComidaWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascota',
-              path: 'seleccionMascota',
-              requireAuth: true,
-              builder: (context, params) => SeleccionMascotaWidget(),
+              name: 'EliminarCuenta',
+              path: 'eliminarCuenta',
+              builder: (context, params) => EliminarCuentaWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascotaCopy',
-              path: 'seleccionMascotaCopy',
+              name: 'Felicitacion_Journaling',
+              path: 'felicitacionJournaling',
               requireAuth: true,
-              builder: (context, params) => SeleccionMascotaCopyWidget(),
+              builder: (context, params) => FelicitacionJournalingWidget(),
             ),
             FFRoute(
               name: 'Informacion_Personal',
@@ -204,15 +177,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AfkxdWidget(),
             ),
             FFRoute(
-              name: 'BienvenidaX',
-              path: 'bienvenidaX',
+              name: 'SeleccionMascotaCopy',
+              path: 'seleccionMascotaCopy',
               requireAuth: true,
-              builder: (context, params) => BienvenidaXWidget(),
+              builder: (context, params) => SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
-              name: 'EliminarCuenta',
-              path: 'eliminarCuenta',
-              builder: (context, params) => EliminarCuentaWidget(),
+              name: 'test',
+              path: 'test',
+              requireAuth: true,
+              builder: (context, params) => TestWidget(),
+            ),
+            FFRoute(
+              name: 'pdfTest',
+              path: 'pdfTest',
+              requireAuth: true,
+              builder: (context, params) => PdfTestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),
@@ -386,7 +366,7 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).background,
+                  color: FlutterFlowTheme.of(context).primaryBackground,
                   child: Image.asset(
                     'assets/images/D4.png',
                     fit: BoxFit.scaleDown,

@@ -1,42 +1,41 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'usuario_mascota_record.dart';
+part of 'usuarios_confianza_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<UsuarioMascotaRecord> _$usuarioMascotaRecordSerializer =
-    new _$UsuarioMascotaRecordSerializer();
+Serializer<UsuariosConfianzaRecord> _$usuariosConfianzaRecordSerializer =
+    new _$UsuariosConfianzaRecordSerializer();
 
-class _$UsuarioMascotaRecordSerializer
-    implements StructuredSerializer<UsuarioMascotaRecord> {
+class _$UsuariosConfianzaRecordSerializer
+    implements StructuredSerializer<UsuariosConfianzaRecord> {
   @override
   final Iterable<Type> types = const [
-    UsuarioMascotaRecord,
-    _$UsuarioMascotaRecord
+    UsuariosConfianzaRecord,
+    _$UsuariosConfianzaRecord
   ];
   @override
-  final String wireName = 'UsuarioMascotaRecord';
+  final String wireName = 'UsuariosConfianzaRecord';
 
   @override
   Iterable<Object?> serialize(
-      Serializers serializers, UsuarioMascotaRecord object,
+      Serializers serializers, UsuariosConfianzaRecord object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object?>[];
     Object? value;
-    value = object.uidRef;
+    value = object.nombreContacto;
     if (value != null) {
       result
-        ..add('uid_ref')
+        ..add('nombre_contacto')
         ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
+            specifiedType: const FullType(String)));
     }
-    value = object.nombreMascota;
+    value = object.numeroContacto;
     if (value != null) {
       result
-        ..add('nombreMascota')
+        ..add('numero_contacto')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -52,10 +51,10 @@ class _$UsuarioMascotaRecordSerializer
   }
 
   @override
-  UsuarioMascotaRecord deserialize(
+  UsuariosConfianzaRecord deserialize(
       Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new UsuarioMascotaRecordBuilder();
+    final result = new UsuariosConfianzaRecordBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -63,14 +62,12 @@ class _$UsuarioMascotaRecordSerializer
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'uid_ref':
-          result.uidRef = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
+        case 'nombre_contacto':
+          result.nombreContacto = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
           break;
-        case 'nombreMascota':
-          result.nombreMascota = serializers.deserialize(value,
+        case 'numero_contacto':
+          result.numeroContacto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'Document__Reference__Field':
@@ -86,81 +83,85 @@ class _$UsuarioMascotaRecordSerializer
   }
 }
 
-class _$UsuarioMascotaRecord extends UsuarioMascotaRecord {
+class _$UsuariosConfianzaRecord extends UsuariosConfianzaRecord {
   @override
-  final DocumentReference<Object?>? uidRef;
+  final String? nombreContacto;
   @override
-  final String? nombreMascota;
+  final String? numeroContacto;
   @override
   final DocumentReference<Object?>? ffRef;
 
-  factory _$UsuarioMascotaRecord(
-          [void Function(UsuarioMascotaRecordBuilder)? updates]) =>
-      (new UsuarioMascotaRecordBuilder()..update(updates))._build();
+  factory _$UsuariosConfianzaRecord(
+          [void Function(UsuariosConfianzaRecordBuilder)? updates]) =>
+      (new UsuariosConfianzaRecordBuilder()..update(updates))._build();
 
-  _$UsuarioMascotaRecord._({this.uidRef, this.nombreMascota, this.ffRef})
+  _$UsuariosConfianzaRecord._(
+      {this.nombreContacto, this.numeroContacto, this.ffRef})
       : super._();
 
   @override
-  UsuarioMascotaRecord rebuild(
-          void Function(UsuarioMascotaRecordBuilder) updates) =>
+  UsuariosConfianzaRecord rebuild(
+          void Function(UsuariosConfianzaRecordBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UsuarioMascotaRecordBuilder toBuilder() =>
-      new UsuarioMascotaRecordBuilder()..replace(this);
+  UsuariosConfianzaRecordBuilder toBuilder() =>
+      new UsuariosConfianzaRecordBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UsuarioMascotaRecord &&
-        uidRef == other.uidRef &&
-        nombreMascota == other.nombreMascota &&
+    return other is UsuariosConfianzaRecord &&
+        nombreContacto == other.nombreContacto &&
+        numeroContacto == other.numeroContacto &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, uidRef.hashCode), nombreMascota.hashCode), ffRef.hashCode));
+        $jc($jc(0, nombreContacto.hashCode), numeroContacto.hashCode),
+        ffRef.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper(r'UsuarioMascotaRecord')
-          ..add('uidRef', uidRef)
-          ..add('nombreMascota', nombreMascota)
+    return (newBuiltValueToStringHelper(r'UsuariosConfianzaRecord')
+          ..add('nombreContacto', nombreContacto)
+          ..add('numeroContacto', numeroContacto)
           ..add('ffRef', ffRef))
         .toString();
   }
 }
 
-class UsuarioMascotaRecordBuilder
-    implements Builder<UsuarioMascotaRecord, UsuarioMascotaRecordBuilder> {
-  _$UsuarioMascotaRecord? _$v;
+class UsuariosConfianzaRecordBuilder
+    implements
+        Builder<UsuariosConfianzaRecord, UsuariosConfianzaRecordBuilder> {
+  _$UsuariosConfianzaRecord? _$v;
 
-  DocumentReference<Object?>? _uidRef;
-  DocumentReference<Object?>? get uidRef => _$this._uidRef;
-  set uidRef(DocumentReference<Object?>? uidRef) => _$this._uidRef = uidRef;
+  String? _nombreContacto;
+  String? get nombreContacto => _$this._nombreContacto;
+  set nombreContacto(String? nombreContacto) =>
+      _$this._nombreContacto = nombreContacto;
 
-  String? _nombreMascota;
-  String? get nombreMascota => _$this._nombreMascota;
-  set nombreMascota(String? nombreMascota) =>
-      _$this._nombreMascota = nombreMascota;
+  String? _numeroContacto;
+  String? get numeroContacto => _$this._numeroContacto;
+  set numeroContacto(String? numeroContacto) =>
+      _$this._numeroContacto = numeroContacto;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
 
-  UsuarioMascotaRecordBuilder() {
-    UsuarioMascotaRecord._initializeBuilder(this);
+  UsuariosConfianzaRecordBuilder() {
+    UsuariosConfianzaRecord._initializeBuilder(this);
   }
 
-  UsuarioMascotaRecordBuilder get _$this {
+  UsuariosConfianzaRecordBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _uidRef = $v.uidRef;
-      _nombreMascota = $v.nombreMascota;
+      _nombreContacto = $v.nombreContacto;
+      _numeroContacto = $v.numeroContacto;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -168,23 +169,25 @@ class UsuarioMascotaRecordBuilder
   }
 
   @override
-  void replace(UsuarioMascotaRecord other) {
+  void replace(UsuariosConfianzaRecord other) {
     ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$UsuarioMascotaRecord;
+    _$v = other as _$UsuariosConfianzaRecord;
   }
 
   @override
-  void update(void Function(UsuarioMascotaRecordBuilder)? updates) {
+  void update(void Function(UsuariosConfianzaRecordBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  UsuarioMascotaRecord build() => _build();
+  UsuariosConfianzaRecord build() => _build();
 
-  _$UsuarioMascotaRecord _build() {
+  _$UsuariosConfianzaRecord _build() {
     final _$result = _$v ??
-        new _$UsuarioMascotaRecord._(
-            uidRef: uidRef, nombreMascota: nombreMascota, ffRef: ffRef);
+        new _$UsuariosConfianzaRecord._(
+            nombreContacto: nombreContacto,
+            numeroContacto: numeroContacto,
+            ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

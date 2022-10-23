@@ -79,8 +79,16 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title1Family,
                                               color: Colors.white,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .title1Family),
                                             ),
                                       ),
                                     ],
@@ -97,16 +105,22 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                           FFLocalizations.of(context).getText(
                                             'hcfihmnd' /* Soy Devi y te doy la bienvenid... */,
                                           ),
-                                          textAlign: TextAlign.start,
+                                          textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Poppins',
+                                                fontFamily: 'Rubik',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.w500,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .subtitle2Family),
                                               ),
                                         ),
                                       ),
@@ -156,10 +170,18 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .title1Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .title1Family),
                                             ),
                                       ),
                                     ],
@@ -176,13 +198,24 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                           FFLocalizations.of(context).getText(
                                             '8r1f64d7' /* Me vas a alimentar en las hora... */,
                                           ),
+                                          textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2Family,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .subtitle2Family),
                                               ),
                                         ),
                                       ),
@@ -231,10 +264,16 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
-                                              fontFamily: 'Montserrat',
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .title1Family),
                                             ),
                                       ),
                                     ],
@@ -251,13 +290,24 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                           FFLocalizations.of(context).getText(
                                             'glw62prf' /* Quiero que anotes como te sien... */,
                                           ),
+                                          textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
                                               .override(
-                                                fontFamily: 'Montserrat',
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .subtitle2Family,
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w500,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .subtitle2Family),
                                               ),
                                         ),
                                       ),
@@ -275,15 +325,15 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed('Registro');
+                                            context.goNamed('Registro');
                                           },
                                           text: FFLocalizations.of(context)
                                               .getText(
                                             'ztrohci9' /* Empecemos */,
                                           ),
                                           options: FFButtonOptions(
-                                            width: 170,
-                                            height: 50,
+                                            width: 150,
+                                            height: 56,
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryBackground,
                                             textStyle: FlutterFlowTheme.of(
@@ -293,15 +343,23 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                                   fontFamily: 'Lexend Deca',
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryColor,
-                                                  fontSize: 16,
+                                                      .primaryText,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.w500,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .subtitle2Family),
                                                 ),
-                                            elevation: 2,
+                                            elevation: 3,
                                             borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1,
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(14),
                                           ),
                                         ),
                                       ),

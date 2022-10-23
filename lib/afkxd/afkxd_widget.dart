@@ -28,9 +28,11 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
             'tfweh2pr' /* AFK */,
           ),
           style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
+                fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
                 color: FlutterFlowTheme.of(context).primaryBtnText,
                 fontSize: 22,
+                useGoogleFonts: GoogleFonts.asMap()
+                    .containsKey(FlutterFlowTheme.of(context).bodyText2Family),
               ),
         ),
         actions: [],

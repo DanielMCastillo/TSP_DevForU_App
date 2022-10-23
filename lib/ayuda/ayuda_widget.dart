@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import '../custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AyudaWidget extends StatefulWidget {
@@ -42,16 +41,16 @@ class _AyudaWidgetState extends State<AyudaWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
-        backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,
         leading: FlutterFlowIconButton(
           borderColor: Colors.transparent,
           borderRadius: 30,
           borderWidth: 1,
           buttonSize: 60,
-          icon: FaIcon(
-            FontAwesomeIcons.arrowCircleLeft,
-            color: Colors.white,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
           onPressed: () async {
@@ -60,17 +59,13 @@ class _AyudaWidgetState extends State<AyudaWidget> {
         ),
         title: Text(
           FFLocalizations.of(context).getText(
-            'bxf3i4y6' /* Botón de ayuda */,
+            'x9su1bc0' /* Ayuda */,
           ),
-          style: FlutterFlowTheme.of(context).bodyText2.override(
-                fontFamily: 'Montserrat',
-                color: FlutterFlowTheme.of(context).primaryBtnText,
-                fontSize: 22,
-              ),
+          style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
         centerTitle: false,
-        elevation: 1,
+        elevation: 0,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -91,11 +86,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                             'uglm36nk' /* ¡Estamos contigo! */,
                           ),
                           textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyText1.override(
-                                    fontFamily: 'Montserrat',
-                                    fontSize: 25,
-                                  ),
+                          style: FlutterFlowTheme.of(context).title1,
                         ),
                       ),
                     ],
@@ -122,32 +113,29 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                               '7t8gpd0z' /* Ayuda Profesional */,
                             ),
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .subtitle1
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                ),
+                            style: FlutterFlowTheme.of(context).subtitle1,
                           ),
                         ),
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.17, 0.01),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                           child: Text(
                             FFLocalizations.of(context).getText(
                               'hi4pcmyw' /* Las personas que se sientan es... */,
                             ),
                             textAlign: TextAlign.justify,
-                            style:
-                                FlutterFlowTheme.of(context).bodyText2.override(
-                                      fontFamily: 'Montserrat',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontSize: 13,
-                                      fontStyle: FontStyle.italic,
-                                    ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyText1Family,
+                                  fontStyle: FontStyle.italic,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText1Family),
+                                ),
                           ),
                         ),
                       ),
@@ -208,6 +196,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                                 color: FlutterFlowTheme.of(context).alternate,
                                 fontSize: 22,
                                 fontWeight: FontWeight.bold,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyText1Family),
                               ),
                           textAlign: TextAlign.center,
                         ),
@@ -229,17 +220,19 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                   ),
                   options: FFButtonOptions(
                     width: 180,
-                    height: 50,
+                    height: 56,
                     color: FlutterFlowTheme.of(context).alternate,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),
@@ -256,17 +249,19 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                   ),
                   options: FFButtonOptions(
                     width: 180,
-                    height: 50,
+                    height: 56,
                     color: FlutterFlowTheme.of(context).primaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(16),
                   ),
                 ),
               ),

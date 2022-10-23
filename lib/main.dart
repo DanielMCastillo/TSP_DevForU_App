@@ -9,7 +9,6 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
@@ -18,6 +17,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FlutterFlowTheme.initialize();
+
+  FFAppState(); // Initialize FFAppState
 
   runApp(MyApp());
 }
@@ -119,10 +120,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Home': HomeWidget(),
-      'Registros': RegistrosWidget(),
       'Perfil': PerfilWidget(),
-      'Perfil2': Perfil2Widget(),
+      'Home': HomeWidget(),
+      'Registros_Animo': RegistrosAnimoWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -141,8 +141,26 @@ class _NavBarPageState extends State<NavBarPage> {
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.home,
+            icon: Icon(
+              Icons.person_outline,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.person,
+              size: 24,
+            ),
+            label: FFLocalizations.of(context).getText(
+              'rnkj7p33' /* Perfil */,
+            ),
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.home,
               size: 24,
             ),
             label: FFLocalizations.of(context).getText(
@@ -151,32 +169,16 @@ class _NavBarPageState extends State<NavBarPage> {
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.book,
+            icon: Icon(
+              Icons.collections_bookmark_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.collections_bookmark,
               size: 24,
             ),
             label: FFLocalizations.of(context).getText(
               's53zxzuw' /* Registros */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: FaIcon(
-              FontAwesomeIcons.userAstronaut,
-              size: 24,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'huwzv4yp' /* Perfil */,
-            ),
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle_outlined,
-              size: 24,
-            ),
-            label: FFLocalizations.of(context).getText(
-              'rnkj7p33' /* Prueba */,
             ),
             tooltip: '',
           )

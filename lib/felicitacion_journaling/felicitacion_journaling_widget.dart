@@ -36,7 +36,7 @@ class _FelicitacionJournalingWidgetState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/gif2.gif',
+                      'assets/images/congrats.gif',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -48,25 +48,28 @@ class _FelicitacionJournalingWidgetState
                 FFLocalizations.of(context).getText(
                   'qnisxeod' /* ¡Lo hiciste! */,
                 ),
-                style: FlutterFlowTheme.of(context).title2.override(
-                      fontFamily: 'Outfit',
-                      color: Color(0xFF96BEFF),
-                      fontSize: 32,
-                      fontWeight: FontWeight.w500,
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).title1.override(
+                      fontFamily: FlutterFlowTheme.of(context).title1Family,
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).title1Family),
                     ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 0),
                 child: Text(
                   FFLocalizations.of(context).getText(
                     'bm92nnf1' /* Llevar un diario lo ayuda a in... */,
                   ),
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).subtitle2.override(
-                        fontFamily: 'Outfit',
-                        color: FlutterFlowTheme.of(context).alternate,
+                  textAlign: TextAlign.justify,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyText1Family,
                         fontSize: 20,
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w500,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText1Family),
                       ),
                 ),
               ),
@@ -90,18 +93,21 @@ class _FelicitacionJournalingWidgetState
                   options: FFButtonOptions(
                     width: 130,
                     height: 50,
-                    color: Color(0xFF96BEFF),
+                    color: FlutterFlowTheme.of(context).primaryColor,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).primaryBtnText,
+                          fontFamily: 'Rubik',
+                          color: Colors.white,
                           fontSize: 16,
-                          fontWeight: FontWeight.normal,
+                          fontWeight: FontWeight.w500,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     elevation: 3,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                       width: 1,
                     ),
+                    borderRadius: BorderRadius.circular(14),
                   ),
                 ),
               ),

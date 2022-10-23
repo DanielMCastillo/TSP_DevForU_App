@@ -9,6 +9,7 @@ import 'estado_animo_record.dart';
 import 'frases_reforzamiento_record.dart';
 import 'horarios_record.dart';
 import 'img_test_record.dart';
+import 'usuarios_confianza_record.dart';
 
 import 'index.dart';
 
@@ -27,6 +28,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   FrasesReforzamientoRecord,
   HorariosRecord,
   ImgTestRecord,
+  UsuariosConfianzaRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

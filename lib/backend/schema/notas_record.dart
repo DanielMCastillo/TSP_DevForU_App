@@ -21,15 +21,7 @@ abstract class NotasRecord implements Built<NotasRecord, NotasRecordBuilder> {
   DocumentReference? get uidRef;
 
   @BuiltValueField(wireName: 'id_estado_animo')
-  int? get idEstadoAnimo;
-
-  String? get sentimiento;
-
-  @BuiltValueField(wireName: 'id_estadoanimo')
-  String? get idEstadoanimo;
-
-  @BuiltValueField(wireName: 'foto_nota')
-  String? get fotoNota;
+  String? get idEstadoAnimo;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -38,10 +30,7 @@ abstract class NotasRecord implements Built<NotasRecord, NotasRecordBuilder> {
   static void _initializeBuilder(NotasRecordBuilder builder) => builder
     ..idNota = 0
     ..nota = ''
-    ..idEstadoAnimo = 0
-    ..sentimiento = ''
-    ..idEstadoanimo = ''
-    ..fotoNota = '';
+    ..idEstadoAnimo = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('notas');
@@ -69,10 +58,7 @@ Map<String, dynamic> createNotasRecordData({
   DateTime? fechaRedac,
   String? nota,
   DocumentReference? uidRef,
-  int? idEstadoAnimo,
-  String? sentimiento,
-  String? idEstadoanimo,
-  String? fotoNota,
+  String? idEstadoAnimo,
 }) {
   final firestoreData = serializers.toFirestore(
     NotasRecord.serializer,
@@ -82,10 +68,7 @@ Map<String, dynamic> createNotasRecordData({
         ..fechaRedac = fechaRedac
         ..nota = nota
         ..uidRef = uidRef
-        ..idEstadoAnimo = idEstadoAnimo
-        ..sentimiento = sentimiento
-        ..idEstadoanimo = idEstadoanimo
-        ..fotoNota = fotoNota,
+        ..idEstadoAnimo = idEstadoAnimo,
     ),
   );
 
