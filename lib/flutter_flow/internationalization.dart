@@ -149,109 +149,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'home',
     },
   },
-  // SeleccionMascota
+  // SeleccionMascotaCopy
   {
-    '2vyk80m7': {
-      'es': 'Devi',
-      'en': 'devi',
-    },
-    'cnf82n9r': {
-      'es': 'Ajolote',
-      'en': 'Axolotl',
-    },
-    '3vwt1fky': {
+    '7tmmxkig': {
       'es': 'Seleccionar',
       'en': 'Select',
     },
-    '5bqr695o': {
-      'es': 'Jali',
-      'en': 'Khali',
-    },
-    'p6jk8dyh': {
-      'es': 'Zorro',
-      'en': 'Fox',
-    },
-    '7nqqlrh9': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'znz1xpud': {
-      'es': 'Sonam',
-      'en': 'Sonam',
-    },
-    'ot4v8fjt': {
-      'es': 'Gato',
-      'en': 'Cat',
-    },
-    'jngeo9a8': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'fzfhji88': {
-      'es': 'Raluca',
-      'en': 'Raluca',
-    },
-    'qm1bymsn': {
-      'es': 'Perro',
-      'en': 'Dog',
-    },
-    'h2zjh8fe': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'ukmhl6f1': {
-      'es': 'Nosek',
-      'en': 'Nosek',
-    },
-    'zt8f1s0x': {
-      'es': 'Dragón',
-      'en': 'Dragon',
-    },
-    'yi7y3voc': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    '0sp6803v': {
-      'es': 'Bobi',
-      'en': 'bobby',
-    },
-    '2z3a4zzw': {
-      'es': 'Oso panda',
-      'en': 'Panda bear',
-    },
-    'pvp2q52f': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'brp59pj4': {
-      'es': 'Chork',
-      'en': 'Chork',
-    },
-    'ty7hypoa': {
-      'es': 'Conejo',
-      'en': 'Rabbit',
-    },
-    'nh1vyoun': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'mfttgzcq': {
-      'es': 'Mae',
-      'en': 'Mae',
-    },
-    'tl2iy5lr': {
-      'es': 'Unicornio',
-      'en': 'Unicorn',
-    },
-    'w6onct9x': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    '8mj29reu': {
-      'es': 'Escoge un acompañante',
+    'pno5dxrm': {
+      'es': 'Elige un acompañante',
       'en': 'Choose a companion',
     },
-    'ap7gn3w0': {
+    '8dcba72t': {
       'es': 'seleccion',
       'en': 'selection',
     },
@@ -286,7 +194,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Lunch hours',
     },
     'enbiolph': {
-      'es': 'Habilitar modo escuro',
+      'es': 'Habilitar modo oscuro',
       'en': 'enable dark mode',
     },
     '3wbx0rhj': {
@@ -605,6 +513,113 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'home',
     },
   },
+  // SeleccionMascota
+  {
+    '2vyk80m7': {
+      'es': 'Devi',
+      'en': 'devi',
+    },
+    'cnf82n9r': {
+      'es': 'Ajolote',
+      'en': 'Axolotl',
+    },
+    '3vwt1fky': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    '5bqr695o': {
+      'es': 'Jali',
+      'en': 'Khali',
+    },
+    'p6jk8dyh': {
+      'es': 'Zorro',
+      'en': 'Fox',
+    },
+    '7nqqlrh9': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    'znz1xpud': {
+      'es': 'Sonam',
+      'en': 'Sonam',
+    },
+    'ot4v8fjt': {
+      'es': 'Gato',
+      'en': 'Cat',
+    },
+    'jngeo9a8': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    'fzfhji88': {
+      'es': 'Raluca',
+      'en': 'Raluca',
+    },
+    'qm1bymsn': {
+      'es': 'Perro',
+      'en': 'Dog',
+    },
+    'h2zjh8fe': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    'ukmhl6f1': {
+      'es': 'Nosek',
+      'en': 'Nosek',
+    },
+    'zt8f1s0x': {
+      'es': 'Dragón',
+      'en': 'Dragon',
+    },
+    'yi7y3voc': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    '0sp6803v': {
+      'es': 'Bobi',
+      'en': 'bobby',
+    },
+    '2z3a4zzw': {
+      'es': 'Oso panda',
+      'en': 'Panda bear',
+    },
+    'pvp2q52f': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    'brp59pj4': {
+      'es': 'Chork',
+      'en': 'Chork',
+    },
+    'ty7hypoa': {
+      'es': 'Conejo',
+      'en': 'Rabbit',
+    },
+    'nh1vyoun': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    'mfttgzcq': {
+      'es': 'Mae',
+      'en': 'Mae',
+    },
+    'tl2iy5lr': {
+      'es': 'Unicornio',
+      'en': 'Unicorn',
+    },
+    'w6onct9x': {
+      'es': 'Seleccionar',
+      'en': 'Select',
+    },
+    '8mj29reu': {
+      'es': 'Escoge un acompañante',
+      'en': 'Choose a companion',
+    },
+    'ap7gn3w0': {
+      'es': 'seleccion',
+      'en': 'selection',
+    },
+  },
   // afkxd
   {
     'tfweh2pr': {
@@ -614,21 +629,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'qbok1hva': {
       'es': 'Home',
       'en': 'home',
-    },
-  },
-  // SeleccionMascotaCopy
-  {
-    '7tmmxkig': {
-      'es': 'Seleccionar',
-      'en': 'Select',
-    },
-    'sgy7wwin': {
-      'es': 'Selecciona a tu acompañante',
-      'en': 'Select your companion',
-    },
-    '8dcba72t': {
-      'es': 'seleccion',
-      'en': 'selection',
     },
   },
   // test

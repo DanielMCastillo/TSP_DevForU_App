@@ -8,7 +8,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EliminarCuentaWidget extends StatefulWidget {
@@ -380,12 +379,11 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                 if (!snapshot.hasData) {
                                   return Center(
                                     child: SizedBox(
-                                      width: 30,
-                                      height: 30,
-                                      child: SpinKitPulse(
+                                      width: 25,
+                                      height: 25,
+                                      child: CircularProgressIndicator(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        size: 30,
                                       ),
                                     ),
                                   );

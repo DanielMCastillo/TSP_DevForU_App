@@ -1,14 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeleccionMascotaCopyWidget extends StatefulWidget {
@@ -49,11 +46,10 @@ class _SeleccionMascotaCopyWidgetState
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 30,
-              height: 30,
-              child: SpinKitPulse(
+              width: 25,
+              height: 25,
+              child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primaryColor,
-                size: 30,
               ),
             ),
           );
@@ -72,37 +68,17 @@ class _SeleccionMascotaCopyWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
           appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
-            leading: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 30,
-              borderWidth: 1,
-              buttonSize: 60,
-              icon: FaIcon(
-                FontAwesomeIcons.arrowCircleLeft,
-                color: Colors.white,
-                size: 30,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
-            ),
             title: Text(
               FFLocalizations.of(context).getText(
-                'sgy7wwin' /* Selecciona a tu acompañante */,
+                'pno5dxrm' /* Elige un acompañante */,
               ),
-              style: FlutterFlowTheme.of(context).bodyText2.override(
-                    fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
-                    color: FlutterFlowTheme.of(context).primaryBtnText,
-                    fontSize: 18,
-                    useGoogleFonts: GoogleFonts.asMap().containsKey(
-                        FlutterFlowTheme.of(context).bodyText2Family),
-                  ),
+              style: FlutterFlowTheme.of(context).title1,
             ),
             actions: [],
             centerTitle: false,
-            elevation: 1,
+            elevation: 0,
           ),
           body: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
@@ -122,12 +98,11 @@ class _SeleccionMascotaCopyWidgetState
                             if (!snapshot.hasData) {
                               return Center(
                                 child: SizedBox(
-                                  width: 30,
-                                  height: 30,
-                                  child: SpinKitPulse(
+                                  width: 25,
+                                  height: 25,
+                                  child: CircularProgressIndicator(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
-                                    size: 30,
                                   ),
                                 ),
                               );
@@ -187,7 +162,7 @@ class _SeleccionMascotaCopyWidgetState
                                                       .imagenMascota!,
                                                   width: 100,
                                                   height: 100,
-                                                  fit: BoxFit.fitHeight,
+                                                  fit: BoxFit.scaleDown,
                                                 ),
                                               ),
                                             ),
@@ -319,8 +294,8 @@ class _SeleccionMascotaCopyWidgetState
                                                   '7tmmxkig' /* Seleccionar */,
                                                 ),
                                                 options: FFButtonOptions(
-                                                  width: 130,
-                                                  height: 40,
+                                                  width: 120,
+                                                  height: 56,
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
@@ -346,7 +321,7 @@ class _SeleccionMascotaCopyWidgetState
                                                     width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(8),
+                                                      BorderRadius.circular(16),
                                                 ),
                                               ),
                                             ),

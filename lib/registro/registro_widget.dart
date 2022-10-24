@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistroWidget extends StatefulWidget {
@@ -416,9 +415,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                                   context)
                                                               .subtitle2Family),
                                             ),
-                                        elevation: 3,
                                         borderSide: BorderSide(
-                                          color: Colors.transparent,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
                                           width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(16),
@@ -755,9 +754,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                                   context)
                                                               .subtitle2Family),
                                             ),
-                                        elevation: 3,
                                         borderSide: BorderSide(
-                                          width: 0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryColor,
+                                          width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(16),
                                       ),

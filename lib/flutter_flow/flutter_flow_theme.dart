@@ -110,7 +110,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color tertiaryColor = const Color(0xFF6985B3);
   late Color alternate = const Color(0xFF001B3C);
   late Color primaryBackground = const Color(0xFFFFFBFE);
-  late Color secondaryBackground = const Color(0xFFEDEDE9);
+  late Color secondaryBackground = const Color(0xFFE3E7E9);
   late Color primaryText = const Color(0xFF1C1B1F);
   late Color secondaryText = const Color(0xFF57636C);
 
@@ -174,12 +174,12 @@ class MobileTypography extends Typography {
         'Rubik',
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
-        fontSize: 22,
+        fontSize: 24,
       );
   String get title3Family => 'Rubik';
   TextStyle get title3 => GoogleFonts.getFont(
         'Rubik',
-        color: theme.primaryText,
+        color: theme.secondaryText,
         fontWeight: FontWeight.w600,
         fontSize: 20,
       );
@@ -201,14 +201,14 @@ class MobileTypography extends Typography {
   TextStyle get bodyText1 => GoogleFonts.getFont(
         'Rubik',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        fontSize: 16,
       );
   String get bodyText2Family => 'Poppins';
   TextStyle get bodyText2 => GoogleFonts.getFont(
         'Poppins',
         color: theme.secondaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 14,
       );
 }

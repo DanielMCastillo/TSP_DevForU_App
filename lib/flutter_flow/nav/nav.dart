@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -88,10 +87,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistroWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascota',
-              path: 'seleccionMascota',
+              name: 'SeleccionMascotaCopy',
+              path: 'seleccionMascotaCopy',
               requireAuth: true,
-              builder: (context, params) => SeleccionMascotaWidget(),
+              builder: (context, params) => SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
               name: 'Home',
@@ -171,16 +170,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => InformacionPersonalWidget(),
             ),
             FFRoute(
+              name: 'SeleccionMascota',
+              path: 'seleccionMascota',
+              requireAuth: true,
+              builder: (context, params) => SeleccionMascotaWidget(),
+            ),
+            FFRoute(
               name: 'afkxd',
               path: 'afkxd',
               requireAuth: true,
               builder: (context, params) => AfkxdWidget(),
-            ),
-            FFRoute(
-              name: 'SeleccionMascotaCopy',
-              path: 'seleccionMascotaCopy',
-              requireAuth: true,
-              builder: (context, params) => SeleccionMascotaCopyWidget(),
             ),
             FFRoute(
               name: 'test',

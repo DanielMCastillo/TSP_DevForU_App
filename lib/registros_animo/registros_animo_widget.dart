@@ -8,7 +8,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistrosAnimoWidget extends StatefulWidget {
@@ -115,12 +114,11 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
                                 if (!snapshot.hasData) {
                                   return Center(
                                     child: SizedBox(
-                                      width: 30,
-                                      height: 30,
-                                      child: SpinKitPulse(
+                                      width: 25,
+                                      height: 25,
+                                      child: CircularProgressIndicator(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        size: 30,
                                       ),
                                     ),
                                   );
@@ -150,13 +148,13 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
                                           if (!snapshot.hasData) {
                                             return Center(
                                               child: SizedBox(
-                                                width: 30,
-                                                height: 30,
-                                                child: SpinKitPulse(
+                                                width: 25,
+                                                height: 25,
+                                                child:
+                                                    CircularProgressIndicator(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryColor,
-                                                  size: 30,
                                                 ),
                                               ),
                                             );
@@ -206,13 +204,13 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
                                                       if (!snapshot.hasData) {
                                                         return Center(
                                                           child: SizedBox(
-                                                            width: 30,
-                                                            height: 30,
-                                                            child: SpinKitPulse(
+                                                            width: 25,
+                                                            height: 25,
+                                                            child:
+                                                                CircularProgressIndicator(
                                                               color: FlutterFlowTheme
                                                                       .of(context)
                                                                   .primaryColor,
-                                                              size: 30,
                                                             ),
                                                           ),
                                                         );

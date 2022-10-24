@@ -1,8 +1,8 @@
 // Export pages
 export 'bienvenida/bienvenida_widget.dart' show BienvenidaWidget;
 export 'registro/registro_widget.dart' show RegistroWidget;
-export 'seleccion_mascota/seleccion_mascota_widget.dart'
-    show SeleccionMascotaWidget;
+export 'seleccion_mascota_copy/seleccion_mascota_copy_widget.dart'
+    show SeleccionMascotaCopyWidget;
 export 'home/home_widget.dart' show HomeWidget;
 export 'perfil/perfil_widget.dart' show PerfilWidget;
 export 'registros_animo/registros_animo_widget.dart' show RegistrosAnimoWidget;
@@ -20,8 +20,8 @@ export 'felicitacion_journaling/felicitacion_journaling_widget.dart'
     show FelicitacionJournalingWidget;
 export 'informacion_personal/informacion_personal_widget.dart'
     show InformacionPersonalWidget;
+export 'seleccion_mascota/seleccion_mascota_widget.dart'
+    show SeleccionMascotaWidget;
 export 'afkxd/afkxd_widget.dart' show AfkxdWidget;
-export 'seleccion_mascota_copy/seleccion_mascota_copy_widget.dart'
-    show SeleccionMascotaCopyWidget;
 export 'test/test_widget.dart' show TestWidget;
 export 'pdf_test/pdf_test_widget.dart' show PdfTestWidget;

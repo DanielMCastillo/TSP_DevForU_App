@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistroHorarioComidaWidget extends StatefulWidget {
@@ -130,12 +129,11 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 30,
-                                height: 30,
-                                child: SpinKitPulse(
+                                width: 25,
+                                height: 25,
+                                child: CircularProgressIndicator(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 30,
                                 ),
                               ),
                             );
@@ -245,12 +243,11 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 30,
-                                height: 30,
-                                child: SpinKitPulse(
+                                width: 25,
+                                height: 25,
+                                child: CircularProgressIndicator(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 30,
                                 ),
                               ),
                             );
@@ -360,12 +357,11 @@ class _RegistroHorarioComidaWidgetState
                           if (!snapshot.hasData) {
                             return Center(
                               child: SizedBox(
-                                width: 30,
-                                height: 30,
-                                child: SpinKitPulse(
+                                width: 25,
+                                height: 25,
+                                child: CircularProgressIndicator(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
-                                  size: 30,
                                 ),
                               ),
                             );
@@ -515,12 +511,11 @@ class _RegistroHorarioComidaWidgetState
                                 if (!snapshot.hasData) {
                                   return Center(
                                     child: SizedBox(
-                                      width: 30,
-                                      height: 30,
-                                      child: SpinKitPulse(
+                                      width: 25,
+                                      height: 25,
+                                      child: CircularProgressIndicator(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryColor,
-                                        size: 30,
                                       ),
                                     ),
                                   );

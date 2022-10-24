@@ -9,7 +9,6 @@ import '../flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -120,11 +119,10 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 30,
-              height: 30,
-              child: SpinKitPulse(
+              width: 25,
+              height: 25,
+              child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primaryColor,
-                size: 30,
               ),
             ),
           );
@@ -231,7 +229,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                           image: DecorationImage(
                             fit: BoxFit.cover,
                             image: Image.asset(
-                              'assets/images/istockphoto-973075370-640x640.jpg',
+                              'assets/images/Minimal-Background-HD-Wallpaper-049.jpg',
                             ).image,
                           ),
                           shape: BoxShape.rectangle,
@@ -255,12 +253,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                     if (!snapshot.hasData) {
                                       return Center(
                                         child: SizedBox(
-                                          width: 30,
-                                          height: 30,
-                                          child: SpinKitPulse(
+                                          width: 25,
+                                          height: 25,
+                                          child: CircularProgressIndicator(
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryColor,
-                                            size: 30,
                                           ),
                                         ),
                                       );
@@ -278,9 +275,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             : null;
                                     return Image.network(
                                       imageMascotasRecord!.imagenMascota!,
-                                      width: 200,
-                                      height: 200,
-                                      fit: BoxFit.fill,
+                                      width: 400,
+                                      height: 300,
+                                      fit: BoxFit.scaleDown,
                                     ).animateOnPageLoad(animationsMap[
                                         'imageOnPageLoadAnimation']!);
                                   },

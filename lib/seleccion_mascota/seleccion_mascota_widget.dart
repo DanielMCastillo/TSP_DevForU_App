@@ -6,7 +6,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeleccionMascotaWidget extends StatefulWidget {
@@ -45,11 +44,10 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
         if (!snapshot.hasData) {
           return Center(
             child: SizedBox(
-              width: 30,
-              height: 30,
-              child: SpinKitPulse(
+              width: 25,
+              height: 25,
+              child: CircularProgressIndicator(
                 color: FlutterFlowTheme.of(context).primaryColor,
-                size: 30,
               ),
             ),
           );
@@ -643,8 +641,8 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(50),
-                                            child: Image.asset(
-                                              'assets/images/Raluca.png',
+                                            child: Image.network(
+                                              '',
                                               width: 100,
                                               height: 100,
                                               fit: BoxFit.fitHeight,
