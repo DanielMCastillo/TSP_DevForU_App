@@ -50,26 +50,24 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 if (soundPlayer!.playing) {
                   await soundPlayer!.stop();
                 }
-                soundPlayer!.setVolume(1);
+                soundPlayer!.setVolume(0.7);
                 soundPlayer!
                     .setAsset(
                         'assets/audios/y2mate.com_-_Love_alarm_20_tono.mp3')
                     .then((_) => soundPlayer!.play());
               },
-              text: FFLocalizations.of(context).getText(
-                'tai7qdmt' /* Alimentar acompañante */,
-              ),
+              text: 'Alimentar acompañante',
               icon: FaIcon(
                 FontAwesomeIcons.utensilSpoon,
                 size: 24,
               ),
               options: FFButtonOptions(
                 width: double.infinity,
-                height: 60,
+                height: 56,
                 color: FlutterFlowTheme.of(context).primaryColor,
                 textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                       fontFamily: 'Rubik',
-                      color: FlutterFlowTheme.of(context).white,
+                      color: FlutterFlowTheme.of(context).darkBtnText,
                       fontWeight: FontWeight.w500,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).subtitle2Family),
@@ -85,23 +83,29 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('Animoo');
+                  context.pushNamed(
+                    'Animoo',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.topToBottom,
+                      ),
+                    },
+                  );
                 },
-                text: FFLocalizations.of(context).getText(
-                  'yhm8jylj' /* Escribe lo que sientes */,
-                ),
+                text: 'Escribe lo que sientes',
                 icon: FaIcon(
                   FontAwesomeIcons.penAlt,
                   size: 24,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
-                  height: 60,
+                  height: 56,
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).subtitle2Family,
-                        color: FlutterFlowTheme.of(context).white,
+                        color: FlutterFlowTheme.of(context).darkBtnText,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).subtitle2Family),
@@ -120,21 +124,19 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                 onPressed: () async {
                   context.pushNamed('Ayuda');
                 },
-                text: FFLocalizations.of(context).getText(
-                  'wllrm61s' /* Pedir Ayuda */,
-                ),
+                text: 'Pedir Ayuda',
                 icon: FaIcon(
                   FontAwesomeIcons.phone,
                   size: 24,
                 ),
                 options: FFButtonOptions(
                   width: double.infinity,
-                  height: 60,
+                  height: 56,
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).subtitle2Family,
-                        color: FlutterFlowTheme.of(context).primaryBtnText,
+                        color: FlutterFlowTheme.of(context).darkBtnText,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).subtitle2Family),

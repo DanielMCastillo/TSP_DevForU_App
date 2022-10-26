@@ -1,3 +1,5 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -20,12 +22,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
   @override
   void initState() {
     super.initState();
-    textController = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-          textController?.text = FFLocalizations.of(context).getText(
-            'fstz9v20' /* 800 - 911 - 2000 */,
-          );
-        }));
+    textController = TextEditingController(text: '800 - 911 - 2000');
   }
 
   @override
@@ -53,13 +50,19 @@ class _AyudaWidgetState extends State<AyudaWidget> {
             size: 30,
           ),
           onPressed: () async {
-            context.pushNamed('Home');
+            context.pushNamed(
+              'Home',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            'x9su1bc0' /* Ayuda */,
-          ),
+          'Ayuda',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -81,9 +84,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'uglm36nk' /* ¡Estamos contigo! */,
-                          ),
+                          '¡Estamos contigo!',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context).title1,
                         ),
@@ -98,7 +99,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                   width: 320,
                   height: 300,
                   decoration: BoxDecoration(
-                    color: Color(0xFFCBDEEE),
+                    color: FlutterFlowTheme.of(context).alternate,
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: Stack(
@@ -108,29 +109,33 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '7t8gpd0z' /* Ayuda Profesional */,
-                            ),
+                            'Ayuda Profesional',
                             textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context).subtitle1,
+                            style: FlutterFlowTheme.of(context).title1.override(
+                                  fontFamily:
+                                      FlutterFlowTheme.of(context).title1Family,
+                                  color: FlutterFlowTheme.of(context).white,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .title1Family),
+                                ),
                           ),
                         ),
                       ),
                       Align(
                         alignment: AlignmentDirectional(0.17, 0.01),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+                          padding:
+                              EdgeInsetsDirectional.fromSTEB(16, 20, 16, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'hi4pcmyw' /* Las personas que se sientan es... */,
-                            ),
+                            'Las personas que se sientan estresadas, tristes o con alguna alteración emocional, no deben esperar a que el problema avance, pueden recibir apoyo emocional u orientación en el portal o redes de la línea de la vida, o marcando al número: ',
                             textAlign: TextAlign.justify,
                             style: FlutterFlowTheme.of(context)
                                 .bodyText1
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
                                       .bodyText1Family,
-                                  fontStyle: FontStyle.italic,
+                                  color: FlutterFlowTheme.of(context).white,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyText1Family),
@@ -214,9 +219,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                       '8009112000',
                     );
                   },
-                  text: FFLocalizations.of(context).getText(
-                    'x1p3ljcq' /* Línea de la vida */,
-                  ),
+                  text: 'Línea de la vida',
                   options: FFButtonOptions(
                     width: 180,
                     height: 56,
@@ -228,7 +231,7 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                               FlutterFlowTheme.of(context).subtitle2Family),
                         ),
                     borderSide: BorderSide(
-                      color: Colors.transparent,
+                      color: FlutterFlowTheme.of(context).alternate,
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(16),
@@ -237,31 +240,86 @@ class _AyudaWidgetState extends State<AyudaWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await actions.phoneCall(
-                      '8009112000',
+                child: StreamBuilder<List<UsuariosConfianzaRecord>>(
+                  stream: queryUsuariosConfianzaRecord(
+                    queryBuilder: (usuariosConfianzaRecord) =>
+                        usuariosConfianzaRecord.where('uidref',
+                            isEqualTo: currentUserReference),
+                    singleRecord: true,
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+                    List<UsuariosConfianzaRecord>
+                        buttonUsuariosConfianzaRecordList = snapshot.data!;
+                    // Return an empty Container when the document does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final buttonUsuariosConfianzaRecord =
+                        buttonUsuariosConfianzaRecordList.isNotEmpty
+                            ? buttonUsuariosConfianzaRecordList.first
+                            : null;
+                    return FFButtonWidget(
+                      onPressed: () async {
+                        if (buttonUsuariosConfianzaRecord!.numeroContacto ==
+                            '0') {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Ups!'),
+                                content: Text(
+                                    'Por favor agrega un contacto de emergencia :)'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Entendido!'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+
+                          context.goNamed('Contacto_Emergencia');
+                        } else {
+                          await actions.phoneCall(
+                            buttonUsuariosConfianzaRecord!.numeroContacto!,
+                          );
+                        }
+                      },
+                      text: 'Contacto personal',
+                      options: FFButtonOptions(
+                        width: 180,
+                        height: 56,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .subtitle2
+                            .override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).subtitle2Family),
+                            ),
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryColor,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     );
                   },
-                  text: FFLocalizations.of(context).getText(
-                    'wfy0fj94' /* Contacto personal */,
-                  ),
-                  options: FFButtonOptions(
-                    width: 180,
-                    height: 56,
-                    color: FlutterFlowTheme.of(context).primaryColor,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
                 ),
               ),
             ],

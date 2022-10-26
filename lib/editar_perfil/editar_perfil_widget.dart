@@ -54,14 +54,20 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            context.pushNamed(
+              'Perfil',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            '4v9sda22' /* Editar perfil */,
-          ),
+          'Editar perfil',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -141,9 +147,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                         }
                       }
                     },
-                    text: FFLocalizations.of(context).getText(
-                      'siou526d' /* Cambiar foto */,
-                    ),
+                    text: 'Cambiar foto',
                     options: FFButtonOptions(
                       width: 130,
                       height: 40,
@@ -174,9 +178,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                 controller: yourNameController1,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: FFLocalizations.of(context).getText(
-                    'yygc1ift' /* Cambiar nombre */,
-                  ),
+                  labelText: 'Cambiar nombre',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF95A1AC),
@@ -235,9 +237,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                 controller: yourNameController2,
                 obscureText: false,
                 decoration: InputDecoration(
-                  labelText: FFLocalizations.of(context).getText(
-                    'hwu9yght' /* Cambiar contraseña */,
-                  ),
+                  labelText: 'Cambiar contraseña',
                   labelStyle: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Lexend Deca',
                         color: Color(0xFF95A1AC),
@@ -297,27 +297,24 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                   onPressed: () {
                     print('Button pressed ...');
                   },
-                  text: FFLocalizations.of(context).getText(
-                    'fugj3qmn' /* Guardar cambios */,
-                  ),
+                  text: 'Guardar cambios',
                   options: FFButtonOptions(
-                    width: 340,
-                    height: 60,
-                    color: Color(0xFF96BEFF),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Lexend Deca',
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
+                    width: 180,
+                    height: 56,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyText1Family,
+                          color: FlutterFlowTheme.of(context).darkBtnText,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).subtitle2Family),
+                              FlutterFlowTheme.of(context).bodyText1Family),
                         ),
-                    elevation: 2,
+                    elevation: 1,
                     borderSide: BorderSide(
-                      color: Colors.transparent,
+                      color: FlutterFlowTheme.of(context).primaryColor,
                       width: 1,
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(14),
                   ),
                 ),
               ),

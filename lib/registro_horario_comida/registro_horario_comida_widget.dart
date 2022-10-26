@@ -77,16 +77,14 @@ class _RegistroHorarioComidaWidgetState
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
                   hasTransition: true,
-                  transitionType: PageTransitionType.leftToRight,
+                  transitionType: PageTransitionType.rightToLeft,
                 ),
               },
             );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            'okwoyr1s' /* Mis horarios */,
-          ),
+          'Mis horarios',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -187,9 +185,7 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: FFLocalizations.of(context).getText(
-                        '5v1cjf7y' /* Desayuno */,
-                      ),
+                      text: 'Desayuno',
                       options: FFButtonOptions(
                         width: 150,
                         height: 56,
@@ -301,9 +297,7 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: FFLocalizations.of(context).getText(
-                        'sra7xvee' /* Comida */,
-                      ),
+                      text: 'Comida',
                       options: FFButtonOptions(
                         width: 150,
                         height: 56,
@@ -415,9 +409,7 @@ class _RegistroHorarioComidaWidgetState
                           ),
                         );
                       },
-                      text: FFLocalizations.of(context).getText(
-                        'w82mj21t' /* Cena */,
-                      ),
+                      text: 'Cena',
                       options: FFButtonOptions(
                         width: 150,
                         height: 56,
@@ -472,21 +464,19 @@ class _RegistroHorarioComidaWidgetState
                               onPressed: () async {
                                 context.pop();
                               },
-                              text: FFLocalizations.of(context).getText(
-                                'h3ohzwme' /* Cancelar */,
-                              ),
+                              text: 'Cancelar',
                               options: FFButtonOptions(
                                 width: 130,
                                 height: 56,
-                                color:
-                                    FlutterFlowTheme.of(context).customColor3,
+                                color: FlutterFlowTheme.of(context).error,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle1
                                     .override(
                                       fontFamily: FlutterFlowTheme.of(context)
                                           .subtitle1Family,
                                       color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
+                                          .darkBtnText,
+                                      fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey(
                                               FlutterFlowTheme.of(context)
@@ -816,9 +806,7 @@ class _RegistroHorarioComidaWidgetState
                                       }
                                     }
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'oji6ki5o' /* Aceptar */,
-                                  ),
+                                  text: 'Aceptar',
                                   options: FFButtonOptions(
                                     width: 130,
                                     height: 56,

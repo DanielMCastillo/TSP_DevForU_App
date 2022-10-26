@@ -83,7 +83,6 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('es'),
-        Locale('en'),
       ],
       theme: ThemeData(brightness: Brightness.light),
       darkTheme: ThemeData(brightness: Brightness.dark),
@@ -133,7 +132,7 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
-        selectedItemColor: FlutterFlowTheme.of(context).primaryBtnText,
+        selectedItemColor: FlutterFlowTheme.of(context).darkBtnText,
         unselectedItemColor: FlutterFlowTheme.of(context).background,
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -148,9 +147,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.person,
               size: 24,
             ),
-            label: FFLocalizations.of(context).getText(
-              'rnkj7p33' /* Perfil */,
-            ),
+            label: 'Perfil',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -162,9 +159,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home,
               size: 24,
             ),
-            label: FFLocalizations.of(context).getText(
-              '72u32ube' /* Casa */,
-            ),
+            label: 'Casa',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -176,9 +171,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.collections_bookmark,
               size: 24,
             ),
-            label: FFLocalizations.of(context).getText(
-              's53zxzuw' /* Registros */,
-            ),
+            label: 'Registros',
             tooltip: '',
           )
         ],

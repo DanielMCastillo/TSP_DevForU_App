@@ -72,14 +72,20 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            context.goNamed(
+              'Home',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            '8sqib642' /* Mis registros */,
-          ),
+          'Mis registros',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -127,6 +133,7 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
                                     snapshot.data!;
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
+                                  reverse: true,
                                   primary: false,
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,

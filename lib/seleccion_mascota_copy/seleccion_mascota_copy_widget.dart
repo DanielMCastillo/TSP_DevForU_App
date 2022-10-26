@@ -71,9 +71,7 @@ class _SeleccionMascotaCopyWidgetState
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
             title: Text(
-              FFLocalizations.of(context).getText(
-                'pno5dxrm' /* Elige un acompañante */,
-              ),
+              'Elige un acompañante',
               style: FlutterFlowTheme.of(context).title1,
             ),
             actions: [],
@@ -149,14 +147,14 @@ class _SeleccionMascotaCopyWidgetState
                                             elevation: 1,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(50),
+                                                  BorderRadius.circular(40),
                                             ),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(2, 2, 2, 2),
                                               child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(50),
+                                                    BorderRadius.circular(40),
                                                 child: Image.network(
                                                   listViewMascotasRecord
                                                       .imagenMascota!,
@@ -283,16 +281,23 @@ class _SeleccionMascotaCopyWidgetState
                                                         .update(
                                                             usuarioMascotaUpdateData);
 
-                                                    context.goNamed('Home');
+                                                    context.goNamed(
+                                                      'Home',
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                            TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .bottomToTop,
+                                                        ),
+                                                      },
+                                                    );
                                                   } else {
                                                     return;
                                                   }
                                                 },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '7tmmxkig' /* Seleccionar */,
-                                                ),
+                                                text: 'Seleccionar',
                                                 options: FFButtonOptions(
                                                   width: 120,
                                                   height: 56,
@@ -309,6 +314,7 @@ class _SeleccionMascotaCopyWidgetState
                                                                         context)
                                                                     .subtitle2Family,
                                                             color: Colors.white,
+                                                            fontSize: 14,
                                                             useGoogleFonts: GoogleFonts
                                                                     .asMap()
                                                                 .containsKey(

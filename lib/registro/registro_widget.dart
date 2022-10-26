@@ -109,7 +109,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/DeviiIdle.png',
+                    'assets/images/DeviCompu.png',
                     width: 150,
                     height: 150,
                     fit: BoxFit.fitWidth,
@@ -133,14 +133,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                       indicatorColor: FlutterFlowTheme.of(context).primaryColor,
                       tabs: [
                         Tab(
-                          text: FFLocalizations.of(context).getText(
-                            'v8mwum0i' /* Inicia sesión */,
-                          ),
+                          text: 'Inicia sesión',
                         ),
                         Tab(
-                          text: FFLocalizations.of(context).getText(
-                            's5ww4kq4' /* Crear cuenta */,
-                          ),
+                          text: 'Crear cuenta',
                         ),
                       ],
                     ),
@@ -163,10 +159,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         controller: correoController,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'ywads21d' /* Correo electronico */,
-                                          ),
+                                          labelText: 'Correo electrónico ',
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyText1
@@ -174,7 +167,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyText1Family,
-                                                color: Color(0xFF96BEFF),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
                                                     .containsKey(
@@ -182,10 +177,8 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                                 context)
                                                             .bodyText1Family),
                                               ),
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            'uheppdyi' /* Ingresa tu correo electrónico */,
-                                          ),
+                                          hintText:
+                                              'Ingresa tu correo electrónico',
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyText2,
@@ -209,7 +202,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .customColor3,
+                                                      .error,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -220,7 +213,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             borderSide: BorderSide(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .customColor3,
+                                                      .error,
                                               width: 1,
                                             ),
                                             borderRadius:
@@ -245,7 +238,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                               fontFamily:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText1Family,
-                                              color: Color(0xFF96BEFF),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
@@ -265,19 +260,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: contrasenaController,
                                       obscureText: !contrasenaVisibility,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '8up2shoh' /* Contraseña  */,
-                                        ),
+                                        labelText: 'Contraseña ',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2Family,
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .alternate,
+                                              fontSize: 16,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
@@ -285,12 +276,19 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                                   context)
                                                               .bodyText2Family),
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'us6u7nkh' /* Ingresa tu contraseña  */,
-                                        ),
+                                        hintText: 'Ingresa tu contraseña ',
                                         hintStyle: FlutterFlowTheme.of(context)
-                                            .bodyText2,
+                                            .bodyText2
+                                            .override(
+                                              fontFamily: 'Rubik',
+                                              fontSize: 16,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2Family),
+                                            ),
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: Color(0x00000000),
@@ -310,7 +308,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor3,
+                                                .error,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -320,7 +318,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor3,
+                                                .error,
                                             width: 1,
                                           ),
                                           borderRadius:
@@ -361,7 +359,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .bodyText1Family,
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor4,
+                                                .primaryText,
                                             useGoogleFonts: GoogleFonts.asMap()
                                                 .containsKey(
                                                     FlutterFlowTheme.of(context)
@@ -387,9 +385,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
 
                                         context.goNamedAuth('Home', mounted);
                                       },
-                                      text: FFLocalizations.of(context).getText(
-                                        'ecjldo3a' /* Iniciar sesión  */,
-                                      ),
+                                      text: 'Iniciar sesión ',
                                       icon: Icon(
                                         Icons.login_outlined,
                                         size: 24,
@@ -405,7 +401,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                               fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
+                                                      .primaryText,
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500,
                                               useGoogleFonts:
@@ -418,47 +414,6 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         borderSide: BorderSide(
                                           color: FlutterFlowTheme.of(context)
                                               .primaryColor,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(16),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 20, 0, 0),
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print(
-                                            'Button-ForgotPassword pressed ...');
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        'ryx22ldn' /* ¿Olvidaste tu contraseña? */,
-                                      ),
-                                      options: FFButtonOptions(
-                                        width: 200,
-                                        height: 56,
-                                        color: FlutterFlowTheme.of(context)
-                                            .ashGray,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .subtitle2
-                                            .override(
-                                              fontFamily: 'Rubik',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              useGoogleFonts:
-                                                  GoogleFonts.asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .subtitle2Family),
-                                            ),
-                                        elevation: 1,
-                                        borderSide: BorderSide(
-                                          color: Color(0x0096BEFF),
                                           width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(16),
@@ -483,19 +438,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: emailAddressCreateController,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'l3pwopgg' /* Correo electrónico  */,
-                                        ),
+                                        labelText: 'Correo electrónico ',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText2
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2Family,
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .alternate,
+                                              fontSize: 16,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
@@ -504,9 +455,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                               .bodyText2Family),
                                             ),
                                         hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'y4bxtvw1' /* Ingresa tu correo electrónico  */,
-                                        ),
+                                            'Ingresa tu correo electrónico ',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText2,
                                         enabledBorder: UnderlineInputBorder(
@@ -528,7 +477,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                         errorBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor3,
+                                                .error,
                                             width: 5,
                                           ),
                                           borderRadius:
@@ -538,7 +487,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             UnderlineInputBorder(
                                           borderSide: BorderSide(
                                             color: FlutterFlowTheme.of(context)
-                                                .customColor3,
+                                                .error,
                                             width: 5,
                                           ),
                                           borderRadius:
@@ -578,19 +527,14 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       controller: passwordCreateController,
                                       obscureText: !passwordCreateVisibility,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'yw5xth1j' /* Contraseña */,
-                                        ),
+                                        labelText: 'Contraseña',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1Family,
+                                              fontFamily: 'Rubik',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryColor,
+                                                      .alternate,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(
@@ -598,10 +542,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                                   context)
                                                               .bodyText1Family),
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'tpa63jkc' /* Ingresa tu contraseña */,
-                                        ),
+                                        hintText: 'Ingresa tu contraseña',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodyText1
                                             .override(
@@ -722,12 +663,20 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                             .doc()
                                             .set(horariosCreateData);
 
+                                        final usuariosConfianzaCreateData =
+                                            createUsuariosConfianzaRecordData(
+                                          nombreContacto: '',
+                                          numeroContacto: '',
+                                          uidref: currentUserReference,
+                                        );
+                                        await UsuariosConfianzaRecord.collection
+                                            .doc()
+                                            .set(usuariosConfianzaCreateData);
+
                                         context.goNamedAuth(
                                             'SeleccionMascotaCopy', mounted);
                                       },
-                                      text: FFLocalizations.of(context).getText(
-                                        'u0ydz3w7' /* Registrate */,
-                                      ),
+                                      text: 'Registrate',
                                       icon: Icon(
                                         Icons.how_to_reg_outlined,
                                         size: 24,
@@ -745,8 +694,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                                       .subtitle2Family,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryBtnText,
+                                                      .primaryText,
                                               fontSize: 14,
+                                              fontWeight: FontWeight.w500,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
                                                       .containsKey(

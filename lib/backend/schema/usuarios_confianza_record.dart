@@ -17,6 +17,8 @@ abstract class UsuariosConfianzaRecord
   @BuiltValueField(wireName: 'numero_contacto')
   String? get numeroContacto;
 
+  DocumentReference? get uidref;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -52,13 +54,15 @@ abstract class UsuariosConfianzaRecord
 Map<String, dynamic> createUsuariosConfianzaRecordData({
   String? nombreContacto,
   String? numeroContacto,
+  DocumentReference? uidref,
 }) {
   final firestoreData = serializers.toFirestore(
     UsuariosConfianzaRecord.serializer,
     UsuariosConfianzaRecord(
       (u) => u
         ..nombreContacto = nombreContacto
-        ..numeroContacto = numeroContacto,
+        ..numeroContacto = numeroContacto
+        ..uidref = uidref,
     ),
   );
 

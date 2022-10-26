@@ -19,6 +19,21 @@ String getRandomMessage(List<String> message) {
     '¿Cómo te sientes el día de hoy?',
     'Estoy muy feliz de poder conocerte',
     'Me gustan mucho los nuggets'
+        'Me siento bien el día de hoy '
+        '¡Qué gran esfuerzo!'
+        'Todo tu esfuerzo vale la pena'
+        'Me gustan tus ideas'
+        '¡Que lejos has llegado!'
+        'Te quiero, te quiero, te quiero'
+        'Me gusta cuando sonríes'
+        'Eres especial, nadie como tú'
+        'No hay nadie como tú'
+        'Me encanta tu compañía'
+        'Sé que puedo confiar en ti'
+        'Confía en ti mismo'
+        'Grandioso trabajo'
+        'Mi kokoro late por ti'
+        'Sip, sabe a púrpura.'
   ];
   return message[math.Random().nextInt(message.length)];
 }

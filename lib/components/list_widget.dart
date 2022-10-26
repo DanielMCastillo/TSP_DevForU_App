@@ -55,26 +55,20 @@ class _ListWidgetState extends State<ListWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        FFLocalizations.of(context).getText(
-                          'lg27nk75' /* Project Name */,
-                        ),
+                        'Project Name',
                         style: FlutterFlowTheme.of(context).title2,
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            '4y21q8ii' /* 4 Folders */,
-                          ),
+                          '4 Folders',
                           style: FlutterFlowTheme.of(context).bodyText2,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'p1qfd5hj' /* 3 upcoming due dates */,
-                          ),
+                          '3 upcoming due dates',
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
@@ -132,26 +126,20 @@ class _ListWidgetState extends State<ListWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        FFLocalizations.of(context).getText(
-                          '82aiov42' /* Project Name */,
-                        ),
+                        'Project Name',
                         style: FlutterFlowTheme.of(context).title2,
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            '5bwh7bs9' /* 4 Folders */,
-                          ),
+                          '4 Folders',
                           style: FlutterFlowTheme.of(context).bodyText2,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'tbm07k83' /* 3 upcoming due dates */,
-                          ),
+                          '3 upcoming due dates',
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(
@@ -209,26 +197,20 @@ class _ListWidgetState extends State<ListWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        FFLocalizations.of(context).getText(
-                          '4bwncp52' /* Project Name */,
-                        ),
+                        'Project Name',
                         style: FlutterFlowTheme.of(context).title2,
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'jbre3skk' /* 4 Folders */,
-                          ),
+                          '4 Folders',
                           style: FlutterFlowTheme.of(context).bodyText2,
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            '899fyxks' /* 3 upcoming due dates */,
-                          ),
+                          '3 upcoming due dates',
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
                               .override(

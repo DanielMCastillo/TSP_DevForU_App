@@ -87,14 +87,20 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            context.pushNamed(
+              'Perfil',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            '285ei6gn' /* Eliminar cuenta */,
-          ),
+          'Eliminar cuenta',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -113,9 +119,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    FFLocalizations.of(context).getText(
-                      '98xub8rl' /* No te vayas :( */,
-                    ),
+                    'No te vayas :(',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).subtitle1,
                   ),
@@ -146,9 +150,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'dcxqp5g6' /* Tu cuenta y toda la informació... */,
-                          ),
+                          'Tu cuenta y toda la información que esta en ella se eliminará, ¿Estas completamente seguro/a de esta acción?',
                           textAlign: TextAlign.center,
                           style: FlutterFlowTheme.of(context)
                               .bodyText1
@@ -169,9 +171,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           controller: correoController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'ma4dcmcm' /* Correo electrónico  */,
-                            ),
+                            labelText: 'Correo electrónico ',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyText2
                                 .override(
@@ -183,9 +183,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyText2Family),
                                 ),
-                            hintText: FFLocalizations.of(context).getText(
-                              'ww9ckl6t' /* Ingresa tu correo electrónico  */,
-                            ),
+                            hintText: 'Ingresa tu correo electrónico ',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -246,9 +244,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           controller: contrasenaController,
                           obscureText: !contrasenaVisibility,
                           decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'pub6fl3b' /* Contraseña  */,
-                            ),
+                            labelText: 'Contraseña ',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .bodyText2
                                 .override(
@@ -260,9 +256,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                       .containsKey(FlutterFlowTheme.of(context)
                                           .bodyText2Family),
                                 ),
-                            hintText: FFLocalizations.of(context).getText(
-                              'vyflqjwu' /* Ingresa tu contraseña  */,
-                            ),
+                            hintText: 'Ingresa tu contraseña ',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -341,14 +335,11 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                               onPressed: () async {
                                 context.pop();
                               },
-                              text: FFLocalizations.of(context).getText(
-                                '7r7xegaf' /* Cancelar */,
-                              ),
+                              text: 'Cancelar',
                               options: FFButtonOptions(
                                 width: 140,
                                 height: 56,
-                                color:
-                                    FlutterFlowTheme.of(context).customColor3,
+                                color: FlutterFlowTheme.of(context).error,
                                 textStyle: FlutterFlowTheme.of(context)
                                     .subtitle2
                                     .override(
@@ -435,9 +426,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
 
                                     context.pushNamedAuth('Registro', mounted);
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'n1zlm7hj' /* Aceptar */,
-                                  ),
+                                  text: 'Aceptar',
                                   options: FFButtonOptions(
                                     width: 140,
                                     height: 56,
@@ -450,7 +439,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                               FlutterFlowTheme.of(context)
                                                   .subtitle2Family,
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryBtnText,
+                                              .darkBtnText,
                                           fontWeight: FontWeight.w600,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey(

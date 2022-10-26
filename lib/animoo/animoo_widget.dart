@@ -1,6 +1,5 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -8,7 +7,6 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AnimooWidget extends StatefulWidget {
@@ -18,30 +16,7 @@ class AnimooWidget extends StatefulWidget {
   _AnimooWidgetState createState() => _AnimooWidgetState();
 }
 
-class _AnimooWidgetState extends State<AnimooWidget>
-    with TickerProviderStateMixin {
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.linear,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0,
-          end: 1,
-        ),
-        MoveEffect(
-          curve: Curves.linear,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0, 66),
-          end: Offset(0, 0),
-        ),
-      ],
-    ),
-  };
+class _AnimooWidgetState extends State<AnimooWidget> {
   TextEditingController? textController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -55,12 +30,6 @@ class _AnimooWidgetState extends State<AnimooWidget>
     });
 
     textController = TextEditingController();
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -88,13 +57,19 @@ class _AnimooWidgetState extends State<AnimooWidget>
             size: 30,
           ),
           onPressed: () async {
-            context.goNamed('Home');
+            context.goNamed(
+              'Home',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            'hgn29lcj' /* Estado de ánimo */,
-          ),
+          'Estado de ánimo',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -142,9 +117,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(16, 20, 16, 0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'yjik19vm' /* ¿Cómo te sientes ahora? */,
-                        ),
+                        '¿Cómo te sientes ahora?',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).title1.override(
                               fontFamily: 'Poppins',
@@ -315,7 +288,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                     ),
                   ],
                 ),
-              ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
+              ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -340,9 +313,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                             autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
-                              hintText: FFLocalizations.of(context).getText(
-                                'nbklbj8s' /* Escribe una nota */,
-                              ),
+                              hintText: 'Escribe una nota',
                               hintStyle: FlutterFlowTheme.of(context).bodyText2,
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -422,13 +393,11 @@ class _AnimooWidgetState extends State<AnimooWidget>
                           context.goNamed('Felicitacion_Journaling');
                         }
                       },
-                      text: FFLocalizations.of(context).getText(
-                        'xft62tnf' /* Guardar */,
-                      ),
+                      text: 'Guardar',
                       options: FFButtonOptions(
-                        width: 200,
+                        width: 180,
                         height: 56,
-                        color: Color(0xFF96BEFF),
+                        color: FlutterFlowTheme.of(context).primaryColor,
                         textStyle: FlutterFlowTheme.of(context)
                             .subtitle2
                             .override(
@@ -441,7 +410,7 @@ class _AnimooWidgetState extends State<AnimooWidget>
                             ),
                         elevation: 1,
                         borderSide: BorderSide(
-                          color: Colors.transparent,
+                          color: FlutterFlowTheme.of(context).primaryColor,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(14),

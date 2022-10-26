@@ -144,9 +144,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'wcdiun8a' /* Casa de  */,
-                    ),
+                    'Casa de ',
                     style: FlutterFlowTheme.of(context).title2,
                   ),
                 ),
@@ -232,6 +230,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                               'assets/images/Minimal-Background-HD-Wallpaper-049.jpg',
                             ).image,
                           ),
+                          borderRadius: BorderRadius.circular(8),
                           shape: BoxShape.rectangle,
                         ),
                         child: Container(
@@ -240,8 +239,8 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-0.01, 0.06),
-                                child: StreamBuilder<List<MascotasRecord>>(
-                                  stream: queryMascotasRecord(
+                                child: FutureBuilder<List<MascotasRecord>>(
+                                  future: queryMascotasRecordOnce(
                                     queryBuilder: (mascotasRecord) =>
                                         mascotasRecord.where('nombre_mascota',
                                             isEqualTo: homeUsuarioMascotaRecord!
@@ -289,7 +288,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                             animationsMap['stackOnPageLoadAnimation']!),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                         child: BotonesHSWidget().animateOnPageLoad(
                             animationsMap['botonesHSOnPageLoadAnimation']!),
                       ),

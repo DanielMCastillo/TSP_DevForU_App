@@ -93,9 +93,7 @@ class _PdfTestWidgetState extends State<PdfTestWidget> {
                       currentUserEmail,
                     );
                   },
-                  text: FFLocalizations.of(context).getText(
-                    'zemlzof0' /* Categorize Transaction */,
-                  ),
+                  text: 'Categorize Transaction',
                   options: FFButtonOptions(
                     width: 300,
                     height: 50,

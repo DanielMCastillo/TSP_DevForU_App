@@ -35,7 +35,7 @@ class _FelicitacionJournalingWidgetState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/gif2.gif',
+                      'assets/images/congrats.gif',
                       width: 200,
                       height: 200,
                       fit: BoxFit.cover,
@@ -44,9 +44,7 @@ class _FelicitacionJournalingWidgetState
                 ),
               ),
               Text(
-                FFLocalizations.of(context).getText(
-                  'qnisxeod' /* ¡Lo hiciste! */,
-                ),
+                '¡Lo hiciste!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: FlutterFlowTheme.of(context).title1Family,
@@ -58,9 +56,7 @@ class _FelicitacionJournalingWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'bm92nnf1' /* Llevar un diario lo ayuda a in... */,
-                  ),
+                  'Llevar un diario lo ayuda a integrar nuevas experiencias, realizar un seguimiento de tu progreso, solidificar tu salud y apreciar tus fortalezas. Estás bien encaminado para comprender y manejar tus sentimientos.\n¡Escribe a diario para obtener los mejores resultados!',
                   textAlign: TextAlign.justify,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily:
@@ -81,14 +77,12 @@ class _FelicitacionJournalingWidgetState
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(
                           hasTransition: true,
-                          transitionType: PageTransitionType.leftToRight,
+                          transitionType: PageTransitionType.topToBottom,
                         ),
                       },
                     );
                   },
-                  text: FFLocalizations.of(context).getText(
-                    '6vkm5gp7' /* Seguir */,
-                  ),
+                  text: 'Seguir',
                   options: FFButtonOptions(
                     width: 130,
                     height: 50,

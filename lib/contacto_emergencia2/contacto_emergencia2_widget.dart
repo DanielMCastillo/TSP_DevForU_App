@@ -42,12 +42,10 @@ class _ContactoEmergencia2WidgetState extends State<ContactoEmergencia2Widget> {
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            '28ohfpnq' /* Page Title */,
-          ),
+          'Page Title',
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
-                color: FlutterFlowTheme.of(context).primaryBtnText,
+                color: FlutterFlowTheme.of(context).darkBtnText,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).bodyText2Family),
               ),
@@ -68,9 +66,7 @@ class _ContactoEmergencia2WidgetState extends State<ContactoEmergencia2Widget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                     child: Text(
-                      FFLocalizations.of(context).getText(
-                        'uw1r0nj6' /* Algunas veces es bueno escucha... */,
-                      ),
+                      'Algunas veces es bueno escuchar una voz familiar',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).title3.override(
                             fontFamily:
@@ -131,9 +127,7 @@ class _ContactoEmergencia2WidgetState extends State<ContactoEmergencia2Widget> {
               onPressed: () {
                 print('Button-Login pressed ...');
               },
-              text: FFLocalizations.of(context).getText(
-                '8wyxxq20' /* Llamar ahora */,
-              ),
+              text: 'Llamar ahora',
               options: FFButtonOptions(
                 width: 270,
                 height: 40,
@@ -161,9 +155,7 @@ class _ContactoEmergencia2WidgetState extends State<ContactoEmergencia2Widget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    '1rmrb1p0' /* Regresar */,
-                  ),
+                  'Regresar',
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyText1Family,

@@ -39,6 +39,14 @@ class _$UsuariosConfianzaRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.uidref;
+    if (value != null) {
+      result
+        ..add('uidref')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -70,6 +78,12 @@ class _$UsuariosConfianzaRecordSerializer
           result.numeroContacto = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'uidref':
+          result.uidref = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -89,6 +103,8 @@ class _$UsuariosConfianzaRecord extends UsuariosConfianzaRecord {
   @override
   final String? numeroContacto;
   @override
+  final DocumentReference<Object?>? uidref;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsuariosConfianzaRecord(
@@ -96,7 +112,7 @@ class _$UsuariosConfianzaRecord extends UsuariosConfianzaRecord {
       (new UsuariosConfianzaRecordBuilder()..update(updates))._build();
 
   _$UsuariosConfianzaRecord._(
-      {this.nombreContacto, this.numeroContacto, this.ffRef})
+      {this.nombreContacto, this.numeroContacto, this.uidref, this.ffRef})
       : super._();
 
   @override
@@ -114,13 +130,15 @@ class _$UsuariosConfianzaRecord extends UsuariosConfianzaRecord {
     return other is UsuariosConfianzaRecord &&
         nombreContacto == other.nombreContacto &&
         numeroContacto == other.numeroContacto &&
+        uidref == other.uidref &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, nombreContacto.hashCode), numeroContacto.hashCode),
+        $jc($jc($jc(0, nombreContacto.hashCode), numeroContacto.hashCode),
+            uidref.hashCode),
         ffRef.hashCode));
   }
 
@@ -129,6 +147,7 @@ class _$UsuariosConfianzaRecord extends UsuariosConfianzaRecord {
     return (newBuiltValueToStringHelper(r'UsuariosConfianzaRecord')
           ..add('nombreContacto', nombreContacto)
           ..add('numeroContacto', numeroContacto)
+          ..add('uidref', uidref)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -149,6 +168,10 @@ class UsuariosConfianzaRecordBuilder
   set numeroContacto(String? numeroContacto) =>
       _$this._numeroContacto = numeroContacto;
 
+  DocumentReference<Object?>? _uidref;
+  DocumentReference<Object?>? get uidref => _$this._uidref;
+  set uidref(DocumentReference<Object?>? uidref) => _$this._uidref = uidref;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -162,6 +185,7 @@ class UsuariosConfianzaRecordBuilder
     if ($v != null) {
       _nombreContacto = $v.nombreContacto;
       _numeroContacto = $v.numeroContacto;
+      _uidref = $v.uidref;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -187,6 +211,7 @@ class UsuariosConfianzaRecordBuilder
         new _$UsuariosConfianzaRecord._(
             nombreContacto: nombreContacto,
             numeroContacto: numeroContacto,
+            uidref: uidref,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

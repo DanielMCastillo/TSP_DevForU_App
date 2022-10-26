@@ -22,13 +22,6 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-  }
-
-  @override
   void dispose() {
     textController1?.dispose();
     textController2?.dispose();
@@ -54,13 +47,19 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
             size: 30,
           ),
           onPressed: () async {
-            context.pushNamed('Perfil');
+            context.pushNamed(
+              'Perfil',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            's1a6qx2o' /* Contacto */,
-          ),
+          'Contacto',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -79,9 +78,7 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
                     child: Text(
-                      FFLocalizations.of(context).getText(
-                        'h9cqz7iq' /* Nos las arreglamos con un poco... */,
-                      ),
+                      'Nos las arreglamos con un poco de ayuda de nuestros familiares o amigos.',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).title3.override(
                             fontFamily:
@@ -118,14 +115,13 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(40, 30, 40, 0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'pgsly3in' /* Ingrese el número de teléfono ... */,
-                  ),
+                  'Ingrese el número de teléfono de un amigo cercano o familiar que pueda ser  de ayuda para que puedas comunicarte fácilmente si lo necesitas. \nÉsta información es solo para tu uso y nunca será compartida con nadie.',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).subtitle2Family,
                         color: FlutterFlowTheme.of(context).primaryText,
+                        fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).subtitle2Family),
                       ),
@@ -138,154 +134,253 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: Container(
-                  width: 250,
-                  child: TextFormField(
-                    controller: textController1,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: FFLocalizations.of(context).getText(
-                        'jbirguda' /* Nombre de contacto */,
-                      ),
-                      hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00F1F4F8),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00F1F4F8),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFF96BEFF),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFF96BEFF),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      filled: true,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding:
-                          EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
-                      prefixIcon: Icon(
-                        Icons.person_outlined,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                      ),
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyText1.override(
-                          fontFamily:
-                              FlutterFlowTheme.of(context).bodyText1Family,
-                          color: Color(0xFF96BEFF),
-                          useGoogleFonts: GoogleFonts.asMap().containsKey(
-                              FlutterFlowTheme.of(context).bodyText1Family),
-                        ),
+                child: StreamBuilder<List<UsuariosConfianzaRecord>>(
+                  stream: queryUsuariosConfianzaRecord(
+                    queryBuilder: (usuariosConfianzaRecord) =>
+                        usuariosConfianzaRecord.where('uidref',
+                            isEqualTo: currentUserReference),
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+                    List<UsuariosConfianzaRecord>
+                        textFieldUsuariosConfianzaRecordList = snapshot.data!;
+                    // Return an empty Container when the document does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final textFieldUsuariosConfianzaRecord =
+                        textFieldUsuariosConfianzaRecordList.isNotEmpty
+                            ? textFieldUsuariosConfianzaRecordList.first
+                            : null;
+                    return Container(
+                      width: 250,
+                      child: TextFormField(
+                        controller: textController1 ??= TextEditingController(
+                          text:
+                              textFieldUsuariosConfianzaRecord!.nombreContacto,
+                        ),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'Nombre de contacto',
+                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF96BEFF),
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0xFF96BEFF),
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          prefixIcon: Icon(
+                            Icons.person_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyText1Family,
+                              color: Color(0xFF96BEFF),
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context).bodyText1Family),
+                            ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                child: Container(
-                  width: 250,
-                  child: TextFormField(
-                    controller: textController2,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: FFLocalizations.of(context).getText(
-                        '9bc7v0bh' /* Número de contacto */,
-                      ),
-                      hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00F1F4F8),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00F1F4F8),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0x00000000),
-                          width: 0,
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      filled: true,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding:
-                          EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
-                      prefixIcon: Icon(
-                        Icons.local_phone_outlined,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                      ),
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyText1,
+                child: StreamBuilder<List<UsuariosConfianzaRecord>>(
+                  stream: queryUsuariosConfianzaRecord(
+                    queryBuilder: (usuariosConfianzaRecord) =>
+                        usuariosConfianzaRecord.where('uidref',
+                            isEqualTo: currentUserReference),
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+                    List<UsuariosConfianzaRecord>
+                        textFieldUsuariosConfianzaRecordList = snapshot.data!;
+                    // Return an empty Container when the document does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final textFieldUsuariosConfianzaRecord =
+                        textFieldUsuariosConfianzaRecordList.isNotEmpty
+                            ? textFieldUsuariosConfianzaRecordList.first
+                            : null;
+                    return Container(
+                      width: 250,
+                      child: TextFormField(
+                        controller: textController2 ??= TextEditingController(
+                          text:
+                              textFieldUsuariosConfianzaRecord!.numeroContacto,
+                        ),
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          hintText: 'Número de contacto',
+                          hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          contentPadding:
+                              EdgeInsetsDirectional.fromSTEB(20, 24, 20, 24),
+                          prefixIcon: Icon(
+                            Icons.local_phone_outlined,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyText1,
+                        keyboardType: TextInputType.number,
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-            child: FFButtonWidget(
-              onPressed: () async {
-                final usuariosConfianzaCreateData =
-                    createUsuariosConfianzaRecordData(
-                  nombreContacto: textController1!.text,
-                  numeroContacto: textController2!.text,
-                );
-                await UsuariosConfianzaRecord.collection
-                    .doc()
-                    .set(usuariosConfianzaCreateData);
-
-                context.pushNamed('Contacto_Emergencia2');
-              },
-              text: FFLocalizations.of(context).getText(
-                '7vq7bokq' /* Guardar */,
+            child: StreamBuilder<List<UsuariosConfianzaRecord>>(
+              stream: queryUsuariosConfianzaRecord(
+                queryBuilder: (usuariosConfianzaRecord) =>
+                    usuariosConfianzaRecord.where('uidref',
+                        isEqualTo: currentUserReference),
+                singleRecord: true,
               ),
-              options: FFButtonOptions(
-                width: 270,
-                height: 56,
-                color: FlutterFlowTheme.of(context).primaryColor,
-                textStyle: FlutterFlowTheme.of(context).bodyText1.override(
-                      fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      useGoogleFonts: GoogleFonts.asMap().containsKey(
-                          FlutterFlowTheme.of(context).bodyText1Family),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 25,
+                      height: 25,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                      ),
                     ),
-                elevation: 1,
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1,
-                ),
-              ),
+                  );
+                }
+                List<UsuariosConfianzaRecord>
+                    buttonLoginUsuariosConfianzaRecordList = snapshot.data!;
+                // Return an empty Container when the document does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final buttonLoginUsuariosConfianzaRecord =
+                    buttonLoginUsuariosConfianzaRecordList.isNotEmpty
+                        ? buttonLoginUsuariosConfianzaRecordList.first
+                        : null;
+                return FFButtonWidget(
+                  onPressed: () async {
+                    final usuariosConfianzaUpdateData =
+                        createUsuariosConfianzaRecordData(
+                      nombreContacto: textController1?.text ?? '',
+                      numeroContacto: textController2?.text ?? '',
+                    );
+                    await buttonLoginUsuariosConfianzaRecord!.reference
+                        .update(usuariosConfianzaUpdateData);
+                  },
+                  text: 'Guardar',
+                  options: FFButtonOptions(
+                    width: 180,
+                    height: 56,
+                    color: FlutterFlowTheme.of(context).primaryColor,
+                    textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodyText1Family,
+                          color: FlutterFlowTheme.of(context).darkBtnText,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodyText1Family),
+                        ),
+                    elevation: 1,
+                    borderSide: BorderSide(
+                      color: FlutterFlowTheme.of(context).primaryColor,
+                      width: 1,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           Padding(

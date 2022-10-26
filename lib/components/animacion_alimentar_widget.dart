@@ -32,9 +32,7 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
             onPressed: () async {
               Navigator.pop(context);
             },
-            text: FFLocalizations.of(context).getText(
-              'b1chwfkg' /* Gracias */,
-            ),
+            text: 'Gracias',
             icon: Icon(
               Icons.favorite,
               size: 15,
@@ -43,7 +41,12 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
               width: 150,
               height: 56,
               color: FlutterFlowTheme.of(context).primaryColor,
-              textStyle: FlutterFlowTheme.of(context).bodyText1,
+              textStyle: FlutterFlowTheme.of(context).bodyText1.override(
+                    fontFamily: FlutterFlowTheme.of(context).bodyText1Family,
+                    color: FlutterFlowTheme.of(context).darkBtnText,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).bodyText1Family),
+                  ),
               elevation: 1,
               borderSide: BorderSide(
                 color: Colors.transparent,

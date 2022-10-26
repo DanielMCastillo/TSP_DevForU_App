@@ -49,9 +49,7 @@ class _TextfieldWidgetState extends State<TextfieldWidget> {
                           controller: textController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            hintText: FFLocalizations.of(context).getText(
-                              '019239y5' /* Enter post details here... */,
-                            ),
+                            hintText: 'Enter post details here...',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(

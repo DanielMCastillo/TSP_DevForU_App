@@ -23,12 +23,10 @@ class _AfkxdWidgetState extends State<AfkxdWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-          FFLocalizations.of(context).getText(
-            'tfweh2pr' /* AFK */,
-          ),
+          'AFK',
           style: FlutterFlowTheme.of(context).bodyText2.override(
                 fontFamily: FlutterFlowTheme.of(context).bodyText2Family,
-                color: FlutterFlowTheme.of(context).primaryBtnText,
+                color: FlutterFlowTheme.of(context).darkBtnText,
                 fontSize: 22,
                 useGoogleFonts: GoogleFonts.asMap()
                     .containsKey(FlutterFlowTheme.of(context).bodyText2Family),

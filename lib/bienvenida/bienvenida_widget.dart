@@ -72,9 +72,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'i5cbai9p' /* ¡Hola! */,
-                                        ),
+                                        '¡Hola!',
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -101,9 +99,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'hcfihmnd' /* Soy Devi y te doy la bienvenid... */,
-                                          ),
+                                          'Soy Devi y te doy la bienvenida a mi casa,  alguno de mis amigos y yo te apoyaremos en tu proceso de automonitoreo.',
                                           textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -163,9 +159,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ttypee78' /* Dame de comer */,
-                                        ),
+                                        'Dame de comer',
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -194,9 +188,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '8r1f64d7' /* Me vas a alimentar en las hora... */,
-                                          ),
+                                          'Me vas a alimentar en las horas que tú hayas comido, así estaré feliz.\n\n¡No te preocupes! Yo te voy a apoyar en recordarte con notificaciones en tus horas de comida, pero debes decírmelas antes.',
                                           textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -257,9 +249,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'opp6bvdk' /* Anota tus sentimientos */,
-                                        ),
+                                        'Anota tus sentimientos',
                                         style: FlutterFlowTheme.of(context)
                                             .title1
                                             .override(
@@ -286,9 +276,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'glw62prf' /* Quiero que anotes como te sien... */,
-                                          ),
+                                          'Quiero que anotes como te sientes para que puedas monitorear tus sentimientos y tus estados de ánimo.\n\nEs un proceso difícil, pero espero que yo o mis amigos te podamos ayudar a mejorarte, eso nos haría muy feliz. ¡Tú puedes!',
                                           textAlign: TextAlign.justify,
                                           style: FlutterFlowTheme.of(context)
                                               .subtitle2
@@ -324,12 +312,20 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                             0, 16, 0, 0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            context.goNamed('Registro');
+                                            context.goNamed(
+                                              'Registro',
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .leftToRight,
+                                                ),
+                                              },
+                                            );
                                           },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'ztrohci9' /* Empecemos */,
-                                          ),
+                                          text: 'Empecemos',
                                           options: FFButtonOptions(
                                             width: 150,
                                             height: 56,

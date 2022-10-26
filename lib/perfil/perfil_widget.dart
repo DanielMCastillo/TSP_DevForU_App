@@ -1,4 +1,5 @@
 import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
@@ -39,14 +40,20 @@ class _PerfilWidgetState extends State<PerfilWidget>
             color: FlutterFlowTheme.of(context).primaryText,
             size: 30,
           ),
-          onPressed: () {
-            print('IconButton pressed ...');
+          onPressed: () async {
+            context.goNamed(
+              'Home',
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.rightToLeft,
+                ),
+              },
+            );
           },
         ),
         title: Text(
-          FFLocalizations.of(context).getText(
-            'ocw6xdad' /* Mi perfil */,
-          ),
+          'Mi perfil',
           style: FlutterFlowTheme.of(context).title1,
         ),
         actions: [],
@@ -59,30 +66,53 @@ class _PerfilWidgetState extends State<PerfilWidget>
           children: [
             Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              color: FlutterFlowTheme.of(context).primaryColor,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(60),
-                  child: Image.asset(
-                    'assets/images/AJOLOTE.png',
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.cover,
+                child: FutureBuilder<List<MascotasRecord>>(
+                  future: queryMascotasRecordOnce(
+                    queryBuilder: (mascotasRecord) => mascotasRecord.where(
+                        'nombre_mascota',
+                        isEqualTo: FFAppState().nombreMascota),
+                    singleRecord: true,
                   ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                          ),
+                        ),
+                      );
+                    }
+                    List<MascotasRecord> imageMascotasRecordList =
+                        snapshot.data!;
+                    // Return an empty Container when the document does not exist.
+                    if (snapshot.data!.isEmpty) {
+                      return Container();
+                    }
+                    final imageMascotasRecord =
+                        imageMascotasRecordList.isNotEmpty
+                            ? imageMascotasRecordList.first
+                            : null;
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(60),
+                      child: Image.network(
+                        '',
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    );
+                  },
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-              child: Text(
-                FFLocalizations.of(context).getText(
-                  'gx0mjalu' /* User */,
-                ),
-                style: FlutterFlowTheme.of(context).title3,
               ),
             ),
             Padding(
@@ -98,7 +128,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
               ),
             ),
             Divider(
-              height: 44,
+              height: 30,
               thickness: 1,
               indent: 24,
               endIndent: 24,
@@ -108,7 +138,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('Editar_Perfil');
+                  context.pushNamed(
+                    'Editar_Perfil',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -137,9 +175,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'hzs0sv1e' /* Editar perfil */,
-                            ),
+                            'Editar perfil',
                             style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                         ),
@@ -153,7 +189,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('Contacto_Emergencia');
+                  context.pushNamed(
+                    'Contacto_Emergencia',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -186,9 +230,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                               context.pushNamed('Contacto_Emergencia');
                             },
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'hi9et05n' /* Contacto de emergencia */,
-                              ),
+                              'Contacto de emergencia',
                               style: FlutterFlowTheme.of(context).bodyText1,
                             ),
                           ),
@@ -203,7 +245,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('RegistroHorarioComida');
+                  context.pushNamed(
+                    'RegistroHorarioComida',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -232,9 +282,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'yg7w948u' /* Horarios de comida */,
-                            ),
+                            'Horarios de comida',
                             style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                         ),
@@ -288,9 +336,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       12, 0, 0, 0),
                                   child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'enbiolph' /* Habilitar modo oscuro */,
-                                    ),
+                                    'Habilitar modo oscuro',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText1,
                                   ),
@@ -321,13 +367,13 @@ class _PerfilWidgetState extends State<PerfilWidget>
                                       ),
                                     ),
                                     Align(
-                                      alignment: AlignmentDirectional(-0.85, 0),
+                                      alignment: AlignmentDirectional(-0.9, 0),
                                       child: Container(
                                         width: 36,
                                         height: 36,
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                              .secondaryColor,
                                           boxShadow: [
                                             BoxShadow(
                                               blurRadius: 4,
@@ -394,9 +440,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       12, 0, 0, 0),
                                   child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      '3wbx0rhj' /* Switch to Light Mode */,
-                                    ),
+                                    'Switch to Light Mode',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
@@ -435,7 +479,8 @@ class _PerfilWidgetState extends State<PerfilWidget>
                                           width: 36,
                                           height: 36,
                                           decoration: BoxDecoration(
-                                            color: Color(0xFF14181B),
+                                            color: FlutterFlowTheme.of(context)
+                                                .alternate,
                                             boxShadow: [
                                               BoxShadow(
                                                 blurRadius: 4,
@@ -465,7 +510,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('EliminarCuenta');
+                  context.pushNamed(
+                    'EliminarCuenta',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -494,9 +547,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '15mcwh4a' /* Eliminar cuenta */,
-                            ),
+                            'Eliminar cuenta',
                             style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                         ),
@@ -510,7 +561,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
               padding: EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
               child: InkWell(
                 onTap: () async {
-                  context.pushNamed('pdfTest');
+                  context.pushNamed(
+                    'pdfTest',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
                 },
                 child: Container(
                   width: double.infinity,
@@ -543,9 +602,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                               context.pushNamed('pdfTest');
                             },
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                '32f18q2m' /* Otros */,
-                              ),
+                              'Otros',
                               style: FlutterFlowTheme.of(context).bodyText1,
                             ),
                           ),
@@ -565,27 +622,26 @@ class _PerfilWidgetState extends State<PerfilWidget>
 
                   context.goNamedAuth('Bienvenida', mounted);
                 },
-                text: FFLocalizations.of(context).getText(
-                  'pmoyf4jr' /* Cerrar sesión */,
-                ),
+                text: 'Cerrar sesión',
                 icon: Icon(
                   Icons.logout,
-                  size: 15,
+                  color: FlutterFlowTheme.of(context).darkBtnText,
+                  size: 24,
                 ),
                 options: FFButtonOptions(
                   width: 150,
                   height: 56,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
+                  color: FlutterFlowTheme.of(context).error,
                   textStyle: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Rubik',
-                        color: FlutterFlowTheme.of(context).customColor3,
+                        color: FlutterFlowTheme.of(context).darkBtnText,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                   elevation: 1,
                   borderSide: BorderSide(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    color: FlutterFlowTheme.of(context).error,
                     width: 1,
                   ),
                   borderRadius: BorderRadius.circular(14),

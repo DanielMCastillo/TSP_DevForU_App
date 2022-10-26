@@ -46,7 +46,7 @@ abstract class FlutterFlowTheme {
   late Color primaryText;
   late Color secondaryText;
 
-  late Color primaryBtnText;
+  late Color darkBtnText;
   late Color lineColor;
   late Color grayIcon;
   late Color gray200;
@@ -56,7 +56,7 @@ abstract class FlutterFlowTheme {
   late Color textColor;
   late Color backgroundComponents;
   late Color btnText;
-  late Color customColor3;
+  late Color error;
   late Color customColor4;
   late Color white;
   late Color background;
@@ -105,16 +105,16 @@ DeviceSize getDeviceSize(BuildContext context) {
 }
 
 class LightModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF96BEFF);
-  late Color secondaryColor = const Color(0xFF87ABE6);
-  late Color tertiaryColor = const Color(0xFF6985B3);
-  late Color alternate = const Color(0xFF001B3C);
+  late Color primaryColor = const Color(0xFF92BEF2);
+  late Color secondaryColor = const Color(0xFF00344D);
+  late Color tertiaryColor = const Color(0xFF004C6E);
+  late Color alternate = const Color(0xFF105587);
   late Color primaryBackground = const Color(0xFFFFFBFE);
   late Color secondaryBackground = const Color(0xFFE3E7E9);
   late Color primaryText = const Color(0xFF1C1B1F);
   late Color secondaryText = const Color(0xFF57636C);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color darkBtnText = Color(0xFFFFFBFE);
   late Color lineColor = Color(0xFFE0E3E7);
   late Color grayIcon = Color(0xFF95A1AC);
   late Color gray200 = Color(0xFFDBE2E7);
@@ -124,7 +124,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color textColor = Color(0xFF1E2429);
   late Color backgroundComponents = Color(0xFF1D2428);
   late Color btnText = Color(0xFFFFFFFF);
-  late Color customColor3 = Color(0xFFDF3F3F);
+  late Color error = Color(0xFFBA1A1A);
   late Color customColor4 = Color(0xFF090F13);
   late Color white = Color(0xFFFFFFFF);
   late Color background = Color(0xFF1D2429);
@@ -326,7 +326,7 @@ class DesktopTypography extends Typography {
 }
 
 class DarkModeTheme extends FlutterFlowTheme {
-  late Color primaryColor = const Color(0xFF96BEFF);
+  late Color primaryColor = const Color(0xFF92BEF2);
   late Color secondaryColor = const Color(0xFFC5D5EA);
   late Color tertiaryColor = const Color(0xFFB3C5D7);
   late Color alternate = const Color(0xFF7392B7);
@@ -335,7 +335,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF979797);
 
-  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color darkBtnText = Color(0xFFFFFFFF);
   late Color lineColor = Color(0xFF22282F);
   late Color grayIcon = Color(0xFF95A1AC);
   late Color gray200 = Color(0xFFDBE2E7);
@@ -345,7 +345,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color textColor = Color(0xFF1E2429);
   late Color backgroundComponents = Color(0xFF1D2428);
   late Color btnText = Color(0xFFFFFFFF);
-  late Color customColor3 = Color(0xFFDF3F3F);
+  late Color error = Color(0xFFDF3F3F);
   late Color customColor4 = Color(0xFF090F13);
   late Color white = Color(0xFFFFFFFF);
   late Color background = Color(0xFF1D2429);

@@ -141,12 +141,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ContactoEmergenciaWidget(),
             ),
             FFRoute(
-              name: 'Contacto_Emergencia2',
-              path: 'contactoEmergencia2',
-              requireAuth: true,
-              builder: (context, params) => ContactoEmergencia2Widget(),
-            ),
-            FFRoute(
               name: 'RegistroHorarioComida',
               path: 'registroHorarioComida',
               requireAuth: true,
@@ -162,6 +156,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'felicitacionJournaling',
               requireAuth: true,
               builder: (context, params) => FelicitacionJournalingWidget(),
+            ),
+            FFRoute(
+              name: 'pdfTest',
+              path: 'pdfTest',
+              requireAuth: true,
+              builder: (context, params) => PdfTestWidget(),
+            ),
+            FFRoute(
+              name: 'Contacto_Emergencia2',
+              path: 'contactoEmergencia2',
+              requireAuth: true,
+              builder: (context, params) => ContactoEmergencia2Widget(),
             ),
             FFRoute(
               name: 'Informacion_Personal',
@@ -180,18 +186,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'afkxd',
               requireAuth: true,
               builder: (context, params) => AfkxdWidget(),
-            ),
-            FFRoute(
-              name: 'test',
-              path: 'test',
-              requireAuth: true,
-              builder: (context, params) => TestWidget(),
-            ),
-            FFRoute(
-              name: 'pdfTest',
-              path: 'pdfTest',
-              requireAuth: true,
-              builder: (context, params) => PdfTestWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

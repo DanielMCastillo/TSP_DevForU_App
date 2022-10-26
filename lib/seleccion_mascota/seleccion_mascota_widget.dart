@@ -69,9 +69,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
             title: Text(
-              FFLocalizations.of(context).getText(
-                '8mj29reu' /* Escoge un acompañante */,
-              ),
+              'Escoge un acompañante',
               style: FlutterFlowTheme.of(context).title1,
             ),
             actions: [],
@@ -156,20 +154,14 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '2vyk80m7' /* Devi */,
-                                              ),
+                                              'Devi',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'cnf82n9r' /* Ajolote */,
-                                              ),
+                                              'Ajolote',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -244,10 +236,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              '3vwt1fky' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -333,19 +322,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '5bqr695o' /* Jali */,
-                                              ),
+                                              'Jali',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'p6jk8dyh' /* Zorro */,
-                                              ),
+                                              'Zorro',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -409,10 +392,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              '7nqqlrh9' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -498,19 +478,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'znz1xpud' /* Sonam */,
-                                              ),
+                                              'Sonam',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ot4v8fjt' /* Gato */,
-                                              ),
+                                              'Gato',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -574,10 +548,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'jngeo9a8' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -663,19 +634,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'fzfhji88' /* Raluca */,
-                                              ),
+                                              'Raluca',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'qm1bymsn' /* Perro */,
-                                              ),
+                                              'Perro',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -741,10 +706,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'h2zjh8fe' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -830,19 +792,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ukmhl6f1' /* Nosek */,
-                                              ),
+                                              'Nosek',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'zt8f1s0x' /* Dragón */,
-                                              ),
+                                              'Dragón',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -906,10 +862,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'yi7y3voc' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -995,19 +948,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '0sp6803v' /* Bobi */,
-                                              ),
+                                              'Bobi',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '2z3a4zzw' /* Oso panda */,
-                                              ),
+                                              'Oso panda',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -1071,10 +1018,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'pvp2q52f' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -1160,19 +1104,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'brp59pj4' /* Chork */,
-                                              ),
+                                              'Chork',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ty7hypoa' /* Conejo */,
-                                              ),
+                                              'Conejo',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -1236,10 +1174,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'nh1vyoun' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
@@ -1325,19 +1260,13 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'mfttgzcq' /* Mae */,
-                                              ),
+                                              'Mae',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .title3,
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'tl2iy5lr' /* Unicornio */,
-                                              ),
+                                              'Unicornio',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle2,
@@ -1401,10 +1330,7 @@ class _SeleccionMascotaWidgetState extends State<SeleccionMascotaWidget> {
                                                 return;
                                               }
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'w6onct9x' /* Seleccionar */,
-                                            ),
+                                            text: 'Seleccionar',
                                             options: FFButtonOptions(
                                               width: 130,
                                               height: 56,
