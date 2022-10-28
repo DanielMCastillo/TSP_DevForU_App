@@ -16,6 +16,7 @@ class FFAppState {
     prefs = await SharedPreferences.getInstance();
     _mascotaimg = prefs.getString('ff_mascotaimg') ?? _mascotaimg;
     _nombreMascota = prefs.getString('ff_nombreMascota') ?? _nombreMascota;
+    _horaDesayuno = prefs.getInt('ff_horaDesayuno') ?? _horaDesayuno;
   }
 
   late SharedPreferences prefs;
@@ -37,6 +38,15 @@ class FFAppState {
   String idAnimo = '';
 
   String estadoanimo = '';
+
+  int _horaDesayuno = 0;
+  int get horaDesayuno => _horaDesayuno;
+  set horaDesayuno(int _value) {
+    _horaDesayuno = _value;
+    prefs.setInt('ff_horaDesayuno', _value);
+  }
+
+  int numeroemergencia = 0;
 }
 
 LatLng? _latLngFromString(String? val) {

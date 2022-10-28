@@ -173,15 +173,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           decoration: InputDecoration(
                             labelText: 'Correo electrónico ',
                             labelStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodyText1
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                      .bodyText1Family,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodyText1Family),
                                 ),
                             hintText: 'Ingresa tu correo electrónico ',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -190,14 +189,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             errorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -205,7 +204,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                     FlutterFlowTheme.of(context).customColor4,
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             focusedErrorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -213,7 +212,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                     FlutterFlowTheme.of(context).customColor4,
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context)
@@ -225,17 +224,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                               color: FlutterFlowTheme.of(context).primaryText,
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
-                                color:
-                                    FlutterFlowTheme.of(context).customColor4,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
-                              ),
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ),
                       Padding(
@@ -246,15 +235,14 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                           decoration: InputDecoration(
                             labelText: 'Contraseña ',
                             labelStyle: FlutterFlowTheme.of(context)
-                                .bodyText2
+                                .bodyText1
                                 .override(
                                   fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyText2Family,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
+                                      .bodyText1Family,
+                                  color: FlutterFlowTheme.of(context).alternate,
                                   useGoogleFonts: GoogleFonts.asMap()
                                       .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyText2Family),
+                                          .bodyText1Family),
                                 ),
                             hintText: 'Ingresa tu contraseña ',
                             hintStyle: FlutterFlowTheme.of(context).bodyText2,
@@ -263,28 +251,28 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             errorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             focusedErrorBorder: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(14),
                             ),
                             filled: true,
                             fillColor: FlutterFlowTheme.of(context)
@@ -311,17 +299,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                               ),
                             ),
                           ),
-                          style: FlutterFlowTheme.of(context)
-                              .bodyText1
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyText1Family,
-                                color:
-                                    FlutterFlowTheme.of(context).customColor4,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .bodyText1Family),
-                              ),
+                          style: FlutterFlowTheme.of(context).bodyText1,
                         ),
                       ),
                       Padding(

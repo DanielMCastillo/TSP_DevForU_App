@@ -55,6 +55,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
   TextEditingController? passwordCreateController;
 
   late bool passwordCreateVisibility;
+  TextEditingController? textController1;
+  TextEditingController? textController2;
+  TextEditingController? textController3;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -73,6 +76,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
     emailAddressCreateController = TextEditingController();
     passwordCreateController = TextEditingController();
     passwordCreateVisibility = false;
+    textController1 = TextEditingController();
+    textController2 = TextEditingController();
+    textController3 = TextEditingController();
   }
 
   @override
@@ -81,6 +87,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
     correoController?.dispose();
     emailAddressCreateController?.dispose();
     passwordCreateController?.dispose();
+    textController1?.dispose();
+    textController2?.dispose();
+    textController3?.dispose();
     super.dispose();
   }
 
@@ -103,15 +112,15 @@ class _RegistroWidgetState extends State<RegistroWidget>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 60),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/images/DeviCompu.png',
-                    width: 150,
-                    height: 150,
+                    width: 100,
+                    height: 100,
                     fit: BoxFit.fitWidth,
                   ).animateOnPageLoad(
                       animationsMap['imageOnPageLoadAnimation']!),
@@ -420,6 +429,53 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                       ),
                                     ),
                                   ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 50, 0, 0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        context.goNamed(
+                                          'CambiarContrasena',
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .leftToRight,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      text: 'Olvidé mi contraseña',
+                                      options: FFButtonOptions(
+                                        width: 200,
+                                        height: 56,
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .darkBtnText,
+                                              fontSize: 14,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
@@ -637,44 +693,392 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 12, 20, 0),
+                                    child: TextFormField(
+                                      controller: textController1,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Nombre',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
+                                        hintText: 'Escribe tu primer nombre',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2,
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.person_outline,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 12, 20, 0),
+                                    child: TextFormField(
+                                      controller: textController2,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Contacto de emergencia',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
+                                        hintText:
+                                            'Escribe el nombre de tu contacto',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText2Family),
+                                            ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.healing,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20, 12, 20, 0),
+                                    child: TextFormField(
+                                      controller: textController3,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText: '# Contacto de emergencia',
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .bodyText1
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1Family,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1Family),
+                                            ),
+                                        hintText:
+                                            'Escribe el número de teléfono',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .bodyText2,
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        errorBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        focusedErrorBorder:
+                                            UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
+                                        ),
+                                        filled: true,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                20, 24, 20, 24),
+                                        prefixIcon: Icon(
+                                          Icons.contact_phone_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyText1
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyText1Family,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText1Family),
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0, 24, 0, 0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
+                                        if ((textController1!.text == null ||
+                                                textController1!.text == '') ||
+                                            (textController2!.text == null ||
+                                                textController2!.text == '') ||
+                                            (textController3!.text == null ||
+                                                textController3!.text == '')) {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Ups!'),
+                                                content: Text(
+                                                    'Por favor rellena todos los campos.'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Entendido!'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent(true);
 
-                                        final user =
-                                            await createAccountWithEmail(
-                                          context,
-                                          emailAddressCreateController!.text,
-                                          passwordCreateController!.text,
-                                        );
-                                        if (user == null) {
+                                          final user =
+                                              await createAccountWithEmail(
+                                            context,
+                                            emailAddressCreateController!.text,
+                                            passwordCreateController!.text,
+                                          );
+                                          if (user == null) {
+                                            return;
+                                          }
+
+                                          final usuariosCreateData =
+                                              createUsuariosRecordData(
+                                            displayName: textController1!.text,
+                                            nombreEmergencia:
+                                                textController2!.text,
+                                            phoneNumber: textController3!.text,
+                                          );
+                                          await UsuariosRecord.collection
+                                              .doc(user.uid)
+                                              .update(usuariosCreateData);
+
+                                          final horariosCreateData =
+                                              createHorariosRecordData(
+                                            desayuno: '00:00',
+                                            comida: '00:00',
+                                            cena: '00:00',
+                                            uidRef: currentUserReference,
+                                          );
+                                          await HorariosRecord.collection
+                                              .doc()
+                                              .set(horariosCreateData);
+
+                                          final horariosUsuarioCreateData =
+                                              createHorariosUsuarioRecordData(
+                                            uidref: currentUserReference,
+                                            desayuno: getCurrentTimestamp,
+                                            comida: getCurrentTimestamp,
+                                            cena: getCurrentTimestamp,
+                                          );
+                                          await HorariosUsuarioRecord.collection
+                                              .doc()
+                                              .set(horariosUsuarioCreateData);
+                                          setState(() =>
+                                              FFAppState().mascotaimg =
+                                                  textController3!.text);
+
+                                          final usuarioMascotaCreateData =
+                                              createUsuarioMascotaRecordData(
+                                            uidRef: currentUserReference,
+                                            nombreMascota: 'Devi',
+                                          );
+                                          await UsuarioMascotaRecord.collection
+                                              .doc()
+                                              .set(usuarioMascotaCreateData);
+
+                                          context.goNamedAuth(
+                                            'SeleccionMascotaMain',
+                                            mounted,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .leftToRight,
+                                              ),
+                                            },
+                                            ignoreRedirect: true,
+                                          );
+
                                           return;
                                         }
-
-                                        final horariosCreateData =
-                                            createHorariosRecordData(
-                                          desayuno: '00:00',
-                                          comida: '00:00',
-                                          cena: '00:00',
-                                          uidRef: currentUserReference,
-                                        );
-                                        await HorariosRecord.collection
-                                            .doc()
-                                            .set(horariosCreateData);
-
-                                        final usuariosConfianzaCreateData =
-                                            createUsuariosConfianzaRecordData(
-                                          nombreContacto: '',
-                                          numeroContacto: '',
-                                          uidref: currentUserReference,
-                                        );
-                                        await UsuariosConfianzaRecord.collection
-                                            .doc()
-                                            .set(usuariosConfianzaCreateData);
-
-                                        context.goNamedAuth(
-                                            'SeleccionMascotaCopy', mounted);
                                       },
                                       text: 'Registrate',
                                       icon: Icon(

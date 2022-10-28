@@ -4,16 +4,16 @@ import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FelicitacionJournalingWidget extends StatefulWidget {
-  const FelicitacionJournalingWidget({Key? key}) : super(key: key);
+class FelicitacionHorarioComidaWidget extends StatefulWidget {
+  const FelicitacionHorarioComidaWidget({Key? key}) : super(key: key);
 
   @override
-  _FelicitacionJournalingWidgetState createState() =>
-      _FelicitacionJournalingWidgetState();
+  _FelicitacionHorarioComidaWidgetState createState() =>
+      _FelicitacionHorarioComidaWidgetState();
 }
 
-class _FelicitacionJournalingWidgetState
-    extends State<FelicitacionJournalingWidget> {
+class _FelicitacionHorarioComidaWidgetState
+    extends State<FelicitacionHorarioComidaWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -35,7 +35,7 @@ class _FelicitacionJournalingWidgetState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/congrats.gif',
+                      'assets/images/conffeti.gif',
                       width: 200,
                       height: 200,
                       fit: BoxFit.fitWidth,
@@ -44,7 +44,7 @@ class _FelicitacionJournalingWidgetState
                 ),
               ),
               Text(
-                '¡Lo hiciste!',
+                '¡Genial!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).title1.override(
                       fontFamily: FlutterFlowTheme.of(context).title1Family,
@@ -56,8 +56,8 @@ class _FelicitacionJournalingWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24, 12, 24, 0),
                 child: Text(
-                  'Llevar un diario lo ayuda a integrar nuevas experiencias, realizar un seguimiento de tu progreso, solidificar tu salud y apreciar tus fortalezas. Estás bien encaminado para comprender y manejar tus sentimientos.\n¡Escribe a diario para obtener los mejores resultados!',
-                  textAlign: TextAlign.justify,
+                  'Mantener unos correctos horarios de comidas es imprescindible a la hora de mantener el metabolismo en perfecto estado y activo al cien por ciento.',
+                  textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyText1Family,
@@ -72,7 +72,7 @@ class _FelicitacionJournalingWidgetState
                 padding: EdgeInsetsDirectional.fromSTEB(0, 44, 0, 0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    context.pushNamed(
+                    context.goNamed(
                       'Home',
                       extra: <String, dynamic>{
                         kTransitionInfoKey: TransitionInfo(

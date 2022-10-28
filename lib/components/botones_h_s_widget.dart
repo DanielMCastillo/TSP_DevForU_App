@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -46,6 +47,7 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                   },
                 ).then((value) => setState(() {}));
 
+                HapticFeedback.heavyImpact();
                 soundPlayer ??= AudioPlayer();
                 if (soundPlayer!.playing) {
                   await soundPlayer!.stop();
@@ -88,7 +90,7 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,
-                        transitionType: PageTransitionType.topToBottom,
+                        transitionType: PageTransitionType.bottomToTop,
                       ),
                     },
                   );
@@ -122,7 +124,15 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
               padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
               child: FFButtonWidget(
                 onPressed: () async {
-                  context.pushNamed('Ayuda');
+                  context.pushNamed(
+                    'Ayuda',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.bottomToTop,
+                      ),
+                    },
+                  );
                 },
                 text: 'Pedir Ayuda',
                 icon: FaIcon(

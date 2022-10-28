@@ -13,6 +13,7 @@ import 'schema/frases_reforzamiento_record.dart';
 import 'schema/horarios_record.dart';
 import 'schema/img_test_record.dart';
 import 'schema/usuarios_confianza_record.dart';
+import 'schema/horarios_usuario_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -29,6 +30,7 @@ export 'schema/frases_reforzamiento_record.dart';
 export 'schema/horarios_record.dart';
 export 'schema/img_test_record.dart';
 export 'schema/usuarios_confianza_record.dart';
+export 'schema/horarios_usuario_record.dart';
 
 /// Functions to query UsuariosRecords (as a Stream and as a Future).
 Stream<List<UsuariosRecord>> queryUsuariosRecord({
@@ -409,6 +411,48 @@ Future<FFFirestorePage<UsuariosConfianzaRecord>>
           pageSize: pageSize,
           isStream: isStream,
         );
+
+/// Functions to query HorariosUsuarioRecords (as a Stream and as a Future).
+Stream<List<HorariosUsuarioRecord>> queryHorariosUsuarioRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      HorariosUsuarioRecord.collection,
+      HorariosUsuarioRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<HorariosUsuarioRecord>> queryHorariosUsuarioRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      HorariosUsuarioRecord.collection,
+      HorariosUsuarioRecord.serializer,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<FFFirestorePage<HorariosUsuarioRecord>> queryHorariosUsuarioRecordPage({
+  Query Function(Query)? queryBuilder,
+  DocumentSnapshot? nextPageMarker,
+  required int pageSize,
+  required bool isStream,
+}) =>
+    queryCollectionPage(
+      HorariosUsuarioRecord.collection,
+      HorariosUsuarioRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
 
 Stream<List<T>> queryCollection<T>(Query collection, Serializer<T> serializer,
     {Query Function(Query)? queryBuilder,

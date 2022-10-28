@@ -6,6 +6,8 @@ import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
 import '../../auth/firebase_user_provider.dart';
+import '../../backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 
 import '../../index.dart';
 import '../../main.dart';
@@ -87,12 +89,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistroWidget(),
             ),
             FFRoute(
-              name: 'SeleccionMascotaCopy',
-              path: 'seleccionMascotaCopy',
-              requireAuth: true,
-              builder: (context, params) => SeleccionMascotaCopyWidget(),
-            ),
-            FFRoute(
               name: 'Home',
               path: 'home',
               requireAuth: true,
@@ -123,16 +119,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => AnimooWidget(),
             ),
             FFRoute(
+              name: 'SeleccionMascotaMain',
+              path: 'seleccionMascotaMain',
+              requireAuth: true,
+              builder: (context, params) => SeleccionMascotaMainWidget(),
+            ),
+            FFRoute(
               name: 'Ayuda',
               path: 'ayuda',
               requireAuth: true,
               builder: (context, params) => AyudaWidget(),
-            ),
-            FFRoute(
-              name: 'Editar_Perfil',
-              path: 'editarPerfil',
-              requireAuth: true,
-              builder: (context, params) => EditarPerfilWidget(),
             ),
             FFRoute(
               name: 'Contacto_Emergencia',
@@ -141,15 +137,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => ContactoEmergenciaWidget(),
             ),
             FFRoute(
-              name: 'RegistroHorarioComida',
-              path: 'registroHorarioComida',
+              name: 'Editar_Perfil',
+              path: 'editarPerfil',
               requireAuth: true,
-              builder: (context, params) => RegistroHorarioComidaWidget(),
+              builder: (context, params) => EditarPerfilWidget(),
             ),
             FFRoute(
               name: 'EliminarCuenta',
               path: 'eliminarCuenta',
               builder: (context, params) => EliminarCuentaWidget(),
+            ),
+            FFRoute(
+              name: 'recordatoriosComida',
+              path: 'recordatoriosComida',
+              requireAuth: true,
+              builder: (context, params) => RecordatoriosComidaWidget(),
             ),
             FFRoute(
               name: 'Felicitacion_Journaling',
@@ -158,28 +160,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => FelicitacionJournalingWidget(),
             ),
             FFRoute(
+              name: 'Felicitacion_horario_comida',
+              path: 'felicitacionHorarioComida',
+              requireAuth: true,
+              builder: (context, params) => FelicitacionHorarioComidaWidget(),
+            ),
+            FFRoute(
+              name: 'CambiarContrasena',
+              path: 'cambiarContrasena',
+              builder: (context, params) => CambiarContrasenaWidget(),
+            ),
+            FFRoute(
+              name: 'RegistroHorarioComida',
+              path: 'registroHorarioComida',
+              requireAuth: true,
+              builder: (context, params) => RegistroHorarioComidaWidget(),
+            ),
+            FFRoute(
               name: 'pdfTest',
               path: 'pdfTest',
               requireAuth: true,
               builder: (context, params) => PdfTestWidget(),
-            ),
-            FFRoute(
-              name: 'Contacto_Emergencia2',
-              path: 'contactoEmergencia2',
-              requireAuth: true,
-              builder: (context, params) => ContactoEmergencia2Widget(),
-            ),
-            FFRoute(
-              name: 'Informacion_Personal',
-              path: 'informacionPersonal',
-              requireAuth: true,
-              builder: (context, params) => InformacionPersonalWidget(),
-            ),
-            FFRoute(
-              name: 'SeleccionMascota',
-              path: 'seleccionMascota',
-              requireAuth: true,
-              builder: (context, params) => SeleccionMascotaWidget(),
             ),
             FFRoute(
               name: 'afkxd',
@@ -365,7 +366,7 @@ class FFRoute {
                     fit: BoxFit.scaleDown,
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

@@ -6,10 +6,13 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/custom_functions.dart' as functions;
 import '../flutter_flow/random_data_util.dart' as random_data;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({Key? key}) : super(key: key);
@@ -93,6 +96,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       ],
     ),
   };
+  AudioPlayer? soundPlayer;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -108,62 +112,98 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<UsuarioMascotaRecord>>(
-      stream: queryUsuarioMascotaRecord(
-        queryBuilder: (usuarioMascotaRecord) => usuarioMascotaRecord
-            .where('uid_ref', isEqualTo: currentUserReference),
-        singleRecord: true,
-      ),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Center(
-            child: SizedBox(
-              width: 25,
-              height: 25,
-              child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        automaticallyImplyLeading: false,
+        leading: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+              child: Text(
+                'Casa de ',
+                style: FlutterFlowTheme.of(context).title2,
               ),
             ),
-          );
-        }
-        List<UsuarioMascotaRecord> homeUsuarioMascotaRecordList =
-            snapshot.data!;
-        final homeUsuarioMascotaRecord = homeUsuarioMascotaRecordList.isNotEmpty
-            ? homeUsuarioMascotaRecordList.first
-            : null;
-        return Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-          appBar: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            automaticallyImplyLeading: false,
-            leading: Row(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
-                  child: Text(
-                    'Casa de ',
-                    style: FlutterFlowTheme.of(context).title2,
-                  ),
-                ),
-                Text(
-                  homeUsuarioMascotaRecord!.nombreMascota!,
+            StreamBuilder<List<UsuarioMascotaRecord>>(
+              stream: queryUsuarioMascotaRecord(
+                queryBuilder: (usuarioMascotaRecord) => usuarioMascotaRecord
+                    .where('uid_ref', isEqualTo: currentUserReference),
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 25,
+                      height: 25,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                      ),
+                    ),
+                  );
+                }
+                List<UsuarioMascotaRecord> textUsuarioMascotaRecordList =
+                    snapshot.data!;
+                // Return an empty Container when the document does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final textUsuarioMascotaRecord =
+                    textUsuarioMascotaRecordList.isNotEmpty
+                        ? textUsuarioMascotaRecordList.first
+                        : null;
+                return Text(
+                  textUsuarioMascotaRecord!.nombreMascota!,
                   style: FlutterFlowTheme.of(context).title2,
-                ),
-              ],
+                );
+              },
             ),
-            actions: [],
-            centerTitle: true,
-            elevation: 0,
-          ),
-          body: SafeArea(
-            child: GestureDetector(
-              onTap: () => FocusScope.of(context).unfocus(),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
-                child: SingleChildScrollView(
+          ],
+        ),
+        actions: [],
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: SafeArea(
+        child: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
+            child: StreamBuilder<List<UsuarioMascotaRecord>>(
+              stream: queryUsuarioMascotaRecord(
+                queryBuilder: (usuarioMascotaRecord) => usuarioMascotaRecord
+                    .where('uid_ref', isEqualTo: currentUserReference),
+                singleRecord: true,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 25,
+                      height: 25,
+                      child: CircularProgressIndicator(
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                      ),
+                    ),
+                  );
+                }
+                List<UsuarioMascotaRecord> columnUsuarioMascotaRecordList =
+                    snapshot.data!;
+                // Return an empty Container when the document does not exist.
+                if (snapshot.data!.isEmpty) {
+                  return Container();
+                }
+                final columnUsuarioMascotaRecord =
+                    columnUsuarioMascotaRecordList.isNotEmpty
+                        ? columnUsuarioMascotaRecordList.first
+                        : null;
+                return SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -173,7 +213,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                         padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
                         child: Container(
                           width: double.infinity,
-                          height: 70,
+                          height: 50,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -206,7 +246,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyText1Family,
-                                        fontSize: 15,
+                                        fontSize: 17,
                                         fontWeight: FontWeight.w500,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -243,8 +283,9 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                   future: queryMascotasRecordOnce(
                                     queryBuilder: (mascotasRecord) =>
                                         mascotasRecord.where('nombre_mascota',
-                                            isEqualTo: homeUsuarioMascotaRecord!
-                                                .nombreMascota),
+                                            isEqualTo:
+                                                columnUsuarioMascotaRecord!
+                                                    .nombreMascota),
                                     singleRecord: true,
                                   ),
                                   builder: (context, snapshot) {
@@ -272,11 +313,27 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                         imageMascotasRecordList.isNotEmpty
                                             ? imageMascotasRecordList.first
                                             : null;
-                                    return Image.network(
-                                      imageMascotasRecord!.imagenMascota!,
-                                      width: 400,
-                                      height: 300,
-                                      fit: BoxFit.scaleDown,
+                                    return InkWell(
+                                      onLongPress: () async {
+                                        soundPlayer ??= AudioPlayer();
+                                        if (soundPlayer!.playing) {
+                                          await soundPlayer!.stop();
+                                        }
+                                        soundPlayer!.setVolume(0.85);
+                                        await soundPlayer!
+                                            .setAsset(
+                                                'assets/audios/y2mate.com_-_Love_alarm_20_tono.mp3')
+                                            .then((_) => soundPlayer!.play());
+
+                                        HapticFeedback.vibrate();
+                                      },
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            imageMascotasRecord!.imagenMascota!,
+                                        width: 400,
+                                        height: 300,
+                                        fit: BoxFit.scaleDown,
+                                      ),
                                     ).animateOnPageLoad(animationsMap[
                                         'imageOnPageLoadAnimation']!);
                                   },
@@ -294,12 +351,12 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

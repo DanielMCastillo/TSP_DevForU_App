@@ -57,7 +57,7 @@ class _AnimooWidgetState extends State<AnimooWidget> {
             size: 30,
           ),
           onPressed: () async {
-            context.goNamed(
+            context.pushNamed(
               'Home',
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
@@ -310,7 +310,6 @@ class _AnimooWidgetState extends State<AnimooWidget> {
                                   .doc()
                                   .set(estadoAnimoCreateData);
                             },
-                            autofocus: true,
                             obscureText: false,
                             decoration: InputDecoration(
                               hintText: 'Escribe una nota',
@@ -361,14 +360,16 @@ class _AnimooWidgetState extends State<AnimooWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(16, 32, 16, 32),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        if (FFAppState().estadoanimo == '') {
+                        if ((FFAppState().estadoanimo == '') ||
+                            (textController!.text == null ||
+                                textController!.text == '')) {
                           await showDialog(
                             context: context,
                             builder: (alertDialogContext) {
                               return AlertDialog(
                                 title: Text('Ups! :)'),
-                                content: Text(
-                                    'Por favor selecciona tu estado de animo, sólo debes presionar una de las imágenes de arriba.'),
+                                content:
+                                    Text('Por favor rellena todos los campos.'),
                                 actions: [
                                   TextButton(
                                     onPressed: () =>
@@ -391,6 +392,8 @@ class _AnimooWidgetState extends State<AnimooWidget> {
                               .set(notasCreateData);
 
                           context.goNamed('Felicitacion_Journaling');
+
+                          return;
                         }
                       },
                       text: 'Guardar',

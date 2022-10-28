@@ -70,6 +70,13 @@ class _$UsuariosRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.nombreEmergencia;
+    if (value != null) {
+      result
+        ..add('nombre_emergencia')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -121,6 +128,10 @@ class _$UsuariosRecordSerializer
           result.contrasena = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'nombre_emergencia':
+          result.nombreEmergencia = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -150,6 +161,8 @@ class _$UsuariosRecord extends UsuariosRecord {
   @override
   final String? contrasena;
   @override
+  final String? nombreEmergencia;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsuariosRecord([void Function(UsuariosRecordBuilder)? updates]) =>
@@ -163,6 +176,7 @@ class _$UsuariosRecord extends UsuariosRecord {
       this.createdTime,
       this.phoneNumber,
       this.contrasena,
+      this.nombreEmergencia,
       this.ffRef})
       : super._();
 
@@ -185,6 +199,7 @@ class _$UsuariosRecord extends UsuariosRecord {
         createdTime == other.createdTime &&
         phoneNumber == other.phoneNumber &&
         contrasena == other.contrasena &&
+        nombreEmergencia == other.nombreEmergencia &&
         ffRef == other.ffRef;
   }
 
@@ -195,12 +210,16 @@ class _$UsuariosRecord extends UsuariosRecord {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, email.hashCode), displayName.hashCode),
-                            photoUrl.hashCode),
-                        uid.hashCode),
-                    createdTime.hashCode),
-                phoneNumber.hashCode),
-            contrasena.hashCode),
+                        $jc(
+                            $jc(
+                                $jc($jc(0, email.hashCode),
+                                    displayName.hashCode),
+                                photoUrl.hashCode),
+                            uid.hashCode),
+                        createdTime.hashCode),
+                    phoneNumber.hashCode),
+                contrasena.hashCode),
+            nombreEmergencia.hashCode),
         ffRef.hashCode));
   }
 
@@ -214,6 +233,7 @@ class _$UsuariosRecord extends UsuariosRecord {
           ..add('createdTime', createdTime)
           ..add('phoneNumber', phoneNumber)
           ..add('contrasena', contrasena)
+          ..add('nombreEmergencia', nombreEmergencia)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -251,6 +271,11 @@ class UsuariosRecordBuilder
   String? get contrasena => _$this._contrasena;
   set contrasena(String? contrasena) => _$this._contrasena = contrasena;
 
+  String? _nombreEmergencia;
+  String? get nombreEmergencia => _$this._nombreEmergencia;
+  set nombreEmergencia(String? nombreEmergencia) =>
+      _$this._nombreEmergencia = nombreEmergencia;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -269,6 +294,7 @@ class UsuariosRecordBuilder
       _createdTime = $v.createdTime;
       _phoneNumber = $v.phoneNumber;
       _contrasena = $v.contrasena;
+      _nombreEmergencia = $v.nombreEmergencia;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -299,6 +325,7 @@ class UsuariosRecordBuilder
             createdTime: createdTime,
             phoneNumber: phoneNumber,
             contrasena: contrasena,
+            nombreEmergencia: nombreEmergencia,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

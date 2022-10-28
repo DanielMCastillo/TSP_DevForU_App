@@ -1,10 +1,10 @@
 import '../auth/auth_util.dart';
-import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -41,7 +41,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
             size: 30,
           ),
           onPressed: () async {
-            context.goNamed(
+            context.pushNamed(
               'Home',
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
@@ -72,46 +72,31 @@ class _PerfilWidgetState extends State<PerfilWidget>
               ),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(2, 2, 2, 2),
-                child: FutureBuilder<List<MascotasRecord>>(
-                  future: queryMascotasRecordOnce(
-                    queryBuilder: (mascotasRecord) => mascotasRecord.where(
-                        'nombre_mascota',
-                        isEqualTo: FFAppState().nombreMascota),
-                    singleRecord: true,
+                child: AuthUserStreamWidget(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(60),
+                    child: CachedNetworkImage(
+                      imageUrl: currentUserPhoto,
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 25,
-                          height: 25,
-                          child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
-                          ),
-                        ),
-                      );
-                    }
-                    List<MascotasRecord> imageMascotasRecordList =
-                        snapshot.data!;
-                    // Return an empty Container when the document does not exist.
-                    if (snapshot.data!.isEmpty) {
-                      return Container();
-                    }
-                    final imageMascotasRecord =
-                        imageMascotasRecordList.isNotEmpty
-                            ? imageMascotasRecordList.first
-                            : null;
-                    return ClipRRect(
-                      borderRadius: BorderRadius.circular(60),
-                      child: Image.network(
-                        '',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.scaleDown,
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 5),
+              child: AuthUserStreamWidget(
+                child: Text(
+                  currentUserDisplayName,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily:
+                            FlutterFlowTheme.of(context).bodyText1Family,
+                        fontWeight: FontWeight.w600,
+                        useGoogleFonts: GoogleFonts.asMap().containsKey(
+                            FlutterFlowTheme.of(context).bodyText1Family),
                       ),
-                    );
-                  },
                 ),
               ),
             ),
@@ -217,10 +202,15 @@ class _PerfilWidgetState extends State<PerfilWidget>
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
-                          child: FaIcon(
-                            FontAwesomeIcons.handsHelping,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 24,
+                          child: InkWell(
+                            onTap: () async {
+                              context.pushNamed('Contacto_Emergencia');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.handsHelping,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24,
+                            ),
                           ),
                         ),
                         Padding(
@@ -246,7 +236,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
               child: InkWell(
                 onTap: () async {
                   context.pushNamed(
-                    'RegistroHorarioComida',
+                    'recordatoriosComida',
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,
@@ -440,9 +430,19 @@ class _PerfilWidgetState extends State<PerfilWidget>
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       12, 0, 0, 0),
                                   child: Text(
-                                    'Switch to Light Mode',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText2,
+                                    'Habilitar modo claro',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyText2
+                                        .override(
+                                          fontFamily: 'Rubik',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          fontSize: 16,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2Family),
+                                        ),
                                   ),
                                 ),
                               ),
@@ -562,7 +562,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
               child: InkWell(
                 onTap: () async {
                   context.pushNamed(
-                    'pdfTest',
+                    'SeleccionMascotaMain',
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,
@@ -590,21 +590,16 @@ class _PerfilWidgetState extends State<PerfilWidget>
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
                           child: Icon(
-                            Icons.settings_outlined,
+                            Icons.pets,
                             color: FlutterFlowTheme.of(context).primaryText,
                             size: 24,
                           ),
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
-                          child: InkWell(
-                            onTap: () async {
-                              context.pushNamed('pdfTest');
-                            },
-                            child: Text(
-                              'Otros',
-                              style: FlutterFlowTheme.of(context).bodyText1,
-                            ),
+                          child: Text(
+                            'Selecciona otro acompañante',
+                            style: FlutterFlowTheme.of(context).bodyText1,
                           ),
                         ),
                       ],

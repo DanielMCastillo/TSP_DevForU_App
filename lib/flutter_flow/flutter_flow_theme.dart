@@ -70,6 +70,8 @@ abstract class FlutterFlowTheme {
   late Color purpleMountainMajesty;
   late Color lilac;
   late Color pinkLavender;
+  late Color primaryBtnText;
+  late Color customColor1;
 
   String get title1Family => typography.title1Family;
   TextStyle get title1 => typography.title1;
@@ -138,6 +140,8 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color purpleMountainMajesty = Color(0xFF9F86C0);
   late Color lilac = Color(0xFFBE95C4);
   late Color pinkLavender = Color(0xFFE0B1CB);
+  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color customColor1 = Color(0xFF2FB73C);
 }
 
 abstract class Typography {
@@ -359,6 +363,8 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color purpleMountainMajesty = Color(0xFF9F86C0);
   late Color lilac = Color(0xFFBE95C4);
   late Color pinkLavender = Color(0xFFE0B1CB);
+  late Color primaryBtnText = Color(0xFFFFFFFF);
+  late Color customColor1 = Color(0xFF452FB7);
 }
 
 extension TextStyleHelper on TextStyle {

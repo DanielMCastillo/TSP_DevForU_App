@@ -10,6 +10,7 @@ import 'frases_reforzamiento_record.dart';
 import 'horarios_record.dart';
 import 'img_test_record.dart';
 import 'usuarios_confianza_record.dart';
+import 'horarios_usuario_record.dart';
 
 import 'index.dart';
 
@@ -29,6 +30,7 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   HorariosRecord,
   ImgTestRecord,
   UsuariosConfianzaRecord,
+  HorariosUsuarioRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

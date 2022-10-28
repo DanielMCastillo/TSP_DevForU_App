@@ -61,6 +61,11 @@
       <string>Permitir que Devii mande notificaciones</string>
 	<key>NSContactsUsageDescription</key>
       <string>Permitir que Devii acceda a tus contactos</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 	<key>UILaunchStoryboardName</key>

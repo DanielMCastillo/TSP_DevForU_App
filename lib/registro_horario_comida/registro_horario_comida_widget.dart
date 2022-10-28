@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../custom_code/actions/index.dart' as actions;
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -103,109 +105,111 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked1,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            null ||
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked1,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            '')
-                      StreamBuilder<List<HorariosRecord>>(
-                        stream: queryHorariosRecord(
-                          queryBuilder: (horariosRecord) =>
-                              horariosRecord.where('uid_ref',
-                                  isEqualTo: currentUserReference),
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 25,
-                                height: 25,
-                                child: CircularProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
+                    StreamBuilder<List<HorariosRecord>>(
+                      stream: queryHorariosRecord(
+                        queryBuilder: (horariosRecord) => horariosRecord
+                            .where('uid_ref', isEqualTo: currentUserReference),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<HorariosRecord> desayunoBDHorariosRecordList =
+                            snapshot.data!;
+                        final desayunoBDHorariosRecord =
+                            desayunoBDHorariosRecordList.isNotEmpty
+                                ? desayunoBDHorariosRecordList.first
+                                : null;
+                        return Text(
+                          dateTimeFormat(
+                            'Hm',
+                            datePicked1,
+                            locale: FFLocalizations.of(context).languageCode,
+                          ),
+                          style: FlutterFlowTheme.of(context).subtitle1,
+                        );
+                      },
+                    ),
+                    StreamBuilder<List<HorariosUsuarioRecord>>(
+                      stream: queryHorariosUsuarioRecord(
+                        queryBuilder: (horariosUsuarioRecord) =>
+                            horariosUsuarioRecord.where('uidref',
+                                isEqualTo: currentUserReference),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<HorariosUsuarioRecord>
+                            desayunoHorariosUsuarioRecordList = snapshot.data!;
+                        final desayunoHorariosUsuarioRecord =
+                            desayunoHorariosUsuarioRecordList.isNotEmpty
+                                ? desayunoHorariosUsuarioRecordList.first
+                                : null;
+                        return FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked1 = date);
+                              },
+                              currentTime:
+                                  desayunoHorariosUsuarioRecord!.desayuno!,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
                               ),
                             );
-                          }
-                          List<HorariosRecord> desayunoBDHorariosRecordList =
-                              snapshot.data!;
-                          final desayunoBDHorariosRecord =
-                              desayunoBDHorariosRecordList.isNotEmpty
-                                  ? desayunoBDHorariosRecordList.first
-                                  : null;
-                          return Text(
-                            desayunoBDHorariosRecord!.desayuno!,
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          );
-                        },
-                      ),
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked1,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            null &&
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked1,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            '')
-                      Text(
-                        dateTimeFormat(
-                          'Hm',
-                          datePicked1,
-                          locale: FFLocalizations.of(context).languageCode,
-                        ),
-                        style: FlutterFlowTheme.of(context).subtitle2,
-                      ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked1 = date);
                           },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
+                          text: 'Desayuno',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 56,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText1Family),
+                                ),
+                            elevation: 1,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
                           ),
                         );
                       },
-                      text: 'Desayuno',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 56,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .bodyText1
-                            .override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
-                            ),
-                        elevation: 1,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -215,109 +219,82 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked2,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            null ||
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked2,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            '')
-                      StreamBuilder<List<HorariosRecord>>(
-                        stream: queryHorariosRecord(
-                          queryBuilder: (horariosRecord) =>
-                              horariosRecord.where('uid_ref',
-                                  isEqualTo: currentUserReference),
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 25,
-                                height: 25,
-                                child: CircularProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
+                    Text(
+                      dateTimeFormat(
+                        'Hm',
+                        datePicked2,
+                        locale: FFLocalizations.of(context).languageCode,
+                      ),
+                      style: FlutterFlowTheme.of(context).subtitle1,
+                    ),
+                    StreamBuilder<List<HorariosUsuarioRecord>>(
+                      stream: queryHorariosUsuarioRecord(
+                        queryBuilder: (horariosUsuarioRecord) =>
+                            horariosUsuarioRecord.where('uidref',
+                                isEqualTo: currentUserReference),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<HorariosUsuarioRecord>
+                            comidaHorariosUsuarioRecordList = snapshot.data!;
+                        final comidaHorariosUsuarioRecord =
+                            comidaHorariosUsuarioRecordList.isNotEmpty
+                                ? comidaHorariosUsuarioRecordList.first
+                                : null;
+                        return FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked2 = date);
+                              },
+                              currentTime: comidaHorariosUsuarioRecord!.comida!,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
                               ),
                             );
-                          }
-                          List<HorariosRecord> comidaBDHorariosRecordList =
-                              snapshot.data!;
-                          final comidaBDHorariosRecord =
-                              comidaBDHorariosRecordList.isNotEmpty
-                                  ? comidaBDHorariosRecordList.first
-                                  : null;
-                          return Text(
-                            comidaBDHorariosRecord!.comida!,
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          );
-                        },
-                      ),
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked2,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            null &&
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked2,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            '')
-                      Text(
-                        dateTimeFormat(
-                          'Hm',
-                          datePicked2,
-                          locale: FFLocalizations.of(context).languageCode,
-                        ),
-                        style: FlutterFlowTheme.of(context).subtitle2,
-                      ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked2 = date);
                           },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
+                          text: 'Comida',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 56,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText1Family),
+                                ),
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
                           ),
                         );
                       },
-                      text: 'Comida',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 56,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .bodyText1
-                            .override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
-                            ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -327,109 +304,82 @@ class _RegistroHorarioComidaWidgetState
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked3,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            null ||
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked3,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) ==
-                            '')
-                      StreamBuilder<List<HorariosRecord>>(
-                        stream: queryHorariosRecord(
-                          queryBuilder: (horariosRecord) =>
-                              horariosRecord.where('uid_ref',
-                                  isEqualTo: currentUserReference),
-                          singleRecord: true,
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 25,
-                                height: 25,
-                                child: CircularProgressIndicator(
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryColor,
-                                ),
+                    Text(
+                      dateTimeFormat(
+                        'Hm',
+                        datePicked3,
+                        locale: FFLocalizations.of(context).languageCode,
+                      ),
+                      style: FlutterFlowTheme.of(context).subtitle1,
+                    ),
+                    StreamBuilder<List<HorariosUsuarioRecord>>(
+                      stream: queryHorariosUsuarioRecord(
+                        queryBuilder: (horariosUsuarioRecord) =>
+                            horariosUsuarioRecord.where('uidref',
+                                isEqualTo: currentUserReference),
+                        singleRecord: true,
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: CircularProgressIndicator(
+                                color:
+                                    FlutterFlowTheme.of(context).primaryColor,
+                              ),
+                            ),
+                          );
+                        }
+                        List<HorariosUsuarioRecord>
+                            cenaHorariosUsuarioRecordList = snapshot.data!;
+                        final cenaHorariosUsuarioRecord =
+                            cenaHorariosUsuarioRecordList.isNotEmpty
+                                ? cenaHorariosUsuarioRecordList.first
+                                : null;
+                        return FFButtonWidget(
+                          onPressed: () async {
+                            await DatePicker.showTimePicker(
+                              context,
+                              showTitleActions: true,
+                              onConfirm: (date) {
+                                setState(() => datePicked3 = date);
+                              },
+                              currentTime: cenaHorariosUsuarioRecord!.cena!,
+                              locale: LocaleType.values.firstWhere(
+                                (l) =>
+                                    l.name ==
+                                    FFLocalizations.of(context).languageCode,
+                                orElse: () => LocaleType.en,
                               ),
                             );
-                          }
-                          List<HorariosRecord> cenaBDHorariosRecordList =
-                              snapshot.data!;
-                          final cenaBDHorariosRecord =
-                              cenaBDHorariosRecordList.isNotEmpty
-                                  ? cenaBDHorariosRecordList.first
-                                  : null;
-                          return Text(
-                            cenaBDHorariosRecord!.cena!,
-                            style: FlutterFlowTheme.of(context).subtitle1,
-                          );
-                        },
-                      ),
-                    if (dateTimeFormat(
-                              'Hm',
-                              datePicked3,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            null &&
-                        dateTimeFormat(
-                              'Hm',
-                              datePicked3,
-                              locale: FFLocalizations.of(context).languageCode,
-                            ) !=
-                            '')
-                      Text(
-                        dateTimeFormat(
-                          'Hm',
-                          datePicked3,
-                          locale: FFLocalizations.of(context).languageCode,
-                        ),
-                        style: FlutterFlowTheme.of(context).subtitle2,
-                      ),
-                    FFButtonWidget(
-                      onPressed: () async {
-                        await DatePicker.showTimePicker(
-                          context,
-                          showTitleActions: true,
-                          onConfirm: (date) {
-                            setState(() => datePicked3 = date);
                           },
-                          currentTime: getCurrentTimestamp,
-                          locale: LocaleType.values.firstWhere(
-                            (l) =>
-                                l.name ==
-                                FFLocalizations.of(context).languageCode,
-                            orElse: () => LocaleType.en,
+                          text: 'Cena',
+                          options: FFButtonOptions(
+                            width: 150,
+                            height: 56,
+                            color: FlutterFlowTheme.of(context).primaryColor,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyText1Family),
+                                ),
+                            elevation: 2,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1,
+                            ),
                           ),
                         );
                       },
-                      text: 'Cena',
-                      options: FFButtonOptions(
-                        width: 150,
-                        height: 56,
-                        color: FlutterFlowTheme.of(context).primaryColor,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .bodyText1
-                            .override(
-                              fontFamily: 'Poppins',
-                              color: Colors.white,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                              useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                  FlutterFlowTheme.of(context).bodyText1Family),
-                            ),
-                        elevation: 2,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -489,10 +439,10 @@ class _RegistroHorarioComidaWidgetState
                                 borderRadius: BorderRadius.circular(14),
                               ),
                             ),
-                            StreamBuilder<List<HorariosRecord>>(
-                              stream: queryHorariosRecord(
-                                queryBuilder: (horariosRecord) =>
-                                    horariosRecord.where('uid_ref',
+                            StreamBuilder<List<HorariosUsuarioRecord>>(
+                              stream: queryHorariosUsuarioRecord(
+                                queryBuilder: (horariosUsuarioRecord) =>
+                                    horariosUsuarioRecord.where('uidref',
                                         isEqualTo: currentUserReference),
                                 singleRecord: true,
                               ),
@@ -510,301 +460,57 @@ class _RegistroHorarioComidaWidgetState
                                     ),
                                   );
                                 }
-                                List<HorariosRecord> aceptarHorariosRecordList =
+                                List<HorariosUsuarioRecord>
+                                    aceptarHorariosUsuarioRecordList =
                                     snapshot.data!;
-                                // Return an empty Container when the document does not exist.
-                                if (snapshot.data!.isEmpty) {
-                                  return Container();
-                                }
-                                final aceptarHorariosRecord =
-                                    aceptarHorariosRecordList.isNotEmpty
-                                        ? aceptarHorariosRecordList.first
+                                final aceptarHorariosUsuarioRecord =
+                                    aceptarHorariosUsuarioRecordList.isNotEmpty
+                                        ? aceptarHorariosUsuarioRecordList.first
                                         : null;
                                 return FFButtonWidget(
                                   onPressed: () async {
-                                    if (dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ) !=
-                                            null &&
-                                        dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ) !=
-                                            '') {
-                                      if (dateTimeFormat(
-                                                'Hm',
-                                                datePicked2,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ) !=
-                                              null &&
-                                          dateTimeFormat(
-                                                'Hm',
-                                                datePicked2,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ) !=
-                                              '') {
-                                        if (dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                null &&
-                                            dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                '') {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno: dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            comida: dateTimeFormat(
-                                              'Hm',
-                                              datePicked2,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            cena: dateTimeFormat(
-                                              'Hm',
-                                              datePicked3,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
+                                    final horariosUsuarioUpdateData =
+                                        createHorariosUsuarioRecordData(
+                                      desayuno: datePicked1,
+                                      comida: datePicked2,
+                                      cena: datePicked3,
+                                    );
+                                    await aceptarHorariosUsuarioRecord!
+                                        .reference
+                                        .update(horariosUsuarioUpdateData);
 
-                                          context.pushNamed('Home');
+                                    context.goNamed('Home');
 
-                                          return;
-                                        } else {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno: dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            comida: dateTimeFormat(
-                                              'Hm',
-                                              datePicked2,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            cena: aceptarHorariosRecord!.cena,
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-
-                                          context.pushNamed('Home');
-
-                                          return;
-                                        }
-                                      } else {
-                                        if (dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                null &&
-                                            dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                '') {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno: dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            comida:
-                                                aceptarHorariosRecord!.comida,
-                                            cena: dateTimeFormat(
-                                              'Hm',
-                                              datePicked3,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-                                        } else {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno: dateTimeFormat(
-                                              'Hm',
-                                              datePicked1,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            comida:
-                                                aceptarHorariosRecord!.comida,
-                                            cena: aceptarHorariosRecord!.cena,
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-                                        }
-
-                                        context.pushNamed('Home');
-
-                                        return;
-                                      }
-                                    } else {
-                                      if (dateTimeFormat(
-                                                'Hm',
-                                                datePicked2,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ) !=
-                                              null &&
-                                          dateTimeFormat(
-                                                'Hm',
-                                                datePicked2,
-                                                locale:
-                                                    FFLocalizations.of(context)
-                                                        .languageCode,
-                                              ) !=
-                                              '') {
-                                        if (dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                null &&
-                                            dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                '') {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno:
-                                                aceptarHorariosRecord!.desayuno,
-                                            comida: dateTimeFormat(
-                                              'Hm',
-                                              datePicked2,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            cena: dateTimeFormat(
-                                              'Hm',
-                                              datePicked3,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-                                        } else {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno:
-                                                aceptarHorariosRecord!.desayuno,
-                                            comida: dateTimeFormat(
-                                              'Hm',
-                                              datePicked2,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                            cena: aceptarHorariosRecord!.cena,
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-                                        }
-
-                                        context.pushNamed('Home');
-
-                                        return;
-                                      } else {
-                                        if (dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                null &&
-                                            dateTimeFormat(
-                                                  'Hm',
-                                                  datePicked3,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                ) !=
-                                                '') {
-                                          final horariosUpdateData =
-                                              createHorariosRecordData(
-                                            desayuno:
-                                                aceptarHorariosRecord!.desayuno,
-                                            comida:
-                                                aceptarHorariosRecord!.comida,
-                                            cena: dateTimeFormat(
-                                              'Hm',
-                                              datePicked3,
-                                              locale:
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                            ),
-                                          );
-                                          await aceptarHorariosRecord!.reference
-                                              .update(horariosUpdateData);
-                                        } else {
-                                          context.pushNamed('Home');
-
-                                          return;
-                                        }
-
-                                        context.pushNamed('Home');
-
-                                        return;
-                                      }
-                                    }
+                                    await actions.awesomeNotification(
+                                      1,
+                                      'Desayuno',
+                                      '¡Hora de desayunar!',
+                                      2,
+                                      'Comida',
+                                      '¡Hora de comer!',
+                                      3,
+                                      'Cena',
+                                      '¡Hora de cenar!',
+                                      functions.obtenerHora(
+                                          aceptarHorariosUsuarioRecord!
+                                              .desayuno!),
+                                      functions.obtenerMinutos(
+                                          aceptarHorariosUsuarioRecord!
+                                              .desayuno!),
+                                      functions.obtenerHora(
+                                          aceptarHorariosUsuarioRecord!
+                                              .comida!),
+                                      functions.obtenerMinutos(
+                                          aceptarHorariosUsuarioRecord!
+                                              .comida!),
+                                      functions.obtenerHora(
+                                          aceptarHorariosUsuarioRecord!.cena!),
+                                      functions.obtenerMinutos(
+                                          aceptarHorariosUsuarioRecord!.cena!),
+                                      true,
+                                      true,
+                                      true,
+                                    );
                                   },
                                   text: 'Aceptar',
                                   options: FFButtonOptions(

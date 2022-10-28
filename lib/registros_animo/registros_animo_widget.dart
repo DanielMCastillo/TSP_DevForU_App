@@ -73,7 +73,7 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
             size: 30,
           ),
           onPressed: () async {
-            context.goNamed(
+            context.pushNamed(
               'Home',
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
@@ -284,7 +284,7 @@ class _RegistrosAnimoWidgetState extends State<RegistrosAnimoWidget>
                                                                   .subtitle1
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Outfit',
+                                                                        'Rubik',
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
                                                                         .primaryText,

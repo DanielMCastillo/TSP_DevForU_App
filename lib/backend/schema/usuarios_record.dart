@@ -29,6 +29,9 @@ abstract class UsuariosRecord
 
   String? get contrasena;
 
+  @BuiltValueField(wireName: 'nombre_emergencia')
+  String? get nombreEmergencia;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -39,7 +42,8 @@ abstract class UsuariosRecord
     ..photoUrl = ''
     ..uid = ''
     ..phoneNumber = ''
-    ..contrasena = '';
+    ..contrasena = ''
+    ..nombreEmergencia = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('usuarios');
@@ -70,6 +74,7 @@ Map<String, dynamic> createUsuariosRecordData({
   DateTime? createdTime,
   String? phoneNumber,
   String? contrasena,
+  String? nombreEmergencia,
 }) {
   final firestoreData = serializers.toFirestore(
     UsuariosRecord.serializer,
@@ -81,7 +86,8 @@ Map<String, dynamic> createUsuariosRecordData({
         ..uid = uid
         ..createdTime = createdTime
         ..phoneNumber = phoneNumber
-        ..contrasena = contrasena,
+        ..contrasena = contrasena
+        ..nombreEmergencia = nombreEmergencia,
     ),
   );
 
