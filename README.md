@@ -1,6 +1,6 @@
 # Devii
 
-A new Flutter project.
+Un proyecto de Rolando, Victor, Daniel y Jesus.
 
 ## Getting Started
 
