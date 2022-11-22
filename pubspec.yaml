@@ -38,7 +38,7 @@ dependencies:
   cloud_functions_platform_interface: 5.1.10
   cloud_functions_web: 4.2.18
   csv: 5.0.1
-  file_picker: ^4.6.1
+  file_picker: 4.5.1
   firebase_analytics: 9.1.12
   firebase_analytics_platform_interface: 3.1.10
   firebase_analytics_web: 0.4.0+17
@@ -82,10 +82,8 @@ dependencies:
   local_auth_windows: 1.0.1
   mime_type: 1.0.0
   page_transition: 2.0.4
-  pdf: ^3.8.1
   photo_view: 0.14.0
   plugin_platform_interface: 2.1.2
-  printing: ^5.9.1
   rxdart: 0.27.4
   shared_preferences: 2.0.15
   sign_in_with_apple: 4.1.0

@@ -58,7 +58,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 100, 0, 20),
                                         child: Image.asset(
-                                          'assets/images/AJOLOTE.png',
+                                          'assets/images/Devi.png',
                                           width: 250,
                                           height: 250,
                                           fit: BoxFit.fitWidth,
@@ -145,12 +145,12 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 20),
+                                            0, 18, 0, 20),
                                         child: Image.asset(
-                                          'assets/images/Devi.png',
-                                          width: 350,
-                                          height: 400,
-                                          fit: BoxFit.fitWidth,
+                                          'assets/images/Mae.png',
+                                          width: 300,
+                                          height: 300,
+                                          fit: BoxFit.fitHeight,
                                         ),
                                       ),
                                     ],
@@ -246,12 +246,12 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 30),
+                                            0, 18, 0, 30),
                                         child: Image.asset(
-                                          'assets/images/DeviCompu.png',
+                                          'assets/images/Nosek.png',
                                           width: 250,
                                           height: 250,
-                                          fit: BoxFit.fitWidth,
+                                          fit: BoxFit.fitHeight,
                                         ),
                                       ),
                                     ],

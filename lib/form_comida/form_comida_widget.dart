@@ -485,6 +485,7 @@ class _FormComidaWidgetState extends State<FormComidaWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryText,
+                                                  fontSize: 13,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(

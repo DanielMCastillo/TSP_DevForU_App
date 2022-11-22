@@ -254,8 +254,8 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                  child: StreamBuilder<List<UsuariosConfianzaRecord>>(
-                    stream: queryUsuariosConfianzaRecord(
+                  child: StreamBuilder<List<UsuariosRecord>>(
+                    stream: queryUsuariosRecord(
                       singleRecord: true,
                     ),
                     builder: (context, snapshot) {
@@ -271,11 +271,15 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                           ),
                         );
                       }
-                      List<UsuariosConfianzaRecord>
-                          buttonUsuariosConfianzaRecordList = snapshot.data!;
-                      final buttonUsuariosConfianzaRecord =
-                          buttonUsuariosConfianzaRecordList.isNotEmpty
-                              ? buttonUsuariosConfianzaRecordList.first
+                      List<UsuariosRecord> buttonUsuariosRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the document does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final buttonUsuariosRecord =
+                          buttonUsuariosRecordList.isNotEmpty
+                              ? buttonUsuariosRecordList.first
                               : null;
                       return FFButtonWidget(
                         onPressed: () async {
@@ -285,9 +289,9 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                         },
                         text: 'Contacto personal',
                         options: FFButtonOptions(
-                          width: 180,
+                          width: 240,
                           height: 56,
-                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          color: FlutterFlowTheme.of(context).error,
                           textStyle: FlutterFlowTheme.of(context)
                               .subtitle2
                               .override(
@@ -298,7 +302,6 @@ class _AyudaWidgetState extends State<AyudaWidget> {
                                         .subtitle2Family),
                               ),
                           borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).tertiaryColor,
                             width: 1,
                           ),
                           borderRadius: BorderRadius.circular(16),

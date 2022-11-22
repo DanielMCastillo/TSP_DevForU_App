@@ -2,7 +2,9 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 
 class FelicitacionHorarioComidaWidget extends StatefulWidget {
   const FelicitacionHorarioComidaWidget({Key? key}) : super(key: key);
@@ -14,7 +16,24 @@ class FelicitacionHorarioComidaWidget extends StatefulWidget {
 
 class _FelicitacionHorarioComidaWidgetState
     extends State<FelicitacionHorarioComidaWidget> {
+  AudioPlayer? soundPlayer;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      soundPlayer ??= AudioPlayer();
+      if (soundPlayer!.playing) {
+        await soundPlayer!.stop();
+      }
+      soundPlayer!.setVolume(0.76);
+      soundPlayer!
+          .setAsset('assets/audios/SuccesfulSound.mp3')
+          .then((_) => soundPlayer!.play());
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +54,7 @@ class _FelicitacionHorarioComidaWidgetState
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/images/congrats.gif',
+                      'assets/images/SonamFestejando.png',
                       width: 200,
                       height: 200,
                       fit: BoxFit.fitWidth,

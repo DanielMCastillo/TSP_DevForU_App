@@ -221,7 +221,16 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                         size: 25,
                       ),
                       onPressed: () async {
-                        context.pushNamed('Home');
+                        context.pushNamed(
+                          'Home',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
                       },
                     )
                         .animateOnPageLoad(
@@ -235,7 +244,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                       borderWidth: 1,
                       buttonSize: 60,
                       icon: FaIcon(
-                        FontAwesomeIcons.thList,
+                        FontAwesomeIcons.pollH,
                         color: FlutterFlowTheme.of(context).primaryText,
                         size: 30,
                       ),
@@ -245,8 +254,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
-                              transitionType: PageTransitionType.scale,
-                              alignment: Alignment.bottomCenter,
+                              transitionType: PageTransitionType.leftToRight,
                             ),
                           },
                         );
@@ -333,8 +341,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
-                                transitionType: PageTransitionType.scale,
-                                alignment: Alignment.bottomCenter,
+                                transitionType: PageTransitionType.leftToRight,
                               ),
                             },
                           );
@@ -345,11 +352,12 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
-                                'INCORRECTO',
-                                style: FlutterFlowTheme.of(context).title1,
+                                'Por favor ingresa tu método de verificación',
+                                style: FlutterFlowTheme.of(context).subtitle1,
                               ),
                               duration: Duration(milliseconds: 4000),
-                              backgroundColor: Color(0x00000000),
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
                             ),
                           );
                           if (_shouldSetState) setState(() {});
@@ -380,8 +388,7 @@ class _NavBarFlotingWidgetState extends State<NavBarFlotingWidget>
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,
-                              transitionType: PageTransitionType.scale,
-                              alignment: Alignment.bottomCenter,
+                              transitionType: PageTransitionType.leftToRight,
                             ),
                           },
                         );

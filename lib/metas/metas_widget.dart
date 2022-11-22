@@ -169,7 +169,24 @@ class _MetasWidgetState extends State<MetasWidget>
                                               'Meta #1',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle1,
+                                                      .subtitle1
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle1Family,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        fontSize: 22,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1Family),
+                                                      ),
                                             ),
                                           ),
                                           Padding(
@@ -435,20 +452,6 @@ class _MetasWidgetState extends State<MetasWidget>
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 4, 0, 0),
-                                        child: Text(
-                                          dateTimeFormat(
-                                            'EEEE',
-                                            getCurrentTimestamp,
-                                            locale: FFLocalizations.of(context)
-                                                .languageCode,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText2,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0, 16, 0, 16),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -566,7 +569,24 @@ class _MetasWidgetState extends State<MetasWidget>
                                               'Meta #2',
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .subtitle1,
+                                                      .subtitle1
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .subtitle1Family,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        fontSize: 22,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .subtitle1Family),
+                                                      ),
                                             ),
                                           ),
                                           Padding(

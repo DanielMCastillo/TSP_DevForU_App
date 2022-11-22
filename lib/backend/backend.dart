@@ -9,10 +9,8 @@ import 'schema/mascotas_record.dart';
 import 'schema/usuario_mascota_record.dart';
 import 'schema/notas_record.dart';
 import 'schema/estado_animo_record.dart';
-import 'schema/frases_reforzamiento_record.dart';
 import 'schema/horarios_record.dart';
 import 'schema/img_test_record.dart';
-import 'schema/usuarios_confianza_record.dart';
 import 'schema/horarios_usuario_record.dart';
 import 'schema/comidas_record.dart';
 import 'schema/actividades_record.dart';
@@ -29,10 +27,8 @@ export 'schema/mascotas_record.dart';
 export 'schema/usuario_mascota_record.dart';
 export 'schema/notas_record.dart';
 export 'schema/estado_animo_record.dart';
-export 'schema/frases_reforzamiento_record.dart';
 export 'schema/horarios_record.dart';
 export 'schema/img_test_record.dart';
-export 'schema/usuarios_confianza_record.dart';
 export 'schema/horarios_usuario_record.dart';
 export 'schema/comidas_record.dart';
 export 'schema/actividades_record.dart';
@@ -248,49 +244,6 @@ Future<FFFirestorePage<EstadoAnimoRecord>> queryEstadoAnimoRecordPage({
       isStream: isStream,
     );
 
-/// Functions to query FrasesReforzamientoRecords (as a Stream and as a Future).
-Stream<List<FrasesReforzamientoRecord>> queryFrasesReforzamientoRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      FrasesReforzamientoRecord.collection,
-      FrasesReforzamientoRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<FrasesReforzamientoRecord>> queryFrasesReforzamientoRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      FrasesReforzamientoRecord.collection,
-      FrasesReforzamientoRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<FrasesReforzamientoRecord>>
-    queryFrasesReforzamientoRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-        queryCollectionPage(
-          FrasesReforzamientoRecord.collection,
-          FrasesReforzamientoRecord.serializer,
-          queryBuilder: queryBuilder,
-          nextPageMarker: nextPageMarker,
-          pageSize: pageSize,
-          isStream: isStream,
-        );
-
 /// Functions to query HorariosRecords (as a Stream and as a Future).
 Stream<List<HorariosRecord>> queryHorariosRecord({
   Query Function(Query)? queryBuilder,
@@ -374,49 +327,6 @@ Future<FFFirestorePage<ImgTestRecord>> queryImgTestRecordPage({
       pageSize: pageSize,
       isStream: isStream,
     );
-
-/// Functions to query UsuariosConfianzaRecords (as a Stream and as a Future).
-Stream<List<UsuariosConfianzaRecord>> queryUsuariosConfianzaRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      UsuariosConfianzaRecord.collection,
-      UsuariosConfianzaRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<UsuariosConfianzaRecord>> queryUsuariosConfianzaRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      UsuariosConfianzaRecord.collection,
-      UsuariosConfianzaRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<UsuariosConfianzaRecord>>
-    queryUsuariosConfianzaRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-        queryCollectionPage(
-          UsuariosConfianzaRecord.collection,
-          UsuariosConfianzaRecord.serializer,
-          queryBuilder: queryBuilder,
-          nextPageMarker: nextPageMarker,
-          pageSize: pageSize,
-          isStream: isStream,
-        );
 
 /// Functions to query HorariosUsuarioRecords (as a Stream and as a Future).
 Stream<List<HorariosUsuarioRecord>> queryHorariosUsuarioRecord({

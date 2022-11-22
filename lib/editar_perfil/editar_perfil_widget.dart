@@ -116,9 +116,6 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                   children: [
                     FFButtonWidget(
                       onPressed: () async {
-                        await FirebaseStorage.instance
-                            .refFromURL(currentUserPhoto)
-                            .delete();
                         final selectedMedia = await selectMedia(
                           imageQuality: 84,
                           mediaSource: MediaSource.photoGallery,
@@ -160,10 +157,26 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                           }
                         }
 
-                        final usuariosUpdateData = createUsuariosRecordData(
-                          photoUrl: uploadedFileUrl,
-                        );
-                        await currentUserReference!.update(usuariosUpdateData);
+                        if (currentUserPhoto == null ||
+                            currentUserPhoto == '') {
+                          final usuariosUpdateData = createUsuariosRecordData(
+                            photoUrl: uploadedFileUrl,
+                          );
+                          await currentUserReference!
+                              .update(usuariosUpdateData);
+                          return;
+                        } else {
+                          await FirebaseStorage.instance
+                              .refFromURL(currentUserPhoto)
+                              .delete();
+
+                          final usuariosUpdateData = createUsuariosRecordData(
+                            photoUrl: uploadedFileUrl,
+                          );
+                          await currentUserReference!
+                              .update(usuariosUpdateData);
+                          return;
+                        }
                       },
                       text: 'Cambiar foto',
                       options: FFButtonOptions(

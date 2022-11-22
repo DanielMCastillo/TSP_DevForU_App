@@ -6,10 +6,8 @@ import 'mascotas_record.dart';
 import 'usuario_mascota_record.dart';
 import 'notas_record.dart';
 import 'estado_animo_record.dart';
-import 'frases_reforzamiento_record.dart';
 import 'horarios_record.dart';
 import 'img_test_record.dart';
-import 'usuarios_confianza_record.dart';
 import 'horarios_usuario_record.dart';
 import 'comidas_record.dart';
 import 'actividades_record.dart';
@@ -29,10 +27,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   UsuarioMascotaRecord,
   NotasRecord,
   EstadoAnimoRecord,
-  FrasesReforzamientoRecord,
   HorariosRecord,
   ImgTestRecord,
-  UsuariosConfianzaRecord,
   HorariosUsuarioRecord,
   ComidasRecord,
   ActividadesRecord,

@@ -118,10 +118,10 @@ class _RegistroWidgetState extends State<RegistroWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/DeviCompu.png',
-                    width: 100,
-                    height: 100,
-                    fit: BoxFit.fitWidth,
+                    'assets/images/D4.png',
+                    width: 80,
+                    height: 80,
+                    fit: BoxFit.fill,
                   ).animateOnPageLoad(
                       animationsMap['imageOnPageLoadAnimation']!),
                 ],
@@ -1003,6 +1003,7 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                               );
                                             },
                                           );
+                                          return;
                                         } else {
                                           GoRouter.of(context)
                                               .prepareAuthEvent(true);
@@ -1064,6 +1065,18 @@ class _RegistroWidgetState extends State<RegistroWidget>
                                           setState(() => FFAppState()
                                                   .numeroemergencia =
                                               int.parse(textController3!.text));
+
+                                          final metasCreateData =
+                                              createMetasRecordData(
+                                            uidRef: currentUserReference,
+                                            descMeta1: 'Escribe tu meta uno',
+                                            fechaMeta1: getCurrentTimestamp,
+                                            descMeta2: 'Escribe tu meta dos',
+                                            fechaMeta2: getCurrentTimestamp,
+                                          );
+                                          await MetasRecord.collection
+                                              .doc()
+                                              .set(metasCreateData);
 
                                           context.goNamedAuth(
                                             'SeleccionMascotaMain',

@@ -72,8 +72,16 @@ class _RecordatoriosComidaWidgetState extends State<RecordatoriosComidaWidget> {
                 color: FlutterFlowTheme.of(context).primaryText,
                 size: 30,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                context.goNamed(
+                  'Perfil',
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
               },
             ),
             title: Text(

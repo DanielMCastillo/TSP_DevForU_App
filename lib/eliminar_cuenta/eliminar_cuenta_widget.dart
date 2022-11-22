@@ -123,7 +123,7 @@ class _EliminarCuentaWidgetState extends State<EliminarCuentaWidget>
                     Align(
                       alignment: AlignmentDirectional(-0.01, 0.06),
                       child: Image.asset(
-                        'assets/images/Diseo_sin_ttulo_(4).png',
+                        'assets/images/NosekTroste.png',
                         width: 200,
                         height: 200,
                         fit: BoxFit.fill,

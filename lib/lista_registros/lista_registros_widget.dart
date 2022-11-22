@@ -22,6 +22,45 @@ class ListaRegistrosWidget extends StatefulWidget {
 class _ListaRegistrosWidgetState extends State<ListaRegistrosWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
+    'listViewOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShakeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          hz: 2,
+          offset: Offset(0, 0),
+          rotation: 0.017,
+        ),
+      ],
+    ),
+    'listViewOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShakeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          hz: 2,
+          offset: Offset(0, 0),
+          rotation: 0.017,
+        ),
+      ],
+    ),
+    'listViewOnPageLoadAnimation3': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShakeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          hz: 2,
+          offset: Offset(0, 0),
+          rotation: 0.017,
+        ),
+      ],
+    ),
     'navBarFlotingOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -371,7 +410,8 @@ class _ListaRegistrosWidgetState extends State<ListaRegistrosWidget>
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).animateOnPageLoad(animationsMap[
+                                              'listViewOnPageLoadAnimation1']!);
                                         },
                                       ),
                                     ),
@@ -627,7 +667,8 @@ class _ListaRegistrosWidgetState extends State<ListaRegistrosWidget>
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).animateOnPageLoad(animationsMap[
+                                              'listViewOnPageLoadAnimation2']!);
                                         },
                                       ),
                                     ),
@@ -831,7 +872,8 @@ class _ListaRegistrosWidgetState extends State<ListaRegistrosWidget>
                                                 ),
                                               );
                                             },
-                                          );
+                                          ).animateOnPageLoad(animationsMap[
+                                              'listViewOnPageLoadAnimation3']!);
                                         },
                                       ),
                                     ),

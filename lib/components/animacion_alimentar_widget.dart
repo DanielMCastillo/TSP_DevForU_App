@@ -94,14 +94,14 @@ class _AnimacionAlimentarWidgetState extends State<AnimacionAlimentarWidget> {
                 onPressed: () async {
                   Navigator.pop(context);
                 },
-                text: 'Gracias',
+                text: 'Gracias por alimentarnos',
                 icon: Icon(
                   Icons.favorite,
                   size: 15,
                 ),
                 options: FFButtonOptions(
-                  width: 150,
-                  height: 56,
+                  width: 250,
+                  height: 80,
                   color: FlutterFlowTheme.of(context).primaryColor,
                   textStyle: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily:

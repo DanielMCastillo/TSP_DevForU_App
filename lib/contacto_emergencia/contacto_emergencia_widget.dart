@@ -97,16 +97,11 @@ class _ContactoEmergenciaWidgetState extends State<ContactoEmergenciaWidget> {
             Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: 150,
-                  height: 150,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: Image.asset(
-                    'assets/images/Diseo_sin_ttulo_(7).png',
-                  ),
+                Image.asset(
+                  'assets/images/BongoJaliAyuda.png',
+                  width: 250,
+                  height: 250,
+                  fit: BoxFit.cover,
                 ),
               ],
             ),

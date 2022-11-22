@@ -36,13 +36,6 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /frases_reforzamiento/{document} {
-      allow create: if false;
-      allow read: if request.auth != null;
-      allow write: if false;
-      allow delete: if false;
-    }
-
     match /horarios/{document} {
       allow create: if request.auth != null;
       allow read: if request.auth != null;
@@ -57,25 +50,18 @@ service cloud.firestore {
       allow delete: if false;
     }
 
-    match /usuarios_confianza/{document} {
-      allow create: if true;
-      allow read: if true;
-      allow write: if false;
-      allow delete: if false;
-    }
-
     match /horariosUsuario/{document} {
-      allow create: if true;
+      allow create: if request.auth != null;
       allow read: if request.auth != null;
       allow write: if request.auth != null;
       allow delete: if request.auth != null;
     }
 
     match /comidas/{document} {
-      allow create: if request.auth != null;
-      allow read: if request.auth != null;
-      allow write: if request.auth != null;
-      allow delete: if false;
+      allow create: if request.resource.data.uid_ref == /databases/$(database)/documents/usuarios/$(request.auth.uid);
+      allow read: if resource.data.uid_ref == /databases/$(database)/documents/usuarios/$(request.auth.uid);
+      allow write: if resource.data.uid_ref == /databases/$(database)/documents/usuarios/$(request.auth.uid);
+      allow delete: if resource.data.uid_ref == /databases/$(database)/documents/usuarios/$(request.auth.uid);
     }
 
     match /actividades/{document} {

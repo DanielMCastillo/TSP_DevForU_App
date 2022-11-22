@@ -19,7 +19,8 @@ class _MeditacionWidgetState extends State<MeditacionWidget> {
   StopWatchTimer? timerController;
   String? timerValue;
   int? timerMilliseconds;
-  AudioPlayer? soundPlayer;
+  AudioPlayer? soundPlayer1;
+  AudioPlayer? soundPlayer2;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -201,15 +202,25 @@ class _MeditacionWidgetState extends State<MeditacionWidget> {
                             StopWatchExecute.start,
                           );
 
-                          soundPlayer ??= AudioPlayer();
-                          if (soundPlayer!.playing) {
-                            await soundPlayer!.stop();
+                          soundPlayer1 ??= AudioPlayer();
+                          if (soundPlayer1!.playing) {
+                            await soundPlayer1!.stop();
                           }
-                          soundPlayer!.setVolume(0.58);
-                          soundPlayer!
-                              .setAsset(
-                                  'assets/audios/Y2Mate.is_-_1_Minute_Timer_Relaxing_Music_Lofi_Waterfall_Background-h-NpsoLlMMA-160k-1658455490060.mp3')
-                              .then((_) => soundPlayer!.play());
+
+                          soundPlayer1!
+                              .setAsset('assets/audios/lofi30secs.mp3')
+                              .then((_) => soundPlayer1!.play());
+
+                          await Future.delayed(
+                              const Duration(milliseconds: 59000));
+                          soundPlayer2 ??= AudioPlayer();
+                          if (soundPlayer2!.playing) {
+                            await soundPlayer2!.stop();
+                          }
+                          soundPlayer2!.setVolume(0.51);
+                          soundPlayer2!
+                              .setAsset('assets/audios/SuccesfulSound.mp3')
+                              .then((_) => soundPlayer2!.play());
                         },
                       ),
                     ],

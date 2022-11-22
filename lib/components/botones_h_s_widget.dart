@@ -177,7 +177,7 @@ class _BotonesHSWidgetState extends State<BotonesHSWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
                     child: InkWell(
                       onTap: () async {
-                        context.pushNamed(
+                        context.goNamed(
                           'meditacion',
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(

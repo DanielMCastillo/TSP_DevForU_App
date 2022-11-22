@@ -17,7 +17,27 @@ class AcercaDeWidget extends StatefulWidget {
 
 class _AcercaDeWidgetState extends State<AcercaDeWidget>
     with TickerProviderStateMixin {
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShakeEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 1000.ms,
+          hz: 1,
+          offset: Offset(0, 0),
+          rotation: 0.017,
+        ),
+      ],
+    ),
+  };
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,20 +90,22 @@ class _AcercaDeWidgetState extends State<AcercaDeWidget>
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 0),
                 child: Text(
                   'Conoce a los desarrolladores de Devii',
+                  textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily:
                             FlutterFlowTheme.of(context).bodyText2Family,
-                        fontSize: 22,
+                        color: FlutterFlowTheme.of(context).primaryColor,
+                        fontSize: 16,
                         useGoogleFonts: GoogleFonts.asMap().containsKey(
                             FlutterFlowTheme.of(context).bodyText2Family),
                       ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 8, 0, 4),
+                padding: EdgeInsetsDirectional.fromSTEB(16, 24, 0, 4),
                 child: Text(
                   'Agradecimiento especial a la maestra María ',
                   style: FlutterFlowTheme.of(context).bodyText1,
@@ -602,7 +624,7 @@ class _AcercaDeWidgetState extends State<AcercaDeWidget>
               ),
             ],
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
       ),
     );
   }

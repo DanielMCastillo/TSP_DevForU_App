@@ -40,8 +40,7 @@ class _BotonePginaPrincipalWidgetState
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.scale,
-                            alignment: Alignment.bottomCenter,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
                         },
                       );
@@ -109,8 +108,7 @@ class _BotonePginaPrincipalWidgetState
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.scale,
-                            alignment: Alignment.bottomCenter,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
                         },
                       );
@@ -178,8 +176,7 @@ class _BotonePginaPrincipalWidgetState
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
-                            transitionType: PageTransitionType.scale,
-                            alignment: Alignment.bottomCenter,
+                            transitionType: PageTransitionType.leftToRight,
                           ),
                         },
                       );

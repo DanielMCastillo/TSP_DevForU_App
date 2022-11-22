@@ -20,10 +20,13 @@ class _ListaVaciaWidgetState extends State<ListaVaciaWidget> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FaIcon(
-            FontAwesomeIcons.listAlt,
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            size: 90,
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+            child: FaIcon(
+              FontAwesomeIcons.listAlt,
+              color: FlutterFlowTheme.of(context).secondaryText,
+              size: 90,
+            ),
           ),
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
@@ -41,7 +44,7 @@ class _ListaVaciaWidgetState extends State<ListaVaciaWidget> {
                       style: FlutterFlowTheme.of(context).title3.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).title3Family,
-                            color: FlutterFlowTheme.of(context).primaryText,
+                            color: FlutterFlowTheme.of(context).secondaryText,
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).title3Family),
                           ),
