@@ -145,7 +145,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 18, 0, 20),
+                                            0, 24, 0, 20),
                                         child: Image.asset(
                                           'assets/images/Mae.png',
                                           width: 300,
@@ -246,7 +246,7 @@ class _BienvenidaWidgetState extends State<BienvenidaWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 18, 0, 30),
+                                            0, 30, 0, 30),
                                         child: Image.asset(
                                           'assets/images/Nosek.png',
                                           width: 250,

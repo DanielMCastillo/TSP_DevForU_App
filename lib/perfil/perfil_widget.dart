@@ -26,19 +26,6 @@ class _PerfilWidgetState extends State<PerfilWidget>
   var hasContainerTriggered1 = false;
   var hasContainerTriggered2 = false;
   final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShakeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1000.ms,
-          hz: 1,
-          offset: Offset(0, 0),
-          rotation: 0.017,
-        ),
-      ],
-    ),
     'navBarFlotingOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -107,8 +94,8 @@ class _PerfilWidgetState extends State<PerfilWidget>
         children: [
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 90),
-            child: StreamBuilder<List<UsuariosRecord>>(
-              stream: queryUsuariosRecord(
+            child: FutureBuilder<List<UsuariosRecord>>(
+              future: queryUsuariosRecordOnce(
                 singleRecord: true,
               ),
               builder: (context, snapshot) {
@@ -795,8 +782,7 @@ class _PerfilWidgetState extends State<PerfilWidget>
                       ),
                     ],
                   ),
-                ).animateOnPageLoad(
-                    animationsMap['columnOnPageLoadAnimation']!);
+                );
               },
             ),
           ),
