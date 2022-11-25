@@ -119,9 +119,9 @@ class _RegistroWidgetState extends State<RegistroWidget>
                 children: [
                   Image.asset(
                     'assets/images/D4.png',
-                    width: 80,
+                    width: 200,
                     height: 80,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.fitWidth,
                   ).animateOnPageLoad(
                       animationsMap['imageOnPageLoadAnimation']!),
                 ],

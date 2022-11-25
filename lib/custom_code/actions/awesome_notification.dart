@@ -30,22 +30,25 @@ Future awesomeNotification(
   bool? comidaturnedOn,
   bool? cenaturnedOn,
 ) async {
+  /// Inicializa las notificaciones
   AwesomeNotifications().initialize(
-      // set the icon to null if you want to use the default app icon
       '',
       [
+        // Desayuno
         NotificationChannel(
             channelGroupKey: 'scheduled_channel_group',
             channelKey: 'morning',
             channelName: 'Morning reminder',
             channelDescription: 'Notification for morning reminders',
             ledColor: Colors.white),
+        // Comida
         NotificationChannel(
             channelGroupKey: 'scheduled_channel_group',
             channelKey: 'evening',
             channelName: 'Evening reminder',
             channelDescription: 'Notification for evening reminders',
             ledColor: Colors.white),
+        // Cena
         NotificationChannel(
             channelGroupKey: 'scheduled_channel_group',
             channelKey: 'night',
@@ -61,11 +64,9 @@ Future awesomeNotification(
       ],
       debug: true);
 
+  //
   AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
     if (!isAllowed) {
-      // This is just a basic example. For real apps, you must show some
-      // friendly dialog box before call the request method.
-      // This is very important to not harm the user experience
       AwesomeNotifications().requestPermissionToSendNotifications();
     }
   });
